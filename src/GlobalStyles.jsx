@@ -35,6 +35,21 @@ a {
 input,
 button {
   font: inherit;
+}
+
+:root {
+  --main-text-color: #212121;
+  --secondary-text-color: #9B9FAA;
+  --white: #ffffff;
+  --accent-color: #FC842D;
+  --secondary-background-color: #F0F1F3;
+
+  --timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  --trans-duration: 250ms;
+
+  --mobile: 320px;
+  --tablet: 768px;
+  --desktop: 1280px;
 }`;
 
 export default GlobalStyle;
