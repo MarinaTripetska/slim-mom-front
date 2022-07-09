@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { Field, Form } from 'formik';
 
 const FormDiv = styled.div`
   display: flex;
@@ -6,7 +7,7 @@ const FormDiv = styled.div`
   max-width: 610px;
 `;
 
-const Form = styled.form`
+const DCForm = styled(Form)`
   display: flex;
   flex-flow: row wrap;
 `;
@@ -68,7 +69,7 @@ const FormLabel = styled.label`
   }
 `;
 
-const TextInp = styled.input`
+const TextInp = styled(Field)`
   display: block;
   border: none;
   width: 240px;
@@ -91,7 +92,7 @@ const BlList = styled.ul`
   flex-flow: row wrap;
 `;
 
-const RadioInp = styled.input`
+const RadioInp = styled(Field)`
   position: absolute;
   z-index: -1;
   opacity: 0;
@@ -141,7 +142,7 @@ const BtnDiv = styled.div`
 
 export {
   FormDiv,
-  Form,
+  DCForm,
   FormLabel,
   FormP,
   LblDiv1,
