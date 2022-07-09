@@ -1,17 +1,8 @@
 import { createGlobalStyle } from 'styled-components';
 import Verdana from './fonts/verdana.ttf';
 import VerdanaBold from './fonts/verdanab.ttf';
-import Edu from './fonts/EduTASBeginner-Regular.ttf';
 
 const GlobalStyle = createGlobalStyle`
-
-@font-face { 
-  font-family: 'Edu TAS Beginner';
-  src: url(${Edu}) format('truetype');
-  /* src: local('verdana'), url(./fonts/verdana.ttf) format('ttf'); */
-  font-weight: 400;
-  /* font-size: 32px; */
-}
 
 @font-face {
   font-family: 'Verdana';
@@ -43,20 +34,11 @@ li
 body {
   min-height: 100vh;
   scroll-behavior: smooth; 
-  font-family: 'Edu TAS Beginner', cursive;
-  /* font-family: 'Verdana'; */
-  /* font-weight: 700; */
-  font-size: 32px;
-  /* font-family: 'Verdana Bold'; */
-}
-
-.test1{
   font-family: 'Verdana';
-  /* font-weight: 100; */
-}
-.test2{
-  font-family: 'Verdana';
+  font-size: 14px;
   font-weight: 700;
+  line-height: 1.21;
+  letter-spacing: 0.04em;
 }
 
 ul{
