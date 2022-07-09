@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import Modal from 'components/Modal';
+import Logo from './components/Logo';
 
 function App() {
   const [openModal, setOpenModal] = useState(false);
@@ -11,6 +12,7 @@ function App() {
   return (
     <div>
       <p>SlimMom START TEST!</p>
+      <Logo />
       <button //Тимчасова кнопка
         onClick={() => {
           setOpenModal(true);
