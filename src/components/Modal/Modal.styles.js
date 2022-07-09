@@ -1,8 +1,7 @@
-import { useEffect } from 'react';
 import styled from 'styled-components';
 
 const Overlay = styled.div`
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
   width: 100vw;
@@ -90,63 +89,4 @@ const ProdList = styled.ol`
   }
 `;
 
-const Button = styled.button`
-  background: #fc842d;
-  box-shadow: 0px 4px 10px rgba(252, 132, 45, 0.5);
-  border-radius: 30px;
-  border: none;
-  padding: 13px 25px;
-  font-family: 'Verdana';
-  font-style: normal;
-  font-weight: 700;
-  font-size: 14px;
-  line-height: 1.214;
-  letter-spacing: 0.04em;
-  color: #ffffff;
-`;
-
-function Modal({ closeModalHandle }) {
-  useEffect(() => {
-    window.addEventListener('keydown', escKeyHandle);
-    return () => {
-      window.removeEventListener('keydown', escKeyHandle);
-    };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
-  const escKeyHandle = event => {
-    if (event.keyCode === 27) {
-      closeModalHandle();
-    }
-  };
-
-  const onClickOvrlHandle = event => {
-    if (event.target.id === 'modal-overlay') {
-      closeModalHandle();
-    }
-  };
-  const onBtnClickHandle = () => {
-    closeModalHandle();
-  };
-
-  return (
-    <Overlay id="modal-overlay" onClick={onClickOvrlHandle}>
-      <ModalDiv>
-        <ModalTtl>Your recommended daily calorie intake is</ModalTtl>
-        <KcalCount>
-          2800<span> ккал</span>
-        </KcalCount>
-        <ProdList>
-          <p>Foods you should not eat</p>
-          <li>Flour products</li>
-          <li>Milk</li>
-          <li>Red meat</li>
-          <li>Smoked meats</li>
-        </ProdList>
-        <Button onClick={onBtnClickHandle}>Start losing weight</Button>
-      </ModalDiv>
-    </Overlay>
-  );
-}
-
-export default Modal;
+export { Overlay, ModalDiv, ModalTtl, KcalCount, ProdList };
