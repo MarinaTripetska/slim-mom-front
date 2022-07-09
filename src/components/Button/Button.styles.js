@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const Btn = styled.button`
+export const Btn = styled.button`
   display: inline-block;
   padding: 13px 25px;
   background: #fc842d;
@@ -20,7 +20,3 @@ const Btn = styled.button`
     background: #f56905;
   }
 `;
-
-export default function Button({ onClickHandler, btnText }) {
-  return <Btn onClick={onClickHandler}>{btnText}</Btn>;
-}

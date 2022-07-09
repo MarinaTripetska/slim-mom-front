@@ -1,122 +1,17 @@
-import styled from 'styled-components';
-import Button from './Button';
+import Button from '../Button';
 import { toast } from 'react-toastify';
+import {
+  FormDiv,
+  FormP,
+  Form,
+  LblDiv1,
+  FormLabel,
+  TextInp,
+  BlList,
+  RadioInp,
+  BtnDiv,
+} from './DailyCaloriesForm.styles';
 
-const FormDiv = styled.div`
-  display: flex;
-  flex-flow: row wrap;
-  max-width: 610px;
-`;
-
-const Form = styled.form`
-  display: flex;
-  flex-flow: row wrap;
-`;
-
-const LblDiv1 = styled.div`
-  display: flex;
-  flex-flow: column;
-`;
-
-const FormP = styled.p`
-  margin-left: 30px;
-  font-family: 'Verdana';
-  font-style: normal;
-  font-weight: 700;
-  font-size: 34px;
-  line-height: 1.206;
-  color: #212121;
-  @media (max-width: 320px) {
-    font-size: 18px;
-    line-height: 1.444;
-  }
-`;
-
-const FormLabel = styled.label`
-  font-family: 'Verdana';
-  font-style: normal;
-  font-weight: 700;
-  font-size: 14px;
-  line-height: 1.214;
-  letter-spacing: 0.04em;
-  color: #9b9faa;
-  margin-left: 32px;
-  margin-top: 40px;
-  @media (max-width: 320px) {
-    margin-top: 32px 0 0;
-  }
-`;
-
-const TextInp = styled.input`
-  display: block;
-  border: none;
-  width: 240px;
-  border-bottom: 1px solid #e0e0e0;
-`;
-
-const BlList = styled.ul`
-  font-family: 'Verdana';
-  font-style: normal;
-  font-weight: 700;
-  font-size: 14px;
-  line-height: 1.214;
-  letter-spacing: 0.04em;
-  color: #9b9faa;
-  border-top: 1px solid #e0e0e0;
-  /* margin-top: 20px; */
-  padding: 8px 0 12px;
-  display: inline-flex;
-  width: 240px;
-  flex-flow: row wrap;
-`;
-
-const RadioInp = styled.input`
-  position: absolute;
-  z-index: -1;
-  opacity: 0;
-  &:checked + label {
-    color: #fc842d;
-  }
-  & + label {
-    display: inline-flex;
-    align-items: center;
-    user-select: none;
-    margin-left: 24px;
-    &::before {
-      content: '';
-      display: inline-block;
-      width: 1em;
-      height: 1em;
-      flex-shrink: 0;
-      flex-grow: 0;
-      border: 1px solid #e0e0e0;
-      border-radius: 50%;
-      margin-right: 0.5em;
-      background-repeat: no-repeat;
-      background-position: center center;
-      background-size: 50% 50%;
-    }
-  }
-  &:not(:disabled):not(:checked) + label:hover::before {
-    border-color: #e0e0e0;
-  }
-
-  &:checked + label::before {
-    text-align: center;
-    background-image: url("data:image/svg+xml,%3Csvg width='48px' height='48px' viewBox='0 0 48 48' fill='%23fc842d' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='24' cy='24' r='20' stroke='%23fc842d' stroke-width='4'/%3E%3C/svg%3E%0A");
-  }
-  &:disabled + label::before {
-    background-color: #e9ecef;
-  }
-`;
-
-const BtnDiv = styled.div`
-  margin-top: 60px;
-  margin-left: 350px;
-  @media (max-width: 768px) {
-    margin: 60px auto;
-  }
-`;
 export default function DailyCaloriesForm({ onBtnClick }) {
   const BldCheck = () => {
     const bld = document.getElementsByName('blood-inp');
@@ -175,10 +70,12 @@ export default function DailyCaloriesForm({ onBtnClick }) {
                 type="text"
                 name="height-inp"
               />
+              <span className="tooltiptext">3 numbers</span>
             </FormLabel>
             <FormLabel htmlFor="age-inp">
               Age*
               <TextInp pattern="[0-9]{2}" required type="text" name="age-inp" />
+              <span className="tooltiptext">2-3 numbers</span>
             </FormLabel>
             <FormLabel htmlFor="cur-weight-inp">
               Current weight*
@@ -188,6 +85,7 @@ export default function DailyCaloriesForm({ onBtnClick }) {
                 type="text"
                 name="cur-weight-inp"
               />
+              <span className="tooltiptext">2-3 numbers</span>
             </FormLabel>
           </LblDiv1>
           <LblDiv1>
@@ -199,6 +97,7 @@ export default function DailyCaloriesForm({ onBtnClick }) {
                 type="text"
                 name="des-weight-inp"
               />
+              <span className="tooltiptext">2-3 numbers</span>
             </FormLabel>
             <FormLabel htmlFor="blood-inp" required>
               <p style={{ marginBottom: '20px' }}>Blood type*</p>
