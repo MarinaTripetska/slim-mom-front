@@ -19,6 +19,9 @@ function App() {
         open modal
       </button>
       {!openModal || <Modal closeModalHandle={closeModal} />}
+      <p>Lorem ipsum Hello World!</p>
+      <div className="test1">Testing</div>
+      <div className="test2">Testing bold</div>
     </div>
   );
 }
