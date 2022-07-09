@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import Modal from 'components/Modal';
 import DailyCaloriesForm from 'components/DailyCaloriesForm';
-import { ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import Toaster from 'components/Toasts';
+
 // import Loader from './components/Loader';
 
 function App() {
@@ -24,18 +24,7 @@ function App() {
       <DailyCaloriesForm onBtnClick={submitForm} />
 
       {!openModal || <Modal closeModalHandle={closeModal} />}
-      <ToastContainer
-        position="top-right"
-        autoClose={5000}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-        theme="colored"
-      />
+      <Toaster />
       {/* <Loader /> */}
     </div>
   );
