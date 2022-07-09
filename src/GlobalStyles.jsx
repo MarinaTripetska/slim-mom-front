@@ -1,14 +1,14 @@
 import { createGlobalStyle } from 'styled-components';
-import Verdana from './fonts/verdana.ttf';
-import VerdanaBold from './fonts/verdanab.ttf';
+import Verdana from './assets/fonts/verdana.ttf';
+import VerdanaBold from './assets/fonts/verdanab.ttf';
 
 const GlobalStyle = createGlobalStyle`
-
 @font-face {
   font-family: 'Verdana';
   src: url(${Verdana}) format('truetype');
   font-weight: 400;
 }
+
 @font-face {
   font-family: 'Verdana';
   src: url(${VerdanaBold}) format('truetype');
