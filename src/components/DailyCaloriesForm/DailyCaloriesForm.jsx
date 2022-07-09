@@ -111,8 +111,8 @@ export default function DailyCaloriesForm({ onBtnClick }) {
                       name="bldType"
                       id="blood-inp-1"
                       value={1}
-                      // checked={selectedBldType === '1'}
-                      onChange={onBldTypeSelect}
+                      checked={selectedBldType === '1'}
+                      // onChange={onBldTypeSelect}
                     />
                     <label htmlFor="blood-inp-1">1</label>
                   </li>
@@ -122,8 +122,8 @@ export default function DailyCaloriesForm({ onBtnClick }) {
                       name="bldType"
                       id="blood-inp-2"
                       value={2}
-                      // checked={selectedBldType === '2'}
-                      onChange={onBldTypeSelect}
+                      checked={selectedBldType === '2'}
+                      // onChange={onBldTypeSelect}
                     />
                     <label htmlFor="blood-inp-2">2</label>
                   </li>
@@ -133,8 +133,8 @@ export default function DailyCaloriesForm({ onBtnClick }) {
                       name="bldType"
                       id="blood-inp-3"
                       value={3}
-                      // checked={selectedBldType === '3'}
-                      onChange={onBldTypeSelect}
+                      checked={selectedBldType === '3'}
+                      // onChange={onBldTypeSelect}
                     />
                     <label htmlFor="blood-inp-3">3</label>
                   </li>
