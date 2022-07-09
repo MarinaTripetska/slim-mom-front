@@ -3,6 +3,7 @@ import Modal from 'components/Modal';
 import DailyCaloriesForm from 'components/DailyCaloriesForm';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+// import Loader from './components/Loader';
 
 function App() {
   const [openModal, setOpenModal] = useState(false);
@@ -35,6 +36,7 @@ function App() {
         pauseOnHover
         theme="colored"
       />
+      {/* <Loader /> */}
     </div>
   );
 }
