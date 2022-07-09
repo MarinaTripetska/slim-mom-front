@@ -1,22 +1,23 @@
 import styled from 'styled-components';
+import { breakpoints } from '../../assets/sizes';
 
 export const Image = styled.img`
-  @media (max-width: 768px) {
-    width: 46 px;
-    height: 44 px;
-  }
-  @media (min-width: 768px) {
-    width: 88 px;
-    height: 90 px;
+  width: 46px;
+  height: 44px;
+
+  @media ${breakpoints.tablet} {
+    width: 66px;
+    height: 70px;
   }
 `;
 export const Text = styled.img`
-  @media (max-width: 767px) {
-    width: 162 px;
-    height: 44 px;
-  }
-  @media (min-width: 768px) {
-    width: 167 px;
-    height: 66 px;
+  visibility: hidden;
+  width: 106px;
+  height: 16px;
+
+  @media ${breakpoints.mobile} {
+    visibility: visible;
+    width: 107px;
+    height: 16px;
   }
 `;

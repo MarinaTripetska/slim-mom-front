@@ -1,6 +1,20 @@
-import { createGlobalStyle } from "styled-components";
+import { createGlobalStyle } from 'styled-components';
+import Verdana from './assets/fonts/verdana.ttf';
+import VerdanaBold from './assets/fonts/verdanab.ttf';
 
 const GlobalStyle = createGlobalStyle`
+@font-face {
+  font-family: 'Verdana';
+  src: url(${Verdana}) format('truetype');
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: 'Verdana';
+  src: url(${VerdanaBold}) format('truetype');
+  font-weight: 700;
+}
+
 *,
 *::before,
 *::after {
@@ -20,6 +34,11 @@ li
 body {
   min-height: 100vh;
   scroll-behavior: smooth; 
+  font-family: 'Verdana';
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.21;
+  letter-spacing: 0.04em;
 }
 
 ul{
