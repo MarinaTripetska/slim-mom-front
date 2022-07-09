@@ -1,6 +1,6 @@
-import DiaryDateCalendar from "./DiaryDateCalendar";
-import DiaryAddProductForm from "./DiaryAddProductForm";
-import DiaryProductsList from "./DiaryProductsList";
+import DiaryDateCalendar from "../../components/DiaryDateCalendar";
+import DiaryAddProductForm from "../../components/DiaryAddProductForm";
+import DiaryProductsList from "../../components/DiaryProductsList";
 import {PageWrapper} from "./DiaryPageStyle"
 
 export default function DiaryPage() {
