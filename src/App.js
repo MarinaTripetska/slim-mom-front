@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import Modal from 'components/Modal';
+// import Loader from './components/Loader';
 
 function App() {
   const [openModal, setOpenModal] = useState(false);
@@ -19,6 +20,7 @@ function App() {
         open modal
       </button>
       {!openModal || <Modal closeModalHandle={closeModal} />}
+      {/* <Loader /> */}
     </div>
   );
 }
