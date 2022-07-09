@@ -1,9 +1,11 @@
+// import { toast } from 'react-toastify';
+import { Formik } from 'formik';
+import { useState } from 'react';
 import Button from '../Button';
-import { toast } from 'react-toastify';
 import {
   FormDiv,
   FormP,
-  Form,
+  DCForm,
   LblDiv1,
   FormLabel,
   TextInp,
@@ -13,144 +15,154 @@ import {
 } from './DailyCaloriesForm.styles';
 
 export default function DailyCaloriesForm({ onBtnClick }) {
-  const BldCheck = () => {
-    const bld = document.getElementsByName('blood-inp');
-    let checked = false;
-    for (let i = 0; i < bld.length; i++) {
-      if (bld[i].checked === true) checked = true;
-    }
-    if (!checked) {
-      toast('Please choose your blood type');
-      return false;
-    }
-    return true;
-  };
-  const formValidation = () => {
-    const height = document.getElementsByName('height-inp');
-    const age = document.getElementsByName('age-inp');
-    const curWeight = document.getElementsByName('cur-weight-inp');
-    const desWeight = document.getElementsByName('des-weight-inp');
-    if (!height[0].validity.valid) {
-      toast.error('Height is invalid');
-      return false;
-    }
-    if (!age[0].validity.valid) {
-      toast.error('Age is invalid');
-      return false;
-    }
-    if (!curWeight[0].validity.valid) {
-      toast.error('Current weight is invalid');
-      return false;
-    }
-    if (!desWeight[0].validity.valid) {
-      toast.error('Desired weight is invalid');
-      return false;
-    }
-    return true;
-  };
-  const onSubmit = event => {
-    event.preventDefault();
+  const [selectedBldType, setSelectedBlbType] = useState('');
+  let formIsValid = false;
 
-    if (!formValidation() || !BldCheck()) return;
+  const onBldTypeSelect = event => {
+    setSelectedBlbType(event.target.value);
+  };
 
+  const onSubmit = () => {
+    if (!formIsValid) return;
     //...
+
     onBtnClick();
+  };
+
+  const validate = values => {
+    if (!values.height) return;
+    if (!values.age) return;
+    if (!values.desWeight) return;
+    if (!values.bldType) return;
+    return (formIsValid = true);
   };
   return (
     <>
-      <FormDiv>
-        <FormP>Calculate your daily calorie intake right now</FormP>
-        <Form action="submit">
-          <LblDiv1>
-            <FormLabel htmlFor="height-inp">
-              Height*
-              <TextInp
-                pattern="[0-9]{3}"
-                required
-                type="text"
-                name="height-inp"
-              />
-              <span className="tooltiptext">3 numbers</span>
-            </FormLabel>
-            <FormLabel htmlFor="age-inp">
-              Age*
-              <TextInp pattern="[0-9]{2}" required type="text" name="age-inp" />
-              <span className="tooltiptext">2-3 numbers</span>
-            </FormLabel>
-            <FormLabel htmlFor="cur-weight-inp">
-              Current weight*
-              <TextInp
-                pattern="[0-9]{2,3}"
-                required
-                type="text"
-                name="cur-weight-inp"
-              />
-              <span className="tooltiptext">2-3 numbers</span>
-            </FormLabel>
-          </LblDiv1>
-          <LblDiv1>
-            <FormLabel htmlFor="des-weight-inp">
-              Desired weight*
-              <TextInp
-                pattern="[0-9]{2,3}"
-                required
-                type="text"
-                name="des-weight-inp"
-              />
-              <span className="tooltiptext">2-3 numbers</span>
-            </FormLabel>
-            <FormLabel htmlFor="blood-inp" required>
-              <p style={{ marginBottom: '20px' }}>Blood type*</p>
-              <BlList>
-                <li>
-                  <RadioInp
-                    type="radio"
-                    name="blood-inp"
-                    id="blood-inp-1"
-                    value={1}
-                  />
-                  <label htmlFor="blood-inp-1">1</label>
-                </li>
-                <li>
-                  <RadioInp
-                    type="radio"
-                    name="blood-inp"
-                    id="blood-inp-2"
-                    value={2}
-                  />
-                  <label htmlFor="blood-inp-2">2</label>
-                </li>
-                <li>
-                  <RadioInp
-                    type="radio"
-                    name="blood-inp"
-                    id="blood-inp-3"
-                    value={3}
-                  />
-                  <label htmlFor="blood-inp-3">3</label>
-                </li>
-                <li>
-                  <RadioInp
-                    type="radio"
-                    name="blood-inp"
-                    id="blood-inp-4"
-                    value={4}
-                  />
-                  <label htmlFor="blood-inp-4">4</label>
-                </li>
-              </BlList>
-            </FormLabel>
-          </LblDiv1>
+      <Formik
+        initialValues={{
+          height: '',
+          age: '',
+          curWeight: '',
+          desWeight: '',
+          bldType: '',
+        }}
+        validate={validate}
+        onSubmit={values => {
+          //...
+          console.log(values);
+        }}
+      >
+        <FormDiv>
+          <FormP>Calculate your daily calorie intake right now</FormP>
+          <DCForm>
+            <LblDiv1>
+              <FormLabel htmlFor="height">
+                Height*
+                <TextInp
+                  pattern="[0-9]{3}"
+                  required
+                  id="height"
+                  type="text"
+                  name="height"
+                />
+                <span className="tooltiptext">3 numbers</span>
+              </FormLabel>
+              <FormLabel htmlFor="age">
+                Age*
+                <TextInp
+                  pattern="[0-9]{2}"
+                  id="age"
+                  required
+                  type="text"
+                  name="age"
+                />
+                <span className="tooltiptext">2-3 numbers</span>
+              </FormLabel>
+              <FormLabel htmlFor="curWeight">
+                Current weight*
+                <TextInp
+                  pattern="[0-9]{2,3}"
+                  required
+                  id="curWeight"
+                  type="text"
+                  name="curWeight"
+                />
+                <span className="tooltiptext">2-3 numbers</span>
+              </FormLabel>
+            </LblDiv1>
+            <LblDiv1>
+              <FormLabel htmlFor="desWeight">
+                Desired weight*
+                <TextInp
+                  pattern="[0-9]{2,3}"
+                  id="desWeight"
+                  required
+                  type="text"
+                  name="desWeight"
+                />
+                <span className="tooltiptext">2-3 numbers</span>
+              </FormLabel>
+              <FormLabel htmlFor="bldType" required>
+                <p style={{ marginBottom: '20px' }}>Blood type*</p>
+                <BlList>
+                  <li>
+                    <RadioInp
+                      type="radio"
+                      name="bldType"
+                      id="blood-inp-1"
+                      value={1}
+                      checked={selectedBldType === '1'}
+                      onClick={onBldTypeSelect}
+                    />
+                    <label htmlFor="blood-inp-1">1</label>
+                  </li>
+                  <li>
+                    <RadioInp
+                      type="radio"
+                      name="bldType"
+                      id="blood-inp-2"
+                      value={2}
+                      checked={selectedBldType === '2'}
+                      onClick={onBldTypeSelect}
+                    />
+                    <label htmlFor="blood-inp-2">2</label>
+                  </li>
+                  <li>
+                    <RadioInp
+                      type="radio"
+                      name="bldType"
+                      id="blood-inp-3"
+                      value={3}
+                      checked={selectedBldType === '3'}
+                      onClick={onBldTypeSelect}
+                    />
+                    <label htmlFor="blood-inp-3">3</label>
+                  </li>
+                  <li>
+                    <RadioInp
+                      type="radio"
+                      name="bldType"
+                      id="blood-inp-4"
+                      checked={selectedBldType === '4'}
+                      onClick={onBldTypeSelect}
+                      value={4}
+                    />
+                    <label htmlFor="blood-inp-4">4</label>
+                  </li>
+                </BlList>
+              </FormLabel>
+            </LblDiv1>
 
-          <BtnDiv>
-            <Button
-              type="submit"
-              onClickHandler={onSubmit}
-              btnText="Start losing weight"
-            />
-          </BtnDiv>
-        </Form>
-      </FormDiv>
+            <BtnDiv>
+              <Button
+                type="submit"
+                onClickHandler={onSubmit}
+                btnText="Start losing weight"
+              />
+            </BtnDiv>
+          </DCForm>
+        </FormDiv>
+      </Formik>
     </>
   );
 }

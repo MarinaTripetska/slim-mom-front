@@ -1,4 +1,4 @@
-import DiaryPage from "./pages/DiaryPage";
+import DiaryPage from './pages/DiaryPage';
 import { useState } from 'react';
 import Modal from 'components/Modal';
 import Header from 'components/Header';
@@ -7,14 +7,28 @@ import DailyCaloriesForm from 'components/DailyCaloriesForm';
 import Toaster from 'components/Toasts';
 // import Loader from './components/Loader';
 
-
 function App() {
+  const [openModal, setOpenModal] = useState(false);
+
+  const closeModal = () => {
+    //...
+    setOpenModal(false);
+  };
+
+  const submitForm = () => {
+    //...
+    setOpenModal(true);
+  };
+
   return (
     <div>
       <Header />
       <Navigation />
       <p>SlimMom START TEST!</p>
-      <DiaryPage/>   {/* Обернуть в приватный Route */}
+      <DailyCaloriesForm onBtnClick={submitForm} />
+      {!openModal || <Modal closeModalHandle={closeModal} />}
+      <DiaryPage /> {/* Обернуть в приватный Route */}
+      <Toaster />
     </div>
   );
 }
