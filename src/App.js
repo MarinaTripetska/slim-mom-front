@@ -1,4 +1,4 @@
-import DiaryPage from "./components/DiaryPage/DiaryPage";
+import DiaryPage from "./components/DiaryPage";
 import { useState } from 'react';
 import Modal from 'components/Modal';
 import Header from 'components/Header';
