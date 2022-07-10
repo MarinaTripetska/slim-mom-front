@@ -32,16 +32,4 @@ const NavLinkStyle = styled.li`
     color: #9B9FAA;
   }
 `
-
-const Navigation = () => {
-    return (
-        <NavStyle>
-            <NavPosition>
-                <NavLinkStyle><a href="../diary">diary</a></NavLinkStyle>
-                <NavLinkStyle><a href="../calculator">calculator</a></NavLinkStyle>
-            </NavPosition>
-        </NavStyle>
-    );
-}
-
-export default Navigation;
+export { NavStyle, NavPosition, NavLinkStyle };

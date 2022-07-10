@@ -2,7 +2,6 @@ import DiaryPage from './pages/DiaryPage';
 import { useState } from 'react';
 import Modal from 'components/Modal';
 import Header from 'components/Header';
-import Navigation from 'components/Navigation';
 import DailyCaloriesForm from 'components/DailyCaloriesForm';
 import Toaster from 'components/Toasts';
 import { RegistrationForm } from 'components/RegistrationForm/RegistrationForm';
@@ -25,7 +24,6 @@ function App() {
   return (
     <div>
       <Header />
-      <Navigation />
       <p>SlimMom START TEST!</p>
       <DailyCaloriesForm onBtnClick={submitForm} />
       {!openModal || <Modal closeModalHandle={closeModal} />}
