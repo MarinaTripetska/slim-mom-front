@@ -1,1 +1,0 @@
-export { default } from './burger/test.burger';
