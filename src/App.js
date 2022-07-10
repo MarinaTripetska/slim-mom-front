@@ -5,6 +5,8 @@ import Header from 'components/Header';
 import Navigation from 'components/Navigation';
 import DailyCaloriesForm from 'components/DailyCaloriesForm';
 import Toaster from 'components/Toasts';
+import { RegistrationForm } from 'components/RegistrationForm/RegistrationForm';
+
 // import Loader from './components/Loader';
 
 function App() {
@@ -28,6 +30,7 @@ function App() {
       <DailyCaloriesForm onBtnClick={submitForm} />
       {!openModal || <Modal closeModalHandle={closeModal} />}
       <DiaryPage /> {/* Обернуть в приватный Route */}
+      <RegistrationForm onBtnClick={submitForm} />
       <Toaster />
     </div>
   );
