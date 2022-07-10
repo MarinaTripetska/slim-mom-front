@@ -1,10 +1,6 @@
-// import { useEffect } from 'react';
 import styled from 'styled-components';
-import logoMobile from '../images/logo-mobile.png';
-// import BurgerMenu from '../images/burger.png';
-import Close from '../images/close.png';
- 
-const NavPosition = styled.div`
+
+export const NavPosition = styled.div`
   width: 100%;
   height: 80px;
   display: flex;
@@ -13,7 +9,7 @@ const NavPosition = styled.div`
   justify-content: space-between;
 `
 
-const Home = styled.a`
+export const Home = styled.a`
   display: flex;
   font-family: 'Verdana';
   font-style: normal;
@@ -24,11 +20,11 @@ const Home = styled.a`
   padding-top: 12px;
   padding-left: 20px;
 `
-const MomStyle = styled.span`
+export const MomStyle = styled.span`
     color: #fc842d;
 `
 
-const ButtonBurger = styled.button`
+export const ButtonBurger = styled.button`
   display: block;
   transform-origin: 16px 11px;
   float: left;
@@ -42,7 +38,7 @@ const ButtonBurger = styled.button`
   }
 `
 
-const SlimStyle = styled.p`
+export const SlimStyle = styled.p`
     font-family: 'Verdana';
     font-style: normal;
     font-weight: 400;
@@ -53,23 +49,6 @@ const SlimStyle = styled.p`
     padding-left: 8px;
 `
 
-const ImgPosition = styled.img`
+export const ImgPosition = styled.img`
     margin-top: 8px;
 `
-
-const Header = () => {
-    return (
-        <NavPosition>
-            <Home href="../home">
-                <ImgPosition src={logoMobile} alt="logo-mobile" width={46} height={44} />
-                <SlimStyle>Slim <MomStyle>Mom</MomStyle></SlimStyle>
-            </Home>
-            <ButtonBurger>
-                <img src={Close} alt="BurgerMenu"/>
-            </ButtonBurger>
-            
-        </NavPosition>
-    )
-};
-
-export default Header;
