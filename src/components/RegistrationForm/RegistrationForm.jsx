@@ -11,8 +11,8 @@ import {
   Message,
   ButtonContainer,
   RegistrButton,
-  RegistrLoginLink,
 } from './RegistrationForm.styled';
+
 import * as Yup from 'yup';
 
 export const RegistrationForm = () => {
@@ -86,9 +86,8 @@ export const RegistrationForm = () => {
           </FormRegistrItem>
         </FormRegistrList>
         <ButtonContainer>
-          <RegistrButton type="submit">
-            <RegistrLoginLink to="/LoginPage"></RegistrLoginLink>Login
-          </RegistrButton>
+          <RegistrButton type="submit">Login</RegistrButton>
+
           <RegistrButton type="submit">Register</RegistrButton>
         </ButtonContainer>
       </FormRegistr>

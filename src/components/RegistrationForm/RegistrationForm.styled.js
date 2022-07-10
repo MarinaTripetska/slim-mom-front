@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
 import { breakpoints } from '../../assets/sizes';
 
 export const ContainerRegistr = styled.div`
@@ -72,11 +71,6 @@ export const Message = styled.div`
   color: rgba(252, 132, 45, 1);
 `;
 
-export const RegistrLoginLink = styled(Link)`
-  display: flex;
-  text-decoration: none;
-  color: white;
-`;
 export const ButtonContainer = styled.div`
   @media ${breakpoints.tablet} {
     display: flex;
