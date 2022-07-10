@@ -25,3 +25,26 @@ Mobile - first! ))
 |                | letter-spacing: 0.04em; | letter-spacing: 0.04em; | letter-spacing: 0.04em; |
 
 ---
+
+## Лоадер
+
+Для отображения/скрытия Лоадера:
+
+```javascript
+import { useDispatch } from 'react-redux';
+import { loaderAction } from './redux/loader/loaderSlice';
+const dispatch = useDispatch();
+```
+
+```javascript
+dispatch(loaderAction(true) // отобразить
+dispatch(loaderAction(false) // скрыть
+```
+
+Например:
+
+```javascript
+<button onClick={() => dispatch(loaderAction(true))}> Show loader </button>
+```
+
+---
