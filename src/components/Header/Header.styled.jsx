@@ -7,7 +7,7 @@ export const NavPosition = styled.div`
   align-items: stretch;
   align-content: space-between;
   justify-content: space-between;
-`
+`;
 
 export const Home = styled.a`
   display: flex;
@@ -19,10 +19,10 @@ export const Home = styled.a`
   letter-spacing: 0.04em;
   padding-top: 12px;
   padding-left: 20px;
-`
+`;
 export const MomStyle = styled.span`
     color: #fc842d;
-`
+`;
 
 export const ButtonBurger = styled.button`
   display: block;
@@ -33,10 +33,10 @@ export const ButtonBurger = styled.button`
   border: 0;
   padding: 12px;
   background: none;
-    @media (min-width: 1200px) {
+  @media (min-width: 1200px) {
     display: none;
   }
-`
+`;
 
 export const SlimStyle = styled.p`
     font-family: 'Verdana';
@@ -47,8 +47,8 @@ export const SlimStyle = styled.p`
     letter-spacing: 0.04em;
     padding-top: 12px;
     padding-left: 8px;
-`
+`;
 
 export const ImgPosition = styled.img`
     margin-top: 8px;
-`
+`;
