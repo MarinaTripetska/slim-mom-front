@@ -3,9 +3,11 @@ import RegistrationForm from 'components/RegistrationForm';
 import Header from 'components/Header';
 
 const RegistrationPage = () => {
-  <Container>
-    <Header />
-    <RegistrationForm />
-  </Container>;
+  return (
+    <Container>
+      <Header />
+      <RegistrationForm />
+    </Container>
+  );
 };
 export default RegistrationPage;

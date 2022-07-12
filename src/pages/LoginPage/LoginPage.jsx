@@ -3,9 +3,11 @@ import LoginForm from 'components/LoginForm';
 import Header from 'components/Header';
 
 const LoginPage = () => {
-  <Container>
-    <Header />
-    <LoginForm />
-  </Container>;
+  return (
+    <Container>
+      <Header />
+      <LoginForm />
+    </Container>
+  );
 };
 export default LoginPage;
