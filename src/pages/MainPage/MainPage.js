@@ -1,11 +1,21 @@
 import DailyCaloriesForm from '../../components/DailyCaloriesForm';
 import Modal from '../../components/Modal';
+import { useState } from 'react';
 
-export default function MainPage({ submitForm, closeModal, isOpenModal }) {
+export default function MainPage() {
+  const [openModal, setOpenModal] = useState(false);
+
+  const closeModal = () => {
+    setOpenModal(false);
+  };
+  const submitForm = () => {
+    setOpenModal(true);
+  };
+
   return (
     <>
       <DailyCaloriesForm onBtnClick={submitForm} />
-      {!isOpenModal || <Modal closeModalHandle={closeModal} />}
+      {!openModal || <Modal closeModalHandle={closeModal} />}
     </>
   );
 }
