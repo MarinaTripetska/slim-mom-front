@@ -13,7 +13,6 @@ import LoginForm from 'components/LoginForm';
 function App() {
   const [openModal, setOpenModal] = useState(false);
 
-
   const isLoaderShown = useSelector(state => state.loader.isShown);
 
   const closeModal = () => {
