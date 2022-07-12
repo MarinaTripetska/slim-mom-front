@@ -1,5 +1,6 @@
 import DailyCaloriesForm from '../../components/DailyCaloriesForm';
 import Modal from '../../components/Modal';
+import { PageWrapper } from './MainPage.styled';
 import { useState } from 'react';
 
 export default function MainPage() {
@@ -13,9 +14,9 @@ export default function MainPage() {
   };
 
   return (
-    <>
+    <PageWrapper>
       <DailyCaloriesForm onBtnClick={submitForm} />
       {!openModal || <Modal closeModalHandle={closeModal} />}
-    </>
+    </PageWrapper>
   );
 }
