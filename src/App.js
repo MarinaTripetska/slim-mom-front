@@ -8,21 +8,18 @@ import Loader from './components/Loader';
 // import { useState } from 'react';
 // import { useSelector } from 'react-redux';
 import { PublicRoute } from 'components/PublicRoute';
-import MainPage from 'pages/MainPaige/MainPage';
+import MainPage from './pages/MainPage';
 import { PrivateRoute } from 'components/PrivateRoute';
 // import Modal from 'components/Modal';
 
 // import DailyCaloriesForm from 'components/DailyCaloriesForm';
 // import Toaster from 'components/Toasts';
 
-
 // import { RegistrationForm } from 'components/RegistrationForm/RegistrationForm';
 // import LoginForm from 'components/LoginForm';
 // import { authOperations } from 'redux/app/auth';
 
-
 //  const isLoaderShown = useSelector(state => state.loader.isShown);
-
 
 function App() {
   // const [openModal, setOpenModal] = useState(false);
