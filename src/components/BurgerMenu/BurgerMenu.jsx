@@ -1,13 +1,13 @@
-import { NavStyle, NavPosition, NavLinkStyle} from './Menu.styled';
+import { NavStyle, BurgerPosition, NavLinkStyle} from './BurgerMenu.styled';
 
-const Menu = ({ open }) => {
-        if (open) {
+const BurgerMenu = ({ openBurgerMenu }) => {
+        if (openBurgerMenu) {
             return (
             <NavStyle>
-                <NavPosition>
+                <BurgerPosition>
                     <NavLinkStyle><a href="../diary">diary</a></NavLinkStyle>
                     <NavLinkStyle><a href="../calculator">calculator</a></NavLinkStyle>
-                </NavPosition>
+                </BurgerPosition>
             </NavStyle>
         )
     }
@@ -16,4 +16,4 @@ const Menu = ({ open }) => {
     )
 }
 
-export default Menu;
+export default BurgerMenu;

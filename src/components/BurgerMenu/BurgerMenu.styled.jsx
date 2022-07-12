@@ -8,7 +8,7 @@ const NavStyle = styled.div`
     display: none;
   }
 `
-const NavPosition = styled.ul`
+const BurgerPosition = styled.ul`
   font-family: 'Verdana';
   font-style: normal;
   font-weight: 700;
@@ -32,4 +32,4 @@ const NavLinkStyle = styled.li`
     color: #9B9FAA;
   }
 `
-export { NavStyle, NavPosition, NavLinkStyle };
+export { NavStyle, BurgerPosition, NavLinkStyle };
