@@ -7,13 +7,19 @@ import Loader from './components/Loader';
 // import DiaryPage from './pages/DiaryPage';
 // import { useState } from 'react';
 // import { useSelector } from 'react-redux';
-import { PublicRoute } from 'components/PublicRoute';
+
+//import LoginPage from 'pages/LoginPage';
+import RegistrationPage from 'pages/RegistrationPage';
 import MainPage from './pages/MainPage';
 import { PrivateRoute } from 'components/PrivateRoute';
-// import Modal from 'components/Modal';
+import { PublicRoute } from 'components/PublicRoute';
 
 // import DailyCaloriesForm from 'components/DailyCaloriesForm';
 // import Toaster from 'components/Toasts';
+
+// import { RegistrationForm } from 'components/RegistrationForm/RegistrationForm';
+// import LoginForm from 'components/LoginForm';
+// import { authOperations } from 'redux/app/auth';
 
 // import { RegistrationForm } from 'components/RegistrationForm/RegistrationForm';
 // import LoginForm from 'components/LoginForm';
@@ -37,12 +43,12 @@ function App() {
 
   return (
     <>
-      <Header />
+      {/* <Header /> */}
 
       <Suspense fallback={<Loader />}>
         <Routes>
           <Route path="/" element={<PublicRoute />}>
-            <Route path="" element={<MainPage />} />
+            <Route path="" element={<RegistrationPage />} />
           </Route>
 
           <Route path="/" element={<PrivateRoute />}>

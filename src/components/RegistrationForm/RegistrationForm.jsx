@@ -15,7 +15,7 @@ import {
 
 import * as Yup from 'yup';
 
-export const RegistrationForm = () => {
+const RegistrationForm = () => {
   const formik = useFormik({
     initialValues: {
       name: '',
@@ -94,3 +94,4 @@ export const RegistrationForm = () => {
     </ContainerRegistr>
   );
 };
+export default RegistrationForm;
