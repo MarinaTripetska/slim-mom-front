@@ -15,9 +15,14 @@ import { PrivateRoute } from 'components/PrivateRoute';
 // import DailyCaloriesForm from 'components/DailyCaloriesForm';
 // import Toaster from 'components/Toasts';
 
+
 // import { RegistrationForm } from 'components/RegistrationForm/RegistrationForm';
 // import LoginForm from 'components/LoginForm';
 // import { authOperations } from 'redux/app/auth';
+
+
+//  const isLoaderShown = useSelector(state => state.loader.isShown);
+
 
 function App() {
   // const [openModal, setOpenModal] = useState(false);

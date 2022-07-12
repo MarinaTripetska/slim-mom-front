@@ -10,27 +10,40 @@ import logoMobile from '../../assets/images/logo-mobile.png';
 import BurgerMenuIcon from '../../assets/images/burger.png';
 import CloseMenuIcon from '../../assets/images/close.png';
 
-const Header = ({ open, setOpen }) => {
-  const HandleClickOpen = e => {
+
+const HeaderPosition = ({ openBurgerMenu, setOpenBurgerMenu, Logo, UserInfo, Navigation, SignIn, Registration }) => {
+  
+  const HandleClickOpen = (e) => {
     e.preventDefault();
-    setOpen(true);
+    setOpenBurgerMenu(true);
     return;
   };
 
   const HandleClickClose = e => {
     e.preventDefault();
-    setOpen(false);
+    setOpenBurgerMenu(false);
     return;
   };
 
   const CloseMenu = () => {
+
     if (open) {
       return (
         <ButtonBurger onClick={HandleClickClose}>
           <img src={CloseMenuIcon} alt="CloseMenuIcon" />
         </ButtonBurger>
       );
+}
+
+    if (openBurgerMenu) {
+      return(
+      <ButtonBurger onClick={HandleClickClose}>
+        <img src={CloseMenuIcon} alt="CloseMenuIcon" />
+      </ButtonBurger>
+      )
+
     }
+    
     return (
       <ButtonBurger onClick={HandleClickOpen}>
         <img src={BurgerMenuIcon} alt="BurgerMenuIcon" />
@@ -58,4 +71,6 @@ const Header = ({ open, setOpen }) => {
   );
 };
 
-export default Header;
+
+export default HeaderPosition;
+

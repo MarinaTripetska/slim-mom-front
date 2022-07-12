@@ -19,22 +19,32 @@ export const Home = styled.a`
   letter-spacing: 0.04em;
   padding-top: 12px;
   padding-left: 20px;
+    @media (min-width: 768px) {
+      padding-left: 32px;
+  }
 `;
+
 export const MomStyle = styled.span`
     color: #fc842d;
 `;
 
 export const ButtonBurger = styled.button`
   display: block;
+  height: 20px;
   transform-origin: 16px 11px;
   float: left;
-  margin-right: 29px;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  margin-right: 20px;
   outline: 0;
   border: 0;
-  padding: 12px;
+  padding: 0px;
   background: none;
-  @media (min-width: 1200px) {
-    display: none;
+    @media (min-width: 768px) {
+      margin-right: 32px;
+  }
+    @media (min-width: 1200px) {
+      display: none;
   }
 `;
 

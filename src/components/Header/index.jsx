@@ -1,17 +1,14 @@
-import { useState } from "react";
-import Header from "./Header";
-import Menu from './Menu';
+import HeaderPosition from "./Header";
+import BurgerMenu from 'components/BurgerMenu';
+import { useState } from 'react';
  
-
-
-const BurgerMenu = () => {
-  const [open, setOpen] = useState(false);
+const Header = () => {
+    const [openBurgerMenu, setOpenBurgerMenu] = useState(false);
   return (
     <div>
-      <Header open={open} setOpen={ setOpen } />
-      <Menu open={open} />
+      <HeaderPosition openBurgerMenu={openBurgerMenu} setOpenBurgerMenu={ setOpenBurgerMenu } />
+      <BurgerMenu openBurgerMenu={openBurgerMenu} />
     </div>
   )
 };
-
-export default BurgerMenu;
+export default Header;
