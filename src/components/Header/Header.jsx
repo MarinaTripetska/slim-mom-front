@@ -3,22 +3,22 @@ import logoMobile from '../../images/logo-mobile.png';
 import BurgerMenuIcon from '../../images/burger.png';
 import CloseMenuIcon from '../../images/close.png';
 
-const Header = ({open, setOpen}) => {
+const HeaderPosition = ({ openBurgerMenu, setOpenBurgerMenu, Logo, UserInfo, Navigation, SignIn, Registration }) => {
   
   const HandleClickOpen = (e) => {
     e.preventDefault();
-    setOpen(true);
+    setOpenBurgerMenu(true);
     return;
   }
 
     const HandleClickClose = (e) => {
     e.preventDefault();
-    setOpen(false);
+    setOpenBurgerMenu(false);
     return;
   }
 
   const CloseMenu = () => {
-    if (open) {
+    if (openBurgerMenu) {
       return(
       <ButtonBurger onClick={HandleClickClose}>
         <img src={CloseMenuIcon} alt="CloseMenuIcon" />
@@ -45,4 +45,4 @@ const Header = ({open, setOpen}) => {
   )
 };
 
-export default Header;
+export default HeaderPosition;
