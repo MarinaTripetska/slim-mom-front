@@ -4,6 +4,7 @@ import Modal from 'components/Modal';
 import Header from 'components/Header';
 import DailyCaloriesForm from 'components/DailyCaloriesForm';
 import Toaster from 'components/Toasts';
+import LoginForm from 'components/LoginForm';
 // import Loader from './components/Loader';
 
 function App() {
@@ -26,6 +27,7 @@ function App() {
       <DailyCaloriesForm onBtnClick={submitForm} />
       {!openModal || <Modal closeModalHandle={closeModal} />}
       <DiaryPage /> {/* Обернуть в приватный Route */}
+      <LoginForm />
       <Toaster />
     </div>
   );
