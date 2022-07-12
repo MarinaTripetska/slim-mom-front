@@ -1,11 +1,15 @@
 import DiaryPage from './pages/DiaryPage';
 import { useState } from 'react';
+import { useSelector } from 'react-redux';
+
 import Modal from 'components/Modal';
 import Header from 'components/Header';
 import BurgerMenu from 'components/BurgerMenu';
 import DailyCaloriesForm from 'components/DailyCaloriesForm';
 import Toaster from 'components/Toasts';
-// import Loader from './components/Loader';
+import Loader from './components/Loader';
+import { RegistrationForm } from 'components/RegistrationForm/RegistrationForm';
+import LoginForm from 'components/LoginForm';
 
 function App() {
   const [openModal, setOpenModal] = useState(false);
@@ -19,6 +23,8 @@ function App() {
     </div>
   )
 };
+
+  const isLoaderShown = useSelector(state => state.loader.isShown);
 
   const closeModal = () => {
     //...
@@ -36,8 +42,11 @@ function App() {
       <p>SlimMom START TEST!</p>
       <DailyCaloriesForm onBtnClick={submitForm} />
       {!openModal || <Modal closeModalHandle={closeModal} />}
+      <RegistrationForm onBtnClick={submitForm} />
+      <LoginForm />
       <DiaryPage /> {/* Обернуть в приватный Route */}
       <Toaster />
+      {!isLoaderShown || <Loader />}
     </div>
   );
 }
