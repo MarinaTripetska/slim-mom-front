@@ -1,5 +1,5 @@
 import { combineReducers } from '@reduxjs/toolkit';
-import { loaderSlice } from './app';
+import { loaderSlice } from './app/loader/loaderSlice';
 import { authSlice } from './app/auth';
 // import { persistReducer } from 'redux-persist';
 
