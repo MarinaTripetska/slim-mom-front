@@ -10,10 +10,16 @@ import logoMobile from '../../assets/images/logo-mobile.png';
 import BurgerMenuIcon from '../../assets/images/burger.png';
 import CloseMenuIcon from '../../assets/images/close.png';
 
-
-const HeaderPosition = ({ openBurgerMenu, setOpenBurgerMenu, Logo, UserInfo, Navigation, SignIn, Registration }) => {
-  
-  const HandleClickOpen = (e) => {
+const HeaderPosition = ({
+  openBurgerMenu,
+  setOpenBurgerMenu,
+  Logo,
+  UserInfo,
+  Navigation,
+  SignIn,
+  Registration,
+}) => {
+  const HandleClickOpen = e => {
     e.preventDefault();
     setOpenBurgerMenu(true);
     return;
@@ -26,24 +32,22 @@ const HeaderPosition = ({ openBurgerMenu, setOpenBurgerMenu, Logo, UserInfo, Nav
   };
 
   const CloseMenu = () => {
+    //     if (open) {
+    //       return (
+    //         <ButtonBurger onClick={HandleClickClose}>
+    //           <img src={CloseMenuIcon} alt="CloseMenuIcon" />
+    //         </ButtonBurger>
+    //       );
+    // }
 
-    if (open) {
+    if (openBurgerMenu) {
       return (
         <ButtonBurger onClick={HandleClickClose}>
           <img src={CloseMenuIcon} alt="CloseMenuIcon" />
         </ButtonBurger>
       );
-}
-
-    if (openBurgerMenu) {
-      return(
-      <ButtonBurger onClick={HandleClickClose}>
-        <img src={CloseMenuIcon} alt="CloseMenuIcon" />
-      </ButtonBurger>
-      )
-
     }
-    
+
     return (
       <ButtonBurger onClick={HandleClickOpen}>
         <img src={BurgerMenuIcon} alt="BurgerMenuIcon" />
@@ -71,6 +75,4 @@ const HeaderPosition = ({ openBurgerMenu, setOpenBurgerMenu, Logo, UserInfo, Nav
   );
 };
 
-
 export default HeaderPosition;
-
