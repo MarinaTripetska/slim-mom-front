@@ -4,7 +4,9 @@ import Modal from 'components/Modal';
 import Header from 'components/Header';
 import DailyCaloriesForm from 'components/DailyCaloriesForm';
 import Toaster from 'components/Toasts';
+import { RegistrationForm } from 'components/RegistrationForm/RegistrationForm';
 import LoginForm from 'components/LoginForm';
+
 // import Loader from './components/Loader';
 
 function App() {
@@ -26,8 +28,11 @@ function App() {
       <p>SlimMom START TEST!</p>
       <DailyCaloriesForm onBtnClick={submitForm} />
       {!openModal || <Modal closeModalHandle={closeModal} />}
-      <DiaryPage /> Обернуть в приватный Route
+
+      <DiaryPage /> {/* Обернуть в приватный Route */}
+      <RegistrationForm onBtnClick={submitForm} />
       <LoginForm />
+
       <Toaster />
     </div>
   );
