@@ -10,7 +10,6 @@ export const Overlay = styled.div`
   justify-content: flex-end;
   align-items: center;
   background-color: rgba(0, 0, 0, 0.4);
-  pointer-events: none;
 `;
 
 export const LoaderContainer = styled.div`
