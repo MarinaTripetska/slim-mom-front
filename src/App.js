@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux';
 
 import Modal from 'components/Modal';
 import Header from 'components/Header';
-import BurgerMenu from 'components/BurgerMenu';
+// import BurgerMenu from 'components/BurgerMenu';
 import DailyCaloriesForm from 'components/DailyCaloriesForm';
 import Toaster from 'components/Toasts';
 import Loader from './components/Loader';
@@ -13,16 +13,7 @@ import LoginForm from 'components/LoginForm';
 
 function App() {
   const [openModal, setOpenModal] = useState(false);
-  const [openBurgerMenu, setOpenBurgerMenu] = useState(false);
 
-  const BurgerMenuPosition = () => {
-  return (
-    <div>
-      <Header openBurgerMenu={openBurgerMenu} setOpenBurgerMenu={ setOpenBurgerMenu } />
-      <BurgerMenu openBurgerMenu={openBurgerMenu} />
-    </div>
-  )
-};
 
   const isLoaderShown = useSelector(state => state.loader.isShown);
 
@@ -38,7 +29,7 @@ function App() {
 
   return (
     <div>
-      <BurgerMenuPosition />
+      <Header />
       <p>SlimMom START TEST!</p>
       <DailyCaloriesForm onBtnClick={submitForm} />
       {!openModal || <Modal closeModalHandle={closeModal} />}
