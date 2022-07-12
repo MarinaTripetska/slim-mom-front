@@ -1,12 +1,13 @@
-import { NavStyle, BurgerPosition, NavLinkStyle} from './BurgerMenu.styled';
+import { NavStyle, BurgerPosition, NavLinkStyle } from './BurgerMenu.styled';
+import { NavLink } from 'react-router-dom';
 
 const BurgerMenu = ({ openBurgerMenu }) => {
         if (openBurgerMenu) {
             return (
             <NavStyle>
                 <BurgerPosition>
-                    <NavLinkStyle><a href="../diary">diary</a></NavLinkStyle>
-                    <NavLinkStyle><a href="../calculator">calculator</a></NavLinkStyle>
+                    <NavLinkStyle><NavLink to="/diary">diary</NavLink></NavLinkStyle>
+                    <NavLinkStyle><NavLink to="/calculator">calculator</NavLink></NavLinkStyle>
                 </BurgerPosition>
             </NavStyle>
         )

@@ -3,7 +3,7 @@ import logoMobile from '../../images/logo-mobile.png';
 import BurgerMenuIcon from '../../images/burger.png';
 import CloseMenuIcon from '../../images/close.png';
 
-const Header = ({ openBurgerMenu, setOpenBurgerMenu, Logo, UserInfo, Navigation, SignIn, Registration }) => {
+const HeaderPosition = ({ openBurgerMenu, setOpenBurgerMenu, Logo, UserInfo, Navigation, SignIn, Registration }) => {
   
   const HandleClickOpen = (e) => {
     e.preventDefault();
@@ -45,4 +45,4 @@ const Header = ({ openBurgerMenu, setOpenBurgerMenu, Logo, UserInfo, Navigation,
   )
 };
 
-export default Header;
+export default HeaderPosition;

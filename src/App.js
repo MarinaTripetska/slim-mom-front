@@ -4,7 +4,6 @@ import { useSelector } from 'react-redux';
 
 import Modal from 'components/Modal';
 import Header from 'components/Header';
-// import BurgerMenu from 'components/BurgerMenu';
 import DailyCaloriesForm from 'components/DailyCaloriesForm';
 import Toaster from 'components/Toasts';
 import Loader from './components/Loader';
