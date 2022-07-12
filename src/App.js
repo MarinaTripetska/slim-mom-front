@@ -5,21 +5,22 @@ import Header from 'components/Header';
 import DailyCaloriesForm from 'components/DailyCaloriesForm';
 import Toaster from 'components/Toasts';
 import { RegistrationForm } from 'components/RegistrationForm/RegistrationForm';
+import LoginForm from 'components/LoginForm';
 
 // import Loader from './components/Loader';
 
 function App() {
-  const [openModal, setOpenModal] = useState(false);
+  // const [openModal, setOpenModal] = useState(false);
 
-  const closeModal = () => {
-    //...
-    setOpenModal(false);
-  };
+  // const closeModal = () => {
+  //   //...
+  //   setOpenModal(false);
+  // };
 
-  const submitForm = () => {
-    //...
-    setOpenModal(true);
-  };
+  // const submitForm = () => {
+  //   //...
+  //   setOpenModal(true);
+  // };
 
   return (
     <div>
@@ -27,8 +28,11 @@ function App() {
       <p>SlimMom START TEST!</p>
       <DailyCaloriesForm onBtnClick={submitForm} />
       {!openModal || <Modal closeModalHandle={closeModal} />}
+
       <DiaryPage /> {/* Обернуть в приватный Route */}
       <RegistrationForm onBtnClick={submitForm} />
+      <LoginForm />
+
       <Toaster />
     </div>
   );
