@@ -7,12 +7,12 @@ import Loader from './components/Loader';
 // import DiaryPage from './pages/DiaryPage';
 // import { useState } from 'react';
 // import { useSelector } from 'react-redux';
-import { PublicRoute } from 'components/PublicRoute';
-//import MainPage from 'pages/MainPaige/MainPage';
+
 //import LoginPage from 'pages/LoginPage';
 import RegistrationPage from 'pages/RegistrationPage';
+import MainPage from './pages/MainPage';
 import { PrivateRoute } from 'components/PrivateRoute';
-// import Modal from 'components/Modal';
+import { PublicRoute } from 'components/PublicRoute';
 
 // import DailyCaloriesForm from 'components/DailyCaloriesForm';
 // import Toaster from 'components/Toasts';
