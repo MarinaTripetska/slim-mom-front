@@ -8,17 +8,17 @@ import LoginForm from 'components/LoginForm';
 // import Loader from './components/Loader';
 
 function App() {
-  const [openModal, setOpenModal] = useState(false);
+  // const [openModal, setOpenModal] = useState(false);
 
-  const closeModal = () => {
-    //...
-    setOpenModal(false);
-  };
+  // const closeModal = () => {
+  //   //...
+  //   setOpenModal(false);
+  // };
 
-  const submitForm = () => {
-    //...
-    setOpenModal(true);
-  };
+  // const submitForm = () => {
+  //   //...
+  //   setOpenModal(true);
+  // };
 
   return (
     <div>
@@ -26,7 +26,7 @@ function App() {
       <p>SlimMom START TEST!</p>
       <DailyCaloriesForm onBtnClick={submitForm} />
       {!openModal || <Modal closeModalHandle={closeModal} />}
-      <DiaryPage /> {/* Обернуть в приватный Route */}
+      <DiaryPage /> Обернуть в приватный Route
       <LoginForm />
       <Toaster />
     </div>

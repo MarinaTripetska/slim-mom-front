@@ -2,16 +2,14 @@ import styled from 'styled-components';
 import { breakpoints } from '../../assets/sizes';
 
 export const ContainerLogin = styled.div`
-  padding: 42px 20px 100px 20px;
+  padding: 40px 20px 175px 20px;
   margin-left: auto;
   margin-right: auto;
   @media ${breakpoints.tablet} {
-    padding: 160px 32px 418px 32px;
-    min-width: 768px;
+    padding: 160px 32px 490px 32px;
   }
   @media ${breakpoints.desktop} {
-    padding: 160px 16px 180px 16px;
-    min-width: 1280px;
+    padding: 160px 16px 254px 16px;
   }
 `;
 export const TitleLogin = styled.h2`
@@ -79,7 +77,9 @@ export const Button = styled.button`
   display: flex;
   text-align: center;
   justify-content: center;
-  margin-top: 20px;
+  &:not(:first-child) {
+    margin-top: 20px;
+  }
   margin-left: auto;
   margin-right: auto;
   width: 180px;
@@ -97,11 +97,11 @@ export const Button = styled.button`
     background: white;
   }
   @media ${breakpoints.tablet} {
-    flex-wrap: nowrap;
     margin-left: 0;
     margin-right: 0;
     &:not(:first-child) {
       margin-left: 32px;
+      margin-top: 0px;
     }
   }
 `;
