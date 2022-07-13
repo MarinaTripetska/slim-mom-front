@@ -1,4 +1,5 @@
-import styled from 'styled-components';
+import { Link } from 'react-router-dom';
+import styled, { css } from 'styled-components';
 import { breakpoints } from '../../assets/sizes';
 
 export const ContainerRegistr = styled.div`
@@ -55,16 +56,17 @@ export const FormRegistrLabel = styled.label`
 `;
 
 export const FormRegistrInput = styled.input`
+  border: none;
   border-bottom: 1px solid #e0e0e0;
-  border-top: none;
-  border-left: none;
-  border-right: none;
   height: 20px;
   width: 100%;
+  outline: none;
+
   @media ${breakpoints.tablet} {
     width: 240px;
   }
 `;
+
 export const Message = styled.div`
   font-weight: 500;
   font-size: 12px;
@@ -72,37 +74,50 @@ export const Message = styled.div`
 `;
 
 export const ButtonContainer = styled.div`
-  @media ${breakpoints.tablet} {
-    display: flex;
+  margin-top: 20px;
+
+  display: flex;
+  gap: 32px;
+  @media ${breakpoints.maxTablet} {
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
   }
 `;
-export const RegistrButton = styled.button`
+
+const plaseholderButtonStyles = css`
   display: flex;
-  text-align: center;
+  align-items: center;
   justify-content: center;
-  margin-top: 20px;
-  margin-left: auto;
-  margin-right: auto;
-  width: 180px;
-  background: #fc842d;
-  box-shadow: 0px 4px 10px rgba(252, 132, 45, 0.5);
+
+  width: 100%;
+  max-width: 180px;
+
+  background: var(--accent-color);
+  box-shadow: 0px 4px 10px var(--accent-shadow);
   border-radius: 30px;
   border-color: rgba(117, 190, 218, 0);
   padding: 13px 50px;
-  color: white;
+  color: var(--white);
+  cursor: pointer;
+
   &:hover,
   &:focus {
-    border: 2px solid #fc842d;
+    border: 2px solid var(--accent-color) d;
     box-shadow: none;
-    color: #fc842d;
-    background: white;
+    color: var(--accent-color);
+    background: transparent;
   }
-  @media ${breakpoints.tablet} {
+
+  @media ${breakpoints.maxTablet} {
     flex-wrap: nowrap;
-    margin-left: 0;
-    margin-right: 0;
-    &:not(:first-child) {
-      margin-left: 32px;
-    }
   }
+`;
+
+export const RegistrButton = styled.button`
+  ${plaseholderButtonStyles}
+`;
+
+export const StyledNavLink = styled(Link)`
+  ${plaseholderButtonStyles}
 `;
