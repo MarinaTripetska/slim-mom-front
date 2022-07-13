@@ -61,6 +61,7 @@ button {
   --secondary-text-color: #9B9FAA;
   --white: #ffffff;
   --accent-color: #FC842D;
+  --accent-shadow: rgba(252, 132, 45, 0.5);
   --secondary-background-color: #F0F1F3;
 
   --timing-function: cubic-bezier(0.4, 0, 0.2, 1);

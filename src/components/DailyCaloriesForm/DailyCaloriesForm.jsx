@@ -14,7 +14,7 @@ import {
   BtnDiv,
 } from './DailyCaloriesForm.styles';
 
-export default function DailyCaloriesForm({ onBtnClick }) {
+export default function DailyCaloriesForm({ onBtnClick = false }) {
   const [selectedBldType, setSelectedBlbType] = useState('');
   let formIsValid = false;
 

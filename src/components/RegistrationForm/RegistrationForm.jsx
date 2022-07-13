@@ -11,11 +11,12 @@ import {
   Message,
   ButtonContainer,
   RegistrButton,
+  StyledNavLink,
 } from './RegistrationForm.styled';
 
 import * as Yup from 'yup';
 
-export const RegistrationForm = () => {
+const RegistrationForm = () => {
   const formik = useFormik({
     initialValues: {
       name: '',
@@ -86,11 +87,11 @@ export const RegistrationForm = () => {
           </FormRegistrItem>
         </FormRegistrList>
         <ButtonContainer>
-          <RegistrButton type="submit">Login</RegistrButton>
-
+          <StyledNavLink to="/login">Login</StyledNavLink>
           <RegistrButton type="submit">Register</RegistrButton>
         </ButtonContainer>
       </FormRegistr>
     </ContainerRegistr>
   );
 };
+export default RegistrationForm;
