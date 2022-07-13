@@ -11,6 +11,7 @@ import {
   Message,
   ButtonContainer,
   Button,
+  StyledLink,
 } from './LoginForm.styled';
 
 import * as Yup from 'yup';
@@ -71,7 +72,7 @@ const LoginForm = () => {
         <ButtonContainer>
           <Button type="submit">Login</Button>
 
-          <Button type="submit">Register</Button>
+          <StyledLink to="/register">Register</StyledLink>
         </ButtonContainer>
       </FormLogin>
     </ContainerLogin>
