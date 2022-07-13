@@ -1,4 +1,5 @@
-import styled from 'styled-components';
+import { Link } from 'react-router-dom';
+import styled, { css } from 'styled-components';
 import { breakpoints } from '../../assets/sizes';
 
 export const ContainerLogin = styled.div`
@@ -69,39 +70,43 @@ export const Message = styled.div`
 `;
 
 export const ButtonContainer = styled.div`
-  @media ${breakpoints.tablet} {
-    display: flex;
+  display: flex;
+  gap: 32px;
+  @media ${breakpoints.maxTablet} {
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
   }
 `;
-export const Button = styled.button`
+
+const PlaseholderBtnStyles = css`
   display: flex;
   text-align: center;
   justify-content: center;
-  &:not(:first-child) {
-    margin-top: 20px;
-  }
-  margin-left: auto;
-  margin-right: auto;
-  width: 180px;
-  background: #fc842d;
-  box-shadow: 0px 4px 10px rgba(252, 132, 45, 0.5);
+
+  width: 100%;
+  max-width: 180px;
+  padding: 13px 50px;
+
+  color: var(--white);
+  background: var(--accent-color);
+  box-shadow: 0px 4px 10px var(--accent-shadow);
   border-radius: 30px;
   border-color: rgba(117, 190, 218, 0);
-  padding: 13px 50px;
-  color: white;
+
   &:hover,
   &:focus {
-    border: 2px solid #fc842d;
+    border: 2px solid var(--accent-color);
     box-shadow: none;
-    color: #fc842d;
-    background: white;
+    color: var(--accent-color);
+    background: transparent;
   }
-  @media ${breakpoints.tablet} {
-    margin-left: 0;
-    margin-right: 0;
-    &:not(:first-child) {
-      margin-left: 32px;
-      margin-top: 0px;
-    }
-  }
+`;
+
+export const Button = styled.button`
+  ${PlaseholderBtnStyles}
+`;
+
+export const StyledLink = styled(Link)`
+  ${PlaseholderBtnStyles}
 `;

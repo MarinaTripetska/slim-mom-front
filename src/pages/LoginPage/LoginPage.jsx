@@ -1,11 +1,11 @@
 import Container from 'components/Container';
 import LoginForm from 'components/LoginForm';
-import Header from 'components/Header';
+// import Header from 'components/Header';
 
 const LoginPage = () => {
   return (
     <Container>
-      <Header />
+      {/* <Header /> */}
       <LoginForm />
     </Container>
   );

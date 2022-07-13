@@ -8,11 +8,12 @@ import Loader from './components/Loader';
 // import { useState } from 'react';
 // import { useSelector } from 'react-redux';
 
-//import LoginPage from 'pages/LoginPage';
+import LoginPage from 'pages/LoginPage';
 import RegistrationPage from 'pages/RegistrationPage';
 import MainPage from './pages/MainPage';
 import { PrivateRoute } from 'components/PrivateRoute';
 import { PublicRoute } from 'components/PublicRoute';
+import DiaryPage from 'pages/DiaryPage';
 
 // import DailyCaloriesForm from 'components/DailyCaloriesForm';
 // import Toaster from 'components/Toasts';
@@ -43,34 +44,38 @@ function App() {
 
   return (
     <>
-      {/* <Header /> */}
+      <Header />
 
       <Suspense fallback={<Loader />}>
         <Routes>
           <Route path="/" element={<PublicRoute />}>
-            <Route path="" element={<RegistrationPage />} />
+            <Route path="" element={<MainPage />} />
           </Route>
 
-          <Route path="/" element={<PrivateRoute />}>
-            {/* <Route path="" element={<DiaryPage />} /> */}
-          </Route>
+          {/* <Route path="/" element={<PrivateRoute />}> */}
+          {/* <Route path="" element={<CalculatorPage />} /> */}
+          {/* </Route> */}
 
           <Route
             path="/register"
             element={<PublicRoute restricted navigateTo="/diary" />}
           >
-            {/* <Route path="" element={<RegistrationPage />} /> */}
+            <Route path="" element={<RegistrationPage />} />
           </Route>
 
           <Route
             path="/login"
             element={<PublicRoute restricted navigateTo="/diary" />}
           >
-            {/* <Route path="" element={<LoginPage />} /> */}
+            <Route path="" element={<LoginPage />} />
           </Route>
 
           <Route path="/calculator" element={<PrivateRoute />}>
             {/* <Route path="" element={<CalculatorPage />} /> */}
+          </Route>
+
+          <Route path="/diary" element={<PrivateRoute />}>
+            <Route path="" element={<DiaryPage />} />
           </Route>
 
           <Route path="*" element={<Navigate to="/" />} />
