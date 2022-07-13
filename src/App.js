@@ -1,13 +1,7 @@
 import { Suspense } from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
-
 import Header from 'components/Header';
 import Loader from './components/Loader';
-
-// import DiaryPage from './pages/DiaryPage';
-// import { useState } from 'react';
-// import { useSelector } from 'react-redux';
-
 import LoginPage from 'pages/LoginPage';
 import RegistrationPage from 'pages/RegistrationPage';
 import MainPage from './pages/MainPage';
@@ -15,13 +9,15 @@ import { PrivateRoute } from 'components/PrivateRoute';
 import { PublicRoute } from 'components/PublicRoute';
 import DiaryPage from 'pages/DiaryPage';
 
+// import DatePicker from './components/DatePicker/';
+// import DiaryPage from './pages/DiaryPage';
+// import { useState } from 'react';
+// import { useSelector } from 'react-redux';
 // import DailyCaloriesForm from 'components/DailyCaloriesForm';
 // import Toaster from 'components/Toasts';
-
 // import { RegistrationForm } from 'components/RegistrationForm/RegistrationForm';
 // import LoginForm from 'components/LoginForm';
 // import { authOperations } from 'redux/app/auth';
-
 // import { RegistrationForm } from 'components/RegistrationForm/RegistrationForm';
 // import LoginForm from 'components/LoginForm';
 // import { authOperations } from 'redux/app/auth';
@@ -45,6 +41,8 @@ function App() {
   return (
     <>
       <Header />
+  //    <DatePicker />
+
 
       <Suspense fallback={<Loader />}>
         <Routes>
@@ -94,6 +92,7 @@ function App() {
     //   <Toaster />
     //   {!isLoaderShown || <Loader />}
     // </div>
+
   );
 }
 
