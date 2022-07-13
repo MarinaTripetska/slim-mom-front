@@ -12,6 +12,7 @@
     "modern-normalize": "^1.1.0",
     "nanoid": "^4.0.0",
     "react": "^17.0.2",
+    "react-datetime": "^3.1.1",
     "react-dom": "^17.0.2",
     "react-loader-spinner": "^5.1.5",
     "react-redux": "^8.0.2",
