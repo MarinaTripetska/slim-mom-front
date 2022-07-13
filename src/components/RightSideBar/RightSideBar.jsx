@@ -7,12 +7,10 @@ import {
   ListTitle,
 } from './RightSideBar.styles';
 
-export default function RightSideBar() {
-  let l = '1'; // Заглушка
-  let сons = ''; // Заглушка
-  let dr = '2'; // Заглушка
-  let pon = ''; // Заглушка
-  let date = '06/20/2020'; // Заглушка
+export default function RightSideBar({ date, daylykCalCount, kcalConsumed }) {
+  let kcalLeft = daylykCalCount - kcalConsumed;
+  let percOfNorm = (kcalConsumed / daylykCalCount) * 100;
+  date = '06/20/2020'; // Заглушка
   let prodList = ''; // Заглушка
 
   return (
@@ -21,19 +19,19 @@ export default function RightSideBar() {
         <ListTitle>Summary for {date}</ListTitle>
         <InfoListItem>
           <span>Left</span>
-          <span>{l || '000'} kcal</span>
+          <span>{kcalLeft || '000'} kcal</span>
         </InfoListItem>
         <InfoListItem>
           <span>Consumed</span>
-          <span>{сons || '000'} kcal</span>
+          <span>{kcalConsumed || '000'} kcal</span>
         </InfoListItem>
         <InfoListItem>
           <span>Daily rate</span>
-          <span>{dr || '000'} kcal</span>
+          <span>{daylykCalCount || '000'} kcal</span>
         </InfoListItem>
         <InfoListItem>
           <span>n% of normal</span>
-          <span>{pon || '000'} kcal</span>
+          <span>{percOfNorm || '000'} %</span>
         </InfoListItem>
       </InfoList>
       <ProdListDiv>
