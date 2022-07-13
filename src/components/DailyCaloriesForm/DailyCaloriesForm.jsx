@@ -57,8 +57,7 @@ export default function DailyCaloriesForm({ onBtnClick = false }) {
           desiredWeight: values.desiredWeight,
           bloodType: values.bloodType,}}
           //...
-          console.log(user);
-          //  height, age, currentWeight, desiredWeight, bloodType
+          // console.log(user);
           dispatch(getUsersAdvice(user));
         }}
       >

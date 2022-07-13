@@ -7,11 +7,15 @@ export const getUsersAdvice = createAsyncThunk(
   'users/getNutritionAdvice',
   async credentials => {
     try {
+      console.log(credentials);
       const { data } = await axios.get('/getNutritionAdvice', credentials);
-      //   console.log(credentials);
       console.log(data);
+
+      console.log(credentials);
       return data;
-    } catch (error) {}
+    } catch (error) {
+      console.log(error.message);
+    }
   },
 );
 

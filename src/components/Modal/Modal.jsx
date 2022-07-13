@@ -1,4 +1,5 @@
 import { useEffect } from 'react';
+import { getAdviceToModal } from 'redux/app/users/users-selectors';
 import {
   Overlay,
   ModalDiv,
@@ -8,7 +9,13 @@ import {
 } from './Modal.styles';
 import Button from '../Button';
 
+import { useSelector } from 'react-redux';
+
+
 function Modal({ closeModalHandle }) {
+  const advice = useSelector(getAdviceToModal);
+
+  // console.log(advice)
   useEffect(() => {
     window.addEventListener('keydown', escKeyHandle);
     return () => {
