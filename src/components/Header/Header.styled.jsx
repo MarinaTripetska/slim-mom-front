@@ -7,6 +7,7 @@ export const NavPosition = styled.div`
   align-items: stretch;
   align-content: space-between;
   justify-content: space-between;
+  border-bottom: 2px solid #E0E0E0;
 `;
 
 export const Home = styled.a`
