@@ -9,7 +9,6 @@ import Toaster from 'components/Toasts';
 import Loader from './components/Loader';
 import { RegistrationForm } from 'components/RegistrationForm/RegistrationForm';
 import LoginForm from 'components/LoginForm';
-import DatePicker from './components/DatePicker/';
 
 function App() {
   const [openModal, setOpenModal] = useState(false);
@@ -30,7 +29,6 @@ function App() {
     <div>
       <Header />
       <p>SlimMom START TEST!</p>
-      <DatePicker />
       <DailyCaloriesForm onBtnClick={submitForm} />
       {!openModal || <Modal closeModalHandle={closeModal} />}
       <RegistrationForm onBtnClick={submitForm} />

@@ -54,6 +54,9 @@ a {
 input,
 button {
   font: inherit;
+  background-color: inherit;
+  padding: 0;
+  margin: 0;
 }
 
 :root {
