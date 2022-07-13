@@ -103,7 +103,7 @@ const plaseholderButtonStyles = css`
 
   &:hover,
   &:focus {
-    border: 2px solid var(--accent-color) d;
+    border: 2px solid var(--accent-color);
     box-shadow: none;
     color: var(--accent-color);
     background: transparent;

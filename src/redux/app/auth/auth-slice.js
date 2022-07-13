@@ -28,15 +28,15 @@ export const authSlice = createSlice({
 
   extraReducers: {
     //registration:
-    [authOperations.register.pending](state) {
+    [authOperations.actionRegister.pending](state) {
       state.isLoading = true;
     },
-    [authOperations.register.fulfilled](state, action) {
+    [authOperations.actionRegister.fulfilled](state, action) {
       state.user = action.payload.user;
       state.isSuccess = true;
       state.isLoading = false;
     },
-    [authOperations.register.rejected](state, action) {
+    [authOperations.actionRegister.rejected](state, action) {
       state.isLoading = false;
       state.isError = true;
       state.message = action.payload;

@@ -1,11 +1,15 @@
 import Container from 'components/Container';
 import LoginForm from 'components/LoginForm';
-// import Header from 'components/Header';
+import Loader from 'components/Loader';
+import { useSelector } from 'react-redux';
+import { authSelectors } from 'redux/app/auth';
 
 const LoginPage = () => {
+  const isLoading = useSelector(authSelectors.getIsLoading);
+
   return (
     <Container>
-      {/* <Header /> */}
+      {isLoading && <Loader />}
       <LoginForm />
     </Container>
   );
