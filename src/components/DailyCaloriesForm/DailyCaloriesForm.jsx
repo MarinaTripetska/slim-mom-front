@@ -1,6 +1,8 @@
 // import { toast } from 'react-toastify';
 import { Formik } from 'formik';
 import { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { getUsersAdvice } from '../../redux/app/users/users-operation';
 import Button from '../Button';
 import {
   FormDiv,
@@ -17,6 +19,7 @@ import {
 export default function DailyCaloriesForm({ onBtnClick = false }) {
   const [selectedBldType, setSelectedBlbType] = useState('');
   let formIsValid = false;
+  const dispatch = useDispatch();
 
   const onBldTypeSelect = event => {
     setSelectedBlbType(event.target.value);
@@ -32,8 +35,8 @@ export default function DailyCaloriesForm({ onBtnClick = false }) {
   const validate = values => {
     if (!values.height) return;
     if (!values.age) return;
-    if (!values.desWeight) return;
-    if (!values.bldType) return;
+    if (!values.desiredWeight) return;
+    if (!values.bloodType) return;
     return (formIsValid = true);
   };
   return (
@@ -42,14 +45,21 @@ export default function DailyCaloriesForm({ onBtnClick = false }) {
         initialValues={{
           height: '',
           age: '',
-          curWeight: '',
-          desWeight: '',
-          bldType: '',
+          currentWeight: '',
+          desiredWeight: '',
+          bloodType: '',
         }}
         validate={validate}
         onSubmit={values => {
+          const user = {userData:{height: values.height,
+          age: values.age,
+          currentWeight: values.currentWeight,
+          desiredWeight: values.desiredWeight,
+          bloodType: values.bloodType,}}
           //...
-          console.log(values);
+          console.log(user);
+          //  height, age, currentWeight, desiredWeight, bloodType
+          dispatch(getUsersAdvice(user));
         }}
       >
         <FormDiv>
@@ -78,37 +88,37 @@ export default function DailyCaloriesForm({ onBtnClick = false }) {
                 />
                 <span className="tooltiptext">2-3 numbers</span>
               </FormLabel>
-              <FormLabel htmlFor="curWeight">
+              <FormLabel htmlFor="currentWeight">
                 Current weight*
                 <TextInp
                   pattern="[0-9]{2,3}"
                   required
-                  id="curWeight"
+                  id="currentWeight"
                   type="text"
-                  name="curWeight"
+                  name="currentWeight"
                 />
                 <span className="tooltiptext">2-3 numbers</span>
               </FormLabel>
             </LblDiv1>
             <LblDiv1>
-              <FormLabel htmlFor="desWeight">
+              <FormLabel htmlFor="desiredWeight">
                 Desired weight*
                 <TextInp
                   pattern="[0-9]{2,3}"
-                  id="desWeight"
+                  id="desiredWeight"
                   required
                   type="text"
-                  name="desWeight"
+                  name="desiredWeight"
                 />
                 <span className="tooltiptext">2-3 numbers</span>
               </FormLabel>
-              <FormLabel htmlFor="bldType" required>
+              <FormLabel htmlFor="bloodType" required>
                 <p style={{ marginBottom: '20px' }}>Blood type*</p>
                 <BlList>
                   <li>
                     <RadioInp
                       type="radio"
-                      name="bldType"
+                      name="bloodType"
                       id="blood-inp-1"
                       value={1}
                       checked={selectedBldType === '1'}
@@ -119,7 +129,7 @@ export default function DailyCaloriesForm({ onBtnClick = false }) {
                   <li>
                     <RadioInp
                       type="radio"
-                      name="bldType"
+                      name="bloodType"
                       id="blood-inp-2"
                       value={2}
                       checked={selectedBldType === '2'}
@@ -130,7 +140,7 @@ export default function DailyCaloriesForm({ onBtnClick = false }) {
                   <li>
                     <RadioInp
                       type="radio"
-                      name="bldType"
+                      name="bloodType"
                       id="blood-inp-3"
                       value={3}
                       checked={selectedBldType === '3'}
@@ -141,7 +151,7 @@ export default function DailyCaloriesForm({ onBtnClick = false }) {
                   <li>
                     <RadioInp
                       type="radio"
-                      name="bldType"
+                      name="bloodType"
                       id="blood-inp-4"
                       checked={selectedBldType === '4'}
                       onClick={onBldTypeSelect}
