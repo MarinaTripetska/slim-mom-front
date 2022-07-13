@@ -11,39 +11,16 @@ import DiaryPage from 'pages/DiaryPage';
 
 // import DatePicker from './components/DatePicker/';
 // import DiaryPage from './pages/DiaryPage';
-// import { useState } from 'react';
 // import { useSelector } from 'react-redux';
-// import DailyCaloriesForm from 'components/DailyCaloriesForm';
-// import Toaster from 'components/Toasts';
-// import { RegistrationForm } from 'components/RegistrationForm/RegistrationForm';
-// import LoginForm from 'components/LoginForm';
-// import { authOperations } from 'redux/app/auth';
-// import { RegistrationForm } from 'components/RegistrationForm/RegistrationForm';
-// import LoginForm from 'components/LoginForm';
-// import { authOperations } from 'redux/app/auth';
 
-//  const isLoaderShown = useSelector(state => state.loader.isShown);
+import Toaster from 'components/Toasts';
 
+// import { authOperations } from 'redux/app/auth';
 function App() {
-  // const [openModal, setOpenModal] = useState(false);
-  // const isLoaderShown = useSelector(state => state.loader.isShown);
-  // const closeModal = () => {
-  //   setOpenModal(false);
-  // };
-  // const submitForm = () => {
-  //   setOpenModal(true);
-  // };
-
-  //   useEffect(() => {
-  //   dispatch(authOperations.fetchCurrentUser());
-  // }, [dispatch]);
-
   return (
     <>
       <Header />
-  //    <DatePicker />
-
-
+      {/* <DatePicker /> */}
       <Suspense fallback={<Loader />}>
         <Routes>
           <Route path="/" element={<PublicRoute />}>
@@ -79,20 +56,8 @@ function App() {
           <Route path="*" element={<Navigate to="/" />} />
         </Routes>
       </Suspense>
+      <Toaster />
     </>
-
-    // <div>
-    //   <Header />
-    //   <p>SlimMom START TEST!</p>
-    //   <DailyCaloriesForm onBtnClick={submitForm} />
-    //   {!openModal || <Modal closeModalHandle={closeModal} />}
-    //   <RegistrationForm onBtnClick={submitForm} />
-    //   <LoginForm />
-    //   <DiaryPage /> {/* Обернуть в приватный Route */}
-    //   <Toaster />
-    //   {!isLoaderShown || <Loader />}
-    // </div>
-
   );
 }
 
