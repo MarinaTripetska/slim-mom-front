@@ -1,3 +1,4 @@
+import { breakpoints } from 'assets/sizes';
 import styled from 'styled-components';
 
 export const NavPosition = styled.div`
@@ -20,7 +21,7 @@ export const Home = styled.a`
   letter-spacing: 0.04em;
   padding-top: 12px;
   padding-left: 20px;
-    @media (min-width: 768px) {
+    @media ${breakpoints.onlyTablet}{
       padding-left: 32px;
   }
 `;
@@ -41,10 +42,10 @@ export const ButtonBurger = styled.button`
   border: 0;
   padding: 0px;
   background: none;
-    @media (min-width: 768px) {
+    @media ${breakpoints.onlyTablet}{
       margin-right: 32px;
   }
-    @media (min-width: 1200px) {
+    @media ${breakpoints.desktop}{
       display: none;
   }
 `;

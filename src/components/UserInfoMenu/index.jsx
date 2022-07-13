@@ -1,3 +1,3 @@
-import UserInfoMenu from "./UserInfoMenu";
+import {UserInfoMenuMobile, UserInfoMenuLapTop} from "./UserInfoMenu";
 
-export default UserInfoMenu;
+export {UserInfoMenuMobile, UserInfoMenuLapTop};

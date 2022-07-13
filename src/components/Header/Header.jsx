@@ -1,3 +1,4 @@
+import { useState , useEffect} from 'react';
 import {
   NavPosition,
   Home,
@@ -6,19 +7,18 @@ import {
   MomStyle,
   ButtonBurger,
 } from './Header.styled';
+import {UserInfoMenuLapTop} from 'components/UserInfoMenu';
 import logoMobile from '../../assets/images/logo-mobile.png';
 import BurgerMenuIcon from '../../assets/images/burger.png';
 import CloseMenuIcon from '../../assets/images/close.png';
+// import Logo from '../Logo';
 
 const HeaderPosition = ({
   openBurgerMenu,
   setOpenBurgerMenu,
-  Logo,
-  UserInfo,
-  Navigation,
-  SignIn,
-  Registration,
 }) => {
+    const [isDesktop, setDesktop] = useState(window.innerWidth > 767);
+
   const HandleClickOpen = e => {
     e.preventDefault();
     setOpenBurgerMenu(true);
@@ -31,23 +31,23 @@ const HeaderPosition = ({
     return;
   };
 
-  const CloseMenu = () => {
-    //     if (open) {
-    //       return (
-    //         <ButtonBurger onClick={HandleClickClose}>
-    //           <img src={CloseMenuIcon} alt="CloseMenuIcon" />
-    //         </ButtonBurger>
-    //       );
-    // }
 
+  const updateMedia = () => {
+        setDesktop(window.innerWidth > 767);
+    };
+    useEffect(() => {
+        window.addEventListener("resize", updateMedia);
+        return () => window.removeEventListener("resize", updateMedia);
+    });
+
+  const CloseMenu = () => {
     if (openBurgerMenu) {
       return (
         <ButtonBurger onClick={HandleClickClose}>
           <img src={CloseMenuIcon} alt="CloseMenuIcon" />
         </ButtonBurger>
       );
-    }
-
+      }
     return (
       <ButtonBurger onClick={HandleClickOpen}>
         <img src={BurgerMenuIcon} alt="BurgerMenuIcon" />
@@ -58,6 +58,7 @@ const HeaderPosition = ({
   return (
     <div>
       <NavPosition>
+        {/* <Logo/> */}
         <Home href="../home">
           <ImgPosition
             src={logoMobile}
@@ -69,6 +70,7 @@ const HeaderPosition = ({
             Slim <MomStyle>Mom</MomStyle>
           </SlimStyle>
         </Home>
+        {isDesktop ? (<UserInfoMenuLapTop/>) : (null)}
         <CloseMenu />
       </NavPosition>
     </div>
