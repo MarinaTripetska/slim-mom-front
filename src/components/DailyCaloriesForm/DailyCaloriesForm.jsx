@@ -2,6 +2,8 @@
 import { Formik } from 'formik';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
+import axios from 'axios';
+
 import { getUsersAdvice } from '../../redux/app/users/users-operation';
 import Button from '../Button';
 import {
@@ -19,7 +21,18 @@ import {
 export default function DailyCaloriesForm({ onBtnClick = false }) {
   const [selectedBldType, setSelectedBlbType] = useState('');
   let formIsValid = false;
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
+
+   const fetch = (user) => {
+    return axios({
+  method: 'get',
+  url: 'http://localhost:3000/api/v1/users/getNutritionAdvice',
+  data: user
+    }).then(response => {
+  console.log(response)
+        return response.data;
+      });
+  }
 
   const onBldTypeSelect = event => {
     setSelectedBlbType(event.target.value);
@@ -58,7 +71,8 @@ export default function DailyCaloriesForm({ onBtnClick = false }) {
           bloodType: values.bloodType,}}
           //...
           // console.log(user);
-          dispatch(getUsersAdvice(user));
+          // dispatch(getUsersAdvice(user));
+          fetch(user)
         }}
       >
         <FormDiv>
