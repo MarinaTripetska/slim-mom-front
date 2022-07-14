@@ -21,12 +21,12 @@ import {
 export default function DailyCaloriesForm({ onBtnClick = false }) {
   const [selectedBldType, setSelectedBlbType] = useState('');
   let formIsValid = false;
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
-   const fetch = (user) => {
+  const fetch = (user) => {
     return axios({
   method: 'get',
-  url: 'http://localhost:3000/api/v1/users/getNutritionAdvice',
+  url: 'http://localhost:3000/api/v1/users/nutrition-advice',
   data: user
     }).then(response => {
   console.log(response)
@@ -64,7 +64,9 @@ export default function DailyCaloriesForm({ onBtnClick = false }) {
         }}
         validate={validate}
         onSubmit={values => {
-          const user = {userData:{height: values.height,
+          const user = {
+            userData:{
+              height: values.height,
           age: values.age,
           currentWeight: values.currentWeight,
           desiredWeight: values.desiredWeight,
@@ -73,6 +75,7 @@ export default function DailyCaloriesForm({ onBtnClick = false }) {
           // console.log(user);
           // dispatch(getUsersAdvice(user));
           fetch(user)
+          // fetch()
         }}
       >
         <FormDiv>
