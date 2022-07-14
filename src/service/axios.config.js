@@ -52,3 +52,14 @@ export const current = async () => {
     toast.error('User not found');
   }
 };
+
+//==================Diet for Modal=====================
+// export const adviceForUser = async credentials => {
+//   try {
+//     const res = await axios.post('/users/nutrition-advice', credentials);
+//     console.log(res);
+//     return res;
+//   } catch (error) {
+//     toast.error('Ups, something wrong ');
+//   }
+// };

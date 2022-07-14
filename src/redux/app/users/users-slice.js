@@ -6,7 +6,7 @@ export const usersSlice = createSlice({
   initialState: null,
   extraReducers: {
     [getUsersAdvice.fulfilled](state, action) {
-      return (state = action.meta.arg);
+      return (state = action.payload);
     },
   },
 });

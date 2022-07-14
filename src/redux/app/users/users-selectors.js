@@ -1,1 +1,1 @@
-export const getAdviceToModal = state => state.users;
+export const getAdviceToModal = state => state.users.data.nutritionAdvice;

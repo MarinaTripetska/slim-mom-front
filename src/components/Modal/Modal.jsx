@@ -14,6 +14,8 @@ import { useSelector } from 'react-redux';
 
 function Modal({ closeModalHandle }) {
   const advice = useSelector(getAdviceToModal);
+  console.log(advice)
+  const { userDailyCalorieIntake, userNotRecommendedProducts } = advice;
 
   // console.log(advice)
   useEffect(() => {
@@ -45,14 +47,15 @@ function Modal({ closeModalHandle }) {
       <ModalDiv>
         <ModalTtl>Your recommended daily calorie intake is</ModalTtl>
         <KcalCount>
-          2800<span> ккал</span>
+          {userDailyCalorieIntake}<span> ккал</span>
         </KcalCount>
         <ProdList>
           <p>Foods you should not eat</p>
-          <li>Flour products</li>
-          <li>Milk</li>
-          <li>Red meat</li>
-          <li>Smoked meats</li>
+          <ul>
+            {userNotRecommendedProducts.map(product =>
+              <li key={product} >{product}</li>)}
+          </ul>
+          
         </ProdList>
         <Button
           onClickHandler={onBtnClickHandle}
