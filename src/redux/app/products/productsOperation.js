@@ -1,5 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import * as productsApi from '../../../service/productsApi';
+import * as productsApi from '../../../service/axios.config';
 
 export const addProduct = createAsyncThunk(
   'product/addDiaryFood',
