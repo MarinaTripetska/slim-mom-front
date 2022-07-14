@@ -26,7 +26,7 @@ export const login = async ({ email, password }) => {
   try {
     const res = await axios.post(`/users/login`, { email, password });
     toast.success('Authorization success');
-    console.log(res.data.data.user.name)
+    console.log(res.data.data.user.name);
     return res;
   } catch (error) {
     // TODO: error on wrong auth data
@@ -55,7 +55,6 @@ export const current = async () => {
   }
 };
 
-
 //==================PRODUCTS ADD=====================
 export const addProduct = async product => {
   try {
@@ -70,7 +69,7 @@ export const addProduct = async product => {
 
 export const deleteProduct = async id => {
   try {
-    const deletedProduct = await axios.delete("/product/delDiaryFood", { id });
+    const deletedProduct = await axios.delete('/product/delDiaryFood', { id });
     return deletedProduct;
   } catch (error) {
     console.log(error);
@@ -92,11 +91,24 @@ export const getProductByQuery = async query => {
 
 export const getProductsListByDate = async date => {
   try {
-    const { data } = await axios.post("/users/dayinfo", {
+    const { data } = await axios.post('/users/dayinfo', {
       day: moment(date).format('DD.MM.yyyy'),
     });
     return data;
   } catch (error) {
     console.log(error);
+  }
+};
+
+//==================Advice for Modal=====================
+
+export const adviceForUser = async date => {
+  try {
+    const { data } = await axios.post('/users/nutrition-advice', date);
+
+    console.log(data);
+    return data;
+  } catch (error) {
+    toast.error('Ups, something wrong ');
   }
 };
