@@ -18,15 +18,10 @@ import {
 } from './DailyCaloriesForm.styles';
 
 export default function DailyCaloriesForm({ onBtnClick = false }) {
+  const [selectedBldType, setSelectedBlbType] = useState('1');
+  const [formIsValid, setFormIsValid] = useState(false);
 
-  const [selectedBldType, setSelectedBlbType] = useState(false);
-  const [formIsValid, setFormIsValid] = useState('');
- 
   const dispatch = useDispatch();
-
-//  const [selectedBldType, setSelectedBlbType] = useState('1');
- // let formIsValid = false;
-
 
   const onBldTypeSelect = event => {
     setSelectedBlbType(event.target.value);
@@ -40,21 +35,13 @@ export default function DailyCaloriesForm({ onBtnClick = false }) {
   };
 
   const validate = values => {
-
-  //  if (!values.height) return;
-  //  if (!values.age) return;
- //   if (!values.desiredWeight) return;
-   // if (!values.bloodType) return;
-   // return (setFormIsValid(true));
-
-    const { height, age, desWeight, curWeight, bldType } = values;
+    const { height, age, desiredWeight, currentWeight, bloodType } = values;
     if (!height || height < 100 || height > 250) return;
     if (!age || age < 18 || age > 100) return;
-    if (!curWeight || curWeight < 20 || curWeight > 500) return;
-    if (!desWeight || desWeight < 20 || desWeight > 500) return;
-    if (!bldType) values.bldType = selectedBldType - 0;
-    return (formIsValid = true);
-
+    if (!currentWeight || currentWeight < 20 || currentWeight > 500) return;
+    if (!desiredWeight || desiredWeight < 20 || desiredWeight > 500) return;
+    if (!bloodType) values.bloodType = selectedBldType - 0;
+    return setFormIsValid(true);
   };
   return (
     <>
@@ -69,16 +56,16 @@ export default function DailyCaloriesForm({ onBtnClick = false }) {
         validate={validate}
         onSubmit={values => {
           const user = {
-            userData:{
+            userData: {
               height: values.height,
-          age: values.age,
-          currentWeight: values.currentWeight,
-          desiredWeight: values.desiredWeight,
+              age: values.age,
+              currentWeight: values.currentWeight,
+              desiredWeight: values.desiredWeight,
               bloodType: values.bloodType,
-            }
-          }
-          console.log(user)
-     
+            },
+          };
+          console.log(user);
+
           dispatch(getUsersAdvice(user));
         }}
       >
@@ -117,18 +104,15 @@ export default function DailyCaloriesForm({ onBtnClick = false }) {
                 <TextInp
                   pattern="[0-9]{2,3}"
                   required
-
                   id="currentWeight"
                   type="text"
                   name="currentWeight"
+                  // id="curWeight"
+                  //  type="number"
+                  // name="curWeight"
 
-                 // id="curWeight"
-                //  type="number"
-                 // name="curWeight"
-                 
                   min="20"
                   max="500"
-
                 />
                 <span className="tooltiptext">Min 20, max 500</span>
               </FormLabel>
@@ -140,15 +124,12 @@ export default function DailyCaloriesForm({ onBtnClick = false }) {
                   pattern="[0-9]{2,3}"
                   id="desiredWeight"
                   required
-
                   type="text"
                   name="desiredWeight"
-
-               //   type="number"
-               //   name="desWeight"
+                  //   type="number"
+                  //   name="desWeight"
                   min="20"
                   max="500"
-
                 />
                 <span className="tooltiptext">Min 20, max 500</span>
               </FormLabel>
