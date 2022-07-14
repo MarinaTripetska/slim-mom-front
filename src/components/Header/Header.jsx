@@ -7,7 +7,8 @@ import {
   MomStyle,
   ButtonBurger,
 } from './Header.styled';
-import {UserInfoMenuLapTop} from 'components/UserInfoMenu';
+import { UserInfoMenuLapTop } from 'components/UserInfoMenu';
+import { UserAuthenticate } from '../UserInfoMenu';
 import logoMobile from '../../assets/images/logo-mobile.png';
 import BurgerMenuIcon from '../../assets/images/burger.png';
 import CloseMenuIcon from '../../assets/images/close.png';
@@ -17,7 +18,9 @@ const HeaderPosition = ({
   openBurgerMenu,
   setOpenBurgerMenu,
 }) => {
-    const [isDesktop, setDesktop] = useState(window.innerWidth > 767);
+
+  const [isDesktop, setDesktop] = useState(window.innerWidth > 767);
+  const [userLogIn, setUserLogIn] = useState(false);
 
   const HandleClickOpen = e => {
     e.preventDefault();
@@ -30,7 +33,6 @@ const HeaderPosition = ({
     setOpenBurgerMenu(false);
     return;
   };
-
 
   const updateMedia = () => {
         setDesktop(window.innerWidth > 767);
@@ -55,6 +57,16 @@ const HeaderPosition = ({
     );
   };
 
+  const LogoShow = () => {
+    if (userLogIn) {
+      return (
+      <SlimStyle>
+        Slim <MomStyle>Mom</MomStyle>
+      </SlimStyle>
+    )
+    }
+    return null;
+  }
   return (
     <div>
       <NavPosition>
@@ -66,12 +78,12 @@ const HeaderPosition = ({
             width={46}
             height={44}
           />
-          <SlimStyle>
+          {!isDesktop ? (<LogoShow />) : (<SlimStyle>
             Slim <MomStyle>Mom</MomStyle>
-          </SlimStyle>
+            </SlimStyle>)}
         </Home>
         {isDesktop ? (<UserInfoMenuLapTop/>) : (null)}
-        <CloseMenu />
+        {userLogIn ? (<CloseMenu />) : (<UserAuthenticate/>)}
       </NavPosition>
     </div>
   );

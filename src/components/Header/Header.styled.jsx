@@ -9,6 +9,9 @@ export const NavPosition = styled.div`
   align-content: space-between;
   justify-content: space-between;
   border-bottom: 2px solid #E0E0E0;
+    @media ${breakpoints.desktop}{
+      justify-content: start;
+  }
 `;
 
 export const Home = styled.a`
