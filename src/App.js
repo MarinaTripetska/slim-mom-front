@@ -51,7 +51,7 @@ function App() {
           <Route path="/calculator" element={<PrivateRoute />}>
             {/* <Route path="" element={<CalculatorPage />} /> */}
           </Route>
-
+          
           <Route path="/diary" element={<PrivateRoute />}>
             <Route path="" element={<DiaryPage />} />
           </Route>
