@@ -1,12 +1,10 @@
 import axios from 'axios';
 import moment from 'moment';
 import { toast } from 'react-toastify';
-
 axios.defaults.baseURL = `https://slim-mom-back.herokuapp.com/api/v1`;
-
-// axios.defaults.headers.common['Authorization'] = `Bearer ${localStorage.getItem(
-//   'AUTH_TOKEN',
-// )}`;
+axios.defaults.headers.common['Authorization'] = `Bearer ${localStorage.getItem(
+  'AUTH_TOKEN',
+)}`;
 
 //==================REGISTER====================
 export const register = async ({ name, email, password }) => {
@@ -14,9 +12,9 @@ export const register = async ({ name, email, password }) => {
     const res = await axios.post(`/users/signup`, { name, email, password });
     toast.success('Registration success');
     return res;
-  } catch (error) {
-    if (error.response.status === 409) {
-      toast.error(`${error.response.data.message}`);
+  } catch (e) {
+    if (e.response.status === 409) {
+      toast.error(`This email already exist`);
     } else {
       toast.error('Registration error');
     }
@@ -31,6 +29,7 @@ export const login = async ({ email, password }) => {
     console.log(res.data.data.user.name);
     return res;
   } catch (error) {
+    // TODO: error on wrong auth data
     toast.error('Authorization error');
   }
 };
