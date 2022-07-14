@@ -32,7 +32,7 @@ function App() {
             path="/"
             element={<PublicRoute restricted navigateTo="/diary" />}
           >
-            <Route path="" element={<RegistrationPage />} />
+            <Route path="" element={<MainPage />} />
           </Route>
 
           {/* <Route path="/" element={<PrivateRoute />}>           
@@ -43,7 +43,7 @@ function App() {
             path="/register"
             element={<PublicRoute restricted navigateTo="/diary" />}
           >
-            <Route path="" element={<MainPage />} />
+            <Route path="" element={<RegistrationPage />} />
           </Route>
 
           <Route
