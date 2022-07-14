@@ -30,23 +30,25 @@ function App() {
             <Route path="" element={<MainPage />} />
           </Route>
 
-          {/* <Route path="/" element={<PrivateRoute />}>           
-            <Route path="" element={<CalculatorPage />} />
-          </Route> */}
-
-          <Route path="/register" element={<PublicRoute />}>
+          <Route
+            path="/register"
+            element={<PublicRoute restricted navigateTo="/diary" />}
+          >
             <Route path="" element={<RegistrationPage />} />
           </Route>
 
-          <Route path="/login" element={<PublicRoute navigateTo="/diary" />}>
+          <Route
+            path="/login"
+            element={<PublicRoute restricted navigateTo="/diary" />}
+          >
             <Route path="" element={<LoginPage />} />
           </Route>
 
           <Route path="/calculator" element={<PrivateRoute />}>
             {/* <Route path="" element={<CalculatorPage />} /> */}
           </Route>
-        {/*element={<PrivateRoute />}*/}
-          <Route path="/diary" >
+
+          <Route path="/diary" element={<PrivateRoute />}>
             <Route path="" element={<DiaryPage />} />
           </Route>
 
