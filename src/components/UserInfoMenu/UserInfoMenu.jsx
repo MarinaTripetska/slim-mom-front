@@ -19,6 +19,8 @@ import {
 }
     from './UserInfoMenu.styled';
 import './UserInfoMenu.css';
+// import { login, current } from '../../service/axios.config';
+// import { getUserName } from '../../redux/app/auth/auth-selectors';
 import IconBack from '../../assets/images/arrow-mobile.png';
 import { useState } from 'react';
 // import RegistrationForm from '../RegistrationForm';
@@ -27,6 +29,18 @@ export const UserAuthenticate = () => {
     const [userLogIn, setUserLogIn] = useState(false);
     const signInLink = '/login';
     const registrationLink = '/register';
+    // const email = `test@test.com`;
+    // const password = `qwerty123`;
+
+    // login({
+    //     "email": "test@test.com",
+    //     "password": "qwerty123"
+    // }).res.data.data.user.name;
+    // current();
+
+    // const authSelectors = {
+    //     getUserName
+    // };
     if (!userLogIn) {
         return (
             <PositionFormSigIn>

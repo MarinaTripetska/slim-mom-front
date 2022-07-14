@@ -26,6 +26,7 @@ export const login = async ({ email, password }) => {
   try {
     const res = await axios.post(`/users/login`, { email, password });
     toast.success('Authorization success');
+    console.log(res.data.data.user.name)
     return res;
   } catch (error) {
     toast.error('Authorization error');
