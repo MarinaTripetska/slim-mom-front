@@ -32,7 +32,7 @@ export const authSlice = createSlice({
       state.isLoading = true;
     },
     [authOperations.actionRegister.fulfilled](state, action) {
-      state.user = action.payload.user;
+      state.user = action.payload.user; //????
       state.isSuccess = true;
       state.isLoading = false;
     },
@@ -47,10 +47,18 @@ export const authSlice = createSlice({
     //   state.token = action.payload.token;
     //   state.isLoggedIn = true;
     // },
-    [authOperations.login.fulfilled](state, action) {
+    [authOperations.actionLogin.pending](state) {
+      state.isLoading = true;
+    },
+    [authOperations.actionLogin.fulfilled](state, action) {
       state.user = action.payload.user;
       state.token = action.payload.token;
       state.isLoggedIn = true;
+    },
+    [authOperations.actionLogin.rejected](state, action) {
+      state.isLoading = false;
+      state.isError = true;
+      state.message = action.payload;
     },
 
     [authOperations.logout.fulfilled](state, _) {

@@ -1,6 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
-import { register } from 'service/axios.config';
+import { login, register } from 'service/axios.config';
 
 const token = {
   set(token) {
@@ -13,9 +13,9 @@ const token = {
 
 const actionRegister = createAsyncThunk(
   'auth/register',
-  async (userData, thunkAPI) => {
+  async (payload, thunkAPI) => {
     try {
-      const response = await register(userData);
+      const response = await register(payload);
       return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.response.data);
@@ -23,17 +23,20 @@ const actionRegister = createAsyncThunk(
   },
 );
 
-const login = createAsyncThunk('auth/login', async (payload, thunkAPI) => {
-  try {
-    const { data } = await axios.post('/users/login', payload);
-    token.set(data.token);
-    return data;
-  } catch (error) {
-    if ((error.status = 401)) {
-      return thunkAPI.rejectWithValue('Email or password is wrong');
+const actionLogin = createAsyncThunk(
+  'auth/login',
+  async (payload, thunkAPI) => {
+    try {
+      const { data } = await login(payload);
+      token.set(data.token);
+      return data;
+    } catch (error) {
+      if ((error.status = 401)) {
+        return thunkAPI.rejectWithValue(error.response.data);
+      }
     }
-  }
-});
+  },
+);
 
 const logout = createAsyncThunk('auth/loout', async () => {
   try {
@@ -66,4 +69,4 @@ const logout = createAsyncThunk('auth/loout', async () => {
 //   },
 // );
 
-export const authOperations = { actionRegister, login, logout };
+export const authOperations = { actionRegister, actionLogin, logout };

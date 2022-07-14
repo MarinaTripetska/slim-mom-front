@@ -13,8 +13,6 @@ export const register = async ({ name, email, password }) => {
     toast.success('Registration success');
     return res;
   } catch (error) {
-    console.log(error);
-
     if (error.response.status === 409) {
       toast.error(`${error.response.data.message}`);
     } else {

@@ -48,9 +48,8 @@ const RegistrationForm = () => {
     onSubmit: values => {
       const { name, email, password } = values;
       dispatch(authOperations.actionRegister({ name, email, password }));
-
       formik.resetForm();
-      console.log(isSuccessRegister);
+
       if (isSuccessRegister) {
         navigate('/login', { replace: true });
       }
