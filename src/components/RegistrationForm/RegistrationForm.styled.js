@@ -1,6 +1,11 @@
 import { Link } from 'react-router-dom';
 import styled, { css } from 'styled-components';
 import { breakpoints } from '../../assets/sizes';
+import straw from '../../assets/images/strawberry-desktop.png';
+import ban from '../../assets/images/banana-tablet.png';
+import leaves from '../../assets/images/leaves-tablet.png';
+import vector from '../../assets/images/vector-tablet.png';
+import frame from '../../assets/images/desktop.png';
 
 export const ContainerRegistr = styled.div`
   padding: 42px 20px 100px 20px;
@@ -10,10 +15,18 @@ export const ContainerRegistr = styled.div`
   @media ${breakpoints.tablet} {
     padding: 160px 32px 418px 32px;
     min-width: 768px;
+    background-image: url(${ban}), url(${straw}), url(${leaves}), url(${vector});
+    background-repeat: no-repeat;
+    background-position: bottom right, bottom 200px right,
+      bottom 280px right 12px, bottom right;
+    background-size: 740px 527px, 291px 284px, 740px 842px, 553px 750px;
   }
   @media ${breakpoints.desktop} {
     padding: 160px 16px 180px 16px;
     min-width: 1280px;
+    background-image: url(${frame}),
+          background-position: bottom right, bottom right;
+    background-size: 980px 820px;
   }
 `;
 export const TitleRegistr = styled.h2`
@@ -30,7 +43,16 @@ export const TitleRegistr = styled.h2`
     text-align: start;
   }
 `;
-export const FormRegistr = styled.form``;
+export const FormRegistr = styled.form`
+  background-image: url('../../assets/images/banana-tablet.png'),
+    url('../../assets/images/strawberry-tablet.png'),
+    url('../../assets/images/leaves-tablet.png'),
+    url('../../assets/images/vector-tablet.png');
+  background-repeat: no-repeat;
+  background-position: bottom right, bottom 200px right, bottom 280px right 12px,
+    bottom right;
+  background-size: 426px 420px, 491px 431px, 740px 745px, 521px 563px;
+`;
 
 export const FormRegistrList = styled.ul`
   margin: 60px 0;
@@ -97,7 +119,7 @@ const plaseholderButtonStyles = css`
   box-shadow: 0px 4px 10px var(--accent-shadow);
   border-radius: 30px;
   border-color: rgba(117, 190, 218, 0);
-  padding: 13px 50px;
+  padding: 13px 25px;
   color: var(--white);
   cursor: pointer;
 
@@ -109,8 +131,7 @@ const plaseholderButtonStyles = css`
     background: transparent;
   }
 
-  @media ${breakpoints.maxTablet} {
-    flex-wrap: nowrap;
+  
   }
 `;
 

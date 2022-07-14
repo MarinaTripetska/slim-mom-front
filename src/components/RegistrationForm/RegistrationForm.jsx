@@ -1,5 +1,6 @@
 import React from 'react';
 import { useFormik } from 'formik';
+import Button from 'components/Button';
 import {
   ContainerRegistr,
   TitleRegistr,
@@ -17,6 +18,8 @@ import {
 import * as Yup from 'yup';
 
 const RegistrationForm = () => {
+  //const dispatch = useDispatch();
+
   const formik = useFormik({
     initialValues: {
       name: '',
@@ -26,19 +29,24 @@ const RegistrationForm = () => {
     validationSchema: Yup.object({
       name: Yup.string()
         .min(3, 'Min 3 symbols')
-        .max(15, 'Max 15 symbols')
+        .max(254, 'Max 254 symbols')
         .required('Required'),
-      email: Yup.string().email('Invalid email').required('Required'),
+      email: Yup.string()
+        .email('Invalid email')
+        .min(3, 'Min 3 symbols')
+        .max(254, 'Max 254 symbols')
+        .required('Required'),
       password: Yup.string()
-        .min(6, 'Min 6 symbols')
-        .max(10, 'Max 10 symbols')
+        .min(8, 'Min 8 symbols')
+        .max(100, 'Max 100 symbols')
         .required('Required'),
     }),
     onSubmit: values => {
-      console.log(values);
       formik.resetForm();
+      console.log(values);
     },
   });
+
   return (
     <ContainerRegistr>
       <TitleRegistr>Register</TitleRegistr>
@@ -50,6 +58,7 @@ const RegistrationForm = () => {
               id="name"
               name="name"
               type="text"
+              pattern="([A-z])"
               onChange={formik.handleChange}
               value={formik.values.name}
             />
@@ -78,6 +87,7 @@ const RegistrationForm = () => {
               id="password"
               name="password"
               type="password"
+              pattern="([A-z0-9])"
               onChange={formik.handleChange}
               value={formik.values.password}
             />
@@ -88,7 +98,8 @@ const RegistrationForm = () => {
         </FormRegistrList>
         <ButtonContainer>
           <StyledNavLink to="/login">Login</StyledNavLink>
-          <RegistrButton type="submit">Register</RegistrButton>
+          <Button type="submit" btnText={'Register'}></Button>
+          {/* <RegistrButton type="submit">Register</RegistrButton> */}
         </ButtonContainer>
       </FormRegistr>
     </ContainerRegistr>

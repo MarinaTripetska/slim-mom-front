@@ -14,6 +14,7 @@ import MainPage from './pages/MainPage';
 import { PrivateRoute } from 'components/PrivateRoute';
 import { PublicRoute } from 'components/PublicRoute';
 import DiaryPage from 'pages/DiaryPage';
+import Container from 'components/Container';
 
 // import DailyCaloriesForm from 'components/DailyCaloriesForm';
 // import Toaster from 'components/Toasts';
@@ -44,12 +45,14 @@ function App() {
 
   return (
     <>
-      <Header />
+      <Container>
+        <Header />
+      </Container>
 
       <Suspense fallback={<Loader />}>
         <Routes>
           <Route path="/" element={<PublicRoute />}>
-            <Route path="" element={<MainPage />} />
+            <Route path="" element={<RegistrationPage />} />
           </Route>
 
           {/* <Route path="/" element={<PrivateRoute />}> */}

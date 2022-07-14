@@ -6,6 +6,7 @@ const RegistrationPage = () => {
   return (
     <Container>
       {/* <Header /> */}
+
       <RegistrationForm />
     </Container>
   );
