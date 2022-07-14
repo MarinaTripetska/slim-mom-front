@@ -18,10 +18,15 @@ import {
 } from './DailyCaloriesForm.styles';
 
 export default function DailyCaloriesForm({ onBtnClick = false }) {
+
   const [selectedBldType, setSelectedBlbType] = useState(false);
   const [formIsValid, setFormIsValid] = useState('');
-  // let formIsValidd = false;
+ 
   const dispatch = useDispatch();
+
+//  const [selectedBldType, setSelectedBlbType] = useState('1');
+ // let formIsValid = false;
+
 
   const onBldTypeSelect = event => {
     setSelectedBlbType(event.target.value);
@@ -35,11 +40,21 @@ export default function DailyCaloriesForm({ onBtnClick = false }) {
   };
 
   const validate = values => {
-    if (!values.height) return;
-    if (!values.age) return;
-    if (!values.desiredWeight) return;
-    if (!values.bloodType) return;
-    return (setFormIsValid(true));
+
+  //  if (!values.height) return;
+  //  if (!values.age) return;
+ //   if (!values.desiredWeight) return;
+   // if (!values.bloodType) return;
+   // return (setFormIsValid(true));
+
+    const { height, age, desWeight, curWeight, bldType } = values;
+    if (!height || height < 100 || height > 250) return;
+    if (!age || age < 18 || age > 100) return;
+    if (!curWeight || curWeight < 20 || curWeight > 500) return;
+    if (!desWeight || desWeight < 20 || desWeight > 500) return;
+    if (!bldType) values.bldType = selectedBldType - 0;
+    return (formIsValid = true);
+
   };
   return (
     <>
@@ -77,10 +92,12 @@ export default function DailyCaloriesForm({ onBtnClick = false }) {
                   pattern="[0-9]{3}"
                   required
                   id="height"
-                  type="text"
+                  type="number"
                   name="height"
+                  min="100"
+                  max="250"
                 />
-                <span className="tooltiptext">3 numbers</span>
+                <span className="tooltiptext">Min 100, max 250</span>
               </FormLabel>
               <FormLabel htmlFor="age">
                 Age*
@@ -88,21 +105,32 @@ export default function DailyCaloriesForm({ onBtnClick = false }) {
                   pattern="[0-9]{2}"
                   id="age"
                   required
-                  type="text"
+                  type="number"
                   name="age"
+                  min="18"
+                  max="100"
                 />
-                <span className="tooltiptext">2-3 numbers</span>
+                <span className="tooltiptext">Min 18, max 100</span>
               </FormLabel>
               <FormLabel htmlFor="currentWeight">
                 Current weight*
                 <TextInp
                   pattern="[0-9]{2,3}"
                   required
+
                   id="currentWeight"
                   type="text"
                   name="currentWeight"
+
+                 // id="curWeight"
+                //  type="number"
+                 // name="curWeight"
+                 
+                  min="20"
+                  max="500"
+
                 />
-                <span className="tooltiptext">2-3 numbers</span>
+                <span className="tooltiptext">Min 20, max 500</span>
               </FormLabel>
             </LblDiv1>
             <LblDiv1>
@@ -112,10 +140,17 @@ export default function DailyCaloriesForm({ onBtnClick = false }) {
                   pattern="[0-9]{2,3}"
                   id="desiredWeight"
                   required
+
                   type="text"
                   name="desiredWeight"
+
+               //   type="number"
+               //   name="desWeight"
+                  min="20"
+                  max="500"
+
                 />
-                <span className="tooltiptext">2-3 numbers</span>
+                <span className="tooltiptext">Min 20, max 500</span>
               </FormLabel>
               <FormLabel htmlFor="bloodType" required>
                 <p style={{ marginBottom: '20px' }}>Blood type*</p>
