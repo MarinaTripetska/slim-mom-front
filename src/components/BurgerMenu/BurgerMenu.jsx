@@ -1,8 +1,8 @@
 import { NavStyle, BurgerPosition, NavLinkStyle } from './BurgerMenu.styled';
 import { NavLink } from 'react-router-dom';
 
-const BurgerMenu = ({ openBurgerMenu }) => {
-        if (openBurgerMenu) {
+const BurgerMenu = ({ openBurgerMenu, setOpenBurgerMenu}) => {
+    if (openBurgerMenu) {
             return (
             <NavStyle>
                 <BurgerPosition>

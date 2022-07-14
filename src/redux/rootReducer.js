@@ -1,6 +1,7 @@
 import { combineReducers } from '@reduxjs/toolkit';
 import { loaderSlice } from './app/loader/loaderSlice';
 import { authSlice } from './app/auth';
+import { productsSlice } from './app/products/productsSlice';
 // import { persistReducer } from 'redux-persist';
 
 // const authPersistConfig = {
@@ -12,4 +13,5 @@ import { authSlice } from './app/auth';
 export const rootReducer = combineReducers({
   loader: loaderSlice.reducer,
   auth: authSlice.reducer,
+  products: productsSlice.reducer,
 });
