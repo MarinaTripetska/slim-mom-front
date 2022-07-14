@@ -3,10 +3,27 @@ import { getUsersAdvice } from './users-operation';
 
 export const usersSlice = createSlice({
   name: 'users',
-  initialState: null,
+  initialState: {
+    advice: {
+      recommendKkal: '',
+      recommendProd: [],
+    },
+  },
   extraReducers: {
-    [getUsersAdvice.fulfilled](state, action) {
-      return (state = action.payload);
+    [getUsersAdvice.pending](state, _) {
+      state.advice.recommendKkal = '';
+      state.advice.recommendProd = [];
+    },
+    [getUsersAdvice.fulfilled](state, { payload }) {
+      state.advice.recommendKkal =
+        payload.data.nutritionAdvice.userDailyCalorieIntake;
+      state.advice.recommendProd = [
+        ...payload.data.nutritionAdvice.userNotRecommendedProducts,
+      ];
+    },
+    [getUsersAdvice.rejected](state, _) {
+      state.advice.recommendKkal = '';
+      state.advice.recommendProd = [];
     },
   },
 });

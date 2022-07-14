@@ -2,7 +2,7 @@ import axios from 'axios';
 import moment from 'moment';
 import { toast } from 'react-toastify';
 
-axios.defaults.baseURL = `http://localhost:5050/api/v1`;
+axios.defaults.baseURL = `https://slim-mom-back.herokuapp.com/api/v1`;
 
 // axios.defaults.headers.common['Authorization'] = `Bearer ${localStorage.getItem(
 //   'AUTH_TOKEN',
@@ -98,5 +98,18 @@ export const getProductsListByDate = async date => {
     return data;
   } catch (error) {
     console.log(error);
+  }
+};
+
+//==================Advice for Modal=====================
+
+export const adviceForUser = async date => {
+  try {
+    const { data } = await axios.post('/users/nutrition-advice', date);
+
+    console.log(data);
+    return data;
+  } catch (error) {
+    toast.error('Ups, something wrong ');
   }
 };
