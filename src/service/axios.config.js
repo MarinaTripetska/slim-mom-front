@@ -1,5 +1,7 @@
 import axios from 'axios';
+import moment from 'moment';
 import { toast } from 'react-toastify';
+
 axios.defaults.baseURL = `http://localhost:5050/api/v1`;
 
 // axios.defaults.headers.common['Authorization'] = `Bearer ${localStorage.getItem(
@@ -26,6 +28,7 @@ export const login = async ({ email, password }) => {
   try {
     const res = await axios.post(`/users/login`, { email, password });
     toast.success('Authorization success');
+    console.log(res.data.data.user.name);
     return res;
   } catch (error) {
     toast.error('Authorization error');
@@ -53,13 +56,47 @@ export const current = async () => {
   }
 };
 
-//==================Diet for Modal=====================
-// export const adviceForUser = async credentials => {
-//   try {
-//     const res = await axios.post('/users/nutrition-advice', credentials);
-//     console.log(res);
-//     return res;
-//   } catch (error) {
-//     toast.error('Ups, something wrong ');
-//   }
-// };
+//==================PRODUCTS ADD=====================
+export const addProduct = async product => {
+  try {
+    const { data } = await axios.post('/product/addDiaryFood', product);
+    return data;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+//==================PRODUCTS DELETE=====================
+
+export const deleteProduct = async id => {
+  try {
+    const deletedProduct = await axios.delete('/product/delDiaryFood', { id });
+    return deletedProduct;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+//==================PRODUCTS GET BY QUERY=====================
+
+export const getProductByQuery = async query => {
+  try {
+    const { data } = await axios.get(`/product/${query}`);
+    return data;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+//==================PRODUCTS GET BY DATA=====================
+
+export const getProductsListByDate = async date => {
+  try {
+    const { data } = await axios.post('/users/dayinfo', {
+      day: moment(date).format('DD.MM.yyyy'),
+    });
+    return data;
+  } catch (error) {
+    console.log(error);
+  }
+};

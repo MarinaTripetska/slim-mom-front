@@ -1,3 +1,4 @@
+import { useState , useEffect} from 'react';
 import {
   NavPosition,
   Home,
@@ -6,19 +7,21 @@ import {
   MomStyle,
   ButtonBurger,
 } from './Header.styled';
+import { UserInfoMenuLapTop } from 'components/UserInfoMenu';
+import { UserAuthenticate } from '../UserInfoMenu';
 import logoMobile from '../../assets/images/logo-mobile.png';
 import BurgerMenuIcon from '../../assets/images/burger.png';
 import CloseMenuIcon from '../../assets/images/close.png';
+// import Logo from '../Logo';
 
 const HeaderPosition = ({
   openBurgerMenu,
   setOpenBurgerMenu,
-  Logo,
-  UserInfo,
-  Navigation,
-  SignIn,
-  Registration,
 }) => {
+
+  const [isDesktop, setDesktop] = useState(window.innerWidth > 767);
+  const [userLogIn, setUserLogIn] = useState(false);
+
   const HandleClickOpen = e => {
     e.preventDefault();
     setOpenBurgerMenu(true);
@@ -31,23 +34,22 @@ const HeaderPosition = ({
     return;
   };
 
-  const CloseMenu = () => {
-    //     if (open) {
-    //       return (
-    //         <ButtonBurger onClick={HandleClickClose}>
-    //           <img src={CloseMenuIcon} alt="CloseMenuIcon" />
-    //         </ButtonBurger>
-    //       );
-    // }
+  const updateMedia = () => {
+        setDesktop(window.innerWidth > 767);
+    };
+    useEffect(() => {
+        window.addEventListener("resize", updateMedia);
+        return () => window.removeEventListener("resize", updateMedia);
+    });
 
+  const CloseMenu = () => {
     if (openBurgerMenu) {
       return (
         <ButtonBurger onClick={HandleClickClose}>
           <img src={CloseMenuIcon} alt="CloseMenuIcon" />
         </ButtonBurger>
       );
-    }
-
+      }
     return (
       <ButtonBurger onClick={HandleClickOpen}>
         <img src={BurgerMenuIcon} alt="BurgerMenuIcon" />
@@ -55,9 +57,20 @@ const HeaderPosition = ({
     );
   };
 
+  const LogoShow = () => {
+    if (userLogIn) {
+      return (
+      <SlimStyle>
+        Slim <MomStyle>Mom</MomStyle>
+      </SlimStyle>
+    )
+    }
+    return null;
+  }
   return (
     <div>
       <NavPosition>
+        {/* <Logo/> */}
         <Home href="../home">
           <ImgPosition
             src={logoMobile}
@@ -65,11 +78,12 @@ const HeaderPosition = ({
             width={46}
             height={44}
           />
-          <SlimStyle>
+          {!isDesktop ? (<LogoShow />) : (<SlimStyle>
             Slim <MomStyle>Mom</MomStyle>
-          </SlimStyle>
+            </SlimStyle>)}
         </Home>
-        <CloseMenu />
+        {isDesktop ? (<UserInfoMenuLapTop/>) : (null)}
+        {userLogIn ? (<CloseMenu />) : (<UserAuthenticate/>)}
       </NavPosition>
     </div>
   );
