@@ -1,0 +1,16 @@
+import { Btn } from './CalendarBtn.styled';
+
+const CalendarBtn = ({ onHandleClick }) => {
+  return (
+    <Btn onClick={() => onHandleClick()}>
+      <svg viewBox="0 0 18 20" xmlns="http://www.w3.org/2000/svg">
+        <path d="M14 9H12V11H14V9Z" />
+        <path d="M10 9H8V11H10V9Z" />
+        <path d="M6.00002 9H4V11H6.00002V9Z" />
+        <path d="M16 2.00001H15V0H13V2.00001H5.00001V0H3V2.00001H2.00001C0.890015 2.00001 0.0100313 2.90001 0.0100313 4.00003L0 18C0 19.1 0.890015 20 2.00001 20H16C17.1 20 18 19.1 18 18V3.99998C18 2.90001 17.1 2.00001 16 2.00001ZM16 18H2.00001V6.99998H16V18Z" />
+      </svg>
+    </Btn>
+  );
+};
+
+export default CalendarBtn;

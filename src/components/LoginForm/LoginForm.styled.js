@@ -59,6 +59,7 @@ export const FormLoginInput = styled.input`
   border-right: none;
   height: 20px;
   width: 100%;
+  outline: none;
   @media ${breakpoints.tablet} {
     width: 240px;
   }
