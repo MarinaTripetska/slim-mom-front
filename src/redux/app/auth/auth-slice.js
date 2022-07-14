@@ -84,4 +84,3 @@ export const authSlice = createSlice({
 });
 
 export const { login, logout, reset } = authSlice.actions;
-console.log(login, logout, reset);
