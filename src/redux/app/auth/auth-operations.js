@@ -1,7 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
-
-axios.defaults.baseURL = 'http://localhost:5050/api/v1';
+import { login, register } from 'service/axios.config';
 
 const token = {
   set(token) {
@@ -12,36 +11,32 @@ const token = {
   },
 };
 
-const register = createAsyncThunk(
+const actionRegister = createAsyncThunk(
   'auth/register',
-  async (userData, thunkAPI) => {
+  async (payload, thunkAPI) => {
     try {
-      const { data } = await axios.post('/users/signup', userData);
-      return data;
+      const response = await register(payload);
+      return response.data;
     } catch (error) {
-      if ((error.status = 400)) {
-        return thunkAPI.rejectWithValue('Thomethig went wrong. Try again!');
-      }
-      if ((error.status = 500)) {
-        return thunkAPI.rejectWithValue(
-          'We have problems with server. Please, try later',
-        );
-      }
+      return thunkAPI.rejectWithValue(error.response.data);
     }
   },
 );
 
-const login = createAsyncThunk('auth/login', async (payload, thunkAPI) => {
-  try {
-    const { data } = await axios.post('/users/login', payload);
-    token.set(data.token);
-    return data;
-  } catch (error) {
-    if ((error.status = 401)) {
-      return thunkAPI.rejectWithValue('Email or password is wrong');
+const actionLogin = createAsyncThunk(
+  'auth/login',
+  async (payload, thunkAPI) => {
+    try {
+      const { data } = await login(payload);
+      token.set(data.token);
+      return data;
+    } catch (error) {
+      if ((error.status = 401)) {
+        return thunkAPI.rejectWithValue(error.response.data);
+      }
     }
-  }
-});
+  },
+);
 
 const logout = createAsyncThunk('auth/loout', async () => {
   try {
@@ -74,4 +69,4 @@ const logout = createAsyncThunk('auth/loout', async () => {
 //   },
 // );
 
-export const authOperations = { register, login, logout };
+export const authOperations = { actionRegister, actionLogin, logout };
