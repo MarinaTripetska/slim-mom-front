@@ -26,9 +26,9 @@ const initialValues = {
 };
 
 const RegistrationForm = () => {
+  const isSuccessRegister = useSelector(authSelectors.getIsSuccess);
   const dispatch = useDispatch();
   let navigate = useNavigate();
-  const isSuccessRegister = useSelector(authSelectors.getIsSuccess);
 
   const formik = useFormik({
     initialValues,
@@ -47,12 +47,14 @@ const RegistrationForm = () => {
 
     onSubmit: values => {
       const { name, email, password } = values;
+
       dispatch(authOperations.actionRegister({ name, email, password }));
-      formik.resetForm();
 
       if (isSuccessRegister) {
         navigate('/login', { replace: true });
       }
+
+      formik.resetForm();
     },
   });
 
@@ -104,8 +106,9 @@ const RegistrationForm = () => {
           </FormRegistrItem>
         </FormRegistrList>
         <ButtonContainer>
-          <StyledNavLink to="/login">Login</StyledNavLink>
           <RegistrButton type="submit">Register</RegistrButton>
+
+          <StyledNavLink to="/login">Login</StyledNavLink>
         </ButtonContainer>
       </FormRegistr>
     </ContainerRegistr>

@@ -34,17 +34,11 @@ function App() {
             <Route path="" element={<CalculatorPage />} />
           </Route> */}
 
-          <Route
-            path="/register"
-            element={<PublicRoute restricted navigateTo="/diary" />}
-          >
+          <Route path="/register" element={<PublicRoute />}>
             <Route path="" element={<RegistrationPage />} />
           </Route>
 
-          <Route
-            path="/login"
-            element={<PublicRoute restricted navigateTo="/diary" />}
-          >
+          <Route path="/login" element={<PublicRoute navigateTo="/diary" />}>
             <Route path="" element={<LoginPage />} />
           </Route>
 
