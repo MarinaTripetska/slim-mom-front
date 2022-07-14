@@ -15,18 +15,20 @@ export const ContainerRegistr = styled.div`
   @media ${breakpoints.tablet} {
     padding: 160px 32px 418px 32px;
     min-width: 768px;
-    background-image: url(${ban}), url(${straw}), url(${leaves}), url(${vector});
-    background-repeat: no-repeat;
-    background-position: bottom right, bottom 200px right,
-      bottom 280px right 12px, bottom right;
-    background-size: 740px 527px, 291px 284px, 740px 842px, 553px 750px;
+    background-color: transparent;
+
+    // background-image: url(${ban}), url(${straw}), url(${leaves}), url(${vector});
+    // background-repeat: no-repeat;
+    // background-position: bottom right, bottom 200px right,
+    //   bottom 280px right 12px, bottom right;
+    // background-size: 740px 527px, 291px 284px, 740px 842px, 553px 750px;
   }
   @media ${breakpoints.desktop} {
     padding: 160px 16px 180px 16px;
     min-width: 1280px;
-    background-image: url(${frame}),
-          background-position: bottom right, bottom right;
-    background-size: 980px 820px;
+    // background-image: url(${frame}),
+    //       background-position: bottom right, bottom right;
+    // background-size: 980px 820px;
   }
 `;
 export const TitleRegistr = styled.h2`
@@ -43,16 +45,7 @@ export const TitleRegistr = styled.h2`
     text-align: start;
   }
 `;
-export const FormRegistr = styled.form`
-  background-image: url('../../assets/images/banana-tablet.png'),
-    url('../../assets/images/strawberry-tablet.png'),
-    url('../../assets/images/leaves-tablet.png'),
-    url('../../assets/images/vector-tablet.png');
-  background-repeat: no-repeat;
-  background-position: bottom right, bottom 200px right, bottom 280px right 12px,
-    bottom right;
-  background-size: 426px 420px, 491px 431px, 740px 745px, 521px 563px;
-`;
+export const FormRegistr = styled.form``;
 
 export const FormRegistrList = styled.ul`
   margin: 60px 0;
@@ -108,6 +101,7 @@ export const ButtonContainer = styled.div`
 `;
 
 const plaseholderButtonStyles = css`
+
   display: flex;
   align-items: center;
   justify-content: center;
@@ -125,7 +119,7 @@ const plaseholderButtonStyles = css`
 
   &:hover,
   &:focus {
-    border: 2px solid var(--accent-color) d;
+    border: 2px solid var(--accent-color);
     box-shadow: none;
     color: var(--accent-color);
     background: transparent;

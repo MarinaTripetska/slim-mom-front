@@ -1,12 +1,15 @@
 import Container from 'components/Container';
 import RegistrationForm from 'components/RegistrationForm';
-// import Header from 'components/Header';
+import Loader from 'components/Loader';
+import { useSelector } from 'react-redux';
+import { authSelectors } from 'redux/app/auth';
 
 const RegistrationPage = () => {
+  const isLoading = useSelector(authSelectors.getIsLoading);
+
   return (
     <Container>
-      {/* <Header /> */}
-
+      {isLoading && <Loader />}
       <RegistrationForm />
     </Container>
   );

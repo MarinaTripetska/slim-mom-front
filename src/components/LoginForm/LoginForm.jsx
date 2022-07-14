@@ -15,14 +15,20 @@ import {
 } from './LoginForm.styled';
 
 import * as Yup from 'yup';
+import { useDispatch } from 'react-redux';
+import { authOperations } from 'redux/app/auth';
+
+const initialValues = {
+  name: '',
+  email: '',
+  password: '',
+};
 
 const LoginForm = () => {
+  const dispatch = useDispatch();
+
   const formik = useFormik({
-    initialValues: {
-      name: '',
-      email: '',
-      password: '',
-    },
+    initialValues,
     validationSchema: Yup.object({
       email: Yup.string().email('Invalid email').required('Required'),
       password: Yup.string()
@@ -31,7 +37,8 @@ const LoginForm = () => {
         .required('Required'),
     }),
     onSubmit: values => {
-      console.log(values);
+      const { email, password } = values;
+      dispatch(authOperations.actionLogin({ email, password }));
       formik.resetForm();
     },
   });

@@ -1,5 +1,10 @@
-import { BackWrapper } from './Background.styled';
+import { Background } from './Background.styled';
+import { createPortal } from 'react-dom';
 
-const Background = ({ children }) => <BackWrapper>{children}</BackWrapper>;
+const backRoot = document.querySelector('#backRoot');
 
-export default Background;
+const Back = () => {
+  return createPortal(<Background />, backRoot);
+};
+
+export default Back;
