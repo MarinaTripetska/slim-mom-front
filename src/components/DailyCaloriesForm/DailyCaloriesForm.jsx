@@ -19,8 +19,9 @@ import {
 } from './DailyCaloriesForm.styles';
 
 export default function DailyCaloriesForm({ onBtnClick = false }) {
-  const [selectedBldType, setSelectedBlbType] = useState('');
-  let formIsValid = false;
+  const [selectedBldType, setSelectedBlbType] = useState(false);
+  const [formIsValid, setFormIsValid] = useState('');
+  // let formIsValidd = false;
   const dispatch = useDispatch();
 
   const fetch = (user) => {
@@ -50,7 +51,7 @@ export default function DailyCaloriesForm({ onBtnClick = false }) {
     if (!values.age) return;
     if (!values.desiredWeight) return;
     if (!values.bloodType) return;
-    return (formIsValid = true);
+    return (setFormIsValid(true));
   };
   return (
     <>
