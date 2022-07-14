@@ -8,7 +8,7 @@ export const Product = styled.li
     width: 280px;
     margin-bottom: 20px;
    
-    color: '#212121';
+    color: var(--main-text-color);
     > button {
          display: flex;
          justify-content: center;
@@ -28,7 +28,7 @@ export const Product = styled.li
          
          > path {
           
-          stroke: '#9B9FAA';
+          stroke: var(--secondary-text-color);
          }
       }
     }

@@ -1,5 +1,5 @@
-import  {DiaryProductListItem}  from "../DiaryProductListItem/DiaryProductListItem";
-import { ProductsList, ProductsListThumb } from "../DiaryProductsList/DiaryProductsListStyle";
+import  {DiaryProductListItem}  from "../DiaryProductListItem";
+import { ProductsList, ProductsListThumb } from "./DiaryProductsListStyle";
 const DiaryProductsList = ({ products=[] }) => {
     
    return (

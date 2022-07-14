@@ -11,7 +11,7 @@ export const ProductsListThumb = styled.div
     height: 50px;
     left: 0;
     right: 0;
-    background: linear-gradient(0, #fff, transparent);
+    background: linear-gradient(0, var(--white), transparent);
     content: "";
   }}
   `
@@ -29,7 +29,7 @@ export const ProductsList = styled.ul
     
     ::-webkit-scrollbar { width: 6px;  }
     ::-webkit-scrollbar-thumb {background:rgb(38, 64, 97); }
-    ::-webkit-scrollbar-track { background: '#F0F1F3' }
+    ::-webkit-scrollbar-track { background: var(--secondary-background-color)}
 }
 @media screen and (min-width: 1280px) {
     height: 270px;

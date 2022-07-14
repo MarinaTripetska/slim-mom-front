@@ -23,11 +23,11 @@ export const FormLabel = styled.label`
 `;
 
 export const FormInputProduct = styled(AsyncSelect)`
-  font-size: '14px';
-  font-family: 'Verdana';
-  font-weight: 700;
+font-size: '14px';
+font-family: 'Verdana';
+font-weight: 700;
   letter-spacing: 0.04em;
-  color: '#212121';
+  color: var(--main-text-color);
   margin-bottom: 32px;
   @media screen and (min-width: 768px) {
     margin-right: 22px;
@@ -42,11 +42,11 @@ export const FormInputProduct = styled(AsyncSelect)`
     border-bottom: 1px solid '#E0E0E0';
     border-radius: 0;
     &:hover {
-      border-bottom-color: '#212121';
+      border-bottom-color: var(--main-text-color);
     }
     &--is-focused {
       outline: none;
-      border-bottom-color: '#212121';
+      border-bottom-color: var(--main-text-color);
       box-shadow: none;
     }
   }
@@ -76,17 +76,17 @@ export const FormInputWeight = styled.input`
   font-weight: 700;
   font-size: 14px;
   letter-spacing: 0.04em;
-  color: '#212121';
+  color: var(--main-text-color);
   width: 100%;
   padding: 8px 0;
   border-bottom: 1px solid '#E0E0E0';
   outline: none;
   transition: border-color 0.3s;
   ::placeholder {
-    color: '#9B9FAA';
+    color: var(--secondary-text-color);
   }
   &:focus {
-    border-bottom-color: '#212121';
+    border-bottom-color: var(--main-text-color);
   }
   @media screen and (min-width: 768px) {
     width: 106px;
@@ -106,10 +106,10 @@ export const FormBtnBase = styled.button`
   background: ${props => (props.primary ? '#FC842D' : '#fff')};
   color: ${props => (props.primary ? '#fff' : '#FC842D')};
   box-shadow: ${props =>
-    props.primary ? '0 4px 10px rgba(252, 132, 45, .5)' : null};
-  border: 2px solid '#FC842D';
-  font-size: 14px;
-  font-weight: 700;
+    props.primary ? '0 4px 10px var(--accent-shadow)' : null};
+    border: 2px solid var(--accent-color);
+    font-size: 14px;
+    font-weight: 700;
   width: 176px;
   height: 44px;
   border-radius: 30px;
@@ -120,7 +120,7 @@ export const FormBtnBase = styled.button`
   :hover {
     background: ${props => (props.primary ? '#fff' : '#FC842D')};
     color: ${props => (props.primary ? '#FC842D' : '#fff')};
-    box-shadow: 0px 4px 10px rgba(252, 132, 45, 0.5);
+    box-shadow: var(--accent-shadow);
   }
   :disabled {
     pointer-events: none;

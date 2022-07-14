@@ -9,13 +9,13 @@ import {
   FormInputWeight,
   FormInputProduct,
 } from './DiaryAddProductFormStyle';
-import { getProductByQuery } from '../../service/productsApi';
+import { getProductByQuery } from '../../service/axios.config';
 
 const loadOptions = async (inputValue, callback) => {
   const { products } = await getProductByQuery(inputValue);
   callback(
     products.map(product => {
-      const title = product.title.ua;
+      const title = product.title;
       return { label: title, value: title };
     })
   );
