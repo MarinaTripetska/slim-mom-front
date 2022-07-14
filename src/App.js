@@ -20,16 +20,19 @@ function App() {
   return (
     <>
       <Header />
-      {/* <DatePicker /> */}
+
       <Suspense fallback={<Loader />}>
         <Routes>
-          <Route path="/" element={<PublicRoute />}>
+          <Route
+            path="/"
+            element={<PublicRoute restricted navigateTo="/diary" />}
+          >
             <Route path="" element={<MainPage />} />
           </Route>
 
-          {/* <Route path="/" element={<PrivateRoute />}> */}
-          {/* <Route path="" element={<CalculatorPage />} /> */}
-          {/* </Route> */}
+          {/* <Route path="/" element={<PrivateRoute />}>           
+            <Route path="" element={<CalculatorPage />} />
+          </Route> */}
 
           <Route
             path="/register"
