@@ -1,18 +1,19 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { getUsersAdvice } from './users-operation';
 
+const initialState = {
+  advice: {
+    recommendKkal: '',
+    recommendProd: [],
+  },
+};
+
 export const usersSlice = createSlice({
   name: 'users',
-  initialState: {
-    advice: {
-      recommendKkal: '',
-      recommendProd: [],
-    },
-  },
+  initialState,
   extraReducers: {
     [getUsersAdvice.pending](state, _) {
-      state.advice.recommendKkal = '';
-      state.advice.recommendProd = [];
+      //loading
     },
     [getUsersAdvice.fulfilled](state, { payload }) {
       state.advice.recommendKkal =

@@ -6,8 +6,6 @@ export const getUsersAdvice = createAsyncThunk(
   async credentials => {
     try {
       const res = await adviceForUser(credentials);
-
-      console.log(res);
       return res;
     } catch (error) {
       console.log(error.message);

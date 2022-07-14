@@ -102,9 +102,9 @@ export const getProductsListByDate = async date => {
 
 //==================Advice for Modal=====================
 
-export const adviceForUser = async date => {
+export const adviceForUser = async payload => {
   try {
-    const { data } = await axios.post('/users/nutrition-advice', date);
+    const { data } = await axios.post('/users/nutrition-advice', payload);
 
     console.log(data);
     return data;
