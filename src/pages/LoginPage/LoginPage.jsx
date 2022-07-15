@@ -12,7 +12,7 @@ const LoginPage = () => {
   return (
     <>
       <Background>
-        <Header />
+        <Header localPage={'LoginPage'} />
         <Container>
           {isLoading && <Loader />}
           <LoginForm />
