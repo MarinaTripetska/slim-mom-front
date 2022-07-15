@@ -87,7 +87,7 @@ export const deleteProduct = async id => {
 
 export const getProductByQuery = async query => {
   try {
-    const { data } = await axios.get(`/product/${query}`);
+    const { data } = await axios.get(`/products/search?query=${query}`);
     return data;
   } catch (error) {
     console.log(error);

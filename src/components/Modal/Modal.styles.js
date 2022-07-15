@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-
+import { breakpoints } from '../../assets/sizes';
 const Overlay = styled.div`
   position: absolute;
   top: 0;
@@ -14,7 +14,7 @@ const Overlay = styled.div`
 `;
 
 const ModalDiv = styled.div`
-  background-color: #fff;
+  background-color: var(--white);
   max-width: 672px;
   max-height: 573px;
   width: 100%;
@@ -22,8 +22,8 @@ const ModalDiv = styled.div`
   display: flex;
   align-items: center;
   flex-direction: column;
-  /* justify-content: center; */
-  @media (max-width: 767px) {
+
+  @media (${breakpoints.maxTablet}) {
     position: absolute;
     top: 120px;
     max-height: 100%;
@@ -31,31 +31,23 @@ const ModalDiv = styled.div`
 `;
 
 const ModalTtl = styled.h2`
-  font-family: 'Verdana';
-  font-style: normal;
-  font-weight: 700;
   font-size: 26px;
-  line-height: 1.231;
   text-align: center;
   margin: 64px 120px 30px;
-  color: #212121;
-  @media (max-width: 767px) {
+
+  @media (${breakpoints.maxTablet}) {
     font-size: 18px;
-    line-height: 1.444;
+    line-height: 1.4;
     margin: 40px 20px;
   }
 `;
 
 const KcalCount = styled.p`
-  font-family: 'Verdana';
-  font-style: normal;
-  font-weight: 700;
   font-size: 48px;
-  line-height: 1.208;
   text-align: center;
-  letter-spacing: 0.04em;
-  color: #264061;
+  color: var(--blue-txt-color);
   margin-bottom: 30px;
+
   & span {
     font-size: 16px;
     line-height: 1.215;
@@ -63,26 +55,21 @@ const KcalCount = styled.p`
 `;
 
 const ProdList = styled.ol`
-  font-family: 'Verdana';
-  font-style: normal;
-  font-weight: 700;
-  font-size: 14px;
-  line-height: 1.214;
-  letter-spacing: 0.04em;
   padding-top: 12px;
-  border-top: 1px solid #e0e0e0;
+  border-top: 1px solid var(--border-color);
   text-align: left;
   margin-bottom: 40px;
   padding-left: 0;
+
   & p {
     margin-bottom: 20px;
   }
+
   & li {
-    color: #9b9faa;
+    color: var(--secondary-text-color);
     font-weight: 400;
     margin-left: 20px;
-    &:first-child {
-    }
+
     &:not(:last-child) {
       margin-bottom: 15px;
     }
