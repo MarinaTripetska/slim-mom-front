@@ -4,13 +4,7 @@ import { authSlice } from './app/auth';
 import { productsSlice } from './app/products/productsSlice';
 import { usersSlice } from './app/users/users-slice';
 import { dateSlice } from './app/date/dateSlice';
-// import { persistReducer } from 'redux-persist';
 
-// const authPersistConfig = {
-//   key: 'auth',
-//   storage,
-//   whitelist: ['token'],
-// };
 
 export const rootReducer = combineReducers({
   loader: loaderSlice.reducer,

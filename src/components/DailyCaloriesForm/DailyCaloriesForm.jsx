@@ -13,11 +13,12 @@ import {
   BtnDiv,
 } from './DailyCaloriesForm.styles';
 
-export default function DailyCaloriesForm({ onFormSubmit, userInfo = false }) {
-  const [selectedBldType, setSelectedBlbType] = useState(() =>
+
+export default function DailyCaloriesForm({ onFormSubmit, userInfo = false, isCleanUserInfo=true}) {
+   const [selectedBldType, setSelectedBlbType] = useState(() =>
     userInfo ? userInfo.bloodType : '1',
   );
-  
+
   const [btnIsDisabled, setBtnIsDisabled] = useState(true);
   let formIsValid = false;
 
@@ -36,12 +37,23 @@ export default function DailyCaloriesForm({ onFormSubmit, userInfo = false }) {
       };
 
   const validate = values => {
+
+  //  const { height, age, desiredWeight, currentWeight, bloodType } = values;
+//  if (!height || height < 100 || height > 250) return setBtnIsDisabled(true);
+ //   if (!age || age < 18 || age > 100) return setBtnIsDisabled(true);
+ //   if (!currentWeight || currentWeight < 20 || currentWeight > 500)
+   //   return setBtnIsDisabled(true);
+  //  if (!desiredWeight || desiredWeight < 20 || desiredWeight > 500)
+  //    return setBtnIsDisabled(true);
+ //   if (!bloodType) values.bloodType = selectedBldType - 0;
+
     const { height, age, desiredWeight, currentWeight, bldType } = values;
     if (!height || height < 100 || height > 250) return;
     if (!age || age < 18 || age > 100) return;
     if (!currentWeight || currentWeight < 20 || currentWeight > 500) return;
     if (!desiredWeight || desiredWeight < 20 || desiredWeight > 500) return;
     if (!bldType) values.bldType = selectedBldType;
+
     formIsValid = true;
   };
 
@@ -63,7 +75,10 @@ export default function DailyCaloriesForm({ onFormSubmit, userInfo = false }) {
         };
 
         onFormSubmit(user);
-        resetForm();
+        
+        if (isCleanUserInfo) {
+          resetForm()
+        }
       }}
     >
       <FormDiv>

@@ -116,3 +116,17 @@ export const adviceForNoAuthUser = async payload => {
     toast.error('Ups, something wrong ');
   }
 };
+
+//==================Advice recomendation for Login in user=====================
+
+export const adviceForLoginUser = async payload => {
+  try {
+    const { data } = await axios.post(
+      '/users/logged-nutrition-advice',
+      payload,
+    );
+    return data;
+  } catch (error) {
+    toast.error('Ups, something wrong ');
+  }
+};

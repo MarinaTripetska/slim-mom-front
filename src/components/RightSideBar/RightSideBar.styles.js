@@ -52,7 +52,7 @@ const ProdListDiv = styled.div`
   }
 `;
 
-const ProdList = styled.p`
+const ProdList = styled.ul`
   color: #9b9faa;
 `;
 
