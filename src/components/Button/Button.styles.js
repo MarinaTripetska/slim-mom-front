@@ -20,6 +20,10 @@ export const ButtonStylePlh = css`
   :focus {
     background: #f56905;
   }
+  &:disabled {
+    background: #9b9faa;
+    box-shadow: 0px 4px 10px #9b9faa83;
+  }
 `;
 
 export const Btn = styled.button`
