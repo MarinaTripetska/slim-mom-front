@@ -1,4 +1,3 @@
-
 import { useState, Fragment } from 'react';
 import { BsPlusLg } from 'react-icons/bs';
 import {
@@ -12,12 +11,12 @@ import {
 import { getProductByQuery } from '../../service/axios.config';
 
 const loadOptions = async (inputValue, callback) => {
-  const { products } = await getProductByQuery(inputValue);
+  const { data } = await getProductByQuery(inputValue);
   callback(
-    products.map(product => {
+    data.result.map(product => {
       const title = product.title;
       return { label: title, value: title };
-    })
+    }),
   );
 };
 
@@ -50,6 +49,7 @@ export default function DiaryProductForm({ onSubmit, className }) {
             onChange={option => setSelectedProduct(option.value)}
             loadOptions={loadOptions}
             placeholder="Введите название продукта"
+            cacheOptions
           />
         </FormLabel>
         <FormLabel>
@@ -71,7 +71,7 @@ export default function DiaryProductForm({ onSubmit, className }) {
           // selectedProduct должны прийти с бека
           disabled={selectedProduct === null || weight === '' ? true : false}
         >
-        <BsPlusLg size={14} />
+          <BsPlusLg size={14} />
         </FormBtn>
       </StyledForm>
     </Fragment>

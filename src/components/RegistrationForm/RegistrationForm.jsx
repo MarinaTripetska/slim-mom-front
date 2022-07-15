@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { authOperations, authSelectors } from '../../redux/app/auth';
 import { useFormik } from 'formik';
 import { useNavigate } from 'react-router-dom';
+
 import {
   ContainerRegistr,
   TitleRegistr,
@@ -37,12 +38,16 @@ const RegistrationForm = () => {
     validationSchema: Yup.object({
       name: Yup.string()
         .min(3, 'Min 3 symbols')
-        .max(15, 'Max 15 symbols')
+        .max(254, 'Max 254 symbols')
         .required('Required'),
-      email: Yup.string().email('Invalid email').required('Required'),
+      email: Yup.string()
+        .email('Invalid email')
+        .min(3, 'Min 3 symbols')
+        .max(254, 'Max 254 symbols')
+        .required('Required'),
       password: Yup.string()
-        .min(6, 'Min 6 symbols')
-        .max(10, 'Max 10 symbols')
+        .min(8, 'Min 8 symbols')
+        .max(100, 'Max 100 symbols')
         .required('Required'),
     }),
 
@@ -71,6 +76,7 @@ const RegistrationForm = () => {
               id="name"
               name="name"
               type="text"
+              pattern="([A-z])"
               onChange={formik.handleChange}
               value={formik.values.name}
             />
@@ -99,6 +105,7 @@ const RegistrationForm = () => {
               id="password"
               name="password"
               type="password"
+              pattern="([A-z0-9])"
               onChange={formik.handleChange}
               value={formik.values.password}
             />
