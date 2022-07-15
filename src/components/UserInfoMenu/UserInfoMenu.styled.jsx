@@ -10,8 +10,8 @@ export const InfoPosition = styled.div`
     background-color: #EFF1F3;
     height: 40px;
     justify-content: space-between;
-        @media ${breakpoints.tablet}{
-            display: none;
+    @media ${breakpoints.tablet}{
+        display: none;
   }
 `;
 
@@ -45,14 +45,26 @@ export const BackButton = styled.button`
 // css for LapTop
 
 export const InfoPositionLapTop = styled.div`
-    display: flex;
-    flex-direction: row;
-    align-items: baseline;
-    height: 40px;
-    justify-content: space-between;
-    margin-left: auto;
-        @media ${breakpoints.desktop}{
-      display: none;
+    @media ${breakpoints.maxTablet}{
+        display: none;
+    
+}
+    @media ${breakpoints.onlyTablet}{
+        display: flex;
+        flex-direction: row;
+        align-items: baseline;
+        height: 40px;
+        justify-content: space-between;
+        margin-left: auto;
+  }
+    @media ${breakpoints.desktop}{
+        display: flex;
+        flex-direction: row;
+        align-items: baseline;
+        height: 40px;
+        justify-content: space-between;
+        margin-left: auto;
+        margin-top: 120px;
   }
 `;
 
@@ -94,7 +106,7 @@ export const PositionFormSigIn = styled.div`
   }
 `;
 export const VerticalDesktop = styled.div`
-        @media ${breakpoints.desktop}{
+@media ${breakpoints.desktop}{
     border-left: 2px solid #E0E0E0;
     height: 32px;
     margin-top: 4px;
