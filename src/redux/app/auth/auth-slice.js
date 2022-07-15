@@ -9,7 +9,7 @@ const initialState = {
   isError: false,
   isSuccess: false,
   isLoading: false,
-  message: '',
+  // message: '',
 };
 
 export const authSlice = createSlice({
@@ -22,7 +22,7 @@ export const authSlice = createSlice({
       state.isLoading = false;
       state.isError = false;
       state.isSuccess = false;
-      state.message = '';
+      // state.message = '';
     },
   },
 
@@ -40,7 +40,7 @@ export const authSlice = createSlice({
     [authOperations.actionRegister.rejected](state, action) {
       state.isLoading = false;
       state.isError = true;
-      state.message = action.payload;
+      // state.message = action.payload;
     },
 
     // login
@@ -57,7 +57,7 @@ export const authSlice = createSlice({
     [authOperations.actionLogin.rejected](state, action) {
       state.isLoading = false;
       state.isError = true;
-      state.message = action.payload; // TODO: test it
+      // state.message = action.payload; // TODO: test it
     },
 
     // logout

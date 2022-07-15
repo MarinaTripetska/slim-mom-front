@@ -18,7 +18,7 @@ const actionRegister = createAsyncThunk(
   async (payload, thunkAPI) => {
     try {
       const response = await register(payload);
-      console.log('response', response);
+  
       return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.response.data);

@@ -27,6 +27,7 @@ const initialValues = {
 
 const RegistrationForm = () => {
   const isSuccessRegister = useSelector(authSelectors.getIsSuccess);
+  console.log(isSuccessRegister);
   const dispatch = useDispatch();
   let navigate = useNavigate();
 
@@ -47,12 +48,13 @@ const RegistrationForm = () => {
 
     onSubmit: values => {
       const { name, email, password } = values;
-
-      dispatch(authOperations.actionRegister({ name, email, password }));
-
-      if (isSuccessRegister) {
-        navigate('/login', { replace: true });
-      }
+      dispatch(authOperations.actionRegister({ name, email, password })).then(
+        ({ payload }) => {
+          if (payload.code === 201) {
+            navigate('/login', { replace: true });
+          }
+        },
+      );
 
       formik.resetForm();
     },

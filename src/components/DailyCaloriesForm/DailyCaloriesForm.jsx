@@ -1,9 +1,5 @@
-// import { toast } from 'react-toastify';
 import { Formik } from 'formik';
 import { useState } from 'react';
-import { useDispatch } from 'react-redux';
-
-import { getUsersAdvice } from '../../redux/app/users/users-operation';
 import Button from '../Button';
 import {
   FormDiv,
@@ -17,19 +13,12 @@ import {
   BtnDiv,
 } from './DailyCaloriesForm.styles';
 
-export default function DailyCaloriesForm({ onBtnClick = false }) {
-  const dispatch = useDispatch();
-
+export default function DailyCaloriesForm({ onFormSubmit }) {
   const [selectedBldType, setSelectedBlbType] = useState('1');
   let formIsValid = false;
 
   const onBldTypeSelect = event => {
     setSelectedBlbType(event.target.value);
-  };
-
-  const onSubmit = () => {
-    if (!formIsValid) return;
-    onBtnClick();
   };
 
   const validate = values => {
@@ -49,21 +38,24 @@ export default function DailyCaloriesForm({ onBtnClick = false }) {
         age: '',
         currentWeight: '',
         desiredWeight: '',
-        bloodType: '',
+        bloodType: '1',
       }}
       validate={validate}
-      onSubmit={values => {
+      onSubmit={(values, { resetForm }) => {
+        if (!formIsValid) return;
+
         const user = {
           userData: {
-            height: values.height,
-            age: values.age,
-            currentWeight: values.currentWeight,
-            desiredWeight: values.desiredWeight,
-            bloodType: values.bloodType,
+            height: String(values.height),
+            age: String(values.age),
+            currentWeight: String(values.currentWeight),
+            desiredWeight: String(values.desiredWeight),
+            bloodType: String(values.bloodType),
           },
         };
 
-        dispatch(getUsersAdvice(user));
+        onFormSubmit(user);
+        resetForm();
       }}
     >
       <FormDiv>
@@ -176,11 +168,7 @@ export default function DailyCaloriesForm({ onBtnClick = false }) {
           </LblDiv1>
 
           <BtnDiv>
-            <Button
-              type="submit"
-              onClickHandler={onSubmit}
-              btnText="Start losing weight"
-            />
+            <Button type="submit" btnText="Start losing weight" />
           </BtnDiv>
         </DCForm>
       </FormDiv>

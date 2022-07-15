@@ -55,7 +55,8 @@ export const current = async () => {
   }
 };
 
-//==================PRODUCTS ADD=====================
+// WTF????????????????????????
+// //==================PRODUCTS ADD=====================
 export const addProduct = async product => {
   try {
     const { data } = await axios.post('/product/addDiaryFood', product);
@@ -65,7 +66,7 @@ export const addProduct = async product => {
   }
 };
 
-//==================PRODUCTS DELETE=====================
+// //==================PRODUCTS DELETE=====================
 
 export const deleteProduct = async id => {
   try {
@@ -76,7 +77,7 @@ export const deleteProduct = async id => {
   }
 };
 
-//==================PRODUCTS GET BY QUERY=====================
+// //==================PRODUCTS GET BY QUERY=====================
 
 export const getProductByQuery = async query => {
   try {
@@ -87,7 +88,7 @@ export const getProductByQuery = async query => {
   }
 };
 
-//==================PRODUCTS GET BY DATA=====================
+// //==================PRODUCTS GET BY DATA=====================
 
 export const getProductsListByDate = async date => {
   try {
@@ -100,13 +101,11 @@ export const getProductsListByDate = async date => {
   }
 };
 
-//==================Advice for Modal=====================
+//==================Advice recomendation for not loggin user=====================
 
-export const adviceForUser = async payload => {
+export const adviceForNoAuthUser = async payload => {
   try {
     const { data } = await axios.post('/users/nutrition-advice', payload);
-
-    console.log(data);
     return data;
   } catch (error) {
     toast.error('Ups, something wrong ');
