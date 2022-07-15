@@ -3,6 +3,7 @@ import { adviceForNoAuthUser } from 'service/axios.config';
 import DailyCaloriesForm from '../../components/DailyCaloriesForm';
 import Modal from '../../components/Modal';
 import { PageWrapper } from './MainPage.styled';
+import Background from '../../components/Background';
 
 export default function MainPage() {
   const [userInfo, setUserInfo] = useState(null);
@@ -22,9 +23,13 @@ export default function MainPage() {
   };
 
   return (
-    <PageWrapper>
-      <DailyCaloriesForm onFormSubmit={submitForm} />
-      {openModal && <Modal userData={userInfo} closeModalHandle={closeModal} />}
-    </PageWrapper>
+    <Background>
+      <PageWrapper>
+        <DailyCaloriesForm onFormSubmit={submitForm} />
+        {openModal && (
+          <Modal userData={userInfo} closeModalHandle={closeModal} />
+        )}
+      </PageWrapper>
+    </Background>
   );
 }

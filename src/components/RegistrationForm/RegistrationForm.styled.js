@@ -97,7 +97,7 @@ const plaseholderButtonStyles = css`
   box-shadow: 0px 4px 10px var(--accent-shadow);
   border-radius: 30px;
   border-color: rgba(117, 190, 218, 0);
-  padding: 13px 50px;
+  padding: 13px 25px;
   color: var(--white);
   cursor: pointer;
 
@@ -107,10 +107,6 @@ const plaseholderButtonStyles = css`
     box-shadow: none;
     color: var(--accent-color);
     background: transparent;
-  }
-
-  @media ${breakpoints.maxTablet} {
-    flex-wrap: nowrap;
   }
 `;
 

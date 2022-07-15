@@ -1,4 +1,4 @@
-import { Children, Suspense, useEffect } from 'react';
+import { Suspense, useEffect } from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
 import Header from 'components/Header';
 import Loader from './components/Loader';
@@ -54,8 +54,8 @@ function App() {
                 <Route path="" element={<LoginPage />} />
               </Route>
 
-              <Route path="/calculator" element={<PrivateRoute />}>
-                {/* <Route path="/calculator" element={<PublicRoute />}> */}
+              {/* <Route path="/calculator" element={<PrivateRoute />}> */}
+              <Route path="/calculator" element={<PublicRoute />}>
                 <Route path="" element={<CalculatorPage />} />
               </Route>
 
@@ -67,7 +67,7 @@ function App() {
             <Route path="" element={<DiaryPage />} />
           </Route>
 
-              <Route path="*" element={<Navigate to="/" />} />
+              <Route path="*" element={<Navigate to="/diary" />} />
             </Routes>
           </Suspense>
           <Toaster />

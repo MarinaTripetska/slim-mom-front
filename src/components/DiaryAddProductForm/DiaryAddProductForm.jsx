@@ -1,4 +1,3 @@
-
 import { useState, Fragment } from 'react';
 import { BsPlusLg } from 'react-icons/bs';
 import {
@@ -85,7 +84,7 @@ export default function DiaryProductForm({ onSubmit, className }) {
           type="submit"
           disabled={selectedProduct === null || weight === '' ? true : false}
         >
-        <BsPlusLg size={14} />
+          <BsPlusLg size={14} />
         </FormBtn>
       </StyledForm>
     </Fragment>

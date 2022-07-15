@@ -12,7 +12,11 @@ export const ContainerWrapper = styled.div`
     padding: 0 32px;
   }
   @media ${breakpoints.desktop} {
-    width: 1280px;
+    width: 100%;
     padding: 0 16px;
+  }
+  @media (min-width: 768px) {
+  .container {
+    padding: 0;
   }
 `;
