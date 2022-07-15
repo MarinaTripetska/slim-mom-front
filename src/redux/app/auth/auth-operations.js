@@ -1,13 +1,15 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
-import { login, register } from 'service/axios.config';
+import { login, register, logout, current } from 'service/axios.config';
 
 const token = {
   set(token) {
+    localStorage.setItem('AUTH_TOKEN', token);
     axios.defaults.headers.Authorization = `Bearer ${token}`;
   },
   unset() {
     axios.defaults.headers.Authorization = '';
+    localStorage.removeItem('AUTH_TOKEN');
   },
 };
 
@@ -16,6 +18,7 @@ const actionRegister = createAsyncThunk(
   async (payload, thunkAPI) => {
     try {
       const response = await register(payload);
+
       return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.response.data);
@@ -28,25 +31,37 @@ const actionLogin = createAsyncThunk(
   async (payload, thunkAPI) => {
     try {
       const { data } = await login(payload);
-      token.set(data.token);
-      return data;
+
+      token.set(data.data.token);
+
+      return data.data;
     } catch (error) {
-      if ((error.status = 401)) {
-        return thunkAPI.rejectWithValue(error.response.data);
-      }
+      return thunkAPI.rejectWithValue(error.response.data);
     }
   },
 );
 
-const logout = createAsyncThunk('auth/loout', async () => {
+const actionLogout = createAsyncThunk('auth/loout', async (_, thunkAPI) => {
   try {
-    await axios.post('/users/logout');
+    await logout();
     token.unset();
   } catch (error) {
-    //
+    return thunkAPI.rejectWithValue(error.response.data);
   }
 });
 
+export const actionCurrent = createAsyncThunk(
+  'auth/current',
+  async (_, { rejectWithValue }) => {
+    try {
+      const { data } = await current();
+      // token.set(data.data.token);
+      return data.data;
+    } catch (err) {
+      return rejectWithValue(err.response.data);
+    }
+  },
+);
 // ДЛЯ ЛОКАЛСТОРЕДЖ, ПОКИ НЕ ПРАЦЮЄ
 // const fetchCurrentUser = createAsyncThunk(
 //   'auth/refresh',
@@ -69,4 +84,9 @@ const logout = createAsyncThunk('auth/loout', async () => {
 //   },
 // );
 
-export const authOperations = { actionRegister, actionLogin, logout };
+export const authOperations = {
+  actionRegister,
+  actionCurrent,
+  actionLogin,
+  actionLogout,
+};

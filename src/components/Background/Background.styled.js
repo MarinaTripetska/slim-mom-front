@@ -5,9 +5,10 @@ import ban from '../../assets/images/banana-tablet.png';
 import leaves from '../../assets/images/leaves-tablet.png';
 import vector from '../../assets/images/vector-tablet.png';
 import frame from '../../assets/images/desktop.png';
+import vector_d from '../../assets/images/vector-desktop.png';
 
 export const Background = styled.div`
-  pointer-events: none;
+  //pointer-events: none;
   position: fixed;
 
   width: 100%;
@@ -32,9 +33,9 @@ export const Background = styled.div`
   @media ${breakpoints.desktop} {
     //  padding: 160px 16px 180px 16px;
     // min-width: 1280px;
-    background-image: url(${frame});
-    background-position: top right;
+    background-image: url(${frame}), url(${vector_d});
+    background-position: bottom right, bottom right;
     background-repeat: no-repeat;
-    background-size: 980px 820px;
+    background-size: 980px 820px, 602px 816px;
   }
 `;

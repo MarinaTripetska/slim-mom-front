@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { authOperations, authSelectors } from '../../redux/app/auth';
 import { useFormik } from 'formik';
 import { useNavigate } from 'react-router-dom';
-import Button from 'components/Button';
+
 import {
   ContainerRegistr,
   TitleRegistr,
@@ -27,9 +27,10 @@ const initialValues = {
 };
 
 const RegistrationForm = () => {
+  const isSuccessRegister = useSelector(authSelectors.getIsSuccess);
+  console.log(isSuccessRegister);
   const dispatch = useDispatch();
   let navigate = useNavigate();
-  const isSuccessRegister = useSelector(authSelectors.getIsSuccess);
 
   const formik = useFormik({
     initialValues,
@@ -52,12 +53,15 @@ const RegistrationForm = () => {
 
     onSubmit: values => {
       const { name, email, password } = values;
-      dispatch(authOperations.actionRegister({ name, email, password }));
-      formik.resetForm();
+      dispatch(authOperations.actionRegister({ name, email, password })).then(
+        ({ payload }) => {
+          if (payload.code === 201) {
+            navigate('/login', { replace: true });
+          }
+        },
+      );
 
-      if (isSuccessRegister) {
-        navigate('/login', { replace: true });
-      }
+      formik.resetForm();
     },
   });
 
@@ -111,12 +115,9 @@ const RegistrationForm = () => {
           </FormRegistrItem>
         </FormRegistrList>
         <ButtonContainer>
-          <StyledNavLink to="/login">Login</StyledNavLink>
-          {/* <Button
-            type="submit"
-            btnText={'Register'}
-                      ></Button> */}
           <RegistrButton type="submit">Register</RegistrButton>
+
+          <StyledNavLink to="/login">Login</StyledNavLink>
         </ButtonContainer>
       </FormRegistr>
     </ContainerRegistr>

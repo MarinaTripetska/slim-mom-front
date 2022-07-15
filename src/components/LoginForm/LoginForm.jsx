@@ -15,8 +15,9 @@ import {
 } from './LoginForm.styled';
 
 import * as Yup from 'yup';
-import { useDispatch } from 'react-redux';
-import { authOperations } from 'redux/app/auth';
+import { useDispatch, useSelector } from 'react-redux';
+import { authOperations, authSelectors } from 'redux/app/auth';
+import { useNavigate } from 'react-router-dom';
 
 const initialValues = {
   name: '',
@@ -25,8 +26,9 @@ const initialValues = {
 };
 
 const LoginForm = () => {
+  const isLoggedIn = useSelector(authSelectors.getIsLoggenIn);
   const dispatch = useDispatch();
-
+  let navigate = useNavigate();
   const formik = useFormik({
     initialValues,
     validationSchema: Yup.object({
@@ -40,6 +42,9 @@ const LoginForm = () => {
       const { email, password } = values;
       dispatch(authOperations.actionLogin({ email, password }));
       formik.resetForm();
+      if (isLoggedIn) {
+        navigate('/diary', { replace: true });
+      }
     },
   });
   return (
