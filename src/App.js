@@ -63,7 +63,7 @@ function App() {
                 <Route path="" element={<DiaryPage />} />
               </Route>
 
-              <Route path="*" element={<Navigate to="/" />} />
+              <Route path="*" element={<Navigate to="/diary" />} />
             </Routes>
           </Suspense>
           <Toaster />
