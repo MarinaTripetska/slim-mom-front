@@ -5,7 +5,7 @@ import DiaryProductsList from '../../components/DiaryProductsList';
 import { PageWrapper } from './DiaryPageStyle';
 import RightSideBar from 'components/RightSideBar';
 
-import {useState, useEffect } from 'react';
+import {useState} from 'react';
 import {addProduct} from '../../redux/app/products/productsOperation';
 import {getProductsList} from '../../redux/app/products/productsSelectors';
 import { useDispatch, useSelector } from 'react-redux';
