@@ -2,7 +2,13 @@ import { createSlice } from '@reduxjs/toolkit';
 import { authOperations } from './auth-operations';
 
 const initialState = {
-  user: { name: null, email: null },
+  user: {
+    name: null,
+    email: null,
+    userInfo: null,
+    userDailyCalorieIntake: null,
+    userNotRecommendedProducts: null,
+  },
   token: null,
   isLoggedIn: false,
   isFetchingUser: false,
@@ -57,6 +63,26 @@ export const authSlice = createSlice({
     [authOperations.actionLogin.rejected](state, action) {
       state.isLoading = false;
       state.isError = true;
+      // state.message = action.payload; // TODO: test it
+    },
+
+    // current user
+
+    [authOperations.actionCurrent.pending](state) {
+      state.isLoading = true;
+      state.isFetchingUser = true;
+    },
+    [authOperations.actionCurrent.fulfilled](state, action) {
+      state.isLoading = false;
+      state.user = action.payload.user;
+      state.token = action.payload.token;
+      state.isFetchingUser = false;
+      state.isLoggedIn = true;
+    },
+    [authOperations.actionCurrent.rejected](state, action) {
+      state.isLoading = false;
+      state.isError = true;
+      state.isFetchingUser = false;
       // state.message = action.payload; // TODO: test it
     },
 
