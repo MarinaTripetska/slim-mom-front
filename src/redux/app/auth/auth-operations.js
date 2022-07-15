@@ -1,6 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
-import { login, register, logout } from 'service/axios.config';
+import { login, register, logout, current } from 'service/axios.config';
 
 const token = {
   set(token) {
@@ -18,7 +18,7 @@ const actionRegister = createAsyncThunk(
   async (payload, thunkAPI) => {
     try {
       const response = await register(payload);
-  
+
       return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.response.data);
@@ -50,6 +50,18 @@ const actionLogout = createAsyncThunk('auth/loout', async (_, thunkAPI) => {
   }
 });
 
+export const actionCurrent = createAsyncThunk(
+  'auth/current',
+  async (_, { rejectWithValue }) => {
+    try {
+      const { data } = await current();
+      // token.set(data.data.token);
+      return data.data;
+    } catch (err) {
+      return rejectWithValue(err.response.data);
+    }
+  },
+);
 // ДЛЯ ЛОКАЛСТОРЕДЖ, ПОКИ НЕ ПРАЦЮЄ
 // const fetchCurrentUser = createAsyncThunk(
 //   'auth/refresh',
@@ -72,4 +84,9 @@ const actionLogout = createAsyncThunk('auth/loout', async (_, thunkAPI) => {
 //   },
 // );
 
-export const authOperations = { actionRegister, actionLogin, actionLogout };
+export const authOperations = {
+  actionRegister,
+  actionCurrent,
+  actionLogin,
+  actionLogout,
+};
