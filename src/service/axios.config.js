@@ -63,11 +63,13 @@ export const current = async () => {
 
 //==================PRODUCTS ADD=====================
 export const addProduct = async product => {
+  console.log(product)
   try {
-    const { data } = await axios.post('/product/addDiaryFood', product);
+    const { data } = await axios.patch('/dietaries', product);
+    console.log(data)
     return data;
   } catch (error) {
-    console.log(error);
+    console.log(error); 
   }
 };
 
@@ -75,7 +77,7 @@ export const addProduct = async product => {
 
 export const deleteProduct = async id => {
   try {
-    const deletedProduct = await axios.delete('/product/delDiaryFood', { id });
+    const deletedProduct = await axios.delete('dietaries/:productId', { id });
     return deletedProduct;
   } catch (error) {
     console.log(error);
@@ -97,7 +99,7 @@ export const getProductByQuery = async query => {
 
 export const getProductsListByDate = async date => {
   try {
-    const { data } = await axios.post('/users/dayinfo', {
+    const { data } = await axios.post('/users/dietaries', {
       day: moment(date).format('DD.MM.yyyy'),
     });
     return data;

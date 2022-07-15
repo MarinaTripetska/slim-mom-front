@@ -2,7 +2,7 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import * as productsApi from '../../../service/axios.config';
 
 export const addProduct = createAsyncThunk(
-  'product/addDiaryFood',
+  'dietaries',
   async (product, { rejectWithValue }) => {
     try {
       const addedProduct = await productsApi.addProduct(product);
@@ -26,7 +26,7 @@ export const getProductsListByDate = createAsyncThunk(
 );
 
 export const deleteProduct = createAsyncThunk(
-  'product/delDiaryFood',
+  'dietaries/:productId',
   async (id, { rejectWithValue }) => {
     try {
       const deletedProduct = await productsApi.deleteProduct(id);
