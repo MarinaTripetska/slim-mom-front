@@ -12,6 +12,11 @@ import {
   PositionSlimMomLog,
   SlimStyleForLogin
 } from './Header.styled';
+import {
+    NavStyleDesktop,
+    BurgerPositionDesktop,
+    NavLinkStyleDesktop,
+} from '../BurgerMenu/BurgerMenu.styled';
 import logoMobile from '../../assets/images/logo-mobile.png';
 import BurgerMenuIcon from '../../assets/images/burger.png';
 import CloseMenuIcon from '../../assets/images/close.png';
@@ -73,31 +78,52 @@ const HeaderRegistrUser = () => {
   );
 };
 
-const HeaderLoginUser = ({register, logout, userName}) => {
+const ShowMenuDesktop = () => {
+  return (
+    <NavStyleDesktop>
+      <BurgerPositionDesktop>
+        <NavLinkStyleDesktop><NavLink to="/diary">diary</NavLink></NavLinkStyleDesktop>
+        <NavLinkStyleDesktop><NavLink to="/calculator">calculator</NavLink></NavLinkStyleDesktop>
+      </BurgerPositionDesktop>
+    </NavStyleDesktop >
+  )
+};
+
+const HeaderLoginUser = ({ register }) => {
   const [userLogIn, setUserLogIn] = useState(true);
   const [openBurgerMenu, setOpenBurgerMenu] = useState(false);
-  const qwe = useSelector(authSelectors.getUserName);
-  console.log(qwe);
+  const [isDesktop, setDesktop] = useState(window.innerWidth > 1279);
+  const userName = useSelector(authSelectors.getUserName);
+      
+    const updateMedia = () => {
+        setDesktop(window.innerWidth > 767);
+  };
+  
+    useEffect(() => {
+        window.addEventListener("resize", updateMedia);
+        return () => window.removeEventListener("resize", updateMedia);
+    });
+
 
   const CloseMenu = () => {
     const HandleClickOpen = e => {
-    e.preventDefault();
-    setOpenBurgerMenu(true);
-    return;
-  };
+      e.preventDefault();
+      setOpenBurgerMenu(true);
+      return;
+    };
 
-  const HandleClickClose = e => {
-    e.preventDefault();
-    setOpenBurgerMenu(false);
-    return;
-  };
+    const HandleClickClose = e => {
+      e.preventDefault();
+      setOpenBurgerMenu(false);
+      return;
+    };
     if (openBurgerMenu) {
       return (
         <ButtonBurger onClick={HandleClickClose}>
           <img src={CloseMenuIcon} alt="CloseMenuIcon" />
         </ButtonBurger>
       );
-      }
+    }
     return (
       <ButtonBurger onClick={HandleClickOpen}>
         <img src={BurgerMenuIcon} alt="BurgerMenuIcon" />
@@ -120,16 +146,17 @@ const HeaderLoginUser = ({register, logout, userName}) => {
               </SlimStyleForLogin>
             </Home>
           </PositionSlimMomLog>
-          <UserInfoMenuLapTop logout={logout} userName={userName} />
-          <CloseMenu/>
+          {isDesktop ? (<ShowMenuDesktop />) : (null)}
+          <UserInfoMenuLapTop userName={userName} />
+          <CloseMenu />
         </NavPositionLog>
-        <UserInfoMenuMobile logout={logout} userName={userName} />
+        <UserInfoMenuMobile userName={userName} />
         <BurgerMenu openBurgerMenu={openBurgerMenu} setOpenBurgerMenu={setOpenBurgerMenu} />
       </div>)
   };
   return (
-        <HeaderRegistrUser/>
-      );
-}
+    <HeaderRegistrUser />
+  );
+};
 
 export {ClearHeader, HeaderRegistrUser, HeaderLoginUser};

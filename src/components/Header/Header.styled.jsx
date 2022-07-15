@@ -23,8 +23,8 @@ export const Home = styled(NavLink)`
   font-size: 14px;
   line-height: 1.214;
   letter-spacing: 0.04em;
-  padding-top: 12px;
-  padding-left: 20px;
+  margin-top: 12px;
+  margin-left: 20px;
     @media ${breakpoints.onlyTablet}{
       margin-left: 32px;
   }
@@ -86,7 +86,7 @@ export const SlimStyleForLogin = styled.p`
   padding-left: 8px;
   align-items: center;
   @media ${breakpoints.desktop}{
-    margin-top: 65px;
+    margin-top: 40px;
     margin-left: -18px;
   }
 `;
@@ -103,6 +103,7 @@ export const ImgPosition = styled.img`
   @media ${breakpoints.desktop} {
     width: 66px;
     height: 70px;
+    margin-top: -8px;
     }
 `;
 

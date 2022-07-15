@@ -18,7 +18,8 @@ import {
     RegistrStyle
 }
     from './UserInfoMenu.styled';
-import './UserInfoMenu.css';
+    import { logout } from '../../service/axios.config';
+
 // import { login, current } from '../../service/axios.config';
 // import { getUserName } from '../../redux/app/auth/auth-selectors';
 import IconBack from '../../assets/images/arrow-mobile.png';
@@ -47,7 +48,8 @@ export const UserInfoMenuMobile = ({ userName = 'No name', logOut = '/home' }) =
         )
 };
 // Non Authenticate User
-export const UserInfoMenuLapTop = ({ userName = 'No name', logOut = '/home' }) => {
+export const UserInfoMenuLapTop = ({ userName = 'No name' }) => {
+    const Exit = logout();
         return (
             <InfoPositionLapTop>
             <UserInfoExitLapTop>
@@ -55,8 +57,8 @@ export const UserInfoMenuLapTop = ({ userName = 'No name', logOut = '/home' }) =
                     <NavLink to='/calculator'>{userName}</NavLink>
                 </UserNameButtonLapTop>
                 <VerticalLapTop></VerticalLapTop>
-                <ExitButtonLapTop onClick={() => console.log("NEED LOGOUT FUNCTION")}>
-                    <NavLink to={logOut}>Exit</NavLink>
+                <ExitButtonLapTop onClick={Exit}>
+                    <NavLink to='/login'>Exit</NavLink>
                 </ExitButtonLapTop>
             </UserInfoExitLapTop>
         </InfoPositionLapTop>

@@ -64,7 +64,7 @@ export const InfoPositionLapTop = styled.div`
         height: 40px;
         justify-content: space-between;
         margin-left: auto;
-        margin-top: 120px;
+        margin-top: 100px;
   }
 `;
 
