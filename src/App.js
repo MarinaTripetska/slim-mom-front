@@ -1,6 +1,6 @@
 import { lazy, Suspense, useEffect } from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
-import Header from 'components/Header';
+// import Header from 'components/Header';
 import Loader from './components/Loader';
 import { PrivateRoute } from 'components/PrivateRoute';
 import { PublicRoute } from 'components/PublicRoute';
@@ -30,7 +30,7 @@ function App() {
     <>
       {!isFetchingUser && (
         <>
-          <Header />
+          {/* <Header /> */}
 
           <Suspense fallback={<Loader />}>
             <Routes>
