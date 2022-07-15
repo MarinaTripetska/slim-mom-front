@@ -86,7 +86,6 @@ export const ButtonContainer = styled.div`
 `;
 
 const plaseholderButtonStyles = css`
-
   display: flex;
   align-items: center;
   justify-content: center;
@@ -108,9 +107,6 @@ const plaseholderButtonStyles = css`
     box-shadow: none;
     color: var(--accent-color);
     background: transparent;
-  }
-
-  
   }
 `;
 

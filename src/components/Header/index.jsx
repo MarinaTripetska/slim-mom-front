@@ -1,16 +1,11 @@
-import HeaderPosition from "./Header";
-import BurgerMenu from 'components/BurgerMenu';
-import { useState } from 'react';
-import {UserInfoMenuMobile} from 'components/UserInfoMenu';
- 
+import {ClearHeader, HeaderRegistrUser, HeaderLoginUser} from "./Header";
+// ClearHeader test
+// HeaderRegistrUser only LoginPage and RegistrationPage
+// HeaderLoginUser all
 const Header = () => {
-  const [openBurgerMenu, setOpenBurgerMenu] = useState(false);
-
   return (
     <div>
-      <HeaderPosition openBurgerMenu={openBurgerMenu} setOpenBurgerMenu={ setOpenBurgerMenu } />
-      <BurgerMenu openBurgerMenu={openBurgerMenu} setOpenBurgerMenu={ setOpenBurgerMenu }/>
-      <UserInfoMenuMobile />
+      <HeaderLoginUser/>
     </div>
   )
 };

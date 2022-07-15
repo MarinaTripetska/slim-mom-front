@@ -6,19 +6,24 @@ import {
 } from './RightSideBar.styles';
 import DailyCalorieIntake from 'components/DailyCalorieIntake';
 
-export default function RightSideBar({ date, daylykCalCount, kcalConsumed }) {
-  let prodList = ''; // Заглушка
+export default function RightSideBar({ date, kcalConsumed, notRecommendProd, calorie }) {
+  // let prodList = notRecommendProd; // Заглушка
 
   return (
     <SideBarDiv>
       <ProdListDiv>
         <DailyCalorieIntake
           date={date}
-          daylykCalCount={daylykCalCount}
+          daylykCalCount={calorie}
           kcalConsumed={kcalConsumed}
         />
         <ListTitle>Food not recommended</ListTitle>
-        <ProdList>{prodList || 'Your diet will be displayed here'}</ProdList>
+        <ProdList>{ 
+            notRecommendProd?.map(product => (
+              <li key={product}>{product}</li>
+            ))}
+          {/* || 'Your diet will be displayed here' */}
+        </ProdList>
       </ProdListDiv>
     </SideBarDiv>
   );

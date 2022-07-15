@@ -18,48 +18,16 @@ import {
     RegistrStyle
 }
     from './UserInfoMenu.styled';
-import './UserInfoMenu.css';
+    import { logout } from '../../service/axios.config';
+
 // import { login, current } from '../../service/axios.config';
 // import { getUserName } from '../../redux/app/auth/auth-selectors';
 import IconBack from '../../assets/images/arrow-mobile.png';
 import { useState } from 'react';
 // import RegistrationForm from '../RegistrationForm';
 
-export const UserAuthenticate = () => {
-    const [userLogIn, setUserLogIn] = useState(false);
-    const signInLink = '/login';
-    const registrationLink = '/register';
-    // const email = `test@test.com`;
-    // const password = `qwerty123`;
-
-    // login({
-    //     "email": "test@test.com",
-    //     "password": "qwerty123"
-    // }).res.data.data.user.name;
-    // current();
-
-    // const authSelectors = {
-    //     getUserName
-    // };
-    if (!userLogIn) {
-        return (
-            <PositionFormSigIn>
-                <PositionSignIn>
-                    <VerticalDesktop/>
-                    <SignInStyle><NavLink to={signInLink} activeclassname="active">sign in</NavLink></SignInStyle>
-                    <RegistrStyle><NavLink to={registrationLink} activeclassname="active">registration</NavLink></RegistrStyle>
-                </PositionSignIn>
-            </PositionFormSigIn >
-        )
-    }
-    console.log(userLogIn);
-    return null;
-};
-
 export const UserInfoMenuMobile = ({ userName = 'No name', logOut = '/home' }) => {
     const navigate = useNavigate();
-    const [userLogIn, setUserLogIn] = useState(false);
-    if (userLogIn) {
         return (
             <InfoPosition>
             <BackButton onClick={() => navigate(-1)}>
@@ -78,13 +46,10 @@ export const UserInfoMenuMobile = ({ userName = 'No name', logOut = '/home' }) =
             </UserInfoExit>
         </InfoPosition>
         )
-    }
-    return null;
 };
 // Non Authenticate User
-export const UserInfoMenuLapTop = ({ userName = 'No name', logOut = '/home' }) => {
-        const [userLogIn, setUserLogIn] = useState(false);
-    if (userLogIn) {
+export const UserInfoMenuLapTop = ({ userName = 'No name' }) => {
+    const Exit = logout();
         return (
             <InfoPositionLapTop>
             <UserInfoExitLapTop>
@@ -92,12 +57,10 @@ export const UserInfoMenuLapTop = ({ userName = 'No name', logOut = '/home' }) =
                     <NavLink to='/calculator'>{userName}</NavLink>
                 </UserNameButtonLapTop>
                 <VerticalLapTop></VerticalLapTop>
-                <ExitButtonLapTop onClick={() => console.log("NEED LOGOUT FUNCTION")}>
-                    <NavLink to={logOut}>Exit</NavLink>
+                <ExitButtonLapTop onClick={Exit}>
+                    <NavLink to='/login'>Exit</NavLink>
                 </ExitButtonLapTop>
             </UserInfoExitLapTop>
         </InfoPositionLapTop>
         )
-    }
-    return null;
 };

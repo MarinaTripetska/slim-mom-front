@@ -6,6 +6,11 @@ const getIsError = state => state.auth.isError;
 const getIsSuccess = state => state.auth.isSuccess;
 const getIsLoading = state => state.auth.isLoading;
 
+const getUserInfo = state => state.auth.user.userInfo;
+const getUserAdviceCalorie = state => state.auth.user.userDailyCalorieIntake;
+const getUserNotRecommendProd = state =>
+  state.auth.user.userNotRecommendedProducts;
+
 const gesIsErrorData = state => {
   const message = getMessage(state);
   const isError = getIsError(state);
@@ -30,4 +35,7 @@ export const authSelectors = {
   getMessage,
   getIsError,
   gesIsErrorData,
+  getUserInfo,
+  getUserAdviceCalorie,
+  getUserNotRecommendProd,
 };
