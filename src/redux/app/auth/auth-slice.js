@@ -27,12 +27,13 @@ export const authSlice = createSlice({
   },
 
   extraReducers: {
-    //registration:
+    // register
+
     [authOperations.actionRegister.pending](state) {
       state.isLoading = true;
     },
     [authOperations.actionRegister.fulfilled](state, action) {
-      state.user = action.payload.user; //????
+      // state.user = action.payload.user; //????
       state.isSuccess = true;
       state.isLoading = false;
     },
@@ -42,15 +43,13 @@ export const authSlice = createSlice({
       state.message = action.payload;
     },
 
-    // [authOperations.register.fulfilled](state, action) {
-    //   state.user = action.payload.user;
-    //   state.token = action.payload.token;
-    //   state.isLoggedIn = true;
-    // },
+    // login
+
     [authOperations.actionLogin.pending](state) {
       state.isLoading = true;
     },
     [authOperations.actionLogin.fulfilled](state, action) {
+      state.isLoading = false;
       state.user = action.payload.user;
       state.token = action.payload.token;
       state.isLoggedIn = true;
@@ -58,10 +57,12 @@ export const authSlice = createSlice({
     [authOperations.actionLogin.rejected](state, action) {
       state.isLoading = false;
       state.isError = true;
-      state.message = action.payload;
+      state.message = action.payload; // TODO: test it
     },
 
-    [authOperations.logout.fulfilled](state, _) {
+    // logout
+
+    [authOperations.actionLogout.fulfilled](state, _) {
       state.user = { name: null, email: null };
       state.token = null;
       state.isLoggedIn = false;

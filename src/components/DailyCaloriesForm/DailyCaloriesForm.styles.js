@@ -47,12 +47,12 @@ const FormLabel = styled.label`
   }
   & .tooltiptext {
     visibility: hidden;
-    width: 120px;
+    width: fit-content;
     background-color: #fc842d;
     color: #fff;
     text-align: center;
     border-radius: 6px;
-    padding: 5px 0;
+    padding: 5px 10px;
     position: absolute;
     z-index: 1;
     bottom: 100%;
@@ -73,11 +73,21 @@ const TextInp = styled(Field)`
   display: block;
   border: none;
   width: 240px;
-  border-bottom: 1px solid #e0e0e0;
+  border-bottom: 1px solid rgb(224, 224, 224);
+  &:focus,
+  &:hover {
+    outline: none;
+  }
+  &:valid {
+    border-bottom: 1px solid rgba(0, 255, 55, 0.671);
+  }
+  &:invalid {
+    border-bottom: 1px solid rgba(255, 0, 0, 0.671);
+  }
 `;
 
 const BlList = styled.ul`
-  font-family: 'Verdana';
+  /* font-family: 'Verdana'; */
   font-style: normal;
   font-weight: 700;
   font-size: 14px;

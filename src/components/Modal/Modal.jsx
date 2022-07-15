@@ -1,4 +1,5 @@
 import { useEffect } from 'react';
+import { getAdviceToModal } from 'redux/app/users/users-selectors';
 import {
   Overlay,
   ModalDiv,
@@ -8,7 +9,14 @@ import {
 } from './Modal.styles';
 import Button from '../Button';
 
+import { useSelector } from 'react-redux';
+
+
 function Modal({ closeModalHandle }) {
+  const advice = useSelector(getAdviceToModal);
+
+const { recommendKkal, recommendProd} = advice;
+
   useEffect(() => {
     window.addEventListener('keydown', escKeyHandle);
     return () => {
@@ -38,14 +46,15 @@ function Modal({ closeModalHandle }) {
       <ModalDiv>
         <ModalTtl>Your recommended daily calorie intake is</ModalTtl>
         <KcalCount>
-          2800<span> ккал</span>
+           {recommendKkal}<span> ккал</span>
         </KcalCount>
         <ProdList>
           <p>Foods you should not eat</p>
-          <li>Flour products</li>
-          <li>Milk</li>
-          <li>Red meat</li>
-          <li>Smoked meats</li>
+          <ul>
+            {recommendProd?.map(product =>
+              <li key={product} >{product}</li>)}
+          </ul> 
+          
         </ProdList>
         <Button
           onClickHandler={onBtnClickHandle}

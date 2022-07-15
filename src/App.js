@@ -32,10 +32,6 @@ function App() {
             <Route path="" element={<MainPage />} />
           </Route>
 
-          {/* <Route path="/" element={<PrivateRoute />}>           
-            <Route path="" element={<CalculatorPage />} />
-          </Route> */}
-
           <Route
             path="/register"
             element={<PublicRoute restricted navigateTo="/diary" />}
