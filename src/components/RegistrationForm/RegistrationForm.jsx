@@ -97,7 +97,7 @@ const RegistrationForm = () => {
               type="text"
               // pattern="([A-z0-9_.-]{1,})@([A-z0-9_.-]{1,}).([A-z]{2,8})"
               onChange={formik.handleChange}
-              password
+              // password
               value={formik.values.email}
             />
             {formik.touched.email && formik.errors.email ? (
