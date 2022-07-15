@@ -4,9 +4,10 @@ import bgi from '../../assets/images/leaves-desktop.png';
 const SideBarDiv = styled.div`
   background: #f0f1f3;
   background-image: url(${bgi});
+  margin: auto;
 
   background-repeat: no-repeat;
-  max-width: 520px;
+  // max-width: 520px;
   height: 850px;
   max-height: 850px;
 
@@ -14,7 +15,7 @@ const SideBarDiv = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  @media (max-width: 768px) {
+  @media (max-width: 1280px) {
     height: auto;
     max-height: fit-content;
     max-width: 100vw;
