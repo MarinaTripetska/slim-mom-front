@@ -106,7 +106,20 @@ export const authSlice = createSlice({
     // [authOperations.fetchCurrentUser.rejected](state) {
     //   state.isFetchingUser = false;
     // },
+
+    [authOperations.getUsersAdvice.pending](state, _) {
+      //
+    },
+    [authOperations.getUsersAdvice.fulfilled](state, { payload }) {
+      state.user = {
+        userDailyCalorieIntake: payload.userDailyCalorieIntake,
+        userNotRecommendedProducts: [...payload.userNotRecommendedProducts],
+      };
+    },
+    [authOperations.getUsersAdvice.rejected](state, _) {
+      //
+    },
   },
 });
 
-export const { login, logout, reset } = authSlice.actions;
+export const { login, logout, reset, advice } = authSlice.actions;

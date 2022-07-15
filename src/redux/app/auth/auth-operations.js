@@ -1,6 +1,12 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
-import { login, register, logout, current } from 'service/axios.config';
+import {
+  login,
+  register,
+  logout,
+  current,
+  adviceForLoginUser,
+} from 'service/axios.config';
 
 const token = {
   set(token) {
@@ -62,6 +68,20 @@ export const actionCurrent = createAsyncThunk(
     }
   },
 );
+
+export const getUsersAdvice = createAsyncThunk(
+  'auth/adviceForLoginUsers',
+  async credentials => {
+    try {
+      const { data } = await adviceForLoginUser(credentials);
+      console.log(data.user);
+      return data.user;
+    } catch (error) {
+      console.log(error.message);
+    }
+  },
+);
+
 // ДЛЯ ЛОКАЛСТОРЕДЖ, ПОКИ НЕ ПРАЦЮЄ
 // const fetchCurrentUser = createAsyncThunk(
 //   'auth/refresh',
@@ -89,4 +109,5 @@ export const authOperations = {
   actionCurrent,
   actionLogin,
   actionLogout,
+  getUsersAdvice,
 };
