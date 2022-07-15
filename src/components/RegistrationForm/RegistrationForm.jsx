@@ -39,6 +39,7 @@ const RegistrationForm = () => {
       name: Yup.string()
         .min(3, 'Min 3 symbols')
         .max(254, 'Max 254 symbols')
+        .matches(/[A-z]/, 'Only alphabets are allowed for this field ')
         .required('Required'),
       email: Yup.string()
         .email('Invalid email')
@@ -48,6 +49,10 @@ const RegistrationForm = () => {
       password: Yup.string()
         .min(8, 'Min 8 symbols')
         .max(100, 'Max 100 symbols')
+        .matches(
+          /[A-z0-9]/,
+          'Passworw should have letters and numbers, no special  symbols',
+        )
         .required('Required'),
     }),
 
@@ -76,7 +81,7 @@ const RegistrationForm = () => {
               id="name"
               name="name"
               type="text"
-              pattern="([A-z])"
+              // pattern="([A-z])"
               onChange={formik.handleChange}
               value={formik.values.name}
             />
@@ -89,10 +94,10 @@ const RegistrationForm = () => {
             <FormRegistrInput
               id="email"
               name="email"
-              type="email"
-              pattern="([A-z0-9_.-]{1,})@([A-z0-9_.-]{1,}).([A-z]{2,8})"
+              type="text"
+              // pattern="([A-z0-9_.-]{1,})@([A-z0-9_.-]{1,}).([A-z]{2,8})"
               onChange={formik.handleChange}
-              password
+              // password
               value={formik.values.email}
             />
             {formik.touched.email && formik.errors.email ? (
@@ -105,7 +110,7 @@ const RegistrationForm = () => {
               id="password"
               name="password"
               type="password"
-              pattern="([A-z0-9])"
+              // pattern="([A-z0-9])"
               onChange={formik.handleChange}
               value={formik.values.password}
             />

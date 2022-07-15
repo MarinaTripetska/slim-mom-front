@@ -26,8 +26,7 @@ export const register = async ({ name, email, password }) => {
 export const login = async ({ email, password }) => {
   try {
     const res = await axios.post(`/users/login`, { email, password });
-    // toast.success('Authorization success');
-    // console.log(res.data.data.user.name);
+
     if (res.data.code === 200) {
       toast.success(`Welcome ${res.data.data.user.name}`);
     }
@@ -53,9 +52,9 @@ export const logout = async () => {
 export const current = async () => {
   try {
     const res = await axios.get(`/users/current`);
-    if (res.data.code === 200) {
-      toast.success(`Welcome ${res.data.data.user.name}`);
-    }
+    // if (res.data.code === 200) {
+    // toast.success(`Welcome ${res.data.data.user.name}`);
+    // }
     return res;
   } catch (error) {
     // toast.error('User not found');
@@ -112,6 +111,20 @@ export const getProductsListByDate = async date => {
 export const adviceForNoAuthUser = async payload => {
   try {
     const { data } = await axios.post('/users/nutrition-advice', payload);
+    return data;
+  } catch (error) {
+    toast.error('Ups, something wrong ');
+  }
+};
+
+//==================Advice recomendation for Login in user=====================
+
+export const adviceForLoginUser = async payload => {
+  try {
+    const { data } = await axios.post(
+      '/users/logged-nutrition-advice',
+      payload,
+    );
     return data;
   } catch (error) {
     toast.error('Ups, something wrong ');

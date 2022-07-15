@@ -54,8 +54,8 @@ function App() {
                 <Route path="" element={<LoginPage />} />
               </Route>
 
-              <Route path="/calculator" element={<PrivateRoute />}>
-                {/* <Route path="/calculator" element={<PublicRoute />}> */}
+              {/* <Route path="/calculator" element={<PrivateRoute />}> */}
+              <Route path="/calculator" element={<PublicRoute />}>
                 <Route path="" element={<CalculatorPage />} />
               </Route>
 
@@ -63,7 +63,7 @@ function App() {
                 <Route path="" element={<DiaryPage />} />
               </Route>
 
-              <Route path="*" element={<Navigate to="/" />} />
+              <Route path="*" element={<Navigate to="/diary" />} />
             </Routes>
           </Suspense>
           <Toaster />
