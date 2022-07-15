@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { getAdviceToModal } from 'redux/app/users/users-selectors';
+// import { getAdviceToModal } from 'redux/app/users/users-selectors';
 import {
   Overlay,
   ModalDiv,
@@ -9,14 +9,13 @@ import {
 } from './Modal.styles';
 import Button from '../Button';
 
-import { useSelector } from 'react-redux';
+// import { useSelector } from 'react-redux';
 
-
-function Modal({ closeModalHandle }) {
-  const advice = useSelector(getAdviceToModal);
-
-const { recommendKkal, recommendProd} = advice;
-
+// closeModalHandle
+function Modal({
+  closeModalHandle,
+  userData: { userDailyCalorieIntake, userNotRecommendedProducts },
+}) {
   useEffect(() => {
     window.addEventListener('keydown', escKeyHandle);
     return () => {
@@ -30,14 +29,12 @@ const { recommendKkal, recommendProd} = advice;
       closeModalHandle();
     }
   };
-
   const onClickOvrlHandle = event => {
     if (event.target.id === 'modal-overlay') {
       closeModalHandle();
     }
   };
   const onBtnClickHandle = () => {
-    //...
     closeModalHandle();
   };
 
@@ -46,15 +43,16 @@ const { recommendKkal, recommendProd} = advice;
       <ModalDiv>
         <ModalTtl>Your recommended daily calorie intake is</ModalTtl>
         <KcalCount>
-           {recommendKkal}<span> ккал</span>
+          {userDailyCalorieIntake}
+          <span> ккал</span>
         </KcalCount>
         <ProdList>
           <p>Foods you should not eat</p>
           <ul>
-            {recommendProd?.map(product =>
-              <li key={product} >{product}</li>)}
-          </ul> 
-          
+            {userNotRecommendedProducts?.map(product => (
+              <li key={product}>{product}</li>
+            ))}
+          </ul>
         </ProdList>
         <Button
           onClickHandler={onBtnClickHandle}
