@@ -26,8 +26,7 @@ export const register = async ({ name, email, password }) => {
 export const login = async ({ email, password }) => {
   try {
     const res = await axios.post(`/users/login`, { email, password });
-    // toast.success('Authorization success');
-    // console.log(res.data.data.user.name);
+
     if (res.data.code === 200) {
       toast.success(`Welcome ${res.data.data.user.name}`);
     }
@@ -53,9 +52,9 @@ export const logout = async () => {
 export const current = async () => {
   try {
     const res = await axios.get(`/users/current`);
-    if (res.data.code === 200) {
-      toast.success(`Welcome ${res.data.data.user.name}`);
-    }
+    // if (res.data.code === 200) {
+    // toast.success(`Welcome ${res.data.data.user.name}`);
+    // }
     return res;
   } catch (error) {
     // toast.error('User not found');

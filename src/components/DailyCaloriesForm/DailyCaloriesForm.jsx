@@ -14,7 +14,11 @@ import {
 } from './DailyCaloriesForm.styles';
 
 export default function DailyCaloriesForm({ onFormSubmit, userInfo = false }) {
-  const [selectedBldType, setSelectedBlbType] = useState('1');
+  const [selectedBldType, setSelectedBlbType] = useState(() =>
+    userInfo ? userInfo.bloodType : '1',
+  );
+  
+  const [btnIsDisabled, setBtnIsDisabled] = useState(true);
   let formIsValid = false;
 
   const onBldTypeSelect = event => {

@@ -32,10 +32,18 @@ const LoginForm = () => {
   const formik = useFormik({
     initialValues,
     validationSchema: Yup.object({
-      email: Yup.string().email('Invalid email').required('Required'),
+      email: Yup.string()
+        .email('Invalid email')
+        .min(3, 'Min 3 symbols')
+        .max(254, 'Max 254 symbols')
+        .required('Required'),
       password: Yup.string()
         .min(8, 'Min 8 symbols')
         .max(100, 'Max 100 symbols')
+        .matches(
+          /[A-z0-9]/,
+          'Passworw should have letters and numbers, no special  symbols',
+        )
         .required('Required'),
     }),
     onSubmit: values => {
@@ -57,8 +65,7 @@ const LoginForm = () => {
             <FormLoginInput
               id="email"
               name="email"
-              type="email"
-              pattern="([A-z0-9_.-]{1,})@([A-z0-9_.-]{1,}).([A-z]{2,8})"
+              type="text"
               onChange={formik.handleChange}
               password
               value={formik.values.email}
@@ -73,7 +80,6 @@ const LoginForm = () => {
               id="password"
               name="password"
               type="password"
-              pattern="([A-z0-9])"
               onChange={formik.handleChange}
               value={formik.values.password}
             />
