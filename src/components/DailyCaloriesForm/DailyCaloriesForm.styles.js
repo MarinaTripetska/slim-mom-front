@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { Field, Form } from 'formik';
+import { breakpoints } from '../../assets/sizes';
 
 const FormDiv = styled.div`
   display: flex;
@@ -19,14 +20,14 @@ const LblDiv1 = styled.div`
 
 const FormP = styled.p`
   margin-left: 30px;
+  font-size: 18px;
   font-family: 'Verdana';
   font-style: normal;
-  font-weight: 700;
-  font-size: 34px;
   line-height: 1.206;
+  font-weight: 700;
   color: #212121;
-  @media (max-width: 320px) {
-    font-size: 18px;
+  @media (min-width: 768px) {
+    font-size: 34px;
     line-height: 1.444;
   }
 `;
@@ -149,16 +150,23 @@ const RadioInp = styled(Field)`
 `;
 
 const BtnDiv = styled.div`
-  margin-top: 60px;
+  // margin-top: 60px;
 
-  // margin-left: 350px;
-  padding-bottom: 60px;
-  @media (max-width: 768px) {
-    margin: 40px 0 auto;
-    //padding-bottom: 60px;
-    @media (min-width: 1280px) {
-      margin-left: auto;
-    }
+  // margin-left: 32px;
+  // padding-bottom: 60px;
+  // @media (max-width: 768px) {
+  //   margin: 40px auto 0 auto;
+  //   //padding-bottom: 60px;
+  //   @media (min-width: 1280px) {
+  //     margin-left: auto;
+  //   }
+  // }
+  margin: 40px auto 0 auto;
+  @media ${breakpoints.tablet} {
+    margin: 60px auto 0 32px;
+  }
+  @media ${breakpoints.desktop} {
+    margin: 60px 0px 0 339px;
   }
 `;
 
