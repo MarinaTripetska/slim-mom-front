@@ -1,6 +1,7 @@
 import axios from 'axios';
 import moment from 'moment';
 import { toast } from 'react-toastify';
+
 axios.defaults.baseURL = `https://slim-mom-back.herokuapp.com/api/v1`;
 axios.defaults.headers.common['Authorization'] = `Bearer ${localStorage.getItem(
   'AUTH_TOKEN',
@@ -25,8 +26,11 @@ export const register = async ({ name, email, password }) => {
 export const login = async ({ email, password }) => {
   try {
     const res = await axios.post(`/users/login`, { email, password });
-    toast.success('Authorization success');
-    console.log(res.data.data.user.name);
+    // toast.success('Authorization success');
+    // console.log(res.data.data.user.name);
+    if (res.data.code === 200) {
+      toast.success(`Welcome ${res.data.data.user.name}`);
+    }
     return res;
   } catch (error) {
     // TODO: error on wrong auth data
@@ -49,14 +53,16 @@ export const logout = async () => {
 export const current = async () => {
   try {
     const res = await axios.get(`/users/current`);
+    if (res.data.code === 200) {
+      toast.success(`Welcome ${res.data.data.user.name}`);
+    }
     return res;
   } catch (error) {
-    toast.error('User not found');
+    // toast.error('User not found');
   }
 };
 
-// WTF????????????????????????
-// //==================PRODUCTS ADD=====================
+//==================PRODUCTS ADD=====================
 export const addProduct = async product => {
   try {
     const { data } = await axios.post('/product/addDiaryFood', product);

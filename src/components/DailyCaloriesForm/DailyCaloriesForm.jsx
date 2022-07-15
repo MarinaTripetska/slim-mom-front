@@ -13,13 +13,23 @@ import {
   BtnDiv,
 } from './DailyCaloriesForm.styles';
 
-export default function DailyCaloriesForm({ onFormSubmit }) {
+export default function DailyCaloriesForm({ onFormSubmit, userInfo = false }) {
   const [selectedBldType, setSelectedBlbType] = useState('1');
   let formIsValid = false;
 
   const onBldTypeSelect = event => {
     setSelectedBlbType(event.target.value);
   };
+
+  const inivialValues = userInfo
+    ? userInfo
+    : {
+        height: '',
+        age: '',
+        currentWeight: '',
+        desiredWeight: '',
+        bloodType: '1',
+      };
 
   const validate = values => {
     const { height, age, desiredWeight, currentWeight, bldType } = values;
@@ -33,13 +43,7 @@ export default function DailyCaloriesForm({ onFormSubmit }) {
 
   return (
     <Formik
-      initialValues={{
-        height: '',
-        age: '',
-        currentWeight: '',
-        desiredWeight: '',
-        bloodType: '1',
-      }}
+      initialValues={inivialValues}
       validate={validate}
       onSubmit={(values, { resetForm }) => {
         if (!formIsValid) return;
