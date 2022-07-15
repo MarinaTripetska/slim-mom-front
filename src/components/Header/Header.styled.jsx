@@ -71,7 +71,7 @@ export const SlimStyle = styled.p`
       display: none;
     }
   @media ${breakpoints.desktop}{
-    margin-top: 65px;
+    margin-top: 30px;
     margin-left: -18px;
   }
 `;
