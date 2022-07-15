@@ -84,6 +84,10 @@ const TextInp = styled(Field)`
   &:invalid {
     border-bottom: 1px solid rgba(255, 0, 0, 0.671);
   }
+  &::-webkit-outer-spin-button,
+  ::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+  }
 `;
 
 const BlList = styled.ul`
