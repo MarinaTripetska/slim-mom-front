@@ -1,17 +1,15 @@
 import DailyCaloriesForm from '../../components/DailyCaloriesForm';
-//import { PageWrapper } from './CalculatorPage.styled';
 import RightSideBar from 'components/RightSideBar';
 import { Section } from './CalculatorPage.styled';
-import Container from '../../components/Container';
-import { ContainerBar } from './CalculatorPage.styled';
+import { ContainerBar, ContainerForm } from './CalculatorPage.styled';
 
 const CalculatorPage = () => {
   return (
     <>
       <Section>
-        <Container>
+        <ContainerForm>
           <DailyCaloriesForm />
-        </Container>
+        </ContainerForm>
         <ContainerBar>
           <RightSideBar />
         </ContainerBar>

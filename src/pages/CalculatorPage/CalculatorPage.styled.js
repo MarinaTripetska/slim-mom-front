@@ -21,6 +21,23 @@ export const Section = styled.div`
     display: flex;
   }
 `;
+export const ContainerForm = styled.div`
+  margin: auto;
+  @media ${breakpoints.maxTablet} {
+    width: 320px;
+    padding: 32px 20px 41px;
+  }
+  @media ${breakpoints.tablet} {
+    width: 768px;
+    padding: 68px 32px 48px;
+  }
+  @media ${breakpoints.desktop} {
+    width: 100%;
+    padding: 150px 16px 111px 16px;
+  }
+  
+  }
+`;
 
 export const ContainerBar = styled.div`
   margin: auto;
@@ -35,7 +52,7 @@ export const ContainerBar = styled.div`
   }
   @media ${breakpoints.desktop} {
     width: 1280px;
-    padding: 0 16px;
+    //padding: 0 16px;
     margin-left: auto;
   }
 `;
