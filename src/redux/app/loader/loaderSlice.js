@@ -17,4 +17,4 @@ export const { loaderAction } = loaderSlice.actions;
 export default loaderSlice.reducer;
 
 // SELECTOR
-export const getIsLoading = state => state.isLoading;
+export const getIsLoading = state => state.loader.isLoading;

@@ -81,7 +81,8 @@ const TextInp = styled(Field)`
   &:valid {
     border-bottom: 1px solid rgba(0, 255, 55, 0.671);
   }
-  &:invalid {
+  &:focus,
+  :hover + :invalid {
     border-bottom: 1px solid rgba(255, 0, 0, 0.671);
   }
   &::-webkit-outer-spin-button,
