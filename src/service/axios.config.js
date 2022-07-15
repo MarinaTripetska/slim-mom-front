@@ -64,8 +64,10 @@ export const current = async () => {
 
 //==================PRODUCTS ADD=====================
 export const addProduct = async product => {
+  console.log(product)
   try {
-    const { data } = await axios.post('/product/addDiaryFood', product);
+    const { data } = await axios.post('dietaries', product);
+    console.log(data)
     return data;
   } catch (error) {
     console.log(error);
@@ -76,7 +78,7 @@ export const addProduct = async product => {
 
 export const deleteProduct = async id => {
   try {
-    const deletedProduct = await axios.delete('/product/delDiaryFood', { id });
+    const deletedProduct = await axios.delete('dietaries/:productId', { id });
     return deletedProduct;
   } catch (error) {
     console.log(error);
@@ -87,7 +89,7 @@ export const deleteProduct = async id => {
 
 export const getProductByQuery = async query => {
   try {
-    const { data } = await axios.get(`/product/${query}`);
+    const { data } = await axios.get(`/products/search?query=${query}`);
     return data;
   } catch (error) {
     console.log(error);

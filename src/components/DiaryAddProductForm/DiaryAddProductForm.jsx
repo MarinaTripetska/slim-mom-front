@@ -12,11 +12,11 @@ import {
 import { getProductByQuery } from '../../service/axios.config';
 
 const loadOptions = async (inputValue, callback) => {
-  const { products } = await getProductByQuery(inputValue);
+  const { data } = await getProductByQuery(inputValue);
   callback(
-    products.map(product => {
+    data.result.map(product => {
       const title = product.title;
-      console.log(product)
+      
       return { label: title, value: title };
       
     })
@@ -29,16 +29,18 @@ export default function DiaryProductForm({ onSubmit, className }) {
 
   const handleSubmit = event => {
     event.preventDefault();
+    const weightNumber = parseInt(weight);
+    if (!selectedProduct || isNaN(weightNumber)) return;
     onSubmit({
-      product: selectedProduct,
-      weight: weight,
+      product: selectedProduct.value,
+      weight: weightNumber,
     });
 
     reset();
   };
 
   const reset = () => {
-    setSelectedProduct('');
+    setSelectedProduct(null);
     setWeight('');
   };
 
@@ -47,11 +49,22 @@ export default function DiaryProductForm({ onSubmit, className }) {
       <StyledForm onSubmit={handleSubmit} className={className}>
         <FormLabel>
           <FormInputProduct
+            isClearable
+            backspaceRemovesValue
+            escapeClearsValue
             classNamePrefix={'react-select'}
-            defaultValue={selectedProduct}
-            onChange={option => setSelectedProduct(option.value)}
+            value={selectedProduct}
+            onChange={option => setSelectedProduct(option)}
             loadOptions={loadOptions}
-            placeholder="Введите название продукта"
+            placeholder="Enter product name"
+            noOptionsMessage={({ selectedProduct }) =>
+              !selectedProduct
+                ? 'Enter product name'
+                : 'There is no such product'
+            }
+            loadingMessage={({ selectedProduct }) =>
+              !selectedProduct ? 'Searching...' : 'There is no such product'
+            }
           />
         </FormLabel>
         <FormLabel>
@@ -59,18 +72,17 @@ export default function DiaryProductForm({ onSubmit, className }) {
             type="number"
             min={1}
             name="weight"
-            title="Введите вес продукта"
+            title="Enter product weight"
             required
             value={weight}
             onChange={e => setWeight(e.target.value)}
-            placeholder="Грамм"
+            placeholder="Grams"
           />
         </FormLabel>
-        <FormBtnMobile type="submit">Добавить</FormBtnMobile>
+        <FormBtnMobile type="submit">Add</FormBtnMobile>
 
         <FormBtn
           type="submit"
-          // selectedProduct должны прийти с бека
           disabled={selectedProduct === null || weight === '' ? true : false}
         >
         <BsPlusLg size={14} />

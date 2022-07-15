@@ -1,14 +1,15 @@
-import  {DiaryProductListItem}  from "../DiaryProductListItem";
+import  DiaryProductListItem from "../DiaryProductListItem";
 import { ProductsList, ProductsListThumb } from "./DiaryProductsListStyle";
-const DiaryProductsList = ({ products=[] }) => {
-    
+const DiaryProductsList = ({products=[]}) => {
+console.log(products)
    return (
    <>
-     {products.length !== 0 && <ProductsListThumb>
+     {products.length > 0 && (
+    <ProductsListThumb>
         <ProductsList>
-            {products.map( product => (<DiaryProductListItem key={product._id} product={product} /> ))} 
+        {products.map( product => (<DiaryProductListItem  product={product} /> ))} 
         </ProductsList>
-    </ProductsListThumb>}
+    </ProductsListThumb>)}
    </>
 )
 };
