@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-const initialState = { isShown: false };
+const initialState = { isLoading: false };
 
 export const loaderSlice = createSlice({
   name: 'loader',
@@ -17,4 +17,4 @@ export const { loaderAction } = loaderSlice.actions;
 export default loaderSlice.reducer;
 
 // SELECTOR
-export const getLoaderStatus = state => state.loader;
+export const getIsLoading = state => state.isLoading;

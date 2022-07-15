@@ -1,4 +1,5 @@
 import { useEffect } from 'react';
+// import { getAdviceToModal } from 'redux/app/users/users-selectors';
 import {
   Overlay,
   ModalDiv,
@@ -8,7 +9,13 @@ import {
 } from './Modal.styles';
 import Button from '../Button';
 
-function Modal({ closeModalHandle }) {
+// import { useSelector } from 'react-redux';
+
+// closeModalHandle
+function Modal({
+  closeModalHandle,
+  userData: { userDailyCalorieIntake, userNotRecommendedProducts },
+}) {
   useEffect(() => {
     window.addEventListener('keydown', escKeyHandle);
     return () => {
@@ -22,14 +29,12 @@ function Modal({ closeModalHandle }) {
       closeModalHandle();
     }
   };
-
   const onClickOvrlHandle = event => {
     if (event.target.id === 'modal-overlay') {
       closeModalHandle();
     }
   };
   const onBtnClickHandle = () => {
-    //...
     closeModalHandle();
   };
 
@@ -38,14 +43,16 @@ function Modal({ closeModalHandle }) {
       <ModalDiv>
         <ModalTtl>Your recommended daily calorie intake is</ModalTtl>
         <KcalCount>
-          2800<span> ккал</span>
+          {userDailyCalorieIntake}
+          <span> ккал</span>
         </KcalCount>
         <ProdList>
           <p>Foods you should not eat</p>
-          <li>Flour products</li>
-          <li>Milk</li>
-          <li>Red meat</li>
-          <li>Smoked meats</li>
+          <ul>
+            {userNotRecommendedProducts?.map(product => (
+              <li key={product}>{product}</li>
+            ))}
+          </ul>
         </ProdList>
         <Button
           onClickHandler={onBtnClickHandle}

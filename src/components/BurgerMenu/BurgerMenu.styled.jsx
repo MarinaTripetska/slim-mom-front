@@ -1,14 +1,16 @@
+import { breakpoints } from 'assets/sizes';
 import styled from 'styled-components';
 
-const NavStyle = styled.div`
+export const NavStyle = styled.div`
   width: 100%;
   height: 100vh;
   background-color: #264061;
-    @media (min-width: 1200px) {
+@media ${breakpoints.desktop}{
     display: none;
   }
-`
-const BurgerPosition = styled.ul`
+`;
+
+export const BurgerPosition = styled.ul`
   font-family: 'Verdana';
   font-style: normal;
   font-weight: 700;
@@ -21,15 +23,15 @@ const BurgerPosition = styled.ul`
   text-transform: uppercase;
   padding-top: 60px;
   color: #ffffff;
-  @media (min-width: 767px) {
+@media ${breakpoints.tablet}{
     font-size: 24px;
     line-height: 2.1;
       padding-top: 100px;
   }
-`
-const NavLinkStyle = styled.li`
+`;
+
+export const NavLinkStyle = styled.li`
       :hover{
     color: #9B9FAA;
   }
-`
-export { NavStyle, BurgerPosition, NavLinkStyle };
+`;
