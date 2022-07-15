@@ -50,7 +50,8 @@ function App() {
             {/* <Route path="" element={<CalculatorPage />} /> */}
           </Route>
 
-          <Route path="/diary" element={<PrivateRoute />}>
+          {/* element={<PrivateRoute />} */}
+          <Route path="/diary">
             <Route path="" element={<DiaryPage />} />
           </Route>
 
