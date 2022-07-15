@@ -4,6 +4,7 @@ import Loader from 'components/Loader';
 import { useSelector } from 'react-redux';
 import { authSelectors } from 'redux/app/auth';
 import Background from '../../components/Background';
+import Header from '../../components/Header';
 
 const LoginPage = () => {
   const isLoading = useSelector(authSelectors.getIsLoading);
@@ -11,6 +12,7 @@ const LoginPage = () => {
   return (
     <>
       <Background>
+        <Header localPage={'LoginPage'} />
         <Container>
           {isLoading && <Loader />}
           <LoginForm />

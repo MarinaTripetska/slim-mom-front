@@ -1,5 +1,7 @@
-import { breakpoints } from 'assets/sizes';
+
 import styled from 'styled-components';
+import { breakpoints } from 'assets/sizes';
+
 
 export const HeaderStyled = styled.header`
   height: 80px;
