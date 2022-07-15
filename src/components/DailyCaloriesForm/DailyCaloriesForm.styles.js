@@ -144,9 +144,15 @@ const RadioInp = styled(Field)`
 
 const BtnDiv = styled.div`
   margin-top: 60px;
-  margin-left: 350px;
+
+  // margin-left: 350px;
+  padding-bottom: 60px;
   @media (max-width: 768px) {
-    margin: 60px auto;
+    margin: 40px 0 auto;
+    //padding-bottom: 60px;
+    @media (min-width: 1280px) {
+      margin-left: auto;
+    }
   }
 `;
 

@@ -8,6 +8,7 @@ import MainPage from './pages/MainPage';
 import { PrivateRoute } from 'components/PrivateRoute';
 import { PublicRoute } from 'components/PublicRoute';
 import DiaryPage from 'pages/DiaryPage';
+import CalculatorPage from 'pages/CalculatorPage';
 
 // import DatePicker from './components/DatePicker/';
 // import DiaryPage from './pages/DiaryPage';
@@ -27,6 +28,7 @@ function App() {
             path="/"
             element={<PublicRoute restricted navigateTo="/diary" />}
           >
+            {/* <Route path="" element={<MainPage />} /> */}
             <Route path="" element={<MainPage />} />
           </Route>
 
