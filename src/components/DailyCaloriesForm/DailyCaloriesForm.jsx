@@ -33,14 +33,14 @@ export default function DailyCaloriesForm({ onFormSubmit, userInfo = false, isCl
       };
 
   const validate = values => {
-    const { height, age, desiredWeight, currentWeight, bldType } = values;
+    const { height, age, desiredWeight, currentWeight, bloodType } = values;
     if (!height || height < 100 || height > 250) return setBtnIsDisabled(true);
     if (!age || age < 18 || age > 100) return setBtnIsDisabled(true);
     if (!currentWeight || currentWeight < 20 || currentWeight > 500)
       return setBtnIsDisabled(true);
     if (!desiredWeight || desiredWeight < 20 || desiredWeight > 500)
       return setBtnIsDisabled(true);
-    if (!bldType) values.bldType = selectedBldType - 0;
+    if (!bloodType) values.bloodType = selectedBldType - 0;
     formIsValid = true;
     if (formIsValid) setBtnIsDisabled(false);
   };
