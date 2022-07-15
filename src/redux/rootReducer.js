@@ -3,6 +3,7 @@ import { loaderSlice } from './app/loader/loaderSlice';
 import { authSlice } from './app/auth';
 import { productsSlice } from './app/products/productsSlice';
 import { usersSlice } from './app/users/users-slice';
+import { dateSlice } from './app/date/dateSlice';
 // import { persistReducer } from 'redux-persist';
 
 // const authPersistConfig = {
@@ -16,4 +17,5 @@ export const rootReducer = combineReducers({
   auth: authSlice.reducer,
   products: productsSlice.reducer,
   users: usersSlice.reducer,
+  selectedDate: dateSlice.reducer,
 });
