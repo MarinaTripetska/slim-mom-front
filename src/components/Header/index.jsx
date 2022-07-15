@@ -1,7 +1,7 @@
 import {ClearHeader, HeaderRegistrUser, HeaderLoginUser} from "./Header";
 // ClearHeader test
-// HeaderRegistrUser only Login and Registration
-// HeaderLoginUser only Login Users
+// HeaderRegistrUser only LoginPage and RegistrationPage
+// HeaderLoginUser all
 const Header = () => {
   return (
     <div>
