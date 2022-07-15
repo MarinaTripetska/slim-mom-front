@@ -76,7 +76,7 @@ const RegistrationForm = () => {
               id="name"
               name="name"
               type="text"
-              pattern="([A-z])"
+              // pattern="([A-z])"
               onChange={formik.handleChange}
               value={formik.values.name}
             />
@@ -92,7 +92,7 @@ const RegistrationForm = () => {
               type="email"
               pattern="([A-z0-9_.-]{1,})@([A-z0-9_.-]{1,}).([A-z]{2,8})"
               onChange={formik.handleChange}
-              password
+              // password
               value={formik.values.email}
             />
             {formik.touched.email && formik.errors.email ? (
@@ -105,7 +105,7 @@ const RegistrationForm = () => {
               id="password"
               name="password"
               type="password"
-              pattern="([A-z0-9])"
+              // pattern="([A-z0-9])"
               onChange={formik.handleChange}
               value={formik.values.password}
             />
