@@ -78,7 +78,8 @@ const TextInp = styled(Field)`
   &:hover {
     outline: none;
   }
-  &:valid {
+  &:focus,
+  :hover + :valid {
     border-bottom: 1px solid rgba(0, 255, 55, 0.671);
   }
   &:focus,

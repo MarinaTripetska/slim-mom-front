@@ -1,18 +1,19 @@
-import { Suspense, useEffect } from 'react';
+import { lazy, Suspense, useEffect } from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
 import Header from 'components/Header';
 import Loader from './components/Loader';
-import LoginPage from 'pages/LoginPage';
-import RegistrationPage from 'pages/RegistrationPage';
-import MainPage from './pages/MainPage';
 import { PrivateRoute } from 'components/PrivateRoute';
 import { PublicRoute } from 'components/PublicRoute';
-import DiaryPage from 'pages/DiaryPage';
-import CalculatorPage from 'pages/CalculatorPage';
 import Toaster from 'components/Toasts';
 import { useDispatch, useSelector } from 'react-redux';
 import { actionCurrent } from 'redux/app/auth/auth-operations';
 import { authSelectors } from 'redux/app/auth';
+
+const MainPage = lazy(() => import('pages/MainPage'));
+const LoginPage = lazy(() => import('pages/LoginPage'));
+const RegistrationPage = lazy(() => import('pages/RegistrationPage'));
+const DiaryPage = lazy(() => import('pages/DiaryPage'));
+const CalculatorPage = lazy(() => import('pages/CalculatorPage'));
 
 function App() {
   const isFetchingUser = useSelector(authSelectors.getIsFetchingUser);
