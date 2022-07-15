@@ -16,7 +16,9 @@ const loadOptions = async (inputValue, callback) => {
   callback(
     products.map(product => {
       const title = product.title;
+      console.log(product)
       return { label: title, value: title };
+      
     })
   );
 };
