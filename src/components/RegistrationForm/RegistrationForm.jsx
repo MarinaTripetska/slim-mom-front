@@ -1,6 +1,6 @@
 import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { authOperations, authSelectors } from '../../redux/app/auth';
+import { useDispatch } from 'react-redux';
+import { authOperations } from '../../redux/app/auth';
 import { useFormik } from 'formik';
 import { useNavigate } from 'react-router-dom';
 
@@ -27,10 +27,8 @@ const initialValues = {
 };
 
 const RegistrationForm = () => {
-  const isSuccessRegister = useSelector(authSelectors.getIsSuccess);
-  console.log(isSuccessRegister);
   const dispatch = useDispatch();
-  let navigate = useNavigate();
+  const navigate = useNavigate();
 
   const formik = useFormik({
     initialValues,
