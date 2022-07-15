@@ -1,4 +1,4 @@
-import { useState , useEffect} from 'react';
+import { useState, useEffect } from 'react';
 import {
   NavPosition,
   Home,
@@ -6,87 +6,157 @@ import {
   SlimStyle,
   MomStyle,
   ButtonBurger,
+  LoginRegistrStyle,
+  LoginRegistrPosition,
+  NavPositionLog,
+  PositionSlimMomLog,
+  SlimStyleForLogin
 } from './Header.styled';
-import { UserInfoMenuLapTop } from 'components/UserInfoMenu';
-import { UserAuthenticate } from '../UserInfoMenu';
+import {
+    NavStyleDesktop,
+    BurgerPositionDesktop,
+    NavLinkStyleDesktop,
+} from '../BurgerMenu/BurgerMenu.styled';
 import logoMobile from '../../assets/images/logo-mobile.png';
 import BurgerMenuIcon from '../../assets/images/burger.png';
 import CloseMenuIcon from '../../assets/images/close.png';
+import { useSelector } from 'react-redux';
+import { authSelectors } from '../../redux/app/auth';
+import BurgerMenu from '../BurgerMenu';
+
+import { UserInfoMenuLapTop } from 'components/UserInfoMenu';
+import { UserInfoMenuMobile } from '../UserInfoMenu';
+import { NavLink } from 'react-router-dom';
 // import Logo from '../Logo';
 
-const HeaderPosition = ({
-  openBurgerMenu,
-  setOpenBurgerMenu,
-}) => {
+const ClearHeader = () => {
+  return (
+    <div>
+      <NavPosition>
+        <Home to="/">
+          <ImgPosition
+            src={logoMobile}
+            alt="logo-mobile"
+          />
+          <SlimStyle>
+            Slim <MomStyle>Mom</MomStyle>
+          </SlimStyle>
+        </Home>
+      </NavPosition>
+    </div>
+  )
+};
 
-  const [isDesktop, setDesktop] = useState(window.innerWidth > 767);
-  const [userLogIn, setUserLogIn] = useState(false);
+const HeaderRegistrUser = () => {
+  const LoginRegistr = () => {
+    return (
+      <LoginRegistrPosition>
+        <LoginRegistrStyle to='/login'>
+          sign in
+        </LoginRegistrStyle>
+        <LoginRegistrStyle to='/register'>
+          registration
+          </LoginRegistrStyle>
+      </LoginRegistrPosition>
+    )
+  }
+  return (
+    <NavPositionLog>
+      <PositionSlimMomLog>
+        <Home to="/">
+          <ImgPosition
+            src={logoMobile}
+            alt="logo-mobile"
+          />
+          <SlimStyle>
+            Slim <MomStyle>Mom</MomStyle>
+          </SlimStyle>
+      </Home>
+      </PositionSlimMomLog>
+        <LoginRegistr/>
+      </NavPositionLog>
+  );
+};
 
-  const HandleClickOpen = e => {
-    e.preventDefault();
-    setOpenBurgerMenu(true);
-    return;
-  };
+const ShowMenuDesktop = () => {
+  return (
+    <NavStyleDesktop>
+      <BurgerPositionDesktop>
+        <NavLinkStyleDesktop><NavLink to="/diary">diary</NavLink></NavLinkStyleDesktop>
+        <NavLinkStyleDesktop><NavLink to="/calculator">calculator</NavLink></NavLinkStyleDesktop>
+      </BurgerPositionDesktop>
+    </NavStyleDesktop >
+  )
+};
 
-  const HandleClickClose = e => {
-    e.preventDefault();
-    setOpenBurgerMenu(false);
-    return;
-  };
-
-  const updateMedia = () => {
+const HeaderLoginUser = ({ register }) => {
+  const [userLogIn, setUserLogIn] = useState(true);
+  const [openBurgerMenu, setOpenBurgerMenu] = useState(false);
+  const [isDesktop, setDesktop] = useState(window.innerWidth > 1279);
+  const userName = useSelector(authSelectors.getUserName);
+      
+    const updateMedia = () => {
         setDesktop(window.innerWidth > 767);
-    };
+  };
+  
     useEffect(() => {
         window.addEventListener("resize", updateMedia);
         return () => window.removeEventListener("resize", updateMedia);
     });
 
+
   const CloseMenu = () => {
+    const HandleClickOpen = e => {
+      e.preventDefault();
+      setOpenBurgerMenu(true);
+      return;
+    };
+
+    const HandleClickClose = e => {
+      e.preventDefault();
+      setOpenBurgerMenu(false);
+      return;
+    };
     if (openBurgerMenu) {
       return (
         <ButtonBurger onClick={HandleClickClose}>
           <img src={CloseMenuIcon} alt="CloseMenuIcon" />
         </ButtonBurger>
       );
-      }
+    }
     return (
       <ButtonBurger onClick={HandleClickOpen}>
         <img src={BurgerMenuIcon} alt="BurgerMenuIcon" />
       </ButtonBurger>
     );
   };
-
-  const LogoShow = () => {
-    if (userLogIn) {
-      return (
-      <SlimStyle>
-        Slim <MomStyle>Mom</MomStyle>
-      </SlimStyle>
-    )
-    }
-    return null;
-  }
+  
+  if (userLogIn) {
+    return (
+      <div>
+        <NavPositionLog>
+          <PositionSlimMomLog>
+            <Home to="/">
+              <ImgPosition
+                src={logoMobile}
+                alt="logo-mobile"
+              />
+              <SlimStyleForLogin>
+                Slim <MomStyle>Mom</MomStyle>
+              </SlimStyleForLogin>
+            </Home>
+          </PositionSlimMomLog>
+          {isDesktop ? (<ShowMenuDesktop />) : (null)}
+          <UserInfoMenuLapTop userName={userName} />
+          <CloseMenu />
+        </NavPositionLog>
+        <UserInfoMenuMobile userName={userName} />
+        <BurgerMenu openBurgerMenu={openBurgerMenu} setOpenBurgerMenu={setOpenBurgerMenu} />
+      </div>)
+  };
   return (
-    <div>
-      <NavPosition>
-        {/* <Logo/> */}
-        <Home href="../home">
-          <ImgPosition
-            src={logoMobile}
-            alt="logo-mobile"
-            width={46}
-            height={44}
-          />
-          {!isDesktop ? (<LogoShow />) : (<SlimStyle>
-            Slim <MomStyle>Mom</MomStyle>
-            </SlimStyle>)}
-        </Home>
-        {isDesktop ? (<UserInfoMenuLapTop/>) : (null)}
-        {userLogIn ? (<CloseMenu />) : (<UserAuthenticate/>)}
-      </NavPosition>
-    </div>
+    <HeaderRegistrUser />
   );
 };
 
-export default HeaderPosition;
+export {ClearHeader, HeaderRegistrUser, HeaderLoginUser};
