@@ -1,5 +1,5 @@
 import DailyCaloriesForm from '../../components/DailyCaloriesForm';
-import { PageWrapper } from './CalculatorPage.styled';
+//import { PageWrapper } from './CalculatorPage.styled';
 import RightSideBar from 'components/RightSideBar';
 import { Section } from './CalculatorPage.styled';
 import Container from '../../components/Container';
