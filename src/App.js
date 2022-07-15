@@ -1,4 +1,4 @@
-import { Children, Suspense, useEffect } from 'react';
+import { Suspense, useEffect } from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
 import Header from 'components/Header';
 import Loader from './components/Loader';

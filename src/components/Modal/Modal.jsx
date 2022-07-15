@@ -1,5 +1,4 @@
 import { useEffect } from 'react';
-// import { getAdviceToModal } from 'redux/app/users/users-selectors';
 import {
   Overlay,
   ModalDiv,
@@ -9,9 +8,6 @@ import {
 } from './Modal.styles';
 import Button from '../Button';
 
-// import { useSelector } from 'react-redux';
-
-// closeModalHandle
 function Modal({
   closeModalHandle,
   userData: { userDailyCalorieIntake, userNotRecommendedProducts },
@@ -44,7 +40,7 @@ function Modal({
         <ModalTtl>Your recommended daily calorie intake is</ModalTtl>
         <KcalCount>
           {userDailyCalorieIntake}
-          <span> ккал</span>
+          <span> kcal</span>
         </KcalCount>
         <ProdList>
           <p>Foods you should not eat</p>
