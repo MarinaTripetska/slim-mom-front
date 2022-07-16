@@ -20,7 +20,6 @@ export default function SideBar({
           {notRecommendProd?.map(product => (
             <li key={product}>{product}</li>
           ))}
-          {/* || 'Your diet will be displayed here' */}
         </ProdList>
       </ProdListDiv>
     </SideBarDiv>

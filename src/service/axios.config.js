@@ -1,5 +1,4 @@
 import axios from 'axios';
-import moment from 'moment';
 import { toast } from 'react-toastify';
 
 axios.defaults.baseURL = `https://slim-mom-back.herokuapp.com/api/v1`;
@@ -98,7 +97,7 @@ export const adviceForLoginUser = async payload => {
 export const getProductsByDate = async ({ date }) => {
   try {
     const { data } = await axios.get(`/dietaries?date=${date}`);
-    console.log(data);
+
     return data;
   } catch (error) {
     console.log(error);

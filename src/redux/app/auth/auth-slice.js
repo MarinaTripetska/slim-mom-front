@@ -15,7 +15,6 @@ const initialState = {
   isError: false,
   isSuccess: false,
   isLoading: false,
-  // message: '',
 };
 
 export const authSlice = createSlice({
@@ -28,7 +27,6 @@ export const authSlice = createSlice({
       state.isLoading = false;
       state.isError = false;
       state.isSuccess = false;
-      // state.message = '';
     },
   },
 
@@ -45,7 +43,6 @@ export const authSlice = createSlice({
     [authOperations.actionRegister.rejected](state, _) {
       state.isLoading = false;
       state.isError = true;
-      // state.message = action.payload;
     },
 
     // login
@@ -62,7 +59,6 @@ export const authSlice = createSlice({
     [authOperations.actionLogin.rejected](state, action) {
       state.isLoading = false;
       state.isError = true;
-      // state.message = action.payload; // TODO: test it
     },
 
     // current user
@@ -82,7 +78,6 @@ export const authSlice = createSlice({
       state.isLoading = false;
       state.isError = true;
       state.isFetchingUser = false;
-      // state.message = action.payload; // TODO: test it
     },
 
     // logout

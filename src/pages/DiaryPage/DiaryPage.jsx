@@ -1,6 +1,6 @@
 import DiaryDateCalendar from 'components/DiaryDateCalendar';
-// import DiaryAddProductForm from '../../components/DiaryAddProductForm';
-// import DiaryProductsList from '../../components/DiaryProductsList';
+import DiaryAddProductForm from '../../components/DiaryAddProductForm';
+import DiaryProductsList from '../../components/DiaryProductsList';
 
 import SideBar from 'components/SideBar';
 import { useState } from 'react';
@@ -15,30 +15,32 @@ import { useSelector } from 'react-redux';
 export default function DiaryPage() {
   const currentDate = useSelector(diarySelectors.getCurrentDate);
 
-  // const [mobileAddSelected, setMobileAddSelected] = useState(false);
-  // const productsList = useSelector(diaryPerDayOperation.actionGetProducts());
+  const [mobileAddSelected, setMobileAddSelected] = useState(false);
+  const productsList = useSelector(diarySelectors.getDiaryProducts);
   // const dispatch = useDispatch();
-  // const formSubmitHandler = data => {
-  //   const { product, weight } = data;
 
-  //   dispatch(
-  //     addProduct({
-  //       date: '16.07.2022',
-  //       data: { product: product, weightGrm: weight },
-  //     }),
-  //   );
+  const formSubmitHandler = data => {
+    // const { product, weight } = data;
 
-  //   setMobileAddSelected(false);
-  // };
+    // dispatch(
+    //   addProduct({
+    //     date: '16.07.2022',
+    //     data: { product: product, weightGrm: weight },
+    //   }),
+    // );
+
+    setMobileAddSelected(false);
+  };
+
   return (
     <>
       <Header localPage="DiaryPage" />
       <DiaryDateCalendar />
-      {/* <DiaryAddProductForm
+      <DiaryAddProductForm
         onSubmit={formSubmitHandler}
         className={mobileAddSelected ? '' : 'hideOnMobile'}
-      /> */}
-      {/* <DiaryProductsList products={productsList} /> */}
+      />
+      <DiaryProductsList products={productsList} />
       <SideBar date={currentDate} />
     </>
   );

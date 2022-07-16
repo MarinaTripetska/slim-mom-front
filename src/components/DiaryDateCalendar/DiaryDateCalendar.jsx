@@ -40,11 +40,8 @@ export default function DiaryDateCalendar() {
 
   function changeDate(evt) {
     const dateString = dateToString(evt._d);
+
     setDate(dateString);
-    console.log(dateString);
-
-    console.log(updateDate);
-
     dispatch(updateDate(dateString));
   }
 
