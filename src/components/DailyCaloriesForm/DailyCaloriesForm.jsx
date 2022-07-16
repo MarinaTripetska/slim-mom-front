@@ -16,7 +16,7 @@ import {
 export default function DailyCaloriesForm({
   onFormSubmit,
   userInfo = false,
-  isCleanUserInfo = true,
+  isCleanUserInfo = false,
 }) {
   const [selectedBldType, setSelectedBlbType] = useState(() =>
     userInfo ? userInfo.bloodType : '1',

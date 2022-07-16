@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
 import DailyCaloriesForm from '../../components/DailyCaloriesForm';
-import RightSideBar from 'components/SideBar';
+import SideBar from 'components/SideBar';
 import { Section } from './CalculatorPage.styled';
 import { ContainerBar, ContainerForm } from './CalculatorPage.styled';
 import { getUsersAdvice } from 'redux/app/auth/auth-operations';
@@ -21,8 +21,8 @@ const CalculatorPage = () => {
 
   return (
     <>
-      <Header localPage="CalculatorPage" />
       <Section>
+        <Header localPage="CalculatorPage" />
         <ContainerForm>
           <DailyCaloriesForm
             onFormSubmit={submitForm}
@@ -32,7 +32,7 @@ const CalculatorPage = () => {
         </ContainerForm>
 
         <ContainerBar>
-          <RightSideBar
+          <SideBar
             notRecommendProd={notRecommendProd}
             calorie={calorie}
             date={currentDay}
