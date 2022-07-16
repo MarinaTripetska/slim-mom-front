@@ -12,7 +12,6 @@ import {
   FormInputWeight,
   FormInputProduct,
 } from './DiaryAddProductFormStyle';
-import { getProductByQuery } from '../../service/axios.config';
 
 // var debounce = require('lodash.debounce');
 // const _ = require('lodash');
@@ -44,16 +43,18 @@ export default function DiaryProductForm({ onSubmit, className }) {
 
   const handleSubmit = event => {
     event.preventDefault();
+    const weightNumber = parseInt(weight);
+    if (!selectedProduct || isNaN(weightNumber)) return;
     onSubmit({
-      product: selectedProduct,
-      weight: weight,
+      product: selectedProduct.value,
+      weight: weightNumber,
     });
 
     reset();
   };
 
   const reset = () => {
-    setSelectedProduct('');
+    setSelectedProduct(null);
     setWeight('');
   };
 
@@ -62,7 +63,11 @@ export default function DiaryProductForm({ onSubmit, className }) {
       <StyledForm onSubmit={handleSubmit} className={className}>
         <FormLabel>
           <FormInputProduct
+            isClearable
+            backspaceRemovesValue
+            escapeClearsValue
             classNamePrefix={'react-select'}
+<<<<<<< HEAD
             defaultValue={selectedProduct}
             onChange={option => setSelectedProduct(option.value)}
             // loadOptions={_.debounce(loadOptions, 2000)}
@@ -70,6 +75,20 @@ export default function DiaryProductForm({ onSubmit, className }) {
             placeholder="Введіть назву продукту"
             title="Введіть назву продукту"
             cacheOptions
+=======
+            value={selectedProduct}
+            onChange={option => setSelectedProduct(option)}
+            // loadOptions={loadOptions}
+            placeholder="Enter product name"
+            noOptionsMessage={({ selectedProduct }) =>
+              !selectedProduct
+                ? 'Enter product name'
+                : 'There is no such product'
+            }
+            loadingMessage={({ selectedProduct }) =>
+              !selectedProduct ? 'Searching...' : 'There is no such product'
+            }
+>>>>>>> c9ea91e54f7428cc5eec339751a72ff5b492ddf6
           />
         </FormLabel>
         <FormLabel>
@@ -77,18 +96,25 @@ export default function DiaryProductForm({ onSubmit, className }) {
             type="number"
             min={1}
             name="weight"
+<<<<<<< HEAD
             title="Введіть вагу продукту"
             required
             value={weight}
             onChange={e => setWeight(e.target.value)}
             placeholder="Грами"
+=======
+            title="Enter product weight"
+            required
+            value={weight}
+            onChange={e => setWeight(e.target.value)}
+            placeholder="Grams"
+>>>>>>> c9ea91e54f7428cc5eec339751a72ff5b492ddf6
           />
         </FormLabel>
-        <FormBtnMobile type="submit">Добавить</FormBtnMobile>
+        <FormBtnMobile type="submit">Add</FormBtnMobile>
 
         <FormBtn
           type="submit"
-          // selectedProduct должны прийти с бека
           disabled={selectedProduct === null || weight === '' ? true : false}
         >
           <BsPlusLg size={14} />

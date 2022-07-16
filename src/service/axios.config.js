@@ -1,5 +1,4 @@
 import axios from 'axios';
-import moment from 'moment';
 import { toast } from 'react-toastify';
 
 axios.defaults.baseURL = `https://slim-mom-back.herokuapp.com/api/v1`;
@@ -7,7 +6,7 @@ axios.defaults.headers.common['Authorization'] = `Bearer ${localStorage.getItem(
   'AUTH_TOKEN',
 )}`;
 
-//==================REGISTER====================
+//==================REGISTER USER====================
 export const register = async ({ name, email, password }) => {
   try {
     const res = await axios.post(`/users/signup`, { name, email, password });
@@ -22,7 +21,7 @@ export const register = async ({ name, email, password }) => {
   }
 };
 
-//==================LOGIN=====================
+//==================LOGIN USER=====================
 export const login = async ({ email, password }) => {
   try {
     const res = await axios.post(`/users/login`, { email, password });
@@ -37,7 +36,7 @@ export const login = async ({ email, password }) => {
   }
 };
 
-//==================LOGOUT=====================
+//==================LOGOUT USER=====================
 export const logout = async () => {
   try {
     const res = await axios.get(`/users/logout`);
@@ -48,58 +47,21 @@ export const logout = async () => {
   }
 };
 
-//==================CURRENT=====================
+//==================CURRENT USER=====================
 export const current = async () => {
   try {
     const res = await axios.get(`/users/current`);
-    // if (res.data.code === 200) {
-    // toast.success(`Welcome ${res.data.data.user.name}`);
-    // }
     return res;
   } catch (error) {
-    // toast.error('User not found');
+    console.log(error.message);
   }
 };
 
-//==================PRODUCTS ADD=====================
-export const addProduct = async product => {
-  try {
-    const { data } = await axios.post('/product/addDiaryFood', product);
-    return data;
-  } catch (error) {
-    console.log(error);
-  }
-};
+//==================GET LIST OF PRODUCTS BY QUERY=====================
 
-// //==================PRODUCTS DELETE=====================
-
-export const deleteProduct = async id => {
-  try {
-    const deletedProduct = await axios.delete('/product/delDiaryFood', { id });
-    return deletedProduct;
-  } catch (error) {
-    console.log(error);
-  }
-};
-
-// //==================PRODUCTS GET BY QUERY=====================
-
-export const getProductByQuery = async query => {
+export const getProductsByQuery = async query => {
   try {
     const { data } = await axios.get(`/products/search?query=${query}`);
-    return data;
-  } catch (error) {
-    console.log(error);
-  }
-};
-
-// //==================PRODUCTS GET BY DATA=====================
-
-export const getProductsListByDate = async date => {
-  try {
-    const { data } = await axios.post('/users/dayinfo', {
-      day: moment(date).format('DD.MM.yyyy'),
-    });
     return data;
   } catch (error) {
     console.log(error);
@@ -128,5 +90,48 @@ export const adviceForLoginUser = async payload => {
     return data;
   } catch (error) {
     toast.error('Ups, something wrong ');
+  }
+};
+
+// ================GET PRODUCTS IN DIETARY BY DATE ================
+export const getProductsByDate = async ({ date }) => {
+  try {
+    const { data } = await axios.get(`/dietaries?date=${date}`);
+
+    return data;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+//==================CREATE OBJ FOR PRODUCTS TO DIETARY BY DATE=====================
+
+export const createProductsListByDate = async ({ date }) => {
+  try {
+    return await axios.post('/dietaries', { date });
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+//==================ADD PRODUCTS TO DIETARY BY DATE=====================
+
+export const addProductByDate = async ({ date, product }) => {
+  try {
+    return await axios.patch('/dietaries', { date, data: product });
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+//==================DELETE PRODUCTS TO DIETARY BY DATE=====================
+
+export const deleteProductByDate = async ({ productId, date }) => {
+  try {
+    return await axios.delete(`dietaries/:${productId}`, {
+      date,
+    });
+  } catch (error) {
+    console.log(error);
   }
 };

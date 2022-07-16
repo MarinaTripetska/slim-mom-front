@@ -4,7 +4,7 @@ import AsyncSelect from 'react-select/async';
 
 export const StyledForm = styled.form`
   display: flex;
-  margin-top: 80px;
+  margin-top: 60px;
   justify-content: center;
   align-items: center;
   flex-direction: column;
@@ -39,7 +39,7 @@ font-weight: 700;
   }
   .react-select__control {
     border: none;
-    border-bottom: 1px solid '#E0E0E0';
+    border-bottom: 1px solid #E0E0E0;
     border-radius: 0;
     &:hover {
       border-bottom-color: var(--main-text-color);
@@ -62,7 +62,7 @@ font-weight: 700;
     padding: 0;
   }
   .react-select__placeholder {
-    color: '#9B9FAA';
+    color: var(--secondary-text-color);
   }
   .react-select__indicators {
     display: none;
@@ -79,7 +79,8 @@ export const FormInputWeight = styled.input`
   color: var(--main-text-color);
   width: 100%;
   padding: 8px 0;
-  border-bottom: 1px solid '#E0E0E0';
+  border:none;
+  border-bottom: 1px solid #E0E0E0;
   outline: none;
   transition: border-color 0.3s;
   ::placeholder {

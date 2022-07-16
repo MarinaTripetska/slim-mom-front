@@ -4,6 +4,7 @@ import DailyCaloriesForm from '../../components/DailyCaloriesForm';
 import Modal from '../../components/Modal';
 import { PageWrapper } from './MainPage.styled';
 import Background from '../../components/Background';
+import Header from '../../components/Header';
 
 export default function MainPage() {
   const [userInfo, setUserInfo] = useState(null);
@@ -24,8 +25,9 @@ export default function MainPage() {
 
   return (
     <Background>
+      <Header localPage="MainPage" />
       <PageWrapper>
-        <DailyCaloriesForm onFormSubmit={submitForm} />
+        <DailyCaloriesForm onFormSubmit={submitForm} isCleanUserInfo = {true}/>
         {openModal && (
           <Modal userData={userInfo} closeModalHandle={closeModal} />
         )}

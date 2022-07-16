@@ -15,7 +15,7 @@ const SideBarDiv = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  @media (max-width: 1280px) {
+  @media (max-width: 1279px) {
     height: auto;
     max-height: fit-content;
     max-width: 100vw;

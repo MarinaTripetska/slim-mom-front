@@ -1,69 +1,16 @@
-import { breakpoints } from 'assets/sizes';
 import styled from 'styled-components';
+import { breakpoints } from 'assets/sizes';
 
-export const NavPosition = styled.div`
-  width: 100%;
+export const HeaderStyled = styled.header`
   height: 80px;
+  border-bottom: 2px solid var(--border-color);
   display: flex;
-  align-items: stretch;
-  align-content: space-between;
-  justify-content: space-between;
-  border-bottom: 2px solid #E0E0E0;
-    @media ${breakpoints.desktop}{
-      justify-content: start;
-  }
-`;
-
-export const Home = styled.a`
-  display: flex;
-  font-family: 'Verdana';
-  font-style: normal;
-  font-weight: 400;
-  font-size: 14px;
-  line-height: 1.214;
-  letter-spacing: 0.04em;
-  padding-top: 12px;
+  align-items: center;
   padding-left: 20px;
-    @media ${breakpoints.onlyTablet}{
-      padding-left: 32px;
+  padding-right: 20px;
+  justify-content: space-between;
+
+  @media ${breakpoints.desktop} {
+    border: none;
   }
-`;
-
-export const MomStyle = styled.span`
-    color: #fc842d;
-`;
-
-export const ButtonBurger = styled.button`
-  display: block;
-  height: 20px;
-  transform-origin: 16px 11px;
-  float: left;
-  margin-top: 30px;
-  margin-bottom: 30px;
-  margin-right: 20px;
-  outline: 0;
-  border: 0;
-  padding: 0px;
-  background: none;
-    @media ${breakpoints.onlyTablet}{
-      margin-right: 32px;
-  }
-    @media ${breakpoints.desktop}{
-      display: none;
-  }
-`;
-
-export const SlimStyle = styled.p`
-    font-family: 'Verdana';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 18px;
-    line-height: 2;
-    letter-spacing: 0.04em;
-    padding-top: 12px;
-    padding-left: 8px;
-`;
-
-export const ImgPosition = styled.img`
-    margin-top: 8px;
 `;

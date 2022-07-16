@@ -15,6 +15,18 @@ const GlobalStyle = createGlobalStyle`
   font-weight: 700;
 }
 
+@media screen and (max-width: 768px) {
+  .hideOnMobile {
+    display: none !important;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .showOnMobile {
+    display: none !important;
+  }
+}
+
 :root {
   --main-text-color: #212121;
   --secondary-text-color: #9B9FAA;

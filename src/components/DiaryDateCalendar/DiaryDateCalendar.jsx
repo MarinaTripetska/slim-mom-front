@@ -1,5 +1,8 @@
 import { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+// import { updateDate } from '../../redux/app/diaryPerDay/diaryPerDay-slice';
+// import updateDate from '../../redux/app/diaryPerDay/diaryPerDay-slice';
+import Datetime from 'react-datetime';
 import 'react-datetime/css/react-datetime.css';
 import 'moment/locale/uk';
 import 'moment/locale/ru';
@@ -8,6 +11,7 @@ import { dateAction } from '../../redux/app/date/dateSlice';
 
 import { DatePickerWrapper, DatePicker } from './DiaryDateCalendar.styled';
 import CalendarBtn from '../CalendarBtn/CalendarBtn';
+import { diarySelectors, updateDate } from 'redux/app/diaryPerDay';
 
 function dateToString(date) {
   let year = String(date.getFullYear());
@@ -17,11 +21,10 @@ function dateToString(date) {
 }
 
 export default function DiaryDateCalendar() {
-  const [date, setDate] = useState(dateToString(new Date()));
-  const [isShow, setIsShow] = useState(false);
-
   const dispatch = useDispatch();
-  dispatch(dateAction(date));
+  const [isShow, setIsShow] = useState(false);
+  const currentDate = useSelector(diarySelectors.getCurrentDate);
+  const [date, setDate] = useState(currentDate);
 
   let inputProps = {
     value: date,
@@ -32,8 +35,12 @@ export default function DiaryDateCalendar() {
     let today = new Date();
     return current.isBefore(today);
   }
+
   function changeDate(evt) {
-    setDate(dateToString(evt._d));
+    const dateString = dateToString(evt._d);
+
+    setDate(dateString);
+    dispatch(updateDate(dateString));
   }
 
   function openCalendar() {
