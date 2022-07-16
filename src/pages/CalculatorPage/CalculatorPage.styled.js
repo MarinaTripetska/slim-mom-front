@@ -21,8 +21,9 @@ export const Section = styled.div`
     display: flex;
   }
 `;
+// margin: auto;  вывел из ContainerForm 
 export const ContainerForm = styled.div`
-  margin: auto;
+
   @media ${breakpoints.maxTablet} {
     width: 320px;
     padding: 32px 20px 41px;

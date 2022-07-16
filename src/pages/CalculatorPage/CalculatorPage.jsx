@@ -1,15 +1,12 @@
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { authSelectors } from 'redux/app/auth';
-import { getUsersAdvice } from 'redux/app/auth/auth-operations';
-
-import Header from 'components/Header';
 import DailyCaloriesForm from '../../components/DailyCaloriesForm';
 import SideBar from 'components/SideBar';
-
+import { getUsersAdvice } from 'redux/app/auth/auth-operations';
+import { authSelectors } from 'redux/app/auth';
+import Header from 'components/Header';
 import { Section, ContainerBar, ContainerForm } from './CalculatorPage.styled';
-import { useEffect } from 'react';
 import { diaryPerDayOperation } from 'redux/app/diaryPerDay';
-import { useState } from 'react';
 
 const CalculatorPage = () => {
   const dispatch = useDispatch();
@@ -31,7 +28,7 @@ const CalculatorPage = () => {
         return ckalConsumed;
       })
       .then(result => setCkalConsumed(result));
-  }, []);
+  }, [currentDate, dispatch]);
 
   const submitForm = async data => {
     dispatch(getUsersAdvice(data));
@@ -39,8 +36,8 @@ const CalculatorPage = () => {
 
   return (
     <>
-      <Header localPage="CalculatorPage" />
       <Section>
+        <Header localPage="CalculatorPage" />
         <ContainerForm>
           <DailyCaloriesForm
             onFormSubmit={submitForm}
