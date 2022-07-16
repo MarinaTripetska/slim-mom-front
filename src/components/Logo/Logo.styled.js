@@ -1,6 +1,14 @@
 import styled from 'styled-components';
 import { breakpoints } from '../../assets/sizes';
 
+export const LogoStyled = styled.div`
+  align-items: center;
+  display: flex;
+  @media ${breakpoints.desktop} {
+    align-items: flex-end;
+  }
+`;
+
 export const Image = styled.img`
   width: 46px;
   height: 44px;
@@ -11,12 +19,12 @@ export const Image = styled.img`
   }
 `;
 export const Text = styled.img`
-  visibility: hidden;
+  display: none;
   width: 106px;
   height: 16px;
 
-  @media ${breakpoints.mobile} {
-    visibility: visible;
+  @media ${breakpoints.tablet} {
+    display: inline;
     width: 107px;
     height: 16px;
   }

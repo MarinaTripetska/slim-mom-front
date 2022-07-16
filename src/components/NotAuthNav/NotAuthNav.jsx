@@ -1,7 +1,7 @@
 import Logo from 'components/Logo';
 import { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
-import { NavThumb } from './NotAuthNav.styled';
+import { NotAuthNavStyled, NavThumb } from './NotAuthNav.styled';
 
 function getWindowSize() {
   const { innerWidth, innerHeight } = window;
@@ -21,14 +21,6 @@ const NotAuthNav = ({ localPage }) => {
     };
   }, [windowSize]);
 
-  //   if (windowSize >= 769) {
-  //     return (
-  //       <>
-  //               {/* <Logo /> */}
-  //       </>
-  //     );
-  //   }
-
   if (localPage === 'LoginPage' || localPage === 'RegistrationPage') {
     return (
       <>
@@ -38,13 +30,13 @@ const NotAuthNav = ({ localPage }) => {
   }
 
   return (
-    <>
+    <NotAuthNavStyled>
       <Logo />
       <NavThumb>
         <NavLink to="/login">Sign in</NavLink>
         <NavLink to="/register">Registration</NavLink>
       </NavThumb>
-    </>
+    </NotAuthNavStyled>
   );
 };
 
