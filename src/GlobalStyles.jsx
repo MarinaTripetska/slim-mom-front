@@ -23,7 +23,7 @@ const GlobalStyle = createGlobalStyle`
   --accent-color: #FC842D;
   --accent-shadow: rgba(252, 132, 45, 0.5);
   --secondary-background-color: #F0F1F3;
---border-color: #e0e0e0;
+  --border-color: #e0e0e0;
   --timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   --trans-duration: 250ms;
 
