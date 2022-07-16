@@ -7,8 +7,6 @@ import DiaryProductsList from '../../components/DiaryProductsList';
 import MobileSidebar from '../../components/MobileSidebar'
 import {AddBtnMobile,PageWrap,SidebarWrap,ListWrap} from './DiaryPageStyle';
 import SideBar from 'components/SideBar';
-import { useState } from 'react';
-
 import { addProduct } from '../../redux/app/products/productsOperation';
 import {getProductsList} from '../../redux/app/products/productsSelectors';
 import Header from 'components/Header';
@@ -61,16 +59,16 @@ mobileAddSelected={mobileAddSelected}
   </PageWrap>
 </>
 
-   {// <>
-    //  <Header localPage="DiaryPage" />
-   //   <DiaryDateCalendar />
-    //  <DiaryAddProductForm
-    //    onSubmit={formSubmitHandler}
-    //    className={mobileAddSelected ? '' : 'hideOnMobile'}
-    //  />
-    //  <DiaryProductsList products={productsList} />
-    //  <SideBar date="16.07.2022" />
-  //  </>}
+  //   <>
+  //    <Header localPage="DiaryPage" />
+  //     <DiaryDateCalendar />
+  //     <DiaryAddProductForm
+  //       onSubmit={formSubmitHandler}
+  //      className={mobileAddSelected ? '' : 'hideOnMobile'}
+  //    />
+  //    <DiaryProductsList products={productsList} />
+  //     <SideBar date="16.07.2022" />
+  //  </>
 
   );
 }
