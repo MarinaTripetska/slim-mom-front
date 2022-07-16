@@ -11,7 +11,7 @@ const RegistrationPage = () => {
 
   return (
     <Background>
-      <Header localPage={'RegistrationPage'} />
+      <Header localPage="RegistrationPage" />
 
       <Container>
         {isLoading && <Loader />}

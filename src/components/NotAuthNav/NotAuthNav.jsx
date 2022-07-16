@@ -29,7 +29,7 @@ const NotAuthNav = ({ localPage }) => {
   //     );
   //   }
 
-  if (localPage === 'login' || localPage === 'register') {
+  if (localPage === 'LoginPage' || localPage === 'RegistrationPage') {
     return (
       <>
         <Logo />

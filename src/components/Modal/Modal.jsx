@@ -7,11 +7,14 @@ import {
   ProdList,
 } from './Modal.styles';
 import Button from '../Button';
+import { useNavigate } from 'react-router-dom';
 
 function Modal({
   closeModalHandle,
   userData: { userDailyCalorieIntake, userNotRecommendedProducts },
 }) {
+  const navigate = useNavigate();
+
   useEffect(() => {
     window.addEventListener('keydown', escKeyHandle);
     return () => {
@@ -32,6 +35,7 @@ function Modal({
   };
   const onBtnClickHandle = () => {
     closeModalHandle();
+    navigate('/register', { replace: true });
   };
 
   return (

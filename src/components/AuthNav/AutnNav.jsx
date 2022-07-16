@@ -2,6 +2,7 @@ import Logo from 'components/Logo';
 import { useDispatch, useSelector } from 'react-redux';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { authOperations, authSelectors } from 'redux/app/auth';
+import { NavThumb, UserThumb } from './AuthNav.styled';
 
 const AuthNav = () => {
   const dispatch = useDispatch();
@@ -18,12 +19,18 @@ const AuthNav = () => {
   return (
     <>
       <Logo />
-      <NavLink to="/diary">Diary</NavLink>
-      <NavLink to="/calculator">Calculator</NavLink>
-      <span>{userName}</span>
-      <button type="button" onClick={handleLogout}>
-        Exit
-      </button>
+
+      <NavThumb>
+        <NavLink to="/diary">Diary</NavLink>
+        <NavLink to="/calculator">Calculator</NavLink>
+      </NavThumb>
+
+      <UserThumb>
+        <span>{userName}</span>
+        <button type="button" onClick={handleLogout}>
+          Exit
+        </button>
+      </UserThumb>
     </>
   );
 };

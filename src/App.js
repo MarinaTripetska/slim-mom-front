@@ -1,6 +1,5 @@
 import { lazy, Suspense, useEffect } from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
-// import Header from 'components/Header';
 import Loader from './components/Loader';
 import { PrivateRoute } from 'components/PrivateRoute';
 import { PublicRoute } from 'components/PublicRoute';
@@ -30,8 +29,6 @@ function App() {
     <>
       {!isFetchingUser && (
         <>
-          {/* <Header /> */}
-
           <Suspense fallback={<Loader />}>
             <Routes>
               <Route
@@ -59,15 +56,11 @@ function App() {
                 <Route path="" element={<CalculatorPage />} />
               </Route>
 
-          <Route path="/calculator" element={<PrivateRoute />}>
-            {/* <Route path="" element={<CalculatorPage />} /> */}
-          </Route>
-    
-          <Route path="/diary" element={<PrivateRoute />}>
-            <Route path="" element={<DiaryPage />} />
-          </Route>
+              <Route path="/diary" element={<PrivateRoute />}>
+                <Route path="" element={<DiaryPage />} />
+              </Route>
 
-              <Route path="*" element={<Navigate to="/diary" />} />
+              <Route path="*" element={<Navigate to="/" />} />
             </Routes>
           </Suspense>
           <Toaster />

@@ -25,7 +25,7 @@ export default function MainPage() {
 
   return (
     <Background>
-      <Header localPage={'MainPage'} />
+      <Header localPage="MainPage" />
       <PageWrapper>
         <DailyCaloriesForm onFormSubmit={submitForm} />
         {openModal && (

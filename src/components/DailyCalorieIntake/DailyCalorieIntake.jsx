@@ -7,7 +7,7 @@ export default function DailyCalorieIntake({
 }) {
   let kcalLeft = daylykCalCount - kcalConsumed;
   let percOfNorm = ~~((kcalConsumed / daylykCalCount) * 100);
-  date = '06/20/2020'; // Заглушка
+
   return (
     <>
       <InfoList>

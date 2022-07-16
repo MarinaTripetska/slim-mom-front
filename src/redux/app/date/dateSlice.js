@@ -13,5 +13,5 @@ export const dateSlice = createSlice({
 });
 
 export const { dateAction } = dateSlice.actions;
-export default dateSlice.reducer;
 export const getSelectedDate = state => state.selectedDate.date;
+export default dateSlice.reducer;
