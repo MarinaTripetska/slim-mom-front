@@ -1,10 +1,10 @@
-import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit';
-import { setupListeners } from '@reduxjs/toolkit/query';
+import { configureStore } from '@reduxjs/toolkit';
 import { rootReducer } from './rootReducer';
-
-const middleware = [...getDefaultMiddleware()];
+import { setupListeners } from '@reduxjs/toolkit/query';
 
 export const store = configureStore({
   reducer: rootReducer,
-  middleware,
+  middleware: getDefaultMiddleware => [...getDefaultMiddleware()],
 });
+
+setupListeners(store.dispatch);
