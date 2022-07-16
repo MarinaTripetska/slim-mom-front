@@ -31,24 +31,15 @@ function App() {
         <>
           <Suspense fallback={<Loader />}>
             <Routes>
-              <Route
-                path="/"
-                element={<PublicRoute restricted navigateTo="/diary" />}
-              >
+              <Route path="/" element={<PublicRoute restricted />}>
                 <Route path="" element={<MainPage />} />
               </Route>
 
-              <Route
-                path="/register"
-                element={<PublicRoute restricted navigateTo="/diary" />}
-              >
+              <Route path="/register" element={<PublicRoute restricted />}>
                 <Route path="" element={<RegistrationPage />} />
               </Route>
 
-              <Route
-                path="/login"
-                element={<PublicRoute restricted navigateTo="/diary" />}
-              >
+              <Route path="/login" element={<PublicRoute restricted />}>
                 <Route path="" element={<LoginPage />} />
               </Route>
 

@@ -8,19 +8,18 @@ import {
   FormInputWeight,
   FormInputProduct,
 } from './DiaryAddProductFormStyle';
-import { getProductByQuery } from '../../service/axios.config';
 
-const loadOptions = async (inputValue, callback) => {
-  const { data } = await getProductByQuery(inputValue);
-  callback(
-    data.result.map(product => {
-      const title = product.title;
-      
-      return { label: title, value: title };
-      
-    })
-  );
-};
+// const loadOptions = async (inputValue, callback) => {
+//   // const { data } = await getProductByQuery(inputValue);
+//   callback(
+//     data.result.map(product => {
+//       const title = product.title;
+
+//       return { label: title, value: title };
+
+//     })
+//   );
+// };
 
 export default function DiaryProductForm({ onSubmit, className }) {
   let [selectedProduct, setSelectedProduct] = useState(null);
@@ -54,7 +53,7 @@ export default function DiaryProductForm({ onSubmit, className }) {
             classNamePrefix={'react-select'}
             value={selectedProduct}
             onChange={option => setSelectedProduct(option)}
-            loadOptions={loadOptions}
+            // loadOptions={loadOptions}
             placeholder="Enter product name"
             noOptionsMessage={({ selectedProduct }) =>
               !selectedProduct
