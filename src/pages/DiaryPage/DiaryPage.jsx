@@ -2,7 +2,7 @@ import DiaryDateCalendar from 'components/DiaryDateCalendar';
 import DiaryAddProductForm from '../../components/DiaryAddProductForm';
 import DiaryProductsList from '../../components/DiaryProductsList';
 
-import RightSideBar from 'components/SideBar';
+import SideBar from 'components/SideBar';
 import { useState } from 'react';
 import { addProduct } from '../../redux/app/products/productsOperation';
 import { getProductsList } from '../../redux/app/products/productsSelectors';
@@ -34,7 +34,7 @@ export default function DiaryPage() {
         className={mobileAddSelected ? '' : 'hideOnMobile'}
       />
       <DiaryProductsList products={productsList} />
-      <RightSideBar date="16.07.2022" />
+      <SideBar date="16.07.2022" />
     </>
   );
 }

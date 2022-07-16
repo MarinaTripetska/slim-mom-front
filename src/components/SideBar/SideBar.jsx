@@ -4,23 +4,22 @@ import DailyCalorieIntake from 'components/DailyCalorieIntake';
 export default function SideBar({
   date,
   kcalConsumed,
-  notRecommendProd,
+  notRecommendProd =[],
   calorie,
 }) {
   return (
     <SideBarDiv>
       <ProdListDiv>
         <DailyCalorieIntake
-          date={date}
+          date={date.replace(/\./g, "/")}
           daylykCalCount={calorie}
           kcalConsumed={kcalConsumed}
         />
         <ListTitle>Food not recommended</ListTitle>
         <ProdList>
-          {notRecommendProd?.map(product => (
+          {notRecommendProd.length > 0 ? notRecommendProd?.map(product => (
             <li key={product}>{product}</li>
-          ))}
-          {/* || 'Your diet will be displayed here' */}
+          )) : <p>Your diet will be displayed here</p>}
         </ProdList>
       </ProdListDiv>
     </SideBarDiv>
