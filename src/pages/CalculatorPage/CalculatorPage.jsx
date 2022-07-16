@@ -1,19 +1,34 @@
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import DailyCaloriesForm from '../../components/DailyCaloriesForm';
 import SideBar from 'components/SideBar';
-import { Section } from './CalculatorPage.styled';
-import { ContainerBar, ContainerForm } from './CalculatorPage.styled';
 import { getUsersAdvice } from 'redux/app/auth/auth-operations';
 import { authSelectors } from 'redux/app/auth';
 import Header from 'components/Header';
-import { getSelectedDate } from 'redux/app/date/dateSlice';
+import { Section, ContainerBar, ContainerForm } from './CalculatorPage.styled';
+import { diaryPerDayOperation } from 'redux/app/diaryPerDay';
 
 const CalculatorPage = () => {
   const dispatch = useDispatch();
+  const currentDate = new Date().toLocaleDateString();
+
+  const [ckalConsumed, setCkalConsumed] = useState(0);
+
   const userInfo = useSelector(authSelectors.getUserInfo);
   const calorie = useSelector(authSelectors.getUserAdviceCalorie);
   const notRecommendProd = useSelector(authSelectors.getUserNotRecommendProd);
-  const currentDay = useSelector(getSelectedDate);
+
+  useEffect(() => {
+    dispatch(diaryPerDayOperation.actionGetProducts({ date: currentDate }))
+      .then(res => {
+        const products = res.payload.result.products;
+        const ckalConsumed = products
+          .map(({ product, weightGrm }) => (weightGrm / 100) * product.calories)
+          .reduce((p, c) => p + c, 0);
+        return ckalConsumed;
+      })
+      .then(result => setCkalConsumed(result));
+  }, [currentDate, dispatch]);
 
   const submitForm = async data => {
     dispatch(getUsersAdvice(data));
@@ -33,9 +48,10 @@ const CalculatorPage = () => {
 
         <ContainerBar>
           <SideBar
+            kcalConsumed={ckalConsumed}
             notRecommendProd={notRecommendProd}
             calorie={calorie}
-            date={currentDay}
+            date={currentDate}
           />
         </ContainerBar>
       </Section>

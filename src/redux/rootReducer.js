@@ -1,12 +1,11 @@
 import { combineReducers } from '@reduxjs/toolkit';
+
 import { loaderSlice } from './app/loader/loaderSlice';
 import { authSlice } from './app/auth';
-import { productsSlice } from './app/products/productsSlice';
-import { dateSlice } from './app/date/dateSlice';
+import { diaryReducer } from './app/diaryPerDay';
 
 export const rootReducer = combineReducers({
   loader: loaderSlice.reducer,
   auth: authSlice.reducer,
-  products: productsSlice.reducer,
-  selectedDate: dateSlice.reducer,
+  diary: diaryReducer,
 });

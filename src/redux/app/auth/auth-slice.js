@@ -15,7 +15,6 @@ const initialState = {
   isError: false,
   isSuccess: false,
   isLoading: false,
-  // message: '',
 };
 
 export const authSlice = createSlice({
@@ -28,7 +27,6 @@ export const authSlice = createSlice({
       state.isLoading = false;
       state.isError = false;
       state.isSuccess = false;
-      // state.message = '';
     },
   },
 
@@ -38,15 +36,13 @@ export const authSlice = createSlice({
     [authOperations.actionRegister.pending](state) {
       state.isLoading = true;
     },
-    [authOperations.actionRegister.fulfilled](state, action) {
-      // state.user = action.payload.user; //????
+    [authOperations.actionRegister.fulfilled](state, _) {
       state.isSuccess = true;
       state.isLoading = false;
     },
-    [authOperations.actionRegister.rejected](state, action) {
+    [authOperations.actionRegister.rejected](state, _) {
       state.isLoading = false;
       state.isError = true;
-      // state.message = action.payload;
     },
 
     // login
@@ -63,7 +59,6 @@ export const authSlice = createSlice({
     [authOperations.actionLogin.rejected](state, action) {
       state.isLoading = false;
       state.isError = true;
-      // state.message = action.payload; // TODO: test it
     },
 
     // current user
@@ -83,7 +78,6 @@ export const authSlice = createSlice({
       state.isLoading = false;
       state.isError = true;
       state.isFetchingUser = false;
-      // state.message = action.payload; // TODO: test it
     },
 
     // logout
@@ -94,21 +88,10 @@ export const authSlice = createSlice({
       state.isLoggedIn = false;
     },
 
-    //first request:
-    // [authOperations.fetchCurrentUser.pending](state) {
-    //   state.isFetchingUser = true;
-    // },
-    // [authOperations.fetchCurrentUser.fulfilled](state, action) {
-    //   state.isLoggedIn = true;
-    //   state.isFetchingUser = false;
-    //   state.user = action.payload;
-    // },
-    // [authOperations.fetchCurrentUser.rejected](state) {
-    //   state.isFetchingUser = false;
-    // },
+    // getUserAdvice
 
     [authOperations.getUsersAdvice.pending](state, _) {
-      //
+      // TODO
     },
     [authOperations.getUsersAdvice.fulfilled](state, { payload }) {
       state.user = {

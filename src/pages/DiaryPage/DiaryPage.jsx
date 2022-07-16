@@ -12,33 +12,42 @@ import {
   ListWrap,
 } from './DiaryPageStyle';
 import SideBar from 'components/SideBar';
-// import { useState } from 'react';
-
-import { addProduct } from '../../redux/app/products/productsOperation';
-import { getProductsList } from '../../redux/app/products/productsSelectors';
+import { diarySelectors } from 'redux/app/diaryPerDay';
 import Header from 'components/Header';
 import Container from 'components/Container';
 
 export default function DiaryPage() {
+  const currentDate = useSelector(diarySelectors.getCurrentDate);
   const [mobileAddSelected, setMobileAddSelected] = useState(false);
-  const productsList = useSelector(getProductsList);
-  const dispatch = useDispatch();
-  console.log(productsList);
+  const productsList = useSelector(diarySelectors.getDiaryProducts);
+
+  // const dispatch = useDispatch();
 
   const formSubmitHandler = data => {
-    const { product, weight } = data;
+    // const { product, weight } = data;
 
-    dispatch(
-      addProduct({
-        date: '16.07.2022',
-        data: { product: product, weightGrm: weight },
-      }),
-    );
+    // dispatch(
+    //   addProduct({
+    //     date: '16.07.2022',
+    //     data: { product: product, weightGrm: weight },
+    //   }),
+    // );
+
     setMobileAddSelected(false);
   };
+
   return (
     <>
       <Header localPage="DiaryPage" />
+
+      {/* // <DiaryDateCalendar />
+      // <DiaryAddProductForm
+      //   onSubmit={formSubmitHandler}
+      //   className={mobileAddSelected ? '' : 'hideOnMobile'}
+      // />
+      // <DiaryProductsList products={productsList} />
+      // <SideBar date={currentDate} /> */}
+
       <PageWrap>
         <MobileSidebar
           onGoBack={() => setMobileAddSelected(false)}
@@ -63,20 +72,9 @@ export default function DiaryPage() {
           )}
         </Container>
         <SidebarWrap className={mobileAddSelected ? 'hideOnMobile' : ''}>
-          <SideBar date="16.07.2022" />
+          <SideBar date={currentDate} />
         </SidebarWrap>
       </PageWrap>
     </>
-
-    // <>
-    //  <Header localPage="DiaryPage" />
-    //   <DiaryDateCalendar />
-    //  <DiaryAddProductForm
-    //    onSubmit={formSubmitHandler}
-    //    className={mobileAddSelected ? '' : 'hideOnMobile'}
-    //  />
-    //  <DiaryProductsList products={productsList} />
-    //  <SideBar date="16.07.2022" />
-    //  </>
   );
 }
