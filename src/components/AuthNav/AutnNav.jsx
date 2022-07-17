@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import { authOperations, authSelectors } from 'redux/app/auth';
 import BurgerMenuIcon from 'assets/images/burger.png';
 import CloseMenuIcon from 'assets/images/close.png';
+import { createPortal } from 'react-dom';
 import {
   AuthNavStyled,
   DivHeader,
@@ -36,17 +37,22 @@ const AuthNav = () => {
     });
   };
 
+  //const backRoot = document.querySelector('#backRoot');
+
+// const Back = () => {
+//   return createPortal(<Background />, backRoot);
+// };
   const UserMenuOpen = () => {
+    const MenuRoot = document.querySelector('#menu-root');
     if (openMenu) {
-      return (
+      const ScrollVisible = () => { document.body.style.overflow = "visible" };
+      return createPortal((
         <NavThumbOpen>
-          <NavLinkStyleMenuOpen to="/diary">Diary</NavLinkStyleMenuOpen>
-          <NavLinkStyleMenuOpen to="/calculator">
-            Calculator
-          </NavLinkStyleMenuOpen>
+          <NavLinkStyleMenuOpen to="/diary" onClick={()=> {setOpenMenu(false); ScrollVisible()}}> Diary</NavLinkStyleMenuOpen>
+          <NavLinkStyleMenuOpen to="/calculator" onClick={() => { setOpenMenu(false); ScrollVisible()}}>Calculator</NavLinkStyleMenuOpen>
         </NavThumbOpen>
-      );
-    }
+      ), MenuRoot)
+    };
     return null;
   };
 
@@ -60,17 +66,19 @@ const AuthNav = () => {
   };
 
   const CloseMenu = () => {
-    const HandleClickOpen = e => {
-      e.preventDefault();
-      setOpenMenu(true);
-      return;
-    };
+    const HandleClickOpen = (e) => {
+    e.preventDefault();
+    document.body.style.overflow = "hidden";
+    setOpenMenu(true);
+    return;
+  }
 
-    const HandleClickClose = e => {
+    const HandleClickClose = (e) => {
       e.preventDefault();
-      setOpenMenu(false);
-      return;
-    };
+      document.body.style.overflow = "visible" 
+    setOpenMenu(false);
+    return;
+  }
     if (openMenu) {
       return (
         <ButtonBurger onClick={HandleClickClose}>
