@@ -7,8 +7,13 @@ import { HeaderStyled } from './Header.styled';
 const Header = ({ localPage }) => {
   const isUserLoggedIn = useSelector(authSelectors.getIsLoggenIn);
 
+  let PosAb = {};
+  if ((localPage = 'CalculatorPage')) {
+    PosAb = { position: 'absolute' };
+  }
+
   return (
-    <HeaderStyled>
+    <HeaderStyled style={PosAb}>
       {!isUserLoggedIn && <NotAuthNav localPage={localPage} />}
 
       {isUserLoggedIn && <AuthNav localPage={localPage} />}

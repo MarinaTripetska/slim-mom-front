@@ -1,4 +1,10 @@
-import { SideBarDiv, ProdListDiv, ProdList, ListTitle } from './SideBar.styles';
+import {
+  SideBarDiv,
+  ProdListDiv,
+  ProdList,
+  ListTitle,
+  ProdDiv,
+} from './SideBar.styles';
 import DailyCalorieIntake from 'components/DailyCalorieIntake';
 
 export default function SideBar({
@@ -15,14 +21,16 @@ export default function SideBar({
           daylykCalCount={calorie}
           kcalConsumed={kcalConsumed}
         />
-        <ListTitle>Food not recommended</ListTitle>
-        <ProdList>
-          {notRecommendProd.length > 0 ? (
-            notRecommendProd?.map(product => <li key={product}>{product}</li>)
-          ) : (
-            <p>Your diet will be displayed here</p>
-          )}
-        </ProdList>
+        <ProdDiv>
+          <ListTitle>Food not recommended</ListTitle>
+          <ProdList>
+            {notRecommendProd.length > 0 ? (
+              notRecommendProd?.map(product => <li key={product}>{product}</li>)
+            ) : (
+              <p>Your diet will be displayed here</p>
+            )}
+          </ProdList>
+        </ProdDiv>
       </ProdListDiv>
     </SideBarDiv>
   );

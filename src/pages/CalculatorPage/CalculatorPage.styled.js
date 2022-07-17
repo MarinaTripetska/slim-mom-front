@@ -16,12 +16,13 @@ export const PageWrapper = styled.div`
   }
 `;
 export const Section = styled.div`
+  position: relative;
   display: block;
   @media ${breakpoints.desktop} {
     display: flex;
   }
 `;
-// margin: auto;  вывел из ContainerForm 
+// margin: auto;  вывел из ContainerForm
 export const ContainerForm = styled.div`
 
   @media ${breakpoints.maxTablet} {
