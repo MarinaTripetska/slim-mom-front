@@ -62,7 +62,7 @@ const ProdList = styled.ol`
   padding-left: 0;
 
   & p {
-    margin-bottom: 20px;
+    // margin-bottom: 20px;
   }
 
   & li {
@@ -71,7 +71,7 @@ const ProdList = styled.ol`
     margin-left: 20px;
 
     &:not(:last-child) {
-      margin-bottom: 15px;
+      // margin-bottom: 15px;
     }
   }
 `;

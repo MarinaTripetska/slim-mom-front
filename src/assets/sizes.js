@@ -12,6 +12,7 @@ export const breakpoints = {
   maxTablet: `(max-width: ${size.maxTablet})`,
   onlyTablet: `(min-width: ${size.tablet}) and (max-width: ${size.maxDesktop})`,
   tablet: `(min-width: ${size.tablet})`,
+
   laptop: `(min-width: ${size.laptop})`,
   maxDesktop: `(max-width: ${size.maxDesktop})`,
   desktop: `(min-width: ${size.desktop})`,

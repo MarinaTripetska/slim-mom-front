@@ -16,6 +16,9 @@ const DCForm = styled(Form)`
 const LblDiv1 = styled.div`
   display: flex;
   flex-flow: column;
+  @media (max-width: 320px) {
+    margin-left: 20px;
+  }
 `;
 
 const FormP = styled.p`
@@ -26,6 +29,9 @@ const FormP = styled.p`
   line-height: 1.206;
   font-weight: 700;
   color: #212121;
+  @media (max-width: 320px) {
+    margin-left: 20px;
+  }
   @media (min-width: 768px) {
     font-size: 34px;
     line-height: 1.444;
@@ -44,7 +50,8 @@ const FormLabel = styled.label`
   margin-left: 32px;
   margin-top: 40px;
   @media (max-width: 320px) {
-    margin-top: 32px 0 0;
+    margin-left: 0px;
+    margin-top: 32px;
   }
   & .tooltiptext {
     visibility: hidden;
@@ -101,9 +108,9 @@ const BlList = styled.ul`
   line-height: 1.214;
   letter-spacing: 0.04em;
   color: #9b9faa;
-  border-top: 1px solid #e0e0e0;
-  /* margin-top: 20px; */
-  padding: 8px 0 12px;
+  // border-top: 2px solid #e0e0e0;
+
+  // padding: 8px 0 12px;
   display: inline-flex;
   width: 240px;
   flex-flow: row wrap;
@@ -120,7 +127,7 @@ const RadioInp = styled(Field)`
     display: inline-flex;
     align-items: center;
     user-select: none;
-    margin-left: 24px;
+    // margin-left: 24px;
     &::before {
       content: '';
       display: inline-block;
@@ -136,6 +143,9 @@ const RadioInp = styled(Field)`
       background-size: 50% 50%;
     }
   }
+  & + label:not(:first-child) {
+    // margin-left: 24px;
+  }
   &:not(:disabled):not(:checked) + label:hover::before {
     border-color: #e0e0e0;
   }
@@ -148,7 +158,12 @@ const RadioInp = styled(Field)`
     background-color: #e9ecef;
   }
 `;
-
+const pBloodType = styled.p`
+  margin-bottom: 20px;
+  @media (max-width: 320px) {
+    margin-bottom: 8px;
+  }
+`;
 const BtnDiv = styled.div`
   // margin-top: 60px;
 
@@ -162,6 +177,14 @@ const BtnDiv = styled.div`
   //   }
   // }
   margin: 40px auto 0 auto;
+  @media (max-width: 320px) {
+    width: 100vw;
+    // margin: 0;
+    margin-top: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
   @media ${breakpoints.tablet} {
     margin: 60px auto 0 32px;
   }
@@ -180,4 +203,5 @@ export {
   BlList,
   RadioInp,
   BtnDiv,
+  pBloodType,
 };

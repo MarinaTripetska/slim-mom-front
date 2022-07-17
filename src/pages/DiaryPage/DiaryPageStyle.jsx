@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 
 export const PageWrapper = styled.div`
-  margin-top: 40px;
-  margin-left: 20px;
+  // margin-top: 40px;
+  // margin-left: 20px;
   font-family: 'Verdana';
   font-style: normal;
   @media (min-width: 768px) {

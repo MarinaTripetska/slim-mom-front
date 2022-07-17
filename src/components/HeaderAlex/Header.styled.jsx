@@ -121,17 +121,21 @@ export const NavPositionLog = styled.div`
 `;
 
 export const LoginRegistrPosition = styled.div`
-  margin-right: 20px;
+  margin-right: 220px;
   display: flex;
   align-items: center;
   margin-top: 5px;
+  @media (min-width: 768px ){
+    
+  }
   @media ${breakpoints.desktop}{
       display: none;
     }
 `;
 
 export const LoginRegistrStyle = styled(NavLink)`
-  color: #9B9FAA;
+  
+color: #9B9FAA;
   text-transform: uppercase;
   margin-left: 16px;
   &.active{

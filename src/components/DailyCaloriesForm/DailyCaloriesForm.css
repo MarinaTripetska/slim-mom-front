@@ -1,0 +1,10 @@
+.radioLi:not(:first-child) {
+  margin-left: 24px;
+}
+
+.bloodTypeP { 
+  
+    margin-bottom: 8px; 
+
+    
+}

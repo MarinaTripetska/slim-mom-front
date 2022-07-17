@@ -1,6 +1,7 @@
 import { Formik } from 'formik';
 import { useState } from 'react';
 import Button from '../Button';
+import './DailyCaloriesForm.css'
 import {
   FormDiv,
   FormP,
@@ -142,9 +143,10 @@ export default function DailyCaloriesForm({
               <span className="tooltiptext">Min 20, max 500</span>
             </FormLabel>
             <FormLabel htmlFor="bloodType" required>
-              <p style={{ marginBottom: '20px' }}>Blood type*</p>
+              <p className='bloodTypeP'>Blood type*</p>
+              {/* <p style={{ marginBottom: '20px' }}>Blood type*</p> */}
               <BlList>
-                <li>
+                <li className='radioLi'>
                   <RadioInp
                     type="radio"
                     name="bloodType"
@@ -155,7 +157,7 @@ export default function DailyCaloriesForm({
                   />
                   <label htmlFor="blood-inp-1">1</label>
                 </li>
-                <li>
+                <li className='radioLi'>
                   <RadioInp
                     type="radio"
                     name="bloodType"
@@ -166,7 +168,7 @@ export default function DailyCaloriesForm({
                   />
                   <label htmlFor="blood-inp-2">2</label>
                 </li>
-                <li>
+                <li className='radioLi'>
                   <RadioInp
                     type="radio"
                     name="bloodType"
@@ -177,7 +179,7 @@ export default function DailyCaloriesForm({
                   />
                   <label htmlFor="blood-inp-3">3</label>
                 </li>
-                <li>
+                <li className='radioLi'>
                   <RadioInp
                     type="radio"
                     name="bloodType"
