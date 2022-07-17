@@ -2,12 +2,12 @@ import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 // import { updateDate } from '../../redux/app/diaryPerDay/diaryPerDay-slice';
 // import updateDate from '../../redux/app/diaryPerDay/diaryPerDay-slice';
-import Datetime from 'react-datetime';
+// import Datetime from 'react-datetime';
 import 'react-datetime/css/react-datetime.css';
 import 'moment/locale/uk';
 import 'moment/locale/ru';
 
-import { dateAction } from '../../redux/app/date/dateSlice';
+// import { dateAction } from '../../redux/app/date/dateSlice';
 
 import { DatePickerWrapper, DatePicker } from './DiaryDateCalendar.styled';
 import CalendarBtn from '../CalendarBtn/CalendarBtn';

@@ -4,6 +4,8 @@ import { BsPlusLg } from 'react-icons/bs';
 import debounce from 'lodash.debounce';
 import _ from 'lodash';
 
+import { getProductsByQuery } from '../../service/axios.config';
+
 import {
   StyledForm,
   FormBtnMobile,
@@ -16,7 +18,7 @@ import {
 // var debounce = require('lodash.debounce');
 // const _ = require('lodash');
 
-// const debounced = debounce(getProductByQuery, 2000);
+// const debounced = debounce(getProductsByQuery, 2000);
 
 const loadOptions = async (inputValue, callback) => {
   console.log('inputValue:', inputValue);
@@ -24,7 +26,7 @@ const loadOptions = async (inputValue, callback) => {
     return;
   }
   console.log('пошла жара на сервер!');
-  const { data } = await getProductByQuery(inputValue);
+  const { data } = await getProductsByQuery(inputValue);
   // const { data } = await debounced(inputValue);
 
   console.log('reseived:', data);
@@ -67,15 +69,14 @@ export default function DiaryProductForm({ onSubmit, className }) {
             backspaceRemovesValue
             escapeClearsValue
             classNamePrefix={'react-select'}
-<<<<<<< HEAD
-            defaultValue={selectedProduct}
-            onChange={option => setSelectedProduct(option.value)}
-            // loadOptions={_.debounce(loadOptions, 2000)}
-            loadOptions={loadOptions}
-            placeholder="Введіть назву продукту"
-            title="Введіть назву продукту"
-            cacheOptions
-=======
+            // defaultValue={selectedProduct}
+            // onChange={option => setSelectedProduct(option.value)}
+            // // loadOptions={_.debounce(loadOptions, 2000)}
+            // loadOptions={loadOptions}
+            // placeholder="Введіть назву продукту"
+            // title="Введіть назву продукту"
+            // cacheOptions
+
             value={selectedProduct}
             onChange={option => setSelectedProduct(option)}
             // loadOptions={loadOptions}
@@ -88,7 +89,6 @@ export default function DiaryProductForm({ onSubmit, className }) {
             loadingMessage={({ selectedProduct }) =>
               !selectedProduct ? 'Searching...' : 'There is no such product'
             }
->>>>>>> c9ea91e54f7428cc5eec339751a72ff5b492ddf6
           />
         </FormLabel>
         <FormLabel>
@@ -96,19 +96,11 @@ export default function DiaryProductForm({ onSubmit, className }) {
             type="number"
             min={1}
             name="weight"
-<<<<<<< HEAD
             title="Введіть вагу продукту"
             required
             value={weight}
             onChange={e => setWeight(e.target.value)}
             placeholder="Грами"
-=======
-            title="Enter product weight"
-            required
-            value={weight}
-            onChange={e => setWeight(e.target.value)}
-            placeholder="Grams"
->>>>>>> c9ea91e54f7428cc5eec339751a72ff5b492ddf6
           />
         </FormLabel>
         <FormBtnMobile type="submit">Add</FormBtnMobile>

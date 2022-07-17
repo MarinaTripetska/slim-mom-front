@@ -18,17 +18,19 @@ export const DatePicker = styled(Datetime)`
   line-height: 1.21;
   letter-spacing: 0em;
 
-  .rdtToday {
-    color: var(--accent-color);
-  }
-  td.rdtToday:before {
-    content: none;
-  }
-  td.rdtActive {
-    background-color: var(--accent-shadow);
+  .rdtPicker {
+    .rdtToday {
+      color: var(--accent-color);
+    }
+    td.rdtToday:before {
+      content: none;
+    }
+    td.rdtActive {
+      background-color: var(--accent-shadow);
 
-    :hover {
-      background-color: var(--accent-color);
+      :hover {
+        background-color: var(--accent-color);
+      }
     }
   }
 
