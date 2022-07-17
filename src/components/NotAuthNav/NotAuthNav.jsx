@@ -1,7 +1,6 @@
 import Logo from 'components/Logo';
 import { useEffect, useState } from 'react';
-import { NavLink } from 'react-router-dom';
-import { NotAuthNavStyled, NavThumb } from './NotAuthNav.styled';
+import { NotAuthNavStyled, NavThumb, NavLinkStyle } from './NotAuthNav.styled';
 import { size } from '../../assets/sizes';
 
 function getWindowSize() {
@@ -36,8 +35,8 @@ const NotAuthNav = ({ localPage }) => {
     <NotAuthNavStyled>
       <Logo />
       <NavThumb>
-        <NavLink to="/login">Sign in</NavLink>
-        <NavLink to="/register">Registration</NavLink>
+        <NavLinkStyle to="/login">Sign in</NavLinkStyle>
+        <NavLinkStyle to="/register">Registration</NavLinkStyle>
       </NavThumb>
     </NotAuthNavStyled>
   );

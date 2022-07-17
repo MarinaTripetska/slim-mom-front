@@ -5,11 +5,7 @@ import { breakpoints } from '../../assets/sizes';
 
 const SideBarDiv = styled.div`
   background: #f0f1f3;
-
   margin: auto;
-
-  background-repeat: no-repeat;
-  // max-width: 520px;
   height: 850px;
   max-height: 850px;
 
@@ -17,7 +13,7 @@ const SideBarDiv = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  @media (max-width: 1279px) {
+  @media ${breakpoints.maxDesktop} {
     height: 100%;
     max-height: fit-content;
     max-width: 100vw;
@@ -40,6 +36,13 @@ const SideBarDiv = styled.div`
     height: 326px;
     padding-top: 0px;
     padding-bottom: 0px;
+  }
+  @media ${breakpoints.desktop} {
+    //  background: #f0f1f3;
+    background-image: url(${bgi});
+    // background-repeat: no-repeat;
+    // background-position: bottom right;
+    //background-size: 740px 842px;
   }
 `;
 

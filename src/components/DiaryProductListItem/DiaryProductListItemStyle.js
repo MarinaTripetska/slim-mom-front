@@ -6,18 +6,23 @@ export const Product = styled.li`
   justify-content: space-between;
   width: 280px;
   margin-bottom: 20px;
+  font-style: normal;
+font-weight: 400;
+font-size: 14px;
+line-height: 17px;
+letter-spacing: 0.04em;
   color: var(--main-text-color);
   > button {
+    border:none;
     background-color: transparent;
     padding: 0;
-    height: 10px;
-    width: 10px;
+    height: 12px;
+    width: 12px;
     cursor: pointer;
     > svg {
       display: block;
-      width: 100%;
-      height: 100%;
       object-fit: contain;  
+      color:#9B9FAA;
     }
     }
   @media screen and (min-width: 768px) {
