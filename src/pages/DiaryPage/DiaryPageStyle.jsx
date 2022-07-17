@@ -26,13 +26,13 @@ export const ListWrap = styled.div`
 `;
 
 export const SidebarWrap = styled.div`
+
 margin-top: auto;
 @media screen and (min-width: 1280px) {
   width:100%;
   margin-top: 0;
   overflow: hidden;
-}
-`;
+}`;
 
 export const PageWrap = styled.div`
   @media screen and (max-width: 1279px) {
@@ -43,7 +43,7 @@ export const PageWrap = styled.div`
   @media screen and (min-width: 1280px) {
     display: flex;
   }
-  `;
+`;
 export const AddBtnMobile = styled(FormBtnBase)`
   display: flex;
   justify-content: center;

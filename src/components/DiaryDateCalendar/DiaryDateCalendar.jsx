@@ -2,10 +2,14 @@ import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 // import { updateDate } from '../../redux/app/diaryPerDay/diaryPerDay-slice';
 // import updateDate from '../../redux/app/diaryPerDay/diaryPerDay-slice';
-import Datetime from 'react-datetime';
+// import Datetime from 'react-datetime';
 import 'react-datetime/css/react-datetime.css';
+import 'moment/locale/uk';
+import 'moment/locale/ru';
 
-import { DatePickerWrapper } from './DiaryDateCalendar.styled';
+// import { dateAction } from '../../redux/app/date/dateSlice';
+
+import { DatePickerWrapper, DatePicker } from './DiaryDateCalendar.styled';
 import CalendarBtn from '../CalendarBtn/CalendarBtn';
 import { diarySelectors, updateDate } from 'redux/app/diaryPerDay';
 
@@ -13,7 +17,6 @@ function dateToString(date) {
   let year = String(date.getFullYear());
   let month = String(date.getMonth() + 1).padStart(2, '0');
   let day = String(date.getDate()).padStart(2, '0');
-
   return day + '.' + month + '.' + year;
 }
 
@@ -25,12 +28,7 @@ export default function DiaryDateCalendar() {
 
   let inputProps = {
     value: date,
-    disabled: true,
-    style: {
-      border: 'none',
-      fontSize: '34px',
-      width: '230px',
-    },
+    disabled: true, // блокирует поле ввода для редактирования чисел (клик по нему не открывает календарь)
   };
 
   function valid(current) {
@@ -51,16 +49,17 @@ export default function DiaryDateCalendar() {
 
   return (
     <DatePickerWrapper>
-      <Datetime
+      <DatePicker
         inputProps={inputProps} // настройки
         timeFormat={false} // отключение отображения часов
         dateFormat="DD.MM.YYYY" // формат даты
         isValidDate={valid} // блокируем будущее
         onChange={changeDate} // отслеживаем изменения даты
         open={isShow} // отображение календаря !!!
+        locale="uk" // язык
       />
 
-      <CalendarBtn onHandleClick={openCalendar} />
+      <CalendarBtn onHandleClick={openCalendar} isShown={isShow} />
     </DatePickerWrapper>
   );
 }
