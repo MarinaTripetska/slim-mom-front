@@ -1,7 +1,7 @@
 import BurgerMenu from 'components/BurgerMenu';
 import Logo from 'components/Logo';
 import { useDispatch, useSelector } from 'react-redux';
-import { NavLink, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { authOperations, authSelectors } from 'redux/app/auth';
 import BurgerMenuIcon from 'assets/images/burger.png';
 import CloseMenuIcon from 'assets/images/close.png';
@@ -19,7 +19,7 @@ import {
   NavLinkStyleMenu,
   ButtonBurger,
   NavThumbOpen,
-  NavLinkStyleMenuOpen
+  NavLinkStyleMenuOpen,
   // DivNic,
 } from './AuthNav.styled';
 import { useState } from 'react';
@@ -41,10 +41,12 @@ const AuthNav = () => {
       return (
         <NavThumbOpen>
           <NavLinkStyleMenuOpen to="/diary">Diary</NavLinkStyleMenuOpen>
-          <NavLinkStyleMenuOpen to="/calculator">Calculator</NavLinkStyleMenuOpen>
+          <NavLinkStyleMenuOpen to="/calculator">
+            Calculator
+          </NavLinkStyleMenuOpen>
         </NavThumbOpen>
-      )
-    };
+      );
+    }
     return null;
   };
 
@@ -54,52 +56,52 @@ const AuthNav = () => {
         <NavLinkStyleMenu to="/diary">Diary</NavLinkStyleMenu>
         <NavLinkStyleMenu to="/calculator">Calculator</NavLinkStyleMenu>
       </NavThumb>
-    )
+    );
   };
 
   const CloseMenu = () => {
-    const HandleClickOpen = (e) => {
-    e.preventDefault();
-    setOpenMenu(true);
-    return;
-  }
+    const HandleClickOpen = e => {
+      e.preventDefault();
+      setOpenMenu(true);
+      return;
+    };
 
-    const HandleClickClose = (e) => {
-    e.preventDefault();
-    setOpenMenu(false);
-    return;
-  }
+    const HandleClickClose = e => {
+      e.preventDefault();
+      setOpenMenu(false);
+      return;
+    };
     if (openMenu) {
-      return(
-      <ButtonBurger onClick={HandleClickClose}>
-        <img src={CloseMenuIcon} alt="CloseMenuIcon" />
-      </ButtonBurger>
-      )
+      return (
+        <ButtonBurger onClick={HandleClickClose}>
+          <img src={CloseMenuIcon} alt="CloseMenuIcon" />
+        </ButtonBurger>
+      );
     }
-        return (
+    return (
       <ButtonBurger onClick={HandleClickOpen}>
         <img src={BurgerMenuIcon} alt="BurgerMenuIcon" />
       </ButtonBurger>
-    )
-  }
+    );
+  };
 
   return (
     <AuthNavStyled>
       <DivHeader>
         <Logostyled>
           <Logo />
-          <VerticalDeskTop/>
+          <VerticalDeskTop />
           <UserMenu />
         </Logostyled>
         <Userstyled>
           <UserThumb>
             <UserNameStyle>{userName}</UserNameStyle>
-            <Vertical/>
+            <Vertical />
             <ExitBtn type="button" onClick={handleLogout}>
               Exit
             </ExitBtn>
           </UserThumb>
-          <CloseMenu/>
+          <CloseMenu />
         </Userstyled>
       </DivHeader>
       {/* <DivNic>

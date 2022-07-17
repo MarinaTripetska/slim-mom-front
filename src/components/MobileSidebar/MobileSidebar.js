@@ -1,14 +1,10 @@
-import {UserInfoMenuMobile} from '../UserInfoMenu';
+import { UserInfoMenuMobile } from '../UserInfoMenu';
+import { MobileSidebarWrap } from './MobileSidebarStyle';
 
-import { MobileSidebarWrap} from './MobileSidebarStyle';
-
-export default function MobileSidebar({ mobileAddSelected }) {
+export default function MobileSidebar() {
   return (
     <MobileSidebarWrap>
-    {mobileAddSelected === 'hideOnMobile' }
-      <div>
       <UserInfoMenuMobile />
-      </div>
     </MobileSidebarWrap>
   );
 }
