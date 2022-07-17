@@ -11,6 +11,6 @@ export const HeaderStyled = styled.header`
   justify-content: space-between;
 
   @media ${breakpoints.desktop} {
-    border: none;
+      border-bottom: none;
   }
 `;
