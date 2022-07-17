@@ -16,7 +16,7 @@ export const PageWrapper = styled.div`
   }
 `;
 export const Section = styled.div`
-  position: relative;
+  // position: relative;
   display: block;
   @media ${breakpoints.desktop} {
     display: flex;
