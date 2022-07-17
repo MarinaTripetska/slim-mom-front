@@ -1,8 +1,5 @@
 import { useState, Fragment } from 'react';
 import { BsPlusLg } from 'react-icons/bs';
-// import debounce from 'debounce';
-import debounce from 'lodash.debounce';
-import _ from 'lodash';
 
 import { getProductsByQuery } from '../../service/axios.config';
 
@@ -15,25 +12,17 @@ import {
   FormInputProduct,
 } from './DiaryAddProductFormStyle';
 
-// var debounce = require('lodash.debounce');
-// const _ = require('lodash');
-
-// const debounced = debounce(getProductsByQuery, 2000);
-
 const loadOptions = async (inputValue, callback) => {
   console.log('inputValue:', inputValue);
-  if (inputValue.length < 3) {
+  if (inputValue.length < 2) {
     return;
   }
-  console.log('пошла жара на сервер!');
   const { data } = await getProductsByQuery(inputValue);
-  // const { data } = await debounced(inputValue);
 
   console.log('reseived:', data);
   callback(
     data.result.map(product => {
       const title = product.title;
-      // console.log('title:', title);
       return { label: title, value: title };
     }),
   );
@@ -79,7 +68,6 @@ export default function DiaryProductForm({ onSubmit, className }) {
 
             value={selectedProduct}
             onChange={option => setSelectedProduct(option)}
-            // loadOptions={loadOptions}
             placeholder="Enter product name"
             noOptionsMessage={({ selectedProduct }) =>
               !selectedProduct
