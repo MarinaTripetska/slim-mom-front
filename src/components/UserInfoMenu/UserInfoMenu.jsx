@@ -7,14 +7,13 @@ import {
   UserInfoExit,
   BackButton,
 } from './UserInfoMenu.styled';
+
 import { authSelectors } from 'redux/app/auth';
 import IconBack from '../../assets/images/arrow-mobile.png';
 import { useDispatch, useSelector } from 'react-redux';
 import { authOperations } from 'redux/app/auth';
 
-export const UserInfoMenuMobile = ({
-  logOut = '/',
-}) => {
+export const UserInfoMenuMobile = ({ logOut = '/'}) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const userName = useSelector(authSelectors.getUserName);

@@ -30,6 +30,9 @@ const SideBarDiv = styled.div`
     align-items: center;
     padding: 40px 20px;
   }
+  @media (min-width: 768px) {
+    margin-top:55px
+  }
 `;
 
 const ListTitle = styled.h3`
