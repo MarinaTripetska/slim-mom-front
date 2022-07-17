@@ -8,11 +8,14 @@ const Header = ({ localPage }) => {
   const isUserLoggedIn = useSelector(authSelectors.getIsLoggenIn);
 
   return (
+    <>
     <HeaderStyled>
       {!isUserLoggedIn && <NotAuthNav localPage={localPage} />}
 
       {isUserLoggedIn && <AuthNav localPage={localPage} />}
     </HeaderStyled>
+      <div id="menu-root"></div>
+    </>
   );
 };
 

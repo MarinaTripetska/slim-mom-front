@@ -19,6 +19,7 @@ export const Logostyled = styled.div`
   display: flex;
   align-items: flex-end;
 `;
+
 export const NavThumb = styled.div`
   @media ${breakpoints.maxTablet}{
     display: none;
@@ -31,6 +32,7 @@ export const NavThumb = styled.div`
 export const Userstyled = styled.div`
 display: flex;
 `;
+
 export const DivNic = styled.div``;
 export const UserThumb = styled.div`
   @media ${breakpoints.maxTablet}{
@@ -42,12 +44,12 @@ export const UserThumb = styled.div`
   align-items: center;
 `;
 
-export const UserNameStyle = styled.span`
-`;
+export const UserNameStyle = styled.span``;
 
 export const ExitBtn = styled.button`
   border: none;
   color: #9B9FAA;
+  cursor: pointer;
 `;
 
 export const Vertical = styled.div`
@@ -76,6 +78,7 @@ export const NavLinkStyleMenu = styled(NavLink)`
   color:#9B9FAA;
   text-transform: uppercase;
   margin-right: 16px;
+  cursor: pointer;
   &.active{
     color: #212121;
   }
@@ -88,20 +91,42 @@ export const ButtonBurger = styled.button`
     border: none;
     background: none;
     margin-left: 53px;
+    cursor: pointer;
   }
 `;
 
 export const NavThumbOpen = styled.div`
   width: 100%;
-  height: 100%;
-  background-color: red;
+  height: 100vh;
+  font-size: 18px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-transform: uppercase;
+  padding-top: 60px;
+  color: #ffffff;
+  background-color:  #264061;
+  /* overflow-y: hidden; */
+@media ${breakpoints.tablet}{
+  font-size: 24px;
+  line-height: 2.1;
+  padding-top: 100px;
+  }
+@media ${breakpoints.desktop}{
+  display: none;
+  }
 `;
 
 export const NavLinkStyleMenuOpen = styled(NavLink)`
   color:#9B9FAA;
   text-transform: uppercase;
   margin-right: 16px;
+  cursor: pointer;
   &.active{
     color: #212121;
+  }
+  @media ${breakpoints.maxTablet}{
+    margin-right: 0px;
+    margin-bottom: 14px;
   }
 `;
