@@ -4,6 +4,11 @@ import { useDispatch, useSelector } from 'react-redux';
 import DiaryDateCalendar from 'components/DiaryDateCalendar';
 import DiaryAddProductForm from '../../components/DiaryAddProductForm';
 import DiaryProductsList from '../../components/DiaryProductsList';
+import MobileSidebar from '../../components/MobileSidebar'
+import {AddBtnMobile,PageWrap,SidebarWrap,ListWrap,ContainerDiary} from './DiaryPageStyle';
+import SideBar from 'components/SideBar';
+import { addProduct } from '../../redux/app/products/productsOperation';
+import {getProductsList} from '../../redux/app/products/productsSelectors';
 import MobileSidebar from '../../components/MobileSidebar';
 import {
   AddBtnMobile,
@@ -35,6 +40,38 @@ export default function DiaryPage() {
 
     setMobileAddSelected(false);
   };
+
+<>
+<Header localPage="DiaryPage" />
+<PageWrap>
+<MobileSidebar
+onGoBack={() => setMobileAddSelected(false)}
+mobileAddSelected={mobileAddSelected}
+/>
+  
+  <ContainerDiary>
+  {!mobileAddSelected&&<DiaryDateCalendar />}
+    <DiaryAddProductForm
+      onSubmit={formSubmitHandler}
+      className={mobileAddSelected ? '' : 'hideOnMobile'}/>
+    <ListWrap className={mobileAddSelected ? 'hideOnMobile' : ''}>
+      {<DiaryProductsList products={productsList} />}
+    </ListWrap>
+      {!mobileAddSelected&&(
+        <AddBtnMobile
+      className={'showOnMobile'}
+      onClick={() => setMobileAddSelected(true)}>
+      <BsPlusLg size={14} />
+    </AddBtnMobile>)}
+  </ContainerDiary>
+  <SidebarWrap className={mobileAddSelected ? 'hideOnMobile' : ''}>
+    <SideBar date="16.07.2022" />
+  </SidebarWrap>
+  </PageWrap>
+</>
+)}
+
+    
 
   return (
     <>
