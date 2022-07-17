@@ -100,10 +100,11 @@ export const getProductsByDate = async ({ date }) => {
 
     return data;
   } catch (error) {
-    console.log(error);
+    if (error.response.status === 404) {
+      console.log('Dietary on this date no created');
+    }
   }
 };
-
 //==================CREATE OBJ FOR PRODUCTS TO DIETARY BY DATE=====================
 
 export const createProductsListByDate = async ({ date }) => {
