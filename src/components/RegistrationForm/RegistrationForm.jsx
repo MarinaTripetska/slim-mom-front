@@ -37,7 +37,7 @@ const RegistrationForm = () => {
       name: Yup.string()
         .min(3, 'Min 3 symbols')
         .max(254, 'Max 254 symbols')
-        .matches(/[A-z]/, 'Only alphabets are allowed for this field ')
+        .matches(/[A-z]/, 'Select English keyboard layout, please')
         .required('Required'),
       email: Yup.string()
         .email('Invalid email')
@@ -47,10 +47,7 @@ const RegistrationForm = () => {
       password: Yup.string()
         .min(8, 'Min 8 symbols')
         .max(100, 'Max 100 symbols')
-        .matches(
-          /[A-z0-9]/,
-          'Passworw should have letters and numbers, no special  symbols',
-        )
+        .matches(/[A-z0-9]/, 'Select English keyboard layout, please')
         .required('Required'),
     }),
 
