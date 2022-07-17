@@ -6,33 +6,18 @@ import {
   Vertical,
   UserInfoExit,
   BackButton,
-  InfoPositionLapTop,
-  UserNameButtonLapTop,
-  VerticalLapTop,
-  // VerticalDesktop,
-  UserInfoExitLapTop,
-  ExitButtonLapTop,
-  //     PositionSignIn,
-  //     PositionFormSigIn,
-  //     SignInStyle,
-  //     RegistrStyle
 } from './UserInfoMenu.styled';
-// import { logout } from '../../service/axios.config';
-
-// import { login, current } from '../../service/axios.config';
-// import { getUserName } from '../../redux/app/auth/auth-selectors';
+import { authSelectors } from 'redux/app/auth';
 import IconBack from '../../assets/images/arrow-mobile.png';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { authOperations } from 'redux/app/auth';
-// import { useState } from 'react';
-// import RegistrationForm from '../RegistrationForm';
 
 export const UserInfoMenuMobile = ({
-  userName = 'No name',
-  logOut = '/home',
+  logOut = '/',
 }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const userName = useSelector(authSelectors.getUserName);
 
   return (
     <InfoPosition>
@@ -49,25 +34,5 @@ export const UserInfoMenuMobile = ({
         </ExitButton>
       </UserInfoExit>
     </InfoPosition>
-  );
-};
-// Non Authenticate User
-export const UserInfoMenuLapTop = ({ userName = 'No name' }) => {
-  const dispatch = useDispatch();
-
-  return (
-    <InfoPositionLapTop>
-      <UserInfoExitLapTop>
-        <UserNameButtonLapTop>
-          <NavLink to="/calculator">{userName}</NavLink>
-        </UserNameButtonLapTop>
-        <VerticalLapTop></VerticalLapTop>
-        <ExitButtonLapTop
-          onClick={() => dispatch(authOperations.actionLogout())}
-        >
-          <NavLink to="/login">Exit</NavLink>
-        </ExitButtonLapTop>
-      </UserInfoExitLapTop>
-    </InfoPositionLapTop>
   );
 };
