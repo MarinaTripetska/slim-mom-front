@@ -13,12 +13,8 @@ const Header = ({ localPage }) => {
   }
 
   return (
-<<<<<<< HEAD
     <>
-    <HeaderStyled>
-=======
     <HeaderStyled style={PosAb}>
->>>>>>> 0e8a5de8493d1815c34eb779ac83d80f4df8f9a3
       {!isUserLoggedIn && <NotAuthNav localPage={localPage} />}
 
       {isUserLoggedIn && <AuthNav localPage={localPage} />}
