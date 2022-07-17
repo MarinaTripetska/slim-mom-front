@@ -40,7 +40,7 @@ export default function DiaryPage() {
       <PageWrap>
         <MobileSidebar
           onGoBack={() => setMobileAddSelected(false)}
-          mobileAddSelected={mobileAddSelected}
+          // mobileAddSelected={mobileAddSelected}
         />
 
         <ContainerDiary>
