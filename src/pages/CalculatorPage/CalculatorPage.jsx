@@ -36,8 +36,8 @@ const CalculatorPage = () => {
 
   return (
     <>
+      <Header localPage="CalculatorPage" />
       <Section>
-        <Header localPage="CalculatorPage" />
         <ContainerForm>
           <DailyCaloriesForm
             onFormSubmit={submitForm}
