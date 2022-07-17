@@ -16,14 +16,14 @@ export const PageWrapper = styled.div`
   }
 `;
 export const Section = styled.div`
+  // position: relative;
   display: block;
   @media ${breakpoints.desktop} {
     display: flex;
   }
 `;
-// margin: auto;  вывел из ContainerForm 
+// margin: auto;  вывел из ContainerForm
 export const ContainerForm = styled.div`
-
   @media ${breakpoints.maxTablet} {
     width: 320px;
     padding: 32px 20px 41px;
@@ -35,8 +35,6 @@ export const ContainerForm = styled.div`
   @media ${breakpoints.desktop} {
     width: 100%;
     padding: 150px 16px 111px 16px;
-  }
-  
   }
 `;
 

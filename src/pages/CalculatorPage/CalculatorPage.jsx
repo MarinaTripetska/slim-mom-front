@@ -21,13 +21,14 @@ const CalculatorPage = () => {
   useEffect(() => {
     dispatch(diaryPerDayOperation.actionGetProducts({ date: currentDate }))
       .then(res => {
-        const products = res.payload.result.products;
+        const products = res.payload.result?.products;
         const ckalConsumed = products
           .map(({ product, weightGrm }) => (weightGrm / 100) * product.calories)
           .reduce((p, c) => p + c, 0);
         return ckalConsumed;
       })
-      .then(result => setCkalConsumed(result));
+      .then(result => setCkalConsumed(result))
+      .catch(e => console.log(e.message));
   }, [currentDate, dispatch]);
 
   const submitForm = async data => {
