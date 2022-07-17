@@ -20,20 +20,20 @@ import {
 // import { logout } from '../../service/axios.config';
 
 // import { login, current } from '../../service/axios.config';
-// import { getUserName } from '../../redux/app/auth/auth-selectors';
+import { authSelectors } from 'redux/app/auth';
 import IconBack from '../../assets/images/arrow-mobile.png';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { authOperations } from 'redux/app/auth';
 // import { useState } from 'react';
 // import RegistrationForm from '../RegistrationForm';
 
 export const UserInfoMenuMobile = ({
-  userName = 'No name',
+  // userName = 'No name',
   logOut = '/home',
 }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-
+  const userName = useSelector(authSelectors.getUserName);
   return (
     <InfoPosition>
       <BackButton onClick={() => navigate(-1)}>
