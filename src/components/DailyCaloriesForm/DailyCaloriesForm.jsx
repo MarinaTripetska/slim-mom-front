@@ -18,12 +18,10 @@ export default function DailyCaloriesForm({
   userInfo = false,
   isCleanUserInfo = false,
 }) {
+  const [isFormValid, setIsFormValid] = useState(false);
   const [selectedBldType, setSelectedBlbType] = useState(() =>
     userInfo ? userInfo.bloodType : '1',
   );
-
-  // const [btnIsDisabled, setBtnIsDisabled] = useState(true);
-  let formIsValid = false;
 
   const onBldTypeSelect = event => {
     setSelectedBlbType(event.target.value);
@@ -40,15 +38,6 @@ export default function DailyCaloriesForm({
       };
 
   const validate = values => {
-    //  const { height, age, desiredWeight, currentWeight, bloodType } = values;
-    //  if (!height || height < 100 || height > 250) return setBtnIsDisabled(true);
-    //   if (!age || age < 18 || age > 100) return setBtnIsDisabled(true);
-    //   if (!currentWeight || currentWeight < 20 || currentWeight > 500)
-    //   return setBtnIsDisabled(true);
-    //  if (!desiredWeight || desiredWeight < 20 || desiredWeight > 500)
-    //    return setBtnIsDisabled(true);
-    //   if (!bloodType) values.bloodType = selectedBldType - 0;
-
     const { height, age, desiredWeight, currentWeight, bldType } = values;
     if (!height || height < 100 || height > 250) return;
     if (!age || age < 18 || age > 100) return;
@@ -56,7 +45,7 @@ export default function DailyCaloriesForm({
     if (!desiredWeight || desiredWeight < 20 || desiredWeight > 500) return;
     if (!bldType) values.bldType = selectedBldType;
 
-    formIsValid = true;
+    setIsFormValid(true);
   };
 
   return (
@@ -64,7 +53,7 @@ export default function DailyCaloriesForm({
       initialValues={inivialValues}
       validate={validate}
       onSubmit={(values, { resetForm }) => {
-        if (!formIsValid) return;
+        if (!isFormValid) return;
 
         const user = {
           userData: {

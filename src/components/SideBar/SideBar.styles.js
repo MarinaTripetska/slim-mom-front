@@ -84,6 +84,7 @@ const ProdList = styled.ul`
   color: #9b9faa;
   @media (max-width: 767px) {
     margin-bottom: 40px;
+  }
 `;
 
 export { SideBarDiv, ProdListDiv, ProdList, ListTitle, ProdDiv };
