@@ -13,7 +13,7 @@ const InfoList = styled.ul`
     width: 250px;
     margin: 0;
   }
-  @media (max-width: 550px) {
+  @media (max-width: 767px) {
     margin-bottom: 40px;
     width: 100%;
   }
