@@ -9,7 +9,6 @@ const initialState = {
   isError: false,
   date: currentDate,
   products: null,
-  message: '',
 };
 
 export const diaryPerDaySlice = createSlice({
@@ -21,7 +20,6 @@ export const diaryPerDaySlice = createSlice({
     updateDate: (state, action) => {
       state.date = action.payload;
       state.products = null;
-      state.message = null;
     },
   },
 
@@ -30,20 +28,13 @@ export const diaryPerDaySlice = createSlice({
 
     [diaryPerDayOperation.actionGetProducts.pending](state) {
       state.isLoading = true;
-      state.message = '';
-      state.isError = false;
-      state.isSuccess = false;
     },
     [diaryPerDayOperation.actionGetProducts.fulfilled](state, { payload }) {
       state.isLoading = false;
       state.isError = false;
       state.isSuccess = true;
 
-      if (typeof payload === 'string') {
-        state.message = payload;
-      } else {
-        state.products = [...payload.result.products];
-      }
+      state.products = [...payload.result.products];
     },
     [diaryPerDayOperation.actionGetProducts.rejected](state, action) {
       state.isLoading = false;
@@ -62,7 +53,7 @@ export const diaryPerDaySlice = createSlice({
       state.isLoading = false;
       state.isError = false;
       state.isSuccess = true;
-      state.products = [...payload.products];
+      state.products = [...payload.result.products];
     },
     [diaryPerDayOperation.actionCreateProductsList.rejected](state, action) {
       state.isLoading = false;

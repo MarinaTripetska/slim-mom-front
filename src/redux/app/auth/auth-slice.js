@@ -116,17 +116,16 @@ export const authSlice = createSlice({
     // getUserAdvice
 
     [authOperations.getUsersAdvice.pending](state, _) {
-      state.isLoading = true;
+      // TODO
     },
     [authOperations.getUsersAdvice.fulfilled](state, { payload }) {
-      state.isLoading = false;
       state.user = {
         userDailyCalorieIntake: payload.userDailyCalorieIntake,
         userNotRecommendedProducts: [...payload.userNotRecommendedProducts],
       };
     },
     [authOperations.getUsersAdvice.rejected](state, _) {
-      state.isLoading = false;
+      //
     },
   },
 });

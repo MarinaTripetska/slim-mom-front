@@ -1,5 +1,6 @@
 import { useState, Fragment } from 'react';
 import { BsPlusLg } from 'react-icons/bs';
+
 import { getProductsByQuery } from '../../service/axios.config';
 
 import {
@@ -11,21 +12,21 @@ import {
   FormInputProduct,
 } from './DiaryAddProductFormStyle';
 
-// const loadOptions = async (inputValue, callback) => {
-//   console.log('inputValue:', inputValue);
-//   if (inputValue.length < 2) {
-//     return;
-//   }
-//   const { data } = await getProductsByQuery(inputValue);
+const loadOptions = async (inputValue, callback) => {
+  console.log('inputValue:', inputValue);
+  if (inputValue.length < 2) {
+    return;
+  }
+  const { data } = await getProductsByQuery(inputValue);
 
-//   console.log('reseived:', data);
-//   callback(
-//     data.result.map(product => {
-//       const title = product.title;
-//       return { label: title, value: title };
-//     }),
-//   );
-// };
+  console.log('reseived:', data);
+  callback(
+    data.result.map(product => {
+      const title = product.title;
+      return { label: title, value: title };
+    }),
+  );
+};
 
 export default function DiaryProductForm({ onSubmit, className }) {
   let [selectedProduct, setSelectedProduct] = useState(null);

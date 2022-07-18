@@ -6,17 +6,13 @@ import {
   ProdDiv,
 } from './SideBar.styles';
 import DailyCalorieIntake from 'components/DailyCalorieIntake';
-import { useSelector } from 'react-redux';
-import { authSelectors } from 'redux/app/auth';
 
 export default function SideBar({
   date,
   kcalConsumed,
-  // notRecommendProd = [],
+  notRecommendProd = [],
   calorie,
 }) {
-  const notRecomendedProd = useSelector(authSelectors.getUserNotRecommendProd);
-
   return (
     <SideBarDiv>
       <ProdListDiv>
@@ -28,10 +24,8 @@ export default function SideBar({
         <ProdDiv>
           <ListTitle>Food not recommended</ListTitle>
           <ProdList>
-            {notRecomendedProd.length > 0 ? (
-              notRecomendedProd?.map(product => (
-                <li key={product}>{product}</li>
-              ))
+            {notRecommendProd.length > 0 ? (
+              notRecommendProd?.map(product => <li key={product}>{product}</li>)
             ) : (
               <p>Your diet will be displayed here</p>
             )}

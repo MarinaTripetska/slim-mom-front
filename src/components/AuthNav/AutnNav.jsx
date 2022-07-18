@@ -38,34 +38,14 @@ const AuthNav = () => {
   const UserMenuOpen = () => {
     const MenuRoot = document.querySelector('#menu-root');
     if (openMenu) {
-      const ScrollVisible = () => {
-        document.body.style.overflow = 'visible';
-      };
-      return createPortal(
+      const ScrollVisible = () => { document.body.style.overflow = "visible" };
+      return createPortal((
         <NavThumbOpen>
-          <NavLinkStyleMenuOpen
-            to="/diary"
-            onClick={() => {
-              setOpenMenu(false);
-              ScrollVisible();
-            }}
-          >
-            {' '}
-            Diary
-          </NavLinkStyleMenuOpen>
-          <NavLinkStyleMenuOpen
-            to="/calculator"
-            onClick={() => {
-              setOpenMenu(false);
-              ScrollVisible();
-            }}
-          >
-            Calculator
-          </NavLinkStyleMenuOpen>
-        </NavThumbOpen>,
-        MenuRoot,
-      );
-    }
+          <NavLinkStyleMenuOpen to="/diary" onClick={()=> {setOpenMenu(false); ScrollVisible()}}> Diary</NavLinkStyleMenuOpen>
+          <NavLinkStyleMenuOpen to="/calculator" onClick={() => { setOpenMenu(false); ScrollVisible()}}>Calculator</NavLinkStyleMenuOpen>
+        </NavThumbOpen>
+      ), MenuRoot)
+    };
     return null;
   };
 
@@ -79,22 +59,22 @@ const AuthNav = () => {
   };
 
   const CloseMenu = () => {
-    const HandleClickOpen = e => {
-      e.preventDefault();
-      document.body.style.overflow = 'hidden';
-      setOpenMenu(true);
-      return;
-    };
+    const HandleClickOpen = (e) => {
+    e.preventDefault();
+    document.body.style.overflow = "hidden";
+    setOpenMenu(true);
+    return;
+  }
 
-    const HandleClickClose = e => {
+    const HandleClickClose = (e) => {
       e.preventDefault();
-      document.body.style.overflow = 'visible';
-      setOpenMenu(false);
-      return;
-    };
+      document.body.style.overflow = "visible" 
+    setOpenMenu(false);
+    return;
+  }
     if (openMenu) {
       return (
-        <ButtonBurger onClick={HandleClickClose}>
+        <ButtonBurger onClick={HandleClickClose} style={{marginRight: "4px"}} >
           <img src={CloseMenuIcon} alt="CloseMenuIcon" />
         </ButtonBurger>
       );
@@ -125,6 +105,14 @@ const AuthNav = () => {
           <CloseMenu />
         </Userstyled>
       </DivHeader>
+      {/* <DivNic>
+        <UserThumb>
+          <span>{userName}</span>
+          <button type="button" onClick={handleLogout}>
+            Exit
+          </button>
+        </UserThumb>
+      </DivNic> */}
       <UserMenuOpen />
     </AuthNavStyled>
   );
