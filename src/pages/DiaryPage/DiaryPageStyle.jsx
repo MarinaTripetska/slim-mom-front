@@ -3,8 +3,8 @@ import { FormBtnBase } from '../../components/DiaryAddProductForm/DiaryAddProduc
 import { breakpoints } from 'assets/sizes';
 
 export const ContainerDiary = styled.div`
-margin: 60px 20px;
   @media ${breakpoints.maxTablet} {
+    margin: 0 auto;
     width: 320px;
     padding: 0 20px;
   }
@@ -13,8 +13,7 @@ margin: 60px 20px;
     padding: 0 32px;
   }
   @media ${breakpoints.desktop} {
-    padding: 0 98px 0 16px;
-    margin-top: 280px;
+    padding: 0 136px 0 16px;
   }
 `;
 export const ListWrap = styled.div`
@@ -26,22 +25,39 @@ export const ListWrap = styled.div`
 `;
 
 export const SidebarWrap = styled.div`
+  /* margin-top: auto; */
 
-margin-top: auto;
-@media screen and (min-width: 1280px) {
-  width:100%;
-  margin-top: 0;
-  overflow: hidden;
-}`;
+  @media ${breakpoints.desktop} {
+    /* width: 100%; */
+    margin-top: 0;
+    /* overflow: hidden; */
+    width: 520px;
+    position: absolute;
+    //padding: 0 16px;
+    margin-left: auto;
+    height: 100vh;
+    top: 0;
+    right: 0;
+    z-index: 0;
+  }
+`;
 
 export const PageWrap = styled.div`
-  @media screen and (max-width: 1279px) {
+  @media ${breakpoints.maxTablet} {
+    /* margin: 0 auto; */
+    /* padding-top: 80px; */
+  }
+  @media ${breakpoints.tablet} {
+    padding-top: 180px;
     display: flex;
     flex-direction: column;
-    height: calc(100vh - 85px);
+    height: 100vh;
+    justify-content: space-between;
+    /* height: calc(100vh - 85px); */
   }
   @media screen and (min-width: 1280px) {
     display: flex;
+    padding-top: 306px;
   }
 `;
 export const AddBtnMobile = styled(FormBtnBase)`

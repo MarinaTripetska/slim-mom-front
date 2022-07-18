@@ -14,10 +14,9 @@ const Header = ({ localPage }) => {
 
   return (
     <>
-    <HeaderStyled style={PosAb}>
-      {!isUserLoggedIn && <NotAuthNav localPage={localPage} />}
-
-      {isUserLoggedIn && <AuthNav localPage={localPage} />}
+      <HeaderStyled>
+        {!isUserLoggedIn && <NotAuthNav localPage={localPage} />}
+        {isUserLoggedIn && <AuthNav localPage={localPage} />}
     </HeaderStyled>
       <PositionRoot id="menu-root"></PositionRoot>
     </>

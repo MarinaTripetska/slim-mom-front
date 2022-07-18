@@ -2,15 +2,21 @@ import styled from 'styled-components';
 import { breakpoints } from '../../assets/sizes';
 const Overlay = styled.div`
   position: absolute;
-  top: 0;
   left: 0;
-  width: 100vw;
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: rgba(0, 0, 0, 0.8);
-  z-index: 1200;
+  top: 0;
+  @media ${breakpoints.maxTablet} {
+    position: fixed;
+    top: 80px;
+  }
+  @media ${breakpoints} {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.8);
+    z-index: 1200;
+  }
 `;
 
 const ModalDiv = styled.div`
@@ -23,10 +29,12 @@ const ModalDiv = styled.div`
   align-items: center;
   flex-direction: column;
 
-  @media (${breakpoints.maxTablet}) {
+  @media ${breakpoints.maxTablet} {
     position: absolute;
-    top: 120px;
+    top: 40px;
+    width: 100vw;
     max-height: 100%;
+    height: 100%;
   }
 `;
 
@@ -35,7 +43,7 @@ const ModalTtl = styled.h2`
   text-align: center;
   margin: 64px 120px 30px;
 
-  @media (${breakpoints.maxTablet}) {
+  @media ${breakpoints.maxTablet} {
     font-size: 18px;
     line-height: 1.4;
     margin: 40px 20px;
