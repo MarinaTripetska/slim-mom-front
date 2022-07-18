@@ -1,6 +1,6 @@
 import { useState, Fragment } from 'react';
 import { BsPlusLg } from 'react-icons/bs';
-import { getProductsByQuery } from '../../service/axios.config';
+// import { getProductsByQuery } from '../../service/axios.config';
 
 import {
   StyledForm,
