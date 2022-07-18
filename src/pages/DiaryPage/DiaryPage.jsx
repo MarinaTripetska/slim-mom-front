@@ -33,7 +33,7 @@ export default function DiaryPage() {
         ).then(res => console.log(res));
       }
     });
-  }, []);
+  }, [currentDate, dispatch]);
 
   const formSubmitHandler = data => {
     const { product, weight } = data;
