@@ -1,5 +1,6 @@
 import { Formik } from 'formik';
 import { useState } from 'react';
+import { toast } from 'react-toastify';
 import Button from '../Button';
 import {
   FormDiv,
@@ -17,6 +18,7 @@ export default function DailyCaloriesForm({
   onFormSubmit,
   userInfo = false,
   isCleanUserInfo = false,
+  isShowNoti=true,
 }) {
   const [selectedBldType, setSelectedBlbType] = useState(() =>
     userInfo ? userInfo.bloodType : '1',
@@ -49,12 +51,12 @@ export default function DailyCaloriesForm({
     //    return setBtnIsDisabled(true);
     //   if (!bloodType) values.bloodType = selectedBldType - 0;
 
-    const { height, age, desiredWeight, currentWeight, bldType } = values;
+    const { height, age, desiredWeight, currentWeight, bloodType } = values;
     if (!height || height < 100 || height > 250) return;
     if (!age || age < 18 || age > 100) return;
     if (!currentWeight || currentWeight < 20 || currentWeight > 500) return;
     if (!desiredWeight || desiredWeight < 20 || desiredWeight > 500) return;
-    if (!bldType) values.bldType = selectedBldType;
+    if (!bloodType) values.bloodType = selectedBldType;
 
     formIsValid = true;
   };
@@ -76,8 +78,13 @@ export default function DailyCaloriesForm({
           },
         };
 
+        if (onFormSubmit(user) && isShowNoti) {
+          toast.success("Your diet is ready!");
+          window.scrollTo(0, document.body.scrollHeight);
+        } 
+        
         onFormSubmit(user);
-
+        
         if (isCleanUserInfo) {
           resetForm();
         }
