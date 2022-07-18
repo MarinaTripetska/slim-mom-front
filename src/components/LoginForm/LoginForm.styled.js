@@ -3,14 +3,14 @@ import styled, { css } from 'styled-components';
 import { breakpoints } from '../../assets/sizes';
 
 export const ContainerLogin = styled.div`
-  padding: 8px 20px;
+  padding: 40px 20px 175px 20px;
   margin-left: auto;
   margin-right: auto;
   @media ${breakpoints.tablet} {
-    padding: 160px 32px;
+    padding: 160px 32px 490px 32px;
   }
   @media ${breakpoints.desktop} {
-    padding: 0 16px;
+    padding: 160px 16px 254px 16px;
   }
 `;
 export const TitleLogin = styled.h2`

@@ -27,7 +27,7 @@ export default function MainPage() {
     <Background>
       <Header localPage="MainPage" />
       <PageWrapper>
-        <DailyCaloriesForm onFormSubmit={submitForm} isCleanUserInfo={true} />
+        <DailyCaloriesForm onFormSubmit={submitForm} isCleanUserInfo = {true}/>
         {openModal && (
           <Modal userData={userInfo} closeModalHandle={closeModal} />
         )}

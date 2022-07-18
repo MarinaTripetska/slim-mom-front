@@ -19,30 +19,25 @@ export const NavThumb = styled.div`
   align-items: center;
   display: flex;
   gap: 16px;
-  color: #9b9faa;
+  color: #9B9FAA;
   text-transform: uppercase;
 
   @media ${breakpoints.desktop} {
     justify-content: flex-start;
     align-items: flex-end;
-    margin-left: 20px;
-    border-left: 1px solid grey;
-    padding: 10px 20px;
-    padding-bottom: -10px;
-
-    /* &::before {
+    &::before {
       content: '';
-      width: 1px;
-      height: 32px;
+      width: 32px;
+      height: 1px;
       background-color: grey;
-      /* transform: rotate(90deg); */
-    /* align-items: flex-end; 
-    } */
+      transform: rotate(90deg);
+      align-items: flex-end;
+    }
   }
 `;
 
 export const NavLinkStyle = styled(NavLink)`
-  &.active {
+    &.active{
     color: #212121;
   }
-`;
+`

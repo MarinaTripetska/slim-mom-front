@@ -14,28 +14,19 @@ export const Image = styled.img`
   height: 44px;
 
   @media ${breakpoints.tablet} {
-    width: 44px;
-    height: 44px;
-  }
-  @media ${breakpoints.desktop} {
-    width: 70px;
-    height: 66px;
+    width: 66px;
+    height: 70px;
   }
 `;
 export const Text = styled.img`
   display: none;
   width: 106px;
-  font-size: 16px;
+  height: 16px;
 
   @media ${breakpoints.tablet} {
-    margin-left: 10px;
     display: inline;
     width: 107px;
-    font-size: 16px;
-  }
-  @media ${breakpoints.desktop} {
-    margin-left: -10px;
-    padding-bottom: 10px;
+    height: 16px;
   }
   @media ${breakpoints.desktop} {
     margin-left: -10px;
