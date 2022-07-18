@@ -34,7 +34,7 @@ export const ContainerForm = styled.div`
   }
   @media ${breakpoints.desktop} {
     width: 100%;
-    padding: 150px 16px 111px 16px;
+    padding: 300px 16px 111px 16px;
   }
 `;
 
