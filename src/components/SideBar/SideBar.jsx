@@ -26,14 +26,14 @@ export default function SideBar({
           kcalConsumed={kcalConsumed}
         />
         <ProdDiv>
-          <ListTitle>Food not recommended</ListTitle>
+          <ListTitle> Не рекомендована їжа</ListTitle>
           <ProdList>
             {notRecomendedProd.length > 0 ? (
               notRecomendedProd?.map(product => (
                 <li key={product}>{product}</li>
               ))
             ) : (
-              <p>Your diet will be displayed here</p>
+              <p>Тут відображатиметься ваша дієта</p>
             )}
           </ProdList>
         </ProdDiv>

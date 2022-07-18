@@ -47,8 +47,8 @@ const HeaderRegistrUser = () => {
   const LoginRegistr = () => {
     return (
       <LoginRegistrPosition>
-        <LoginRegistrStyle to="/login">sign in</LoginRegistrStyle>
-        <LoginRegistrStyle to="/register">registration</LoginRegistrStyle>
+        <LoginRegistrStyle to="/login">Увійти</LoginRegistrStyle>
+        <LoginRegistrStyle to="/register">Зареєструватися</LoginRegistrStyle>
       </LoginRegistrPosition>
     );
   };
@@ -72,10 +72,10 @@ const ShowMenuDesktop = () => {
     <NavStyleDesktop>
       <BurgerPositionDesktop>
         <NavLinkStyleDesktop>
-          <NavLink to="/diary">diary</NavLink>
+          <NavLink to="/diary">Щоденник</NavLink>
         </NavLinkStyleDesktop>
         <NavLinkStyleDesktop>
-          <NavLink to="/calculator">calculator</NavLink>
+          <NavLink to="/calculator">Калькулятор</NavLink>
         </NavLinkStyleDesktop>
       </BurgerPositionDesktop>
     </NavStyleDesktop>

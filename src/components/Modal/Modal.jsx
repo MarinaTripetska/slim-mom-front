@@ -41,13 +41,13 @@ function Modal({
   return (
     <Overlay id="modal-overlay" onClick={onClickOvrlHandle}>
       <ModalDiv>
-        <ModalTtl>Your recommended daily calorie intake is</ModalTtl>
+        <ModalTtl>Ваша рекомендована добова норма споживання калорій становить</ModalTtl>
         <KcalCount>
           {userDailyCalorieIntake}
-          <span> kcal</span>
+          <span> кКал</span>
         </KcalCount>
         <ProdList>
-          <p>Foods you should not eat</p>
+          <p>Продукти, які ви не повинні їсти</p>
           <ul>
             {userNotRecommendedProducts?.map(product => (
               <li key={product}>{product}</li>
@@ -56,7 +56,7 @@ function Modal({
         </ProdList>
         <Button
           onClickHandler={onBtnClickHandle}
-          btnText="Start losing weight"
+          btnText="Почніть худнути"
         />
       </ModalDiv>
     </Overlay>

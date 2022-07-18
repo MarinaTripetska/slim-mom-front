@@ -21,21 +21,21 @@ export default function DailyCalorieIntake({ date }) {
   return (
     <>
       <InfoList>
-        <ListTitle>Summary for {date}</ListTitle>
+        <ListTitle>Дані станом на {date}</ListTitle>
         <InfoListItem>
-          <span>Left</span>
-          <span>{kcalLeft || '000'} kcal</span>
+          <span>Залишилось</span>
+          <span>{kcalLeft || '000'} кКал</span>
         </InfoListItem>
         <InfoListItem>
-          <span>Consumed</span>
-          <span>{kcalConsumed || '000'} kcal</span>
+          <span>Споживається</span>
+          <span>{kcalConsumed || '000'} кКал</span>
         </InfoListItem>
         <InfoListItem>
-          <span>Daily rate</span>
-          <span>{daylykCalCount || '000'} kcal</span>
+          <span>Добова норма</span>
+          <span>{daylykCalCount || '000'} кКал</span>
         </InfoListItem>
         <InfoListItem>
-          <span>n% of normal</span>
+          <span>n% від норми</span>
           <span>{percOfNorm || '000'} %</span>
         </InfoListItem>
       </InfoList>

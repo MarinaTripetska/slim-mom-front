@@ -7,10 +7,10 @@ const BurgerMenu = ({ openBurgerMenu, setOpenBurgerMenu }) => {
       <NavStyle>
         <BurgerPosition>
           <NavLinkStyle>
-            <NavLink to="/diary">diary</NavLink>
+            <NavLink to="/diary">Щоденник</NavLink>
           </NavLinkStyle>
           <NavLinkStyle>
-            <NavLink to="/calculator">calculator</NavLink>
+            <NavLink to="/calculator">Калькулятор</NavLink>
           </NavLinkStyle>
         </BurgerPosition>
       </NavStyle>

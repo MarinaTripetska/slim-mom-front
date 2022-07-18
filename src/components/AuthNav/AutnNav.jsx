@@ -51,7 +51,7 @@ const AuthNav = () => {
             }}
           >
             {' '}
-            Diary
+            Щоденник
           </NavLinkStyleMenuOpen>
           <NavLinkStyleMenuOpen
             to="/calculator"
@@ -60,7 +60,7 @@ const AuthNav = () => {
               ScrollVisible();
             }}
           >
-            Calculator
+            Калькулятор
           </NavLinkStyleMenuOpen>
         </NavThumbOpen>,
         MenuRoot,
@@ -72,8 +72,8 @@ const AuthNav = () => {
   const UserMenu = () => {
     return (
       <NavThumb>
-        <NavLinkStyleMenu to="/diary">Diary</NavLinkStyleMenu>
-        <NavLinkStyleMenu to="/calculator">Calculator</NavLinkStyleMenu>
+        <NavLinkStyleMenu to="/diary">Щоденник</NavLinkStyleMenu>
+        <NavLinkStyleMenu to="/calculator">Калькулятор</NavLinkStyleMenu>
       </NavThumb>
     );
   };
@@ -119,7 +119,7 @@ const AuthNav = () => {
             <UserNameStyle>{userName}</UserNameStyle>
             <Vertical />
             <ExitBtn type="button" onClick={handleLogout}>
-              Exit
+              Вихід
             </ExitBtn>
           </UserThumb>
           <CloseMenu />

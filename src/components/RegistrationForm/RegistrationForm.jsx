@@ -72,11 +72,11 @@ const RegistrationForm = () => {
 
   return (
     <ContainerRegistr>
-      <TitleRegistr>Register</TitleRegistr>
+      <TitleRegistr>Реєстрація</TitleRegistr>
       <FormRegistr onSubmit={formik.handleSubmit}>
         <FormRegistrList>
           <FormRegistrItem>
-            <FormRegistrLabel htmlFor="name">Name *</FormRegistrLabel>
+            <FormRegistrLabel htmlFor="name">Ім'я *</FormRegistrLabel>
             <FormRegistrInput
               id="name"
               name="name"
@@ -105,7 +105,7 @@ const RegistrationForm = () => {
             ) : null}
           </FormRegistrItem>
           <FormRegistrItem>
-            <FormRegistrLabel htmlFor="password">Password *</FormRegistrLabel>
+            <FormRegistrLabel htmlFor="password">Пароль *</FormRegistrLabel>
             <FormRegistrInput
               id="password"
               name="password"
@@ -120,9 +120,9 @@ const RegistrationForm = () => {
           </FormRegistrItem>
         </FormRegistrList>
         <ButtonContainer>
-          <RegistrButton type="submit">Register</RegistrButton>
+          <RegistrButton type="submit">Зареєструватися</RegistrButton>
 
-          <StyledNavLink to="/login">Login</StyledNavLink>
+          <StyledNavLink to="/login">Увійти</StyledNavLink>
         </ButtonContainer>
       </FormRegistr>
     </ContainerRegistr>

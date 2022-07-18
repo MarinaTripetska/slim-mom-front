@@ -35,8 +35,8 @@ const NotAuthNav = ({ localPage }) => {
     <NotAuthNavStyled>
       <Logo />
       <NavThumb>
-        <NavLinkStyle to="/login">Sign in</NavLinkStyle>
-        <NavLinkStyle to="/register">Registration</NavLinkStyle>
+        <NavLinkStyle to="/login">Увійти</NavLinkStyle>
+        <NavLinkStyle to="/register">Зареєструватися</NavLinkStyle>
       </NavThumb>
     </NotAuthNavStyled>
   );
