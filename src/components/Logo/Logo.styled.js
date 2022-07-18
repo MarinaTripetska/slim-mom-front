@@ -28,4 +28,7 @@ export const Text = styled.img`
     width: 107px;
     height: 16px;
   }
+  @media ${breakpoints.desktop} {
+    margin-left: -10px;
+  }
 `;

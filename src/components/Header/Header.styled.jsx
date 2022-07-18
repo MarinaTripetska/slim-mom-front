@@ -11,7 +11,6 @@ export const HeaderStyled = styled.header`
   padding-left: 20px;
   padding-right: 20px;
   justify-content: space-between;
-
   @media ${breakpoints.desktop} {
       border-bottom: none;
       height: 150px;
@@ -21,4 +20,7 @@ export const HeaderStyled = styled.header`
 export const PositionRoot = styled.div`
   position: static;
   padding-top: 80px;
+  @media ${breakpoints.desktop} {
+    padding-top: 0px;
+  }
 `;

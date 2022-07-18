@@ -24,6 +24,12 @@ const Animation = keyframes`
 
 export const AuthNavStyled = styled.div`
   width: 100%;
+  @media ${breakpoints.desktop}{
+    height: 100%;
+    display: flex;
+    align-items: flex-end;
+
+  }
 `;
 export const DivHeader = styled.div`
   width: 100%;
@@ -50,7 +56,7 @@ export const NavThumb = styled.div`
 `;
 
 export const Userstyled = styled.div`
-display: flex;
+  display: flex;
 `;
 
 export const DivNic = styled.div``;
@@ -62,6 +68,7 @@ export const UserThumb = styled.div`
   display: flex;
   justify-content: flex-end;
   align-items: center;
+  margin-bottom: -7px;
 `;
 
 export const UserNameStyle = styled.span``;
@@ -79,7 +86,7 @@ export const Vertical = styled.div`
   margin-left: 20px;
   margin-right: 20px;
   @media ${breakpoints.desktop}{
-    margin-bottom: -7px;
+    /* margin-bottom: -0px; */
   }
 `;
 

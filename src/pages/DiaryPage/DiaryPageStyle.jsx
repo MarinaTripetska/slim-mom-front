@@ -14,7 +14,7 @@ margin: 60px 20px;
   }
   @media ${breakpoints.desktop} {
     padding: 0 136px 0 16px;
-    
+    margin-top: 280px;
   }
 `;
 export const ListWrap = styled.div`
