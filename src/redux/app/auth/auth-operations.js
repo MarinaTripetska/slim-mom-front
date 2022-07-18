@@ -61,7 +61,6 @@ export const actionCurrent = createAsyncThunk(
   async (_, { rejectWithValue }) => {
     try {
       const { data } = await current();
-      // token.set(data.data.token);
       return data.data;
     } catch (err) {
       return rejectWithValue(err.response.data);
@@ -74,35 +73,12 @@ export const getUsersAdvice = createAsyncThunk(
   async credentials => {
     try {
       const { data } = await adviceForLoginUser(credentials);
-      console.log(data.user);
       return data.user;
     } catch (error) {
       console.log(error.message);
     }
   },
 );
-
-// ДЛЯ ЛОКАЛСТОРЕДЖ, ПОКИ НЕ ПРАЦЮЄ
-// const fetchCurrentUser = createAsyncThunk(
-//   'auth/refresh',
-//   async (_, thunkAPI) => {
-//     const state = thunkAPI.getState();
-//     const persistedToken = state.auth.token;
-
-//     if (persistedToken === null) {
-//       return thunkAPI.rejectWithValue('Thomething went wrong, Please, login again.');
-//     }
-
-//     token.set(persistedToken);
-
-//     try {
-//       const { data } = await axios.get('/users/current');
-//       return data;
-//     } catch (error) {
-//       //обработка ошибки error.message
-//     }
-//   },
-// );
 
 export const authOperations = {
   actionRegister,

@@ -37,20 +37,22 @@ const RegistrationForm = () => {
       name: Yup.string()
         .min(3, 'Min 3 symbols')
         .max(254, 'Max 254 symbols')
-        .matches(/[A-z]/, 'Only alphabets are allowed for this field ')
+        .matches(/[A-z]/, 'Select English keyboard layout, please')
         .required('Required'),
       email: Yup.string()
         .email('Invalid email')
-        .min(3, 'Min 3 symbols')
+        // .min(3, 'Min 3 symbols')
         .max(254, 'Max 254 symbols')
+        // .matches(/[a-z]/, 'Select English keyboard layout, please')
+        .matches(
+          /([a-z0-9_.-]{3,})@([A-z0-9_.-]{1,}).([A-z]{2,8})/,
+          'Account should be min 3 symbols',
+        )
         .required('Required'),
       password: Yup.string()
         .min(8, 'Min 8 symbols')
         .max(100, 'Max 100 symbols')
-        .matches(
-          /[A-z0-9]/,
-          'Passworw should have letters and numbers, no special  symbols',
-        )
+        .matches(/[a-z0-9]/, 'Select English keyboard layout, please')
         .required('Required'),
     }),
 
@@ -93,9 +95,9 @@ const RegistrationForm = () => {
               id="email"
               name="email"
               type="text"
-              // pattern="([A-z0-9_.-]{1,})@([A-z0-9_.-]{1,}).([A-z]{2,8})"
+              pattern="([a-z0-9_.-]{1,})@([A-z0-9_.-]{1,}).([A-z]{2,8})"
+              title="email must be lowercase latin letters, numbers and without special characters."
               onChange={formik.handleChange}
-              // password
               value={formik.values.email}
             />
             {formik.touched.email && formik.errors.email ? (

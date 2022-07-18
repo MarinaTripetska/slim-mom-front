@@ -1,19 +1,23 @@
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import DailyCaloriesForm from '../../components/DailyCaloriesForm';
-import RightSideBar from 'components/SideBar';
-import { Section } from './CalculatorPage.styled';
-import { ContainerBar, ContainerForm } from './CalculatorPage.styled';
+import SideBar from 'components/SideBar';
 import { getUsersAdvice } from 'redux/app/auth/auth-operations';
 import { authSelectors } from 'redux/app/auth';
 import Header from 'components/Header';
-import { getSelectedDate } from 'redux/app/date/dateSlice';
+import { Section, ContainerBar, ContainerForm } from './CalculatorPage.styled';
+import { diaryPerDayOperation, updateDate } from 'redux/app/diaryPerDay';
+import MobileSidebar from '../../components/MobileSidebar';
 
 const CalculatorPage = () => {
   const dispatch = useDispatch();
+  const currentDate = new Date().toLocaleDateString();
   const userInfo = useSelector(authSelectors.getUserInfo);
-  const calorie = useSelector(authSelectors.getUserAdviceCalorie);
-  const notRecommendProd = useSelector(authSelectors.getUserNotRecommendProd);
-  const currentDay = useSelector(getSelectedDate);
+
+  useEffect(() => {
+    dispatch(updateDate(currentDate));
+    dispatch(diaryPerDayOperation.actionGetProducts({ date: currentDate }));
+  }, [currentDate, dispatch]);
 
   const submitForm = async data => {
     dispatch(getUsersAdvice(data));
@@ -23,6 +27,8 @@ const CalculatorPage = () => {
     <>
       <Header localPage="CalculatorPage" />
       <Section>
+        <MobileSidebar />
+
         <ContainerForm>
           <DailyCaloriesForm
             onFormSubmit={submitForm}
@@ -32,11 +38,7 @@ const CalculatorPage = () => {
         </ContainerForm>
 
         <ContainerBar>
-          <RightSideBar
-            notRecommendProd={notRecommendProd}
-            calorie={calorie}
-            date={currentDay}
-          />
+          <SideBar date={currentDate} />
         </ContainerBar>
       </Section>
     </>

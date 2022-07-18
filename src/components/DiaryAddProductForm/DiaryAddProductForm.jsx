@@ -1,5 +1,8 @@
 import { useState, Fragment } from 'react';
 import { BsPlusLg } from 'react-icons/bs';
+
+import { getProductsByQuery } from '../../service/axios.config';
+
 import {
   StyledForm,
   FormBtnMobile,
@@ -8,17 +11,20 @@ import {
   FormInputWeight,
   FormInputProduct,
 } from './DiaryAddProductFormStyle';
-import { getProductByQuery } from '../../service/axios.config';
 
 const loadOptions = async (inputValue, callback) => {
-  const { data } = await getProductByQuery(inputValue);
+  console.log('inputValue:', inputValue);
+  if (inputValue.length < 2) {
+    return;
+  }
+  const { data } = await getProductsByQuery(inputValue);
+
+  console.log('reseived:', data);
   callback(
     data.result.map(product => {
       const title = product.title;
-      
       return { label: title, value: title };
-      
-    })
+    }),
   );
 };
 
@@ -52,9 +58,16 @@ export default function DiaryProductForm({ onSubmit, className }) {
             backspaceRemovesValue
             escapeClearsValue
             classNamePrefix={'react-select'}
+            // defaultValue={selectedProduct}
+            // onChange={option => setSelectedProduct(option.value)}
+            // // loadOptions={_.debounce(loadOptions, 2000)}
+            // loadOptions={loadOptions}
+            // placeholder="Введіть назву продукту"
+            // title="Введіть назву продукту"
+            // cacheOptions
+
             value={selectedProduct}
             onChange={option => setSelectedProduct(option)}
-            loadOptions={loadOptions}
             placeholder="Enter product name"
             noOptionsMessage={({ selectedProduct }) =>
               !selectedProduct
@@ -71,11 +84,11 @@ export default function DiaryProductForm({ onSubmit, className }) {
             type="number"
             min={1}
             name="weight"
-            title="Enter product weight"
+            title="Введіть вагу продукту"
             required
             value={weight}
             onChange={e => setWeight(e.target.value)}
-            placeholder="Grams"
+            placeholder="Грами"
           />
         </FormLabel>
         <FormBtnMobile type="submit">Add</FormBtnMobile>
