@@ -104,8 +104,9 @@ const PlaseholderBtnStyles = css`
   }
 `;
 
-export const Button = styled.button`
+export const Button= styled.button`
   ${PlaseholderBtnStyles}
+  cursor: pointer;
 `;
 
 export const StyledLink = styled(Link)`

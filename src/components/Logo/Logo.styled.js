@@ -37,4 +37,7 @@ export const Text = styled.img`
     margin-left: -10px;
     padding-bottom: 10px;
   }
+  @media ${breakpoints.desktop} {
+    margin-left: -10px;
+  }
 `;

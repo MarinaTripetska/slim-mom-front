@@ -1,9 +1,35 @@
 import styled from 'styled-components';
 import { breakpoints } from 'assets/sizes';
 import { NavLink } from 'react-router-dom';
+import { keyframes } from 'styled-components'
+
+const Animation = keyframes`
+0%
+  {
+    opacity: 0.40;
+  }
+  50%
+  {
+    opacity: 0.60;
+  }
+  75%
+  {
+    opacity: 0.8;
+  }
+  100%
+  {
+    opacity: 1.0;
+  }
+`;
 
 export const AuthNavStyled = styled.div`
   width: 100%;
+  @media ${breakpoints.desktop}{
+    height: 100%;
+    display: flex;
+    align-items: flex-end;
+
+  }
 `;
 export const DivHeader = styled.div`
   width: 100%;
@@ -42,6 +68,7 @@ export const UserThumb = styled.div`
   display: flex;
   justify-content: flex-end;
   align-items: center;
+  margin-bottom: -7px;
 `;
 
 export const UserNameStyle = styled.span``;
@@ -58,8 +85,9 @@ export const Vertical = styled.div`
   margin-top: 4px;
   margin-left: 20px;
   margin-right: 20px;
-  @media ${breakpoints.desktop} {
-    margin-bottom: -7px;
+  @media ${breakpoints.desktop}{
+    /* margin-bottom: -0px; */
+
   }
 `;
 
@@ -87,6 +115,8 @@ export const NavLinkStyleMenu = styled(NavLink)`
 export const ButtonBurger = styled.button`
   display: none;
   @media ${breakpoints.maxDesktop} {
+    animation: ${Animation} 1s linear infinite;
+    animation-iteration-count: 1;
     display: block;
     border: none;
     background: none;
@@ -105,6 +135,7 @@ export const NavThumbOpen = styled.div`
   text-transform: uppercase;
   padding-top: 60px;
   color: #ffffff;
+
   background-color: #264061;
   /* overflow-y: hidden; */
   @media ${breakpoints.tablet} {
