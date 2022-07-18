@@ -6,6 +6,7 @@ import {
   KcalCount,
   ProdList,
 } from './Modal.styles';
+import { changeToUa } from 'helpers/translateProd';
 import Button from '../Button';
 import { useNavigate } from 'react-router-dom';
 
@@ -13,6 +14,13 @@ function Modal({
   closeModalHandle,
   userData: { userDailyCalorieIntake, userNotRecommendedProducts },
 }) {
+//   const i10n = {
+//     'яйца': 'rayce',
+//     'зерновые': 'tak',
+// 'молочные': 'zerno',
+//     'мучные': 'myka',
+// 'opeхи': 'orex',
+//   }
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -50,7 +58,7 @@ function Modal({
           <p>Продукти, які ви не повинні їсти</p>
           <ul>
             {userNotRecommendedProducts?.map(product => (
-              <li key={product}>{product}</li>
+              <li key={product}>{changeToUa[product]}</li>
             ))}
           </ul>
         </ProdList>

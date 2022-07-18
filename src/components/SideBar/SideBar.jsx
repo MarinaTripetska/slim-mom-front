@@ -5,6 +5,7 @@ import {
   ListTitle,
   ProdDiv,
 } from './SideBar.styles';
+import { changeToUa } from 'helpers/translateProd';
 import DailyCalorieIntake from 'components/DailyCalorieIntake';
 import { useSelector } from 'react-redux';
 import { authSelectors } from 'redux/app/auth';
@@ -30,7 +31,7 @@ export default function SideBar({
           <ProdList>
             {notRecomendedProd.length > 0 ? (
               notRecomendedProd?.map(product => (
-                <li key={product}>{product}</li>
+                <li key={product}>{changeToUa[product]}</li>
               ))
             ) : (
               <p>Тут відображатиметься ваша дієта</p>
