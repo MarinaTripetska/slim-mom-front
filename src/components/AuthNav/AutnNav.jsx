@@ -1,4 +1,3 @@
-import BurgerMenu from 'components/BurgerMenu';
 import Logo from 'components/Logo';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
@@ -21,7 +20,6 @@ import {
   ButtonBurger,
   NavThumbOpen,
   NavLinkStyleMenuOpen,
-  // DivNic,
 } from './AuthNav.styled';
 import { useState } from 'react';
 
@@ -37,22 +35,37 @@ const AuthNav = () => {
     });
   };
 
-  //const backRoot = document.querySelector('#backRoot');
-
-// const Back = () => {
-//   return createPortal(<Background />, backRoot);
-// };
   const UserMenuOpen = () => {
     const MenuRoot = document.querySelector('#menu-root');
     if (openMenu) {
-      const ScrollVisible = () => { document.body.style.overflow = "visible" };
-      return createPortal((
+      const ScrollVisible = () => {
+        document.body.style.overflow = 'visible';
+      };
+      return createPortal(
         <NavThumbOpen>
-          <NavLinkStyleMenuOpen to="/diary" onClick={()=> {setOpenMenu(false); ScrollVisible()}}> Diary</NavLinkStyleMenuOpen>
-          <NavLinkStyleMenuOpen to="/calculator" onClick={() => { setOpenMenu(false); ScrollVisible()}}>Calculator</NavLinkStyleMenuOpen>
-        </NavThumbOpen>
-      ), MenuRoot)
-    };
+          <NavLinkStyleMenuOpen
+            to="/diary"
+            onClick={() => {
+              setOpenMenu(false);
+              ScrollVisible();
+            }}
+          >
+            {' '}
+            Diary
+          </NavLinkStyleMenuOpen>
+          <NavLinkStyleMenuOpen
+            to="/calculator"
+            onClick={() => {
+              setOpenMenu(false);
+              ScrollVisible();
+            }}
+          >
+            Calculator
+          </NavLinkStyleMenuOpen>
+        </NavThumbOpen>,
+        MenuRoot,
+      );
+    }
     return null;
   };
 
@@ -66,19 +79,19 @@ const AuthNav = () => {
   };
 
   const CloseMenu = () => {
-    const HandleClickOpen = (e) => {
-    e.preventDefault();
-    document.body.style.overflow = "hidden";
-    setOpenMenu(true);
-    return;
-  }
-
-    const HandleClickClose = (e) => {
+    const HandleClickOpen = e => {
       e.preventDefault();
-      document.body.style.overflow = "visible" 
-    setOpenMenu(false);
-    return;
-  }
+      document.body.style.overflow = 'hidden';
+      setOpenMenu(true);
+      return;
+    };
+
+    const HandleClickClose = e => {
+      e.preventDefault();
+      document.body.style.overflow = 'visible';
+      setOpenMenu(false);
+      return;
+    };
     if (openMenu) {
       return (
         <ButtonBurger onClick={HandleClickClose}>
@@ -112,14 +125,6 @@ const AuthNav = () => {
           <CloseMenu />
         </Userstyled>
       </DivHeader>
-      {/* <DivNic>
-        <UserThumb>
-          <span>{userName}</span>
-          <button type="button" onClick={handleLogout}>
-            Exit
-          </button>
-        </UserThumb>
-      </DivNic> */}
       <UserMenuOpen />
     </AuthNavStyled>
   );
