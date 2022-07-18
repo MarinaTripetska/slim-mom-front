@@ -24,10 +24,28 @@ export default function DiaryPage() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(diaryPerDayOperation.actionGetProducts({ date: currentDate }));
+    dispatch(
+      diaryPerDayOperation.actionGetProducts({ date: currentDate }),
+    ).then(res => {
+      if (typeof res.payload === 'string') {
+        dispatch(
+          diaryPerDayOperation.actionCreateProductsList({ date: currentDate }),
+        ).then(res => console.log(res));
+      }
+    });
   }, [currentDate, dispatch]);
 
   const formSubmitHandler = data => {
+    const { product, weight } = data;
+    console.log(currentDate);
+
+    dispatch(
+      diaryPerDayOperation.actionAddProduct({
+        date: currentDate,
+        data: { product: product, weightGrm: weight },
+      }),
+    ).then(res => console.log(res));
+
     setMobileAddSelected(false);
   };
 
