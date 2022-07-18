@@ -2,8 +2,8 @@ import styled from 'styled-components';
 import { breakpoints } from '../../assets/sizes';
 
 export const LogoStyled = styled.div`
-  align-items: center;
   display: flex;
+  align-items: center;
   @media ${breakpoints.desktop} {
     align-items: flex-end;
   }
@@ -14,18 +14,26 @@ export const Image = styled.img`
   height: 44px;
 
   @media ${breakpoints.tablet} {
-    width: 66px;
-    height: 70px;
+    width: 44px;
+    height: 44px;
+  }
+  @media ${breakpoints.desktop} {
+    width: 70px;
+    height: 66px;
   }
 `;
 export const Text = styled.img`
   display: none;
-  width: 106px;
-  height: 16px;
+  /* width: 106px; */
+  /* height: 16px; */
 
   @media ${breakpoints.tablet} {
+    margin-left: 10px;
     display: inline;
-    width: 107px;
-    height: 16px;
+    /* width: 107px; */
+    /* height: 16px; */
+  }
+  @media ${breakpoints.desktop} {
+    margin-left: -10px;
   }
 `;
