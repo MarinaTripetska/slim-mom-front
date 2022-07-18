@@ -49,12 +49,16 @@ dispatch(loaderAction(false) // скрыть
 
 ---
 
-документация по календарику (react-datetime - a date and time picker in the same
-React.js component) [https://github.com/arqex/react-datetime]
+## Календарь
+
+[Документация по календарику](https://github.com/arqex/react-datetime)
+(react-datetime - a date and time picker in the same React.js component)
 
 ---
 
-React-Select - Пакет для селекта, мультиселекта, асинхронного селекта
-[https://www.npmjs.com/package/react-select]
+## Селект
+
+[Документация React-Select](https://www.npmjs.com/package/react-select) - Пакет
+для селекта, мультиселекта, асинхронного селекта
 
 ---

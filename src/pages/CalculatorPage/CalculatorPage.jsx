@@ -7,12 +7,11 @@ import { authSelectors } from 'redux/app/auth';
 import Header from 'components/Header';
 import { Section, ContainerBar, ContainerForm } from './CalculatorPage.styled';
 import { diaryPerDayOperation, updateDate } from 'redux/app/diaryPerDay';
+import MobileSidebar from '../../components/MobileSidebar';
 
 const CalculatorPage = () => {
   const dispatch = useDispatch();
   const currentDate = new Date().toLocaleDateString();
-  // const [ckalConsumed, setCkalConsumed] = useState(0);
-
   const userInfo = useSelector(authSelectors.getUserInfo);
 
   useEffect(() => {
@@ -28,6 +27,8 @@ const CalculatorPage = () => {
     <>
       <Header localPage="CalculatorPage" />
       <Section>
+        <MobileSidebar />
+
         <ContainerForm>
           <DailyCaloriesForm
             onFormSubmit={submitForm}
