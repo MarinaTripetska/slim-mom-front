@@ -7,6 +7,7 @@ import { authSelectors } from 'redux/app/auth';
 import Header from 'components/Header';
 import { Section, ContainerBar, ContainerForm } from './CalculatorPage.styled';
 import { diaryPerDayOperation } from 'redux/app/diaryPerDay';
+import MobileSidebar from '../../components/MobileSidebar';
 
 const CalculatorPage = () => {
   const dispatch = useDispatch();
@@ -39,6 +40,8 @@ const CalculatorPage = () => {
     <>
       <Header localPage="CalculatorPage" />
       <Section>
+        <MobileSidebar />
+
         <ContainerForm>
           <DailyCaloriesForm
             onFormSubmit={submitForm}
