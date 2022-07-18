@@ -2,7 +2,6 @@ import styled from 'styled-components';
 import { breakpoints } from 'assets/sizes';
 
 export const HeaderStyled = styled.header`
-
   position: static;
   top: 0;
   /* height: 80px; */
@@ -24,12 +23,12 @@ export const HeaderStyled = styled.header`
   @media ${breakpoints.desktop} {
     border-bottom: none;
     padding: 80px 16px;
-
+  }
+`;
 export const PositionRoot = styled.div`
   position: static;
   padding-top: 80px;
   @media ${breakpoints.desktop} {
     padding-top: 0px;
-
   }
 `;
