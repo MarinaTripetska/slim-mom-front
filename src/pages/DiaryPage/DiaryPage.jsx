@@ -36,6 +36,16 @@ export default function DiaryPage() {
   }, []);
 
   const formSubmitHandler = data => {
+    const { product, weight } = data;
+    console.log(currentDate);
+
+    dispatch(
+      diaryPerDayOperation.actionAddProduct({
+        date: currentDate,
+        data: { product: product, weightGrm: weight },
+      }),
+    ).then(res => console.log(res));
+
     setMobileAddSelected(false);
   };
 
