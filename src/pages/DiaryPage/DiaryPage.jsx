@@ -24,16 +24,8 @@ export default function DiaryPage() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(
-      diaryPerDayOperation.actionGetProducts({ date: currentDate }),
-    ).then(res => {
-      if (typeof res.payload === 'string') {
-        dispatch(
-          diaryPerDayOperation.actionCreateProductsList({ date: currentDate }),
-        ).then(res => console.log(res));
-      }
-    });
-  }, []);
+    dispatch(diaryPerDayOperation.actionGetProducts({ date: currentDate }));
+  }, [currentDate, dispatch]);
 
   const formSubmitHandler = data => {
     setMobileAddSelected(false);

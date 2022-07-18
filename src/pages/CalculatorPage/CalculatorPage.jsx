@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import DailyCaloriesForm from '../../components/DailyCaloriesForm';
 import SideBar from 'components/SideBar';
