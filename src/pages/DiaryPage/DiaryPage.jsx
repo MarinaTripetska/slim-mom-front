@@ -1,6 +1,6 @@
 import { BsPlusLg } from 'react-icons/bs';
 import { useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import DiaryDateCalendar from 'components/DiaryDateCalendar';
 import DiaryAddProductForm from '../../components/DiaryAddProductForm';
 import DiaryProductsList from '../../components/DiaryProductsList';
@@ -13,24 +13,29 @@ import {
   ContainerDiary,
 } from './DiaryPageStyle';
 import SideBar from 'components/SideBar';
-import { diarySelectors } from 'redux/app/diaryPerDay';
+import { diaryPerDayOperation, diarySelectors } from 'redux/app/diaryPerDay';
 import Header from 'components/Header';
+import { useEffect } from 'react';
 
 export default function DiaryPage() {
   const currentDate = useSelector(diarySelectors.getCurrentDate);
   const [mobileAddSelected, setMobileAddSelected] = useState(false);
-  const productsList = useSelector(diarySelectors.getDiaryProducts);
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(
+      diaryPerDayOperation.actionGetProducts({ date: currentDate }),
+    ).then(res => {
+      if (typeof res.payload === 'string') {
+        dispatch(
+          diaryPerDayOperation.actionCreateProductsList({ date: currentDate }),
+        ).then(res => console.log(res));
+      }
+    });
+  }, []);
 
   const formSubmitHandler = data => {
-    // const { product, weight } = data;
-
-    // dispatch(
-    //   addProduct({
-    //     date: '16.07.2022',
-    //     data: { product: product, weightGrm: weight },
-    //   }),
-    // );
-
     setMobileAddSelected(false);
   };
 
@@ -38,10 +43,7 @@ export default function DiaryPage() {
     <>
       <Header localPage="DiaryPage" />
       <PageWrap>
-        <MobileSidebar
-          onGoBack={() => setMobileAddSelected(false)}
-          // mobileAddSelected={mobileAddSelected}
-        />
+        <MobileSidebar onGoBack={() => setMobileAddSelected(false)} />
 
         <ContainerDiary>
           {!mobileAddSelected && <DiaryDateCalendar />}
@@ -49,9 +51,11 @@ export default function DiaryPage() {
             onSubmit={formSubmitHandler}
             className={mobileAddSelected ? '' : 'hideOnMobile'}
           />
+
           <ListWrap className={mobileAddSelected ? 'hideOnMobile' : ''}>
-            {<DiaryProductsList products={productsList} />}
+            {<DiaryProductsList />}
           </ListWrap>
+
           {!mobileAddSelected && (
             <AddBtnMobile
               className={'showOnMobile'}
@@ -68,45 +72,3 @@ export default function DiaryPage() {
     </>
   );
 }
-
-// return (
-//   <>
-//     <Header localPage="DiaryPage" />
-
-//     {/* // <DiaryDateCalendar />
-//     // <DiaryAddProductForm
-//     //   onSubmit={formSubmitHandler}
-//     //   className={mobileAddSelected ? '' : 'hideOnMobile'}
-//     // />
-//     // <DiaryProductsList products={productsList} />
-//     // <SideBar date={currentDate} /> */}
-
-//     <PageWrap>
-//       <MobileSidebar
-//         onGoBack={() => setMobileAddSelected(false)}
-//         mobileAddSelected={mobileAddSelected}
-//       />
-//       <Container>
-//         <DiaryDateCalendar />
-//         <DiaryAddProductForm
-//           onSubmit={formSubmitHandler}
-//           className={mobileAddSelected ? '' : 'hideOnMobile'}
-//         />
-//         <ListWrap className={mobileAddSelected ? 'hideOnMobile' : ''}>
-//           {<DiaryProductsList products={productsList} />}
-//         </ListWrap>
-//         {!mobileAddSelected && (
-//           <AddBtnMobile
-//             className={'showOnMobile'}
-//             onClick={() => setMobileAddSelected(true)}
-//           >
-//             <BsPlusLg size={14} />
-//           </AddBtnMobile>
-//         )}
-//       </Container>
-//       <SidebarWrap className={mobileAddSelected ? 'hideOnMobile' : ''}>
-//         <SideBar date={currentDate} />
-//       </SidebarWrap>
-//     </PageWrap>
-//   </>
-// );

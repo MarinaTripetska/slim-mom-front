@@ -1,20 +1,23 @@
+import { useSelector } from 'react-redux';
+import { diarySelectors } from 'redux/app/diaryPerDay';
 import DiaryProductListItem from '../DiaryProductListItem';
 import { ProductsList, ProductsListThumb } from './DiaryProductsListStyle';
 
-const DiaryProductsList = ({ products = [] }) => {
-  const check = ['', '', '', '', ''];
+const DiaryProductsList = () => {
+  const productsList = useSelector(diarySelectors.getDiaryProducts);
+  const isAnyProducts = productsList !== null && productsList.length > 0;
 
-  return check.length === 0 ? (
-    <p>List is empty, add products</p>
-  ) : (
-    <ProductsListThumb>
-      <ProductsList>
-        {check.map((product, i) => (
-          <DiaryProductListItem key={i} product={product} />
-        ))}
-      </ProductsList>
-    </ProductsListThumb>
-  );
+  if (!isAnyProducts) {
+    return <p>The list of products in your diary is empty on this day</p>;
+  }
+
+  <ProductsListThumb>
+    <ProductsList>
+      {productsList.map((product, i) => (
+        <DiaryProductListItem key={i} product={product} />
+      ))}
+    </ProductsList>
+  </ProductsListThumb>;
 };
 
 export default DiaryProductsList;

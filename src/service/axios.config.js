@@ -101,7 +101,8 @@ export const getProductsByDate = async ({ date }) => {
     return data;
   } catch (error) {
     if (error.response.status === 404) {
-      console.log('Dietary on this date no created');
+      // console.log('Dietary on this date no created');
+      return { data: 'Dietary on this date no created' };
     }
   }
 };

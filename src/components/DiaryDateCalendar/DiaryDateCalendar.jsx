@@ -1,17 +1,12 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-// import { updateDate } from '../../redux/app/diaryPerDay/diaryPerDay-slice';
-// import updateDate from '../../redux/app/diaryPerDay/diaryPerDay-slice';
-// import Datetime from 'react-datetime';
 import 'react-datetime/css/react-datetime.css';
 import 'moment/locale/uk';
 import 'moment/locale/ru';
-
-// import { dateAction } from '../../redux/app/date/dateSlice';
-
 import { DatePickerWrapper, DatePicker } from './DiaryDateCalendar.styled';
 import CalendarBtn from '../CalendarBtn/CalendarBtn';
 import { diarySelectors, updateDate } from 'redux/app/diaryPerDay';
+import { diaryPerDayOperation } from 'redux/app/diaryPerDay';
 
 function dateToString(date) {
   let year = String(date.getFullYear());
@@ -38,8 +33,8 @@ export default function DiaryDateCalendar() {
 
   function changeDate(evt) {
     const dateString = dateToString(evt._d);
-
     setDate(dateString);
+    dispatch(diaryPerDayOperation.actionGetProducts({ date: dateString }));
     dispatch(updateDate(dateString));
   }
 
