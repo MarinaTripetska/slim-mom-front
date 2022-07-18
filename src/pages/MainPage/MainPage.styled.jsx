@@ -1,17 +1,19 @@
 import styled from 'styled-components';
+import { breakpoints } from 'assets/sizes';
 
 export const PageWrapper = styled.div`
-  margin-top: 40px;
-  margin-left: 20px;
+  /* position: relative; */
   font-family: 'Verdana';
   font-style: normal;
-  @media (min-width: 768px) {
-    margin-top: 150px;
-    margin-left: 16px;
+  @media ${breakpoints.maxTablet} {
+    margin: 0 auto;
+    max-width: 320px;
+    padding-top: 32px;
   }
-  @media (min-width: 1280px) {
-    margin-top: 100px;
-    margin-left: 32px;
-    width: 100%;
+  @media ${breakpoints.tablet} {
+    max-width: 768px;
+  }
+  @media ${breakpoints.desktop} {
+    max-width: 1280px;
   }
 `;

@@ -3,16 +3,17 @@ import styled, { css } from 'styled-components';
 import { breakpoints } from '../../assets/sizes';
 
 export const ContainerRegistr = styled.div`
-  padding: 42px 20px 100px 20px;
+  /* padding: 42px 20px 100px 20px; */
   margin-left: auto;
   margin-right: auto;
 
   @media ${breakpoints.tablet} {
-    padding: 160px 32px 418px 32px;
+    padding-top: 60px;
+    padding-left: 32px;
     min-width: 768px;
   }
   @media ${breakpoints.desktop} {
-    padding: 160px 16px 180px 16px;
+    padding: 10px 16px;
     min-width: 1280px;
   }
 `;
@@ -24,7 +25,7 @@ export const TitleRegistr = styled.h2`
   font-weight: 700;
   line-height: 1.21;
   letter-spacing: 0.04em;
-  margin-top: 0;
+  margin-top: 8px;
   text-align: center;
   @media ${breakpoints.tablet} {
     text-align: start;

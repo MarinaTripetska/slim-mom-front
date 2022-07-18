@@ -6,8 +6,9 @@ import { breakpoints } from '../../assets/sizes';
 const SideBarDiv = styled.div`
   background: #f0f1f3;
   margin: auto;
-  height: 850px;
-  max-height: 850px;
+  /* height: 850px; */
+  /* max-height: 850px; */
+  height: 100%;
 
   display: flex;
   flex-direction: column;
@@ -19,21 +20,21 @@ const SideBarDiv = styled.div`
     max-width: 100vw;
     flex-direction: row;
     align-items: baseline;
-    padding-top: 90px;
-    padding-bottom: 90px;
+    padding: 40px 20px;
+    /* padding-top: 90px;
+    padding-bottom: 90px; */
     justify-content: space-evenly;
   }
-  @media (max-width: 550px) {
+  /* @media (max-width: 550px) {
     flex-direction: column;
     align-items: center;
-    padding: 40px 20px;
-  }
+  } */
   @media ${breakpoints.onlyTablet} {
     background-image: url(${bgTablet});
     background-repeat: no-repeat;
     background-position: bottom right;
-    background-size: 428px 602px;
-    height: 326px;
+    /* background-size: 428px 602px; */
+    /* height: 326px; */
     padding-top: 0px;
     padding-bottom: 0px;
   }

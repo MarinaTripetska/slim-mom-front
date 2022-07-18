@@ -36,23 +36,55 @@ const AuthNav = () => {
       navigate('/login', { replace: true });
     });
   };
-
+  // let calcStyles = {};
+  // if (localPage === 'CalculatorPage') {
+  //   calcStyles = {
+  //     display: 'flex',
+  //     position: 'absolute',
+  //     top: '80px',
+  //     right: '0',
+  //     paddingRight: '20px',
+  //     border: '1px solid #9B9FAA',
+  //     backgroundColor: '#EFF1F3',
+  //     width: '100%',
+  //   };
+  // }
   //const backRoot = document.querySelector('#backRoot');
 
-// const Back = () => {
-//   return createPortal(<Background />, backRoot);
-// };
+  // const Back = () => {
+  //   return createPortal(<Background />, backRoot);
+  // };
   const UserMenuOpen = () => {
     const MenuRoot = document.querySelector('#menu-root');
     if (openMenu) {
-      const ScrollVisible = () => { document.body.style.overflow = "visible" };
-      return createPortal((
+      const ScrollVisible = () => {
+        document.body.style.overflow = 'visible';
+      };
+      return createPortal(
         <NavThumbOpen>
-          <NavLinkStyleMenuOpen to="/diary" onClick={()=> {setOpenMenu(false); ScrollVisible()}}> Diary</NavLinkStyleMenuOpen>
-          <NavLinkStyleMenuOpen to="/calculator" onClick={() => { setOpenMenu(false); ScrollVisible()}}>Calculator</NavLinkStyleMenuOpen>
-        </NavThumbOpen>
-      ), MenuRoot)
-    };
+          <NavLinkStyleMenuOpen
+            to="/diary"
+            onClick={() => {
+              setOpenMenu(false);
+              ScrollVisible();
+            }}
+          >
+            {' '}
+            Diary
+          </NavLinkStyleMenuOpen>
+          <NavLinkStyleMenuOpen
+            to="/calculator"
+            onClick={() => {
+              setOpenMenu(false);
+              ScrollVisible();
+            }}
+          >
+            Calculator
+          </NavLinkStyleMenuOpen>
+        </NavThumbOpen>,
+        MenuRoot,
+      );
+    }
     return null;
   };
 
@@ -66,19 +98,19 @@ const AuthNav = () => {
   };
 
   const CloseMenu = () => {
-    const HandleClickOpen = (e) => {
-    e.preventDefault();
-    document.body.style.overflow = "hidden";
-    setOpenMenu(true);
-    return;
-  }
-
-    const HandleClickClose = (e) => {
+    const HandleClickOpen = e => {
       e.preventDefault();
-      document.body.style.overflow = "visible" 
-    setOpenMenu(false);
-    return;
-  }
+      document.body.style.overflow = 'hidden';
+      setOpenMenu(true);
+      return;
+    };
+
+    const HandleClickClose = e => {
+      e.preventDefault();
+      document.body.style.overflow = 'visible';
+      setOpenMenu(false);
+      return;
+    };
     if (openMenu) {
       return (
         <ButtonBurger onClick={HandleClickClose}>
