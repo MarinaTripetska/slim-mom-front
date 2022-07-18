@@ -13,7 +13,7 @@ margin: 60px 20px;
     padding: 0 32px;
   }
   @media ${breakpoints.desktop} {
-    padding: 0 136px 0 16px;
+    padding: 0 98px 0 16px;
     margin-top: 280px;
   }
 `;
