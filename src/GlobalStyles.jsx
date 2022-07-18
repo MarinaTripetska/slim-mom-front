@@ -52,7 +52,7 @@ const GlobalStyle = createGlobalStyle`
 
 
 body {
-  min-height: 100vh;
+  min-height: 100%;
   scroll-behavior: smooth; 
   font-family: 'Verdana';
   font-style: normal;  

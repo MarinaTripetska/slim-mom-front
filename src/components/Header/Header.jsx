@@ -9,16 +9,17 @@ const Header = ({ localPage }) => {
 
   let PosAb = {};
   if ((localPage = 'CalculatorPage')) {
-    PosAb = { position: 'absolute' };
+    // PosAb = { position: 'absolute' };
+    PosAb = { position: 'static' };
   }
 
   return (
     <>
-    <HeaderStyled style={PosAb}>
-      {!isUserLoggedIn && <NotAuthNav localPage={localPage} />}
+      <HeaderStyled style={PosAb}>
+        {!isUserLoggedIn && <NotAuthNav localPage={localPage} />}
 
-      {isUserLoggedIn && <AuthNav localPage={localPage} />}
-    </HeaderStyled>
+        {isUserLoggedIn && <AuthNav localPage={localPage} />}
+      </HeaderStyled>
       <div id="menu-root"></div>
     </>
   );
