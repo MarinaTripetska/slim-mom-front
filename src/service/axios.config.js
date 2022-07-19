@@ -129,12 +129,8 @@ export const addProductByDate = async ({ date, data }) => {
 //==================DELETE PRODUCTS TO DIETARY BY DATE=====================
 
 export const deleteProductByDate = async ({ productId, date }) => {
-  console.log(productId, date);
-
   try {
-    return await axios.delete(`dietaries/?productId=${productId}`, {
-      date: date,
-    });
+    return await axios.delete(`dietaries/?productId=${productId}&date=${date}`);
   } catch (error) {
     console.log(error);
   }

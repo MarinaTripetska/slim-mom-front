@@ -48,7 +48,7 @@ const actionDeleteProduct = createAsyncThunk(
   async (payload, thunkAPI) => {
     try {
       const response = await deleteProductByDate(payload);
-      return response.data;
+      return response.data.data.result.result.products;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.response.data);
     }

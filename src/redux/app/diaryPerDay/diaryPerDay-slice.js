@@ -62,6 +62,7 @@ export const diaryPerDaySlice = createSlice({
       state.isLoading = false;
       state.isError = false;
       state.isSuccess = true;
+
       state.products = [...payload.products];
     },
     [diaryPerDayOperation.actionCreateProductsList.rejected](state, action) {
@@ -94,7 +95,7 @@ export const diaryPerDaySlice = createSlice({
       state.isLoading = false;
       state.isError = false;
       state.isSuccess = true;
-      state.products = action.payload.products;
+      state.products = action.payload;
     },
     [diaryPerDayOperation.actionDeleteProduct.rejected](state, action) {
       state.isLoading = false;
