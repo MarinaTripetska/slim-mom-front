@@ -127,6 +127,7 @@ export default function DailyCaloriesForm({
             <FormLabel htmlFor="desiredWeight">
               Бажана вага*
               <TextInp
+                value="desiredWeight"
                 pattern="[0-9]{2,3}"
                 id="desiredWeight"
                 required
