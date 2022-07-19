@@ -68,7 +68,9 @@ export default function DailyCaloriesForm({
         };
 
         if (onFormSubmit(user) && isShowNoti) {
-          toast.success('Your diet is ready!');
+
+          toast.success("Твоя дієта готова!");
+
           window.scrollTo(0, document.body.scrollHeight);
         }
 

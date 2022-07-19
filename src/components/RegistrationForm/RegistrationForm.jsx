@@ -60,7 +60,7 @@ const RegistrationForm = () => {
       const { name, email, password } = values;
       dispatch(authOperations.actionRegister({ name, email, password })).then(
         ({ payload }) => {
-          if (payload.code === 201) {
+          if (payload?.code === 201) {
             navigate('/login', { replace: true });
           }
         },
@@ -90,7 +90,7 @@ const RegistrationForm = () => {
             ) : null}
           </FormRegistrItem>
           <FormRegistrItem>
-            <FormRegistrLabel htmlFor="email">Email *</FormRegistrLabel>
+            <FormRegistrLabel htmlFor="email">Електронна пошта *</FormRegistrLabel>
             <FormRegistrInput
               id="email"
               name="email"

@@ -19,8 +19,8 @@ export const DiaryProductListItem = ({ product }) => {
     <Product>
       <ProductInfo>
         <div>{product.product.title.ua}</div>
-        <div>{weightGrm} g</div>
-        <div>{product.product.calories}kcal</div>
+        <div>{weightGrm} грам</div>
+        <div>{product.product.calories}кКал</div>
       </ProductInfo>
       <button
         type="button"

@@ -39,7 +39,7 @@ export const UserInfoMenuMobile = () => {
           {isLoadingLogout ? (
             <Rings color="#FC842D" height={50} width={50} />
           ) : (
-            'Exit'
+            'Вихід'
           )}
         </ExitButton>
       </UserInfoExit>

@@ -7,7 +7,7 @@ const initialState = {
     email: null,
     userInfo: null,
     userDailyCalorieIntake: null,
-    userNotRecommendedProducts: null,
+    userNotRecommendedProducts: [],
   },
   token: null,
   isLoggedIn: false,
@@ -120,14 +120,11 @@ export const authSlice = createSlice({
     },
     [authOperations.getUsersAdvice.fulfilled](state, { payload }) {
       state.isLoading = false;
+      state.user.userInfo = payload.userInfo;
       state.user.userDailyCalorieIntake = payload.userDailyCalorieIntake;
       state.user.userNotRecommendedProducts = [
         ...payload.userNotRecommendedProducts,
       ];
-      // {
-      //   userDailyCalorieIntake: payload.userDailyCalorieIntake,
-      //   userNotRecommendedProducts: [...payload.userNotRecommendedProducts],
-      // };
     },
     [authOperations.getUsersAdvice.rejected](state, _) {
       state.isLoading = false;
