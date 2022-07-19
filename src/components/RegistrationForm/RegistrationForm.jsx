@@ -52,7 +52,10 @@ const RegistrationForm = () => {
       password: Yup.string()
         .min(8, 'Min 8 symbols')
         .max(100, 'Max 100 symbols')
-        .matches(/[a-z0-9]/, 'Select English keyboard layout, please')
+        .matches(
+          /(?=.*[0-9])(?=.*[a-z])/,
+          'Select English keyboard layout, please',
+        )
         .required('Required'),
     }),
 
@@ -110,7 +113,8 @@ const RegistrationForm = () => {
               id="password"
               name="password"
               type="password"
-              // pattern="([A-z0-9])"
+              pattern="([A-z0-9])"
+              title="password must  latin letters and numbers without special characters."
               onChange={formik.handleChange}
               value={formik.values.password}
             />
