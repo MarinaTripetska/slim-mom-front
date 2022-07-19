@@ -55,15 +55,12 @@ export const diaryPerDaySlice = createSlice({
     [diaryPerDayOperation.actionCreateProductsList.pending](state) {
       state.isLoading = true;
     },
-    [diaryPerDayOperation.actionCreateProductsList.fulfilled](
-      state,
-      { payload },
-    ) {
+    [diaryPerDayOperation.actionCreateProductsList.fulfilled](state) {
       state.isLoading = false;
       state.isError = false;
       state.isSuccess = true;
 
-      state.products = [...payload.products];
+      state.products = [];
     },
     [diaryPerDayOperation.actionCreateProductsList.rejected](state, action) {
       state.isLoading = false;
