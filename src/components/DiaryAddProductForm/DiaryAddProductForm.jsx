@@ -68,7 +68,6 @@ export default function DiaryProductForm({ onSubmit, className }) {
             backspaceRemovesValue
             escapeClearsValue
             onChange={option => setSelectedProduct(option.value)}
-            // loadOptions={_.debounce(loadOptions, 2000)}
             loadOptions={loadOptions}
             placeholder="Введіть назву продукту"
             
@@ -82,6 +81,8 @@ export default function DiaryProductForm({ onSubmit, className }) {
             // loadingMessage={({ selectedProduct }) =>
             //   !selectedProduct ? 'Searching...' : 'There is no such product'
             // }
+            title="Введіть назву продукту"
+            cacheOptions
           />
         </FormLabel>
         <FormLabel>

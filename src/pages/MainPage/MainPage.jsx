@@ -6,6 +6,7 @@ import { PageWrapper } from './MainPage.styled';
 import Background from '../../components/Background';
 import Header from '../../components/Header';
 import Loader from 'components/Loader';
+// import MobileSidebar from '../../components/MobileSidebar';
 
 export default function MainPage() {
   const [userInfo, setUserInfo] = useState(null);
@@ -31,9 +32,15 @@ export default function MainPage() {
   return (
     <Background>
       <Header localPage="MainPage" />
+      {/* <MobileSidebar /> */}
+
       <PageWrapper>
-        <DailyCaloriesForm onFormSubmit={submitForm} isCleanUserInfo={true} isShowNoti={false} />
-        {isLoading && (<Loader />)}
+        <DailyCaloriesForm
+          onFormSubmit={submitForm}
+          isCleanUserInfo={true}
+          isShowNoti={false}
+        />
+        {isLoading && <Loader />}
         {openModal && (
           <Modal userData={userInfo} closeModalHandle={closeModal} />
         )}

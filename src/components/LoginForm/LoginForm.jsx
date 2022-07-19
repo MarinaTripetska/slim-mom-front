@@ -15,9 +15,8 @@ import {
 } from './LoginForm.styled';
 
 import * as Yup from 'yup';
-import { useDispatch, useSelector } from 'react-redux';
-import { authOperations, authSelectors } from 'redux/app/auth';
-import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { authOperations } from 'redux/app/auth';
 
 const initialValues = {
   name: '',
@@ -26,33 +25,27 @@ const initialValues = {
 };
 
 const LoginForm = () => {
-  const isLoggedIn = useSelector(authSelectors.getIsLoggenIn);
   const dispatch = useDispatch();
-  let navigate = useNavigate();
   const formik = useFormik({
     initialValues,
     validationSchema: Yup.object({
       email: Yup.string()
-        .email('Invalid email')
-        .min(3, 'Min 3 symbols')
-        .max(254, 'Max 254 symbols')
-        .required('Required'),
+        .email('Недійсна електронна пошта')
+        .min(3, 'Мінімум 3 символи')
+        .max(254, 'Максимум 254 символів')
+        .required('Обов\'язково'),
       password: Yup.string()
-        .min(8, 'Min 8 symbols')
-        .max(100, 'Max 100 symbols')
+        .min(8, 'Мінімум 8 символів')
+        .max(100, 'Максимум 100 символів')
         .matches(
           /[A-z0-9]/,
-          'Passworw should have letters and numbers, no special  symbols',
+          'Пароль має містити літери та цифри, без спеціальних символів',
         )
-        .required('Required'),
+        .required('Обов\'язково'),
     }),
     onSubmit: values => {
       const { email, password } = values;
       dispatch(authOperations.actionLogin({ email, password }));
-      formik.resetForm();
-      if (isLoggedIn) {
-        navigate('/diary', { replace: true });
-      }
     },
   });
   return (
@@ -61,7 +54,7 @@ const LoginForm = () => {
       <FormLogin onSubmit={formik.handleSubmit}>
         <FormLoginList>
           <FormLoginItem>
-            <FormLoginLabel htmlFor="email">Email *</FormLoginLabel>
+            <FormLoginLabel htmlFor="email">Електронна пошта *</FormLoginLabel>
             <FormLoginInput
               id="email"
               name="email"

@@ -146,9 +146,9 @@ const RadioInp = styled(Field)`
   &:not(:disabled):not(:checked) + label:hover::before {
     border-color: #e0e0e0;
   }
-  &:focus + label {
+  /* &:focus + label {
     outline: auto;
-  }
+  } */
   &:checked + label::before {
     text-align: center;
     background-image: url("data:image/svg+xml,%3Csvg width='48px' height='48px' viewBox='0 0 48 48' fill='%23fc842d' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='24' cy='24' r='20' stroke='%23fc842d' stroke-width='4'/%3E%3C/svg%3E%0A");

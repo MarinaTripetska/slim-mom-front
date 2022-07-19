@@ -1,7 +1,12 @@
 import { useSelector } from 'react-redux';
 import { authSelectors } from 'redux/app/auth';
 import { diarySelectors } from 'redux/app/diaryPerDay';
-import { InfoList, InfoListItem, ListTitle } from './DailyCalorieIntake.styles';
+import {
+  InfoList,
+  InfoListItem,
+  ListTitle,
+  Span,
+} from './DailyCalorieIntake.styles';
 
 export default function DailyCalorieIntake({ date }) {
   const daylykCalCount = useSelector(authSelectors.getUserAdviceCalorie);
@@ -18,13 +23,17 @@ export default function DailyCalorieIntake({ date }) {
   let kcalLeft = daylykCalCount - kcalConsumed;
   let percOfNorm = ~~((kcalConsumed / daylykCalCount) * 100);
 
+  if (kcalLeft < 0) {
+    kcalLeft = '000';
+  }
+
   return (
     <>
       <InfoList>
         <ListTitle>Дані станом на {date}</ListTitle>
         <InfoListItem>
           <span>Залишилось</span>
-          <span>{kcalLeft || '000'} кКал</span>
+          <span>{Math.round(kcalLeft) || '000'} кКал</span>
         </InfoListItem>
         <InfoListItem>
           <span>Споживається</span>
@@ -36,7 +45,7 @@ export default function DailyCalorieIntake({ date }) {
         </InfoListItem>
         <InfoListItem>
           <span>n% від норми</span>
-          <span>{percOfNorm || '000'} %</span>
+          <Span upperHandred={percOfNorm > 100}>{percOfNorm || '000'} %</Span>
         </InfoListItem>
       </InfoList>
     </>

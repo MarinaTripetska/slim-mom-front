@@ -69,3 +69,6 @@ export const AddBtnMobile = styled(FormBtnBase)`
   right: 0;
   left: 0;
 `;
+export const P = styled.h3`
+  margin: 20px 0px 0px;
+`;

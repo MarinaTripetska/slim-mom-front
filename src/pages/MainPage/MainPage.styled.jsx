@@ -11,8 +11,10 @@ export const PageWrapper = styled.div`
   }
   @media ${breakpoints.tablet} {
     max-width: 768px;
+    padding-top: 100px;
   }
   @media ${breakpoints.desktop} {
     max-width: 1280px;
+    padding-top: 306px;
   }
 `;
