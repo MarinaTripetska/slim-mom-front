@@ -49,6 +49,7 @@ const LoginForm = () => {
     onSubmit: values => {
       const { email, password } = values;
       dispatch(authOperations.actionLogin({ email, password }));
+
       if (isLoggedIn) {
         navigate('/calculator', { replace: true });
       }
