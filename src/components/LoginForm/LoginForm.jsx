@@ -15,9 +15,8 @@ import {
 } from './LoginForm.styled';
 
 import * as Yup from 'yup';
-import { useDispatch, useSelector } from 'react-redux';
-import { authOperations, authSelectors } from 'redux/app/auth';
-import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { authOperations } from 'redux/app/auth';
 
 const initialValues = {
   name: '',
@@ -26,9 +25,7 @@ const initialValues = {
 };
 
 const LoginForm = () => {
-  const isLoggedIn = useSelector(authSelectors.getIsLoggenIn);
   const dispatch = useDispatch();
-  let navigate = useNavigate();
   const formik = useFormik({
     initialValues,
     validationSchema: Yup.object({
@@ -49,11 +46,6 @@ const LoginForm = () => {
     onSubmit: values => {
       const { email, password } = values;
       dispatch(authOperations.actionLogin({ email, password }));
-
-      if (isLoggedIn) {
-        navigate('/calculator', { replace: true });
-      }
-      formik.resetForm();
     },
   });
   return (
