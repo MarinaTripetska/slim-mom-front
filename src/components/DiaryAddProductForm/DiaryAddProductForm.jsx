@@ -15,29 +15,29 @@ import {
 
 const loadOptions = async (inputValue, callback) => {
   console.log('inputValue:', inputValue);
-  if (inputValue.length < 2) {
+  if (inputValue.length < 2 || inputValue.length===0){
     return;
   }
+ 
   const { data } = await getProductsByQuery(inputValue);
-
   console.log('reseived:', data);
   callback(
     data.result.map(product => {
       const title = product.title;
-      return { label: title, value: title };
+      return { label: title,value: title };
     }),
   );
 };
 
 export default function DiaryProductForm({ onSubmit, className }) {
-  let [selectedProduct, setSelectedProduct] = useState(null);
+  let [selectedProduct, setSelectedProduct] = useState("");
   let [weight, setWeight] = useState('');
   const isLoading = useSelector(diarySelectors.getIsLoading);
 
   const handleSubmit = async event => {
     event.preventDefault();
     const weightNumber = parseInt(weight);
-    if (!selectedProduct || isNaN(weightNumber)) return;
+    if (!selectedProduct || isNaN(weightNumber) || null) return;
 
     const { data: products } = await getProductsByQuery(selectedProduct);
     const productId = products.result[0]._id;
@@ -51,7 +51,7 @@ export default function DiaryProductForm({ onSubmit, className }) {
   };
 
   const reset = () => {
-    setSelectedProduct(null);
+    setSelectedProduct("");
     setWeight('');
   };
 
@@ -60,25 +60,26 @@ export default function DiaryProductForm({ onSubmit, className }) {
       <StyledForm onSubmit={handleSubmit} className={className}>
         <FormLabel>
           <FormInputProduct
-            isClearable
-            backspaceRemovesValue
-            escapeClearsValue
             classNamePrefix={'react-select'}
-            defaultValue={selectedProduct}
+            
+            controlShouldRenderValue={true}
+            // isClearable
+            // backspaceRemovesValue
+            // escapeClearsValue
             onChange={option => setSelectedProduct(option.value)}
             // loadOptions={_.debounce(loadOptions, 2000)}
+            optionsMessage='54'
             loadOptions={loadOptions}
             placeholder="Введіть назву продукту"
-            title="Введіть назву продукту"
-            cacheOptions
+            
             // value={selectedProduct}
             // onChange={option => setSelectedProduct(option)}
-            // placeholder="Enter product name"
-            // noOptionsMessage={({ selectedProduct }) =>
-            //   !selectedProduct
-            //     ? 'Enter product name'
-            //     : 'There is no such product'
-            // }
+            // // placeholder="Enter product name"
+            noOptionsMessage={({ selectedProduct }) =>
+              !selectedProduct
+                ? 'немає продуктів'
+                : 'Такого продукту немає'
+            }
             // loadingMessage={({ selectedProduct }) =>
             //   !selectedProduct ? 'Searching...' : 'There is no such product'
             // }
@@ -100,6 +101,7 @@ export default function DiaryProductForm({ onSubmit, className }) {
         <FormBtn
           type="submit"
           disabled={selectedProduct === null || weight === '' || isLoading}
+          // onClick={e =>setSelectedProduct("fsd")}
         >
           {/* {isLoading ? 'Loading' : <BsPlusLg size={14} />} */}
           <BsPlusLg size={14} />

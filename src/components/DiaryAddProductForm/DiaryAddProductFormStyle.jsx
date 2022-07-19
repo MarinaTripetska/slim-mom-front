@@ -4,7 +4,8 @@ import AsyncSelect from 'react-select/async';
 
 export const StyledForm = styled.form`
   display: flex;
-  margin-top: 60px;
+  @media screen and (max-width: 767px) {
+  margin-top: 80px;}
   justify-content: center;
   align-items: center;
   flex-direction: column;
@@ -12,6 +13,7 @@ export const StyledForm = styled.form`
   @media screen and (min-width: 768px) {
     flex-direction: row;
     justify-content: flex-start;
+    margin-top: 60px;
   }
 `;
 
@@ -63,6 +65,7 @@ export const FormInputProduct = styled(AsyncSelect)`
   }
   .react-select__placeholder {
     color: var(--secondary-text-color);
+    
   }
   .react-select__indicators {
     display: none;
@@ -117,7 +120,6 @@ export const FormBtnBase = styled.button`
   transition: background 200ms linear, color 200ms linear;
   cursor: pointer;
   letter-spacing: 0.04em;
-  margin-top: 60px;
 
   &:hover {
     background: ${props => (props.primary ? '#fff' : '#FC842D')};

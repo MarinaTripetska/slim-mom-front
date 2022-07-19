@@ -7,20 +7,24 @@ export const ContainerDiary = styled.div`
     margin: 0 auto;
     width: 320px;
     padding: 0 20px;
+    margit-top:40px
   }
   @media ${breakpoints.tablet} {
     width: 768px;
-    padding: 0 32px;
+    padding:  0 32px 55px 32px
   }
   @media ${breakpoints.desktop} {
-    padding: 0 136px 0 16px;
+    padding: 130px 136px 0 16px;
   }
 `;
 export const ListWrap = styled.div`
   display: flex;
   justify-items: start;
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: 768px){
     padding: 60px 0 0 0;
+  }
+  @media screen and (min-width: 1280px){
+    padding: 0 0 0 0;
   }
 `;
 
@@ -39,7 +43,7 @@ export const SidebarWrap = styled.div`
 
 export const PageWrap = styled.div`
   @media ${breakpoints.tablet} {
-    padding-top: 180px;
+    padding-top: 100px;
     display: flex;
     flex-direction: column;
     height: 100vh;
@@ -48,7 +52,7 @@ export const PageWrap = styled.div`
   }
   @media ${breakpoints.desktop} {
     display: flex;
-    padding-top: 306px;
+    
   }
 `;
 export const AddBtnMobile = styled(FormBtnBase)`

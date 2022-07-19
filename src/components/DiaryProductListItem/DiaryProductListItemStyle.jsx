@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const Product = styled.li`
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: space-between;
   width: 280px;
   margin-bottom: 20px;
@@ -11,11 +11,17 @@ font-weight: 400;
 font-size: 14px;
 line-height: 17px;
 letter-spacing: 0.04em;
+:last-child{
+  margin-bottom:0px;
+  @media screen and (min-width: 768px) {
+    padding-bottom:30px;
+  }
+  }
   color: var(--main-text-color);
   > button {
     border:none;
     background-color: transparent;
-    padding: 0;
+    padding: 10px;
     height: 12px;
     width: 12px;
     cursor: pointer;
@@ -23,6 +29,9 @@ letter-spacing: 0.04em;
       display: block;
       object-fit: contain;  
       color:#9B9FAA;
+    > path {
+      
+      stroke:#9B9FAA }
     }
     }
   @media screen and (min-width: 768px) {

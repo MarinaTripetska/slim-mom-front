@@ -6,7 +6,8 @@ export const DatePickerWrapper = styled.div`
   display: flex;
   justify-content: start;
   align-items: center;
-
+  @media ${breakpoints.maxTablet} {
+  margin-top:40px;}
   @media ${breakpoints.tablet} {
     align-items: baseline;
   }
