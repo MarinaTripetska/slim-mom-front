@@ -27,8 +27,8 @@ export const NavThumb = styled.div`
     align-items: flex-end;
     margin-left: 20px;
     border-left: 1px solid grey;
-    padding: 10px 20px;
-    padding-bottom: -10px;
+    /* padding: 10px 20px;
+    padding-bottom: -20px; */
     /* &::before {
       content: '';
       width: 32px;
@@ -41,6 +41,7 @@ export const NavThumb = styled.div`
 `;
 
 export const NavLinkStyle = styled(NavLink)`
+margin-left: 20px;
   &.active {
     color: #212121;
   }
