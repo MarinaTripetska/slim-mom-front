@@ -14,13 +14,6 @@ function Modal({
   closeModalHandle,
   userData: { userDailyCalorieIntake, userNotRecommendedProducts },
 }) {
-//   const i10n = {
-//     'яйца': 'rayce',
-//     'зерновые': 'tak',
-// 'молочные': 'zerno',
-//     'мучные': 'myka',
-// 'opeхи': 'orex',
-//   }
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -49,7 +42,9 @@ function Modal({
   return (
     <Overlay id="modal-overlay" onClick={onClickOvrlHandle}>
       <ModalDiv>
-        <ModalTtl>Ваша рекомендована добова норма споживання калорій становить</ModalTtl>
+        <ModalTtl>
+          Ваша рекомендована добова норма споживання калорій становить
+        </ModalTtl>
         <KcalCount>
           {userDailyCalorieIntake}
           <span> кКал</span>
@@ -62,10 +57,7 @@ function Modal({
             ))}
           </ul>
         </ProdList>
-        <Button
-          onClickHandler={onBtnClickHandle}
-          btnText="Почніть худнути"
-        />
+        <Button onClickHandler={onBtnClickHandle} btnText="Почніть худнути" />
       </ModalDiv>
     </Overlay>
   );
