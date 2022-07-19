@@ -66,7 +66,7 @@ export default function DiaryPage() {
               className={mobileAddSelected ? '' : 'hideOnMobile'}
             />
           ) : (
-            <P>Продукты якi ви з'їли цi в цей день</P>
+            <P>Продукти якi ви з'їли в цей день</P>
           )}
           <ListWrap className={mobileAddSelected ? 'hideOnMobile' : ''}>
             {<DiaryProductsList />}
