@@ -4,23 +4,19 @@ import {
   ModalDiv,
   ModalTtl,
   KcalCount,
+  Text,
   ProdList,
+  CloseModalBtn,
 } from './Modal.styles';
 import { changeToUa } from 'helpers/translateProd';
 import Button from '../Button';
+import CloseBtn from '../CloseBtn/CloseBtn';
 import { useNavigate } from 'react-router-dom';
 
 function Modal({
   closeModalHandle,
   userData: { userDailyCalorieIntake, userNotRecommendedProducts },
 }) {
-//   const i10n = {
-//     'яйца': 'rayce',
-//     'зерновые': 'tak',
-// 'молочные': 'zerno',
-//     'мучные': 'myka',
-// 'opeхи': 'orex',
-//   }
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -28,7 +24,6 @@ function Modal({
     return () => {
       window.removeEventListener('keydown', escKeyHandle);
     };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const escKeyHandle = event => {
@@ -46,26 +41,30 @@ function Modal({
     navigate('/register', { replace: true });
   };
 
+  const closeModal = () => {
+    closeModalHandle();
+  };
+
   return (
     <Overlay id="modal-overlay" onClick={onClickOvrlHandle}>
       <ModalDiv>
-        <ModalTtl>Ваша рекомендована добова норма споживання калорій становить</ModalTtl>
+        <ModalTtl>
+          Ваша рекомендована добова норма споживання калорій становить
+        </ModalTtl>
         <KcalCount>
           {userDailyCalorieIntake}
-          <span> кКал</span>
+          <span> ккал</span>
         </KcalCount>
+        <Text>Продукти, які Ви не повинні їсти</Text>
         <ProdList>
-          <p>Продукти, які ви не повинні їсти</p>
-          <ul>
-            {userNotRecommendedProducts?.map(product => (
-              <li key={product}>{changeToUa[product]}</li>
-            ))}
-          </ul>
+          {userNotRecommendedProducts?.map(product => (
+            <li key={product}>{changeToUa[product]}</li>
+          ))}
         </ProdList>
-        <Button
-          onClickHandler={onBtnClickHandle}
-          btnText="Почніть худнути"
-        />
+        <Button onClickHandler={onBtnClickHandle} btnText="Почніть худнути" />
+        <CloseModalBtn>
+          <CloseBtn onHandleClick={closeModal} />
+        </CloseModalBtn>
       </ModalDiv>
     </Overlay>
   );

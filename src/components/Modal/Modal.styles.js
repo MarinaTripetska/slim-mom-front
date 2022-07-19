@@ -18,33 +18,43 @@ const Overlay = styled.div`
 `;
 
 const ModalDiv = styled.div`
+  position: relative;
   background-color: var(--white);
-  max-width: 672px;
-  max-height: 573px;
-  width: 100%;
-  height: 100%;
+  width: 672px;
+  /* max-height: 573px; */
+  /* width: 100%; */
+  padding: 64px 80px 80px;
+  /* height: 100%; */
   display: flex;
   align-items: center;
   flex-direction: column;
 
   @media ${breakpoints.maxTablet} {
     position: absolute;
-    top: 40px;
+    top: 1px;
     width: 100vw;
     max-height: 100%;
+    padding: 40px 20px 20px;
     height: 100%;
   }
+`;
+
+const CloseModalBtn = styled.div`
+  position: absolute;
+  top: 10px;
+  right: 10px;
 `;
 
 const ModalTtl = styled.h2`
   font-size: 26px;
   text-align: center;
-  margin: 64px 120px 30px;
+  /* margin: 64px 120px 30px; */
+  margin-bottom: 20px;
 
   @media ${breakpoints.maxTablet} {
     font-size: 18px;
     line-height: 1.4;
-    margin: 40px 20px;
+    /* margin: 40px 20px; */
   }
 `;
 
@@ -52,7 +62,15 @@ const KcalCount = styled.p`
   font-size: 48px;
   text-align: center;
   color: var(--blue-txt-color);
-  margin-bottom: 30px;
+  margin-bottom: 12px;
+
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 32px;
+  width: 280px;
+
+  @media ${breakpoints.tablet} {
+    width: 330px;
+  }
 
   & span {
     font-size: 16px;
@@ -60,12 +78,24 @@ const KcalCount = styled.p`
   }
 `;
 
+const Text = styled.p`
+  width: 280px;
+  @media ${breakpoints.tablet} {
+    width: 330px;
+  }
+`;
+
 const ProdList = styled.ol`
-  padding-top: 12px;
-  border-top: 1px solid var(--border-color);
+  /* padding-top: 12px; */
+  /* border-top: 1px solid var(--border-color); */
   text-align: left;
   margin-bottom: 40px;
   padding-left: 0;
+
+  width: 280px;
+  @media ${breakpoints.tablet} {
+    width: 330px;
+  }
 
   & p {
     margin-bottom: 20px;
@@ -75,6 +105,7 @@ const ProdList = styled.ol`
     color: var(--secondary-text-color);
     font-weight: 400;
     margin-left: 20px;
+    padding-left: 0;
 
     &:not(:last-child) {
       margin-bottom: 15px;
@@ -82,4 +113,12 @@ const ProdList = styled.ol`
   }
 `;
 
-export { Overlay, ModalDiv, ModalTtl, KcalCount, ProdList };
+export {
+  Overlay,
+  ModalDiv,
+  ModalTtl,
+  KcalCount,
+  Text,
+  ProdList,
+  CloseModalBtn,
+};
