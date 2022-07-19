@@ -18,31 +18,73 @@ const Overlay = styled.div`
 `;
 
 const ModalDiv = styled.div`
-  position: relative;
+  /* position: relative; */
   background-color: var(--white);
   width: 672px;
+  /* padding: 64px 80px 80px; */
   /* max-height: 573px; */
   /* width: 100%; */
-  padding: 64px 80px 80px;
   /* height: 100%; */
+  /* display: flex;
+  align-items: center;
+  flex-direction: column; */
+  padding-bottom: 80px;
+
+  @media ${breakpoints.maxTablet} {
+    /* position: absolute; */
+    /* top: 0px; */
+    width: 100vw;
+    max-height: 100%;
+    /* padding: 0px 20px 20px; */
+    height: 100%;
+  }
+`;
+
+const ContentWrap = styled.div`
   display: flex;
   align-items: center;
   flex-direction: column;
 
   @media ${breakpoints.maxTablet} {
-    position: absolute;
-    top: 1px;
+    /* position: absolute; */
+    top: 0px;
     width: 100vw;
     max-height: 100%;
-    padding: 40px 20px 20px;
+    padding: 0px 20px 20px;
     height: 100%;
   }
 `;
 
+const CloseBtnWrapper = styled.div`
+  position: relative;
+  height: 40px;
+  width: 100%;
+  background-color: var(--secondary-background-color);
+  margin-bottom: 20px;
+
+  @media ${breakpoints.tablet} {
+    background-color: var(--white);
+  }
+`;
+
+const BackButton = styled.button`
+  /* margin-left: 20px; */
+  padding: 10px;
+  border: none;
+  cursor: pointer;
+  @media ${breakpoints.tablet} {
+    display: none;
+  }
+`;
+
 const CloseModalBtn = styled.div`
+  /* width: 100vw; */
   position: absolute;
   top: 10px;
   right: 10px;
+  @media ${breakpoints.maxTablet} {
+    display: none;
+  }
 `;
 
 const ModalTtl = styled.h2`
@@ -121,4 +163,7 @@ export {
   Text,
   ProdList,
   CloseModalBtn,
+  CloseBtnWrapper,
+  ContentWrap,
+  BackButton,
 };
