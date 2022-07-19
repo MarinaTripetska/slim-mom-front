@@ -71,5 +71,7 @@ export const ContainerBar = styled.div`
     top: 0;
     right: 0;
     z-index: 0;
+    /* background-color: #F0F1F3;
+    padding-top: 306px; */
   }
 `;
