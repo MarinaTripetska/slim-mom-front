@@ -14,7 +14,7 @@ export const register = async ({ name, email, password }) => {
     return res;
   } catch (e) {
     if (e.response.status === 409) {
-      toast.error(`Ця електронна адреса уже існує`);
+      toast.error(`Ця електронна пошта існує`);
     } else {
       toast.error('Помилка реєстрації');
     }
