@@ -1,5 +1,7 @@
 import { useState, Fragment } from 'react';
 import { BsPlusLg } from 'react-icons/bs';
+import { useSelector } from 'react-redux';
+import { diarySelectors } from 'redux/app/diaryPerDay';
 import { getProductsByQuery } from '../../service/axios.config';
 
 import {
@@ -30,6 +32,7 @@ const loadOptions = async (inputValue, callback) => {
 export default function DiaryProductForm({ onSubmit, className }) {
   let [selectedProduct, setSelectedProduct] = useState(null);
   let [weight, setWeight] = useState('');
+  const isLoading = useSelector(diarySelectors.getIsLoading);
 
   const handleSubmit = async event => {
     event.preventDefault();
@@ -53,7 +56,7 @@ export default function DiaryProductForm({ onSubmit, className }) {
   };
 
   return (
- <Fragment>
+    <Fragment>
       <StyledForm onSubmit={handleSubmit} className={className}>
         <FormLabel>
           <FormInputProduct
@@ -96,8 +99,9 @@ export default function DiaryProductForm({ onSubmit, className }) {
         <FormBtnMobile type="submit">Додати</FormBtnMobile>
         <FormBtn
           type="submit"
-          disabled={selectedProduct === null || weight === '' ? true : false}
+          disabled={selectedProduct === null || weight === '' || isLoading}
         >
+          {/* {isLoading ? 'Loading' : <BsPlusLg size={14} />} */}
           <BsPlusLg size={14} />
         </FormBtn>
       </StyledForm>
