@@ -6,6 +6,7 @@ import {
   KcalCount,
   ProdList,
 } from './Modal.styles';
+import { changeToUa } from 'helpers/translateProd';
 import Button from '../Button';
 import { useNavigate } from 'react-router-dom';
 
@@ -13,6 +14,13 @@ function Modal({
   closeModalHandle,
   userData: { userDailyCalorieIntake, userNotRecommendedProducts },
 }) {
+//   const i10n = {
+//     'яйца': 'rayce',
+//     'зерновые': 'tak',
+// 'молочные': 'zerno',
+//     'мучные': 'myka',
+// 'opeхи': 'orex',
+//   }
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -41,22 +49,22 @@ function Modal({
   return (
     <Overlay id="modal-overlay" onClick={onClickOvrlHandle}>
       <ModalDiv>
-        <ModalTtl>Your recommended daily calorie intake is</ModalTtl>
+        <ModalTtl>Ваша рекомендована добова норма споживання калорій становить</ModalTtl>
         <KcalCount>
           {userDailyCalorieIntake}
-          <span> kcal</span>
+          <span> кКал</span>
         </KcalCount>
         <ProdList>
-          <p>Foods you should not eat</p>
+          <p>Продукти, які ви не повинні їсти</p>
           <ul>
             {userNotRecommendedProducts?.map(product => (
-              <li key={product}>{product}</li>
+              <li key={product}>{changeToUa[product]}</li>
             ))}
           </ul>
         </ProdList>
         <Button
           onClickHandler={onBtnClickHandle}
-          btnText="Start losing weight"
+          btnText="Почніть худнути"
         />
       </ModalDiv>
     </Overlay>

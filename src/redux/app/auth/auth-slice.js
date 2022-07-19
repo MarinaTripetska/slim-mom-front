@@ -120,10 +120,14 @@ export const authSlice = createSlice({
     },
     [authOperations.getUsersAdvice.fulfilled](state, { payload }) {
       state.isLoading = false;
-      state.user = {
-        userDailyCalorieIntake: payload.userDailyCalorieIntake,
-        userNotRecommendedProducts: [...payload.userNotRecommendedProducts],
-      };
+      state.user.userDailyCalorieIntake = payload.userDailyCalorieIntake;
+      state.user.serNotRecommendedProducts = [
+        ...payload.userNotRecommendedProducts,
+      ];
+      // {
+      //   userDailyCalorieIntake: payload.userDailyCalorieIntake,
+      //   userNotRecommendedProducts: [...payload.userNotRecommendedProducts],
+      // };
     },
     [authOperations.getUsersAdvice.rejected](state, _) {
       state.isLoading = false;

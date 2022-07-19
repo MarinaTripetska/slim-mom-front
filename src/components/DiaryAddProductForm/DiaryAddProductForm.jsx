@@ -53,7 +53,7 @@ export default function DiaryProductForm({ onSubmit, className }) {
   };
 
   return (
-    <Fragment>
+ <Fragment>
       <StyledForm onSubmit={handleSubmit} className={className}>
         <FormLabel>
           <FormInputProduct
@@ -68,7 +68,6 @@ export default function DiaryProductForm({ onSubmit, className }) {
             placeholder="Введіть назву продукту"
             title="Введіть назву продукту"
             cacheOptions
-
             // value={selectedProduct}
             // onChange={option => setSelectedProduct(option)}
             // placeholder="Enter product name"
@@ -94,8 +93,7 @@ export default function DiaryProductForm({ onSubmit, className }) {
             placeholder="Грами"
           />
         </FormLabel>
-        <FormBtnMobile type="submit">Add</FormBtnMobile>
-
+        <FormBtnMobile type="submit">Додати</FormBtnMobile>
         <FormBtn
           type="submit"
           disabled={selectedProduct === null || weight === '' ? true : false}

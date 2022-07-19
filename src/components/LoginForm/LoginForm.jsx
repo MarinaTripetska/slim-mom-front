@@ -57,7 +57,7 @@ const LoginForm = () => {
   });
   return (
     <ContainerLogin>
-      <TitleLogin>Sign in</TitleLogin>
+      <TitleLogin>Увійти</TitleLogin>
       <FormLogin onSubmit={formik.handleSubmit}>
         <FormLoginList>
           <FormLoginItem>
@@ -75,7 +75,7 @@ const LoginForm = () => {
             ) : null}
           </FormLoginItem>
           <FormLoginItem>
-            <FormLoginLabel htmlFor="password">Password *</FormLoginLabel>
+            <FormLoginLabel htmlFor="password">Пароль *</FormLoginLabel>
             <FormLoginInput
               id="password"
               name="password"
@@ -89,9 +89,9 @@ const LoginForm = () => {
           </FormLoginItem>
         </FormLoginList>
         <ButtonContainer>
-          <Button type="submit">Login</Button>
+          <Button type="submit">Увійти</Button>
 
-          <StyledLink to="/register">Register</StyledLink>
+          <StyledLink to="/register">Зареєструватися</StyledLink>
         </ButtonContainer>
       </FormLogin>
     </ContainerLogin>
