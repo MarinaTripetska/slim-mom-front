@@ -94,7 +94,7 @@ const AuthNav = () => {
     };
     if (openMenu) {
       return (
-        <ButtonBurger onClick={HandleClickClose}>
+        <ButtonBurger onClick={HandleClickClose} style={{marginRight: "4px"}}>
           <img src={CloseMenuIcon} alt="CloseMenuIcon" />
         </ButtonBurger>
       );
