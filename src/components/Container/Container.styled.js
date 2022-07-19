@@ -14,6 +14,7 @@ export const ContainerWrapper = styled.div`
   @media ${breakpoints.desktop} {
     /* width: 100%; */
     width: 1280px;
+    padding-top: 306px;
     /* padding: 0 16px; */
   }
   /* @media (min-width: 768px) {
