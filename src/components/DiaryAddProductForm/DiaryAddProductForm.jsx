@@ -15,7 +15,7 @@ import {
 
 const loadOptions = async (inputValue, callback) => {
   console.log('inputValue:', inputValue);
-  if (inputValue.length < 2 || inputValue.length===0){
+  if (inputValue.length < 2){
     return;
   }
  
@@ -61,18 +61,17 @@ export default function DiaryProductForm({ onSubmit, className }) {
         <FormLabel>
           <FormInputProduct
             classNamePrefix={'react-select'}
-            
+            input={selectedProduct}
+          
             controlShouldRenderValue={true}
-            // isClearable
-            // backspaceRemovesValue
-            // escapeClearsValue
+            isClearable
+            backspaceRemovesValue
+            escapeClearsValue
             onChange={option => setSelectedProduct(option.value)}
             // loadOptions={_.debounce(loadOptions, 2000)}
-            optionsMessage='54'
             loadOptions={loadOptions}
             placeholder="Введіть назву продукту"
             
-            // value={selectedProduct}
             // onChange={option => setSelectedProduct(option)}
             // // placeholder="Enter product name"
             noOptionsMessage={({ selectedProduct }) =>

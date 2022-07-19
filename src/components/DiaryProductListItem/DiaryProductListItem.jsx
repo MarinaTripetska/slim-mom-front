@@ -6,7 +6,6 @@ import { diarySelectors } from '../../redux/app/diaryPerDay/';
 
 export const DiaryProductListItem = ({ product }) => {
   const { weightGrm, _id } = product;
-
   const dispatch = useDispatch();
   const date = useSelector(diarySelectors.getCurrentDate);
 
@@ -24,9 +23,7 @@ export const DiaryProductListItem = ({ product }) => {
       </ProductInfo>
       <button
         type="button"
-        onClick={() =>
-          dispatch(diaryPerDayOperation.actionDeleteProduct(payload))
-        }
+        onClick={() =>dispatch(diaryPerDayOperation.actionDeleteProduct(payload))}
       >
         <GrClose />
       </button>
