@@ -90,7 +90,7 @@ const RegistrationForm = () => {
             ) : null}
           </FormRegistrItem>
           <FormRegistrItem>
-            <FormRegistrLabel htmlFor="email">Email *</FormRegistrLabel>
+            <FormRegistrLabel htmlFor="email">Електронна пошта *</FormRegistrLabel>
             <FormRegistrInput
               id="email"
               name="email"
