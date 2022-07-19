@@ -17,23 +17,35 @@ export const PageWrapper = styled.div`
 `;
 export const Section = styled.div`
   // position: relative;
-  display: block;
-  @media ${breakpoints.desktop} {
-    display: flex;
+  /* display: block; */
+  padding-top: 120px;
+  @media ${breakpoints.maxTablet} {
+    padding-top: 0;
   }
+  @media ${breakpoints.tablet} {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100vh;
+  }
+  /* @media ${breakpoints.desktop} {
+    display: flex;
+  } */
 `;
 // margin: auto;  вывел из ContainerForm
 export const ContainerForm = styled.div`
   @media ${breakpoints.maxTablet} {
-    width: 320px;
-    padding: 32px 20px 41px;
+    margin: 0 auto;
+    max-width: 320px;
+    padding-top: 32px;
+    padding-bottom: 40px;
   }
   @media ${breakpoints.tablet} {
-    width: 768px;
-    padding: 68px 32px 48px;
+    max-width: 768px;
+    padding: 40px 32px 48px;
   }
   @media ${breakpoints.desktop} {
-    width: 100%;
+    width: 1280px;
     padding: 150px 16px 111px 16px;
   }
 `;
@@ -46,12 +58,18 @@ export const ContainerBar = styled.div`
   }
   @media ${breakpoints.tablet} {
     //width: 768px;
-
+    width: 100%;
     // padding: 0 32px;
+    height: auto;
   }
   @media ${breakpoints.desktop} {
-    width: 1280px;
+    width: 520px;
+    position: absolute;
     //padding: 0 16px;
     margin-left: auto;
+    height: 100vh;
+    top: 0;
+    right: 0;
+    z-index: 0;
   }
 `;

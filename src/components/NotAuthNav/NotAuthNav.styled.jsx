@@ -19,25 +19,29 @@ export const NavThumb = styled.div`
   align-items: center;
   display: flex;
   gap: 16px;
-  color: #9B9FAA;
+  color: #9b9faa;
   text-transform: uppercase;
 
   @media ${breakpoints.desktop} {
     justify-content: flex-start;
     align-items: flex-end;
-    &::before {
+    margin-left: 20px;
+    border-left: 1px solid grey;
+    padding: 10px 20px;
+    padding-bottom: -10px;
+    /* &::before {
       content: '';
       width: 32px;
       height: 1px;
       background-color: grey;
       transform: rotate(90deg);
       align-items: flex-end;
-    }
+    } */
   }
 `;
 
 export const NavLinkStyle = styled(NavLink)`
-    &.active{
+  &.active {
     color: #212121;
   }
-`
+`;
