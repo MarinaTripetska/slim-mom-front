@@ -7,10 +7,15 @@ import {
   Text,
   ProdList,
   CloseModalBtn,
+  CloseBtnWrapper,
+  ContentWrap,
+  BackButton,
 } from './Modal.styles';
 import { changeToUa } from 'helpers/translateProd';
 import Button from '../Button';
 import CloseBtn from '../CloseBtn/CloseBtn';
+import IconBack from '../../assets/images/arrow-mobile.png';
+
 import { useNavigate } from 'react-router-dom';
 
 function Modal({
@@ -48,23 +53,30 @@ function Modal({
   return (
     <Overlay id="modal-overlay" onClick={onClickOvrlHandle}>
       <ModalDiv>
-        <ModalTtl>
-          Ваша рекомендована добова норма споживання калорій становить
-        </ModalTtl>
-        <KcalCount>
-          {userDailyCalorieIntake}
-          <span> ккал</span>
-        </KcalCount>
-        <Text>Продукти, які Ви не повинні їсти</Text>
-        <ProdList>
-          {userNotRecommendedProducts?.map(product => (
-            <li key={product}>{changeToUa[product]}</li>
-          ))}
-        </ProdList>
-        <Button onClickHandler={onBtnClickHandle} btnText="Почніть худнути" />
-        <CloseModalBtn>
-          <CloseBtn onHandleClick={closeModal} />
-        </CloseModalBtn>
+        <CloseBtnWrapper>
+          <BackButton onClick={() => closeModal()}>
+            <img src={IconBack} alt="IconBack" width={12} height={7} />
+          </BackButton>
+          <CloseModalBtn>
+            <CloseBtn onHandleClick={closeModal} />
+          </CloseModalBtn>
+        </CloseBtnWrapper>
+        <ContentWrap>
+          <ModalTtl>
+            Ваша рекомендована добова норма споживання калорій становить
+          </ModalTtl>
+          <KcalCount>
+            {userDailyCalorieIntake}
+            <span> ккал</span>
+          </KcalCount>
+          <Text>Продукти, які Ви не повинні їсти</Text>
+          <ProdList>
+            {userNotRecommendedProducts?.map(product => (
+              <li key={product}>{changeToUa[product]}</li>
+            ))}
+          </ProdList>
+          <Button onClickHandler={onBtnClickHandle} btnText="Почніть худнути" />
+        </ContentWrap>
       </ModalDiv>
     </Overlay>
   );
