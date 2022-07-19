@@ -18,7 +18,7 @@ export default function DailyCaloriesForm({
   onFormSubmit,
   userInfo = false,
   isCleanUserInfo = false,
-  isShowNoti=true,
+  isShowNoti = true,
 }) {
   const [isFormValid, setIsFormValid] = useState(false);
   const [selectedBldType, setSelectedBlbType] = useState(() =>
@@ -68,12 +68,12 @@ export default function DailyCaloriesForm({
         };
 
         if (onFormSubmit(user) && isShowNoti) {
-          toast.success("Your diet is ready!");
+          toast.success('Your diet is ready!');
           window.scrollTo(0, document.body.scrollHeight);
-        } 
-        
+        }
+
         onFormSubmit(user);
-        
+
         if (isCleanUserInfo) {
           resetForm();
         }
