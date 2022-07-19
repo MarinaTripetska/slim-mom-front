@@ -121,7 +121,7 @@ export const authSlice = createSlice({
     [authOperations.getUsersAdvice.fulfilled](state, { payload }) {
       state.isLoading = false;
       state.user.userDailyCalorieIntake = payload.userDailyCalorieIntake;
-      state.user.serNotRecommendedProducts = [
+      state.user.userNotRecommendedProducts = [
         ...payload.userNotRecommendedProducts,
       ];
       // {

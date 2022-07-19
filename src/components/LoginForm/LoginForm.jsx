@@ -49,10 +49,10 @@ const LoginForm = () => {
     onSubmit: values => {
       const { email, password } = values;
       dispatch(authOperations.actionLogin({ email, password }));
-      formik.resetForm();
       if (isLoggedIn) {
-        navigate('/diary', { replace: true });
+        navigate('/calculator', { replace: true });
       }
+      formik.resetForm();
     },
   });
   return (
