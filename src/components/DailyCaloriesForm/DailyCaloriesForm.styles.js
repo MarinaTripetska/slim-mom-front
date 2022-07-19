@@ -6,6 +6,13 @@ const FormDiv = styled.div`
   display: flex;
   flex-flow: row wrap;
   max-width: 610px;
+  padding-left: 20px;
+  @media ${breakpoints.tablet} {
+    padding-left: 32px;
+  }
+  @media ${breakpoints.desktop} {
+    padding-left: 16px;
+  }
 `;
 
 const DCForm = styled(Form)`
@@ -19,7 +26,7 @@ const LblDiv1 = styled.div`
 `;
 
 const FormP = styled.p`
-  margin-left: 30px;
+  /* margin-left: 30px; */
   font-size: 18px;
   font-family: 'Verdana';
   font-style: normal;
@@ -41,7 +48,7 @@ const FormLabel = styled.label`
   line-height: 1.214;
   letter-spacing: 0.04em;
   color: #9b9faa;
-  margin-left: 32px;
+  /* margin-left: 32px; */
   margin-top: 40px;
   @media (max-width: 320px) {
     margin-top: 32px 0 0;

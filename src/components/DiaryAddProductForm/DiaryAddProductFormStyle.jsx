@@ -23,9 +23,9 @@ export const FormLabel = styled.label`
 `;
 
 export const FormInputProduct = styled(AsyncSelect)`
-font-size: '14px';
-font-family: 'Verdana';
-font-weight: 700;
+  font-size: '14px';
+  font-family: 'Verdana';
+  font-weight: 700;
   letter-spacing: 0.04em;
   color: var(--main-text-color);
   margin-bottom: 32px;
@@ -39,7 +39,7 @@ font-weight: 700;
   }
   .react-select__control {
     border: none;
-    border-bottom: 1px solid #E0E0E0;
+    border-bottom: 1px solid #e0e0e0;
     border-radius: 0;
     &:hover {
       border-bottom-color: var(--main-text-color);
@@ -79,8 +79,8 @@ export const FormInputWeight = styled.input`
   color: var(--main-text-color);
   width: 100%;
   padding: 8px 0;
-  border:none;
-  border-bottom: 1px solid #E0E0E0;
+  border: none;
+  border-bottom: 1px solid #e0e0e0;
   outline: none;
   transition: border-color 0.3s;
   ::placeholder {
@@ -108,9 +108,9 @@ export const FormBtnBase = styled.button`
   color: ${props => (props.primary ? '#fff' : '#FC842D')};
   box-shadow: ${props =>
     props.primary ? '0 4px 10px var(--accent-shadow)' : null};
-    border: 2px solid var(--accent-color);
-    font-size: 14px;
-    font-weight: 700;
+  border: 2px solid var(--accent-color);
+  font-size: 14px;
+  font-weight: 700;
   width: 176px;
   height: 44px;
   border-radius: 30px;
@@ -118,14 +118,17 @@ export const FormBtnBase = styled.button`
   cursor: pointer;
   letter-spacing: 0.04em;
   margin-top: 60px;
-  :hover {
+
+  &:hover {
     background: ${props => (props.primary ? '#fff' : '#FC842D')};
     color: ${props => (props.primary ? '#FC842D' : '#fff')};
     box-shadow: var(--accent-shadow);
   }
-  :disabled {
+
+  &:disabled {
     pointer-events: none;
     opacity: 0.7;
+    cursor: not-allowed;
   }
 `;
 
@@ -143,6 +146,7 @@ export const FormBtn = styled(FormBtnBase)`
   height: 48px;
   flex-shrink: 0;
   flex-grow: 0;
+
   @media screen and (min-width: 768px) {
     display: flex;
     justify-content: center;

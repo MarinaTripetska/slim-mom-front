@@ -80,11 +80,11 @@ export default function DailyCaloriesForm({
       }}
     >
       <FormDiv>
-        <FormP>Calculate your daily calorie intake right now</FormP>
+        <FormP>Розрахуйте свою денну норму калорій прямо зараз</FormP>
         <DCForm>
           <LblDiv1>
             <FormLabel htmlFor="height">
-              Height*
+              Зріст*
               <TextInp
                 pattern="[0-9]{3}"
                 required
@@ -94,10 +94,10 @@ export default function DailyCaloriesForm({
                 min="100"
                 max="250"
               />
-              <span className="tooltiptext">Min 100, max 250</span>
+              <span className="tooltiptext">мін. 100, макс. 250</span>
             </FormLabel>
             <FormLabel htmlFor="age">
-              Age*
+              Вік*
               <TextInp
                 pattern="[0-9]{2}"
                 id="age"
@@ -107,10 +107,10 @@ export default function DailyCaloriesForm({
                 min="18"
                 max="100"
               />
-              <span className="tooltiptext">Min 18, max 100</span>
+              <span className="tooltiptext">мін. 18, макс. 100</span>
             </FormLabel>
             <FormLabel htmlFor="currentWeight">
-              Current weight*
+              Поточна вага*
               <TextInp
                 pattern="[0-9]{2,3}"
                 required
@@ -120,12 +120,12 @@ export default function DailyCaloriesForm({
                 min="20"
                 max="500"
               />
-              <span className="tooltiptext">Min 20, max 500</span>
+              <span className="tooltiptext">мін. 20, макс. 500</span>
             </FormLabel>
           </LblDiv1>
           <LblDiv1>
             <FormLabel htmlFor="desiredWeight">
-              Desired weight*
+              Бажана вага*
               <TextInp
                 pattern="[0-9]{2,3}"
                 id="desiredWeight"
@@ -135,10 +135,10 @@ export default function DailyCaloriesForm({
                 min="20"
                 max="500"
               />
-              <span className="tooltiptext">Min 20, max 500</span>
+              <span className="tooltiptext">мін. 20, макс. 500</span>
             </FormLabel>
             <FormLabel htmlFor="bloodType" required>
-              <p style={{ marginBottom: '20px' }}>Blood type*</p>
+              <p style={{ marginBottom: '20px' }}>Група крові*</p>
               <BlList>
                 <li>
                   <RadioInp
@@ -189,7 +189,7 @@ export default function DailyCaloriesForm({
           </LblDiv1>
 
           <BtnDiv>
-            <Button type={'submit'} btnText="Start losing weight" />
+            <Button type={'submit'} btnText="Почніть худнути" />
           </BtnDiv>
         </DCForm>
       </FormDiv>
