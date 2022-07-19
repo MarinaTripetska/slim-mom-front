@@ -1,6 +1,6 @@
 import { BsPlusLg } from 'react-icons/bs';
-import { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useState, useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 import DiaryDateCalendar from 'components/DiaryDateCalendar';
 import DiaryAddProductForm from '../../components/DiaryAddProductForm';
 import DiaryProductsList from '../../components/DiaryProductsList';
@@ -13,12 +13,11 @@ import {
   ContainerDiary,
 } from './DiaryPageStyle';
 import SideBar from 'components/SideBar';
-import { diaryPerDayOperation, diarySelectors } from 'redux/app/diaryPerDay';
+import { diaryPerDayOperation } from 'redux/app/diaryPerDay';
 import Header from 'components/Header';
-import { useEffect } from 'react';
 
 export default function DiaryPage() {
-  const currentDate = useSelector(diarySelectors.getCurrentDate);
+  const currentDate = new Date().toLocaleDateString();
   const [mobileAddSelected, setMobileAddSelected] = useState(false);
 
   const dispatch = useDispatch();
@@ -30,14 +29,13 @@ export default function DiaryPage() {
       if (typeof res.payload === 'string') {
         dispatch(
           diaryPerDayOperation.actionCreateProductsList({ date: currentDate }),
-        ).then(res => console.log(res));
+        );
       }
     });
   }, [currentDate, dispatch]);
 
   const formSubmitHandler = data => {
     const { product, weight } = data;
-    console.log(currentDate);
 
     dispatch(
       diaryPerDayOperation.actionAddProduct({
