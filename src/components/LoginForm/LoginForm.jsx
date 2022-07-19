@@ -62,7 +62,7 @@ const LoginForm = () => {
       <FormLogin onSubmit={formik.handleSubmit}>
         <FormLoginList>
           <FormLoginItem>
-            <FormLoginLabel htmlFor="email">Email *</FormLoginLabel>
+            <FormLoginLabel htmlFor="email">Електронна пошта *</FormLoginLabel>
             <FormLoginInput
               id="email"
               name="email"
