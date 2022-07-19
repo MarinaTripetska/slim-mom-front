@@ -10,13 +10,13 @@ axios.defaults.headers.common['Authorization'] = `Bearer ${localStorage.getItem(
 export const register = async ({ name, email, password }) => {
   try {
     const res = await axios.post(`/users/signup`, { name, email, password });
-    toast.success('Registration success');
+    toast.success('Реєстрація успішна');
     return res;
   } catch (e) {
     if (e.response.status === 409) {
-      toast.error(`This email already exist`);
+      toast.error(`Цей email уже існує`);
     } else {
-      toast.error('Registration error');
+      toast.error('Помилка реєстрації');
     }
   }
 };
@@ -27,12 +27,12 @@ export const login = async ({ email, password }) => {
     const res = await axios.post(`/users/login`, { email, password });
 
     if (res.data.code === 200) {
-      toast.success(`Welcome ${res.data.data.user.name}`);
+      toast.success(`Вітаємо ${res.data.data.user.name}`);
     }
     return res;
   } catch (error) {
     // TODO: error on wrong auth data
-    toast.error('Authorization error');
+    toast.error('Помилка авторизації');
   }
 };
 
@@ -42,7 +42,7 @@ export const logout = async () => {
     const res = await axios.get(`/users/logout`);
     return res;
   } catch (error) {
-    toast.error('Ups, something went wrong');
+    toast.error('Упс, щось пішло не так');
     console.error(error);
   }
 };
@@ -75,7 +75,7 @@ export const adviceForNoAuthUser = async payload => {
     const { data } = await axios.post('/users/nutrition-advice', payload);
     return data;
   } catch (error) {
-    toast.error('Ups, something wrong ');
+    toast.error('Упс, щось пішло не так ');
   }
 };
 
@@ -89,7 +89,7 @@ export const adviceForLoginUser = async payload => {
     );
     return data;
   } catch (error) {
-    toast.error('Ups, something wrong ');
+    toast.error('Упс, щось пішло не так');
   }
 };
 
@@ -102,7 +102,7 @@ export const getProductsByDate = async ({ date }) => {
   } catch (error) {
     if (error.response.status === 404) {
       // console.log('Dietary on this date no created');
-      return { data: 'Dietary on this date no created' };
+      return { data: 'Дієта на цю дату ще не створена' };
     }
   }
 };
