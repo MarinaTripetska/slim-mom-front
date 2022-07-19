@@ -1,6 +1,7 @@
 import { BsPlusLg } from 'react-icons/bs';
 import { useState, useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { diarySelectors } from 'redux/app/diaryPerDay';
 import DiaryDateCalendar from 'components/DiaryDateCalendar';
 import DiaryAddProductForm from '../../components/DiaryAddProductForm';
 import DiaryProductsList from '../../components/DiaryProductsList';
@@ -11,6 +12,7 @@ import {
   SidebarWrap,
   ListWrap,
   ContainerDiary,
+  P,
 } from './DiaryPageStyle';
 import SideBar from 'components/SideBar';
 import { diaryPerDayOperation } from 'redux/app/diaryPerDay';
@@ -21,8 +23,10 @@ export default function DiaryPage() {
   const [mobileAddSelected, setMobileAddSelected] = useState(false);
 
   const dispatch = useDispatch();
+  const date = useSelector(diarySelectors.getCurrentDate);
 
   useEffect(() => {
+    console.log(currentDate);
     dispatch(
       diaryPerDayOperation.actionGetProducts({ date: currentDate }),
     ).then(res => {
@@ -55,15 +59,18 @@ export default function DiaryPage() {
 
         <ContainerDiary>
           {!mobileAddSelected && <DiaryDateCalendar />}
-          <DiaryAddProductForm
-            onSubmit={formSubmitHandler}
-            className={mobileAddSelected ? '' : 'hideOnMobile'}
-          />
 
+          {date === currentDate ? (
+            <DiaryAddProductForm
+              onSubmit={formSubmitHandler}
+              className={mobileAddSelected ? '' : 'hideOnMobile'}
+            />
+          ) : (
+            <P>Продукти якi ви з'їли в цей день</P>
+          )}
           <ListWrap className={mobileAddSelected ? 'hideOnMobile' : ''}>
             {<DiaryProductsList />}
           </ListWrap>
-
           {!mobileAddSelected && (
             <AddBtnMobile
               className={'showOnMobile'}
