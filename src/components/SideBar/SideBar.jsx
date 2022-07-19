@@ -10,12 +10,7 @@ import DailyCalorieIntake from 'components/DailyCalorieIntake';
 import { useSelector } from 'react-redux';
 import { authSelectors } from 'redux/app/auth';
 
-export default function SideBar({
-  date,
-  kcalConsumed,
-  // notRecommendProd = [],
-  calorie,
-}) {
+export default function SideBar({ date, kcalConsumed, calorie }) {
   const notRecomendedProd = useSelector(authSelectors.getUserNotRecommendProd);
 
   return (

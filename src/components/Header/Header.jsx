@@ -7,10 +7,7 @@ import { HeaderStyled, PositionRoot } from './Header.styled';
 const Header = ({ localPage }) => {
   const isUserLoggedIn = useSelector(authSelectors.getIsLoggenIn);
 
-  // let PosAb = {};
   if ((localPage = 'CalculatorPage')) {
-    // PosAb = { position: 'absolute' };
-    // PosAb = { position: 'static' };
   }
 
   return (
