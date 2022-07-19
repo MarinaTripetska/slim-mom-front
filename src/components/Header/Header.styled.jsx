@@ -15,6 +15,7 @@ export const HeaderStyled = styled.header`
   @media ${breakpoints.desktop} {
       border-bottom: none;
       height: 150px;
+      align-items: flex-end;
   }
 `;
 
