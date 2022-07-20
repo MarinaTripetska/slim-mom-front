@@ -39,7 +39,7 @@ export const SidebarWrap = styled.div`
 
 export const PageWrap = styled.div`
   @media ${breakpoints.tablet} {
-    padding-top: 180px;
+    padding-top: 100px;
     display: flex;
     flex-direction: column;
     height: 100vh;

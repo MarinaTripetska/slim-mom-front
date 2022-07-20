@@ -21,7 +21,7 @@ const InfoList = styled.ul`
   width: 100%;
   line-height: 1.4;
 
-  @media (max-width: 768px) {
+  @media (max-width: 767px) {
     max-width: 250px;
   }
 `;

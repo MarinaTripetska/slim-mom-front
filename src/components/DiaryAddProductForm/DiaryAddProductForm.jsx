@@ -1,5 +1,6 @@
 import { useState, Fragment } from 'react';
 import { BsPlusLg } from 'react-icons/bs';
+import { Rings } from 'react-loader-spinner';
 import { useSelector } from 'react-redux';
 import { diarySelectors } from 'redux/app/diaryPerDay';
 import { getProductsByQuery } from '../../service/axios.config';
@@ -14,13 +15,11 @@ import {
 } from './DiaryAddProductForm.styled';
 
 const loadOptions = async (inputValue, callback) => {
-  console.log('inputValue:', inputValue);
   if (inputValue.length < 2) {
     return;
   }
   const { data } = await getProductsByQuery(inputValue);
 
-  console.log('reseived:', data);
   callback(
     data.result.map(product => {
       const title = product.title;
@@ -32,14 +31,17 @@ const loadOptions = async (inputValue, callback) => {
 export default function DiaryProductForm({ onSubmit, className }) {
   let [selectedProduct, setSelectedProduct] = useState(null);
   let [weight, setWeight] = useState('');
-  const isLoading = useSelector(diarySelectors.getIsLoading);
+
+  const isLoadingAddedProduct = useSelector(
+    diarySelectors.getIsAddProductLoading,
+  );
 
   const handleSubmit = async event => {
     event.preventDefault();
     const weightNumber = parseInt(weight);
     if (!selectedProduct || isNaN(weightNumber)) return;
 
-    const { data: products } = await getProductsByQuery(selectedProduct);
+    const { data: products } = await getProductsByQuery(selectedProduct.value);
     const productId = products.result[0]._id;
 
     onSubmit({
@@ -60,16 +62,19 @@ export default function DiaryProductForm({ onSubmit, className }) {
       <StyledForm onSubmit={handleSubmit} className={className}>
         <FormLabel>
           <FormInputProduct
-            isClearable
-            backspaceRemovesValue
-            escapeClearsValue
             classNamePrefix={'react-select'}
-            defaultValue={selectedProduct}
-            onChange={option => setSelectedProduct(option.value)}
+            value={selectedProduct}
+            onChange={setSelectedProduct}
             loadOptions={loadOptions}
             placeholder="Введіть назву продукту"
             title="Введіть назву продукту"
             cacheOptions
+            noOptionsMessage={({ inputValue }) =>
+              inputValue ? 'Такого продукту нема' : 'Введіть назву продукту'
+            }
+            isClearable
+            backspaceRemovesValue
+            escapeClearsValue
           />
         </FormLabel>
         <FormLabel>
@@ -87,10 +92,15 @@ export default function DiaryProductForm({ onSubmit, className }) {
         <FormBtnMobile type="submit">Додати</FormBtnMobile>
         <FormBtn
           type="submit"
-          disabled={selectedProduct === null || weight === '' || isLoading}
+          disabled={
+            selectedProduct === null || weight === '' || isLoadingAddedProduct
+          }
         >
-          {/* {isLoading ? 'Loading' : <BsPlusLg size={14} />} */}
-          <BsPlusLg size={14} />
+          {isLoadingAddedProduct ? (
+            <Rings color=" #FC842D" height={40} width={40} />
+          ) : (
+            <BsPlusLg size={14} />
+          )}
         </FormBtn>
       </StyledForm>
     </Fragment>

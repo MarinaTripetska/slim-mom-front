@@ -45,7 +45,7 @@ export default function DiaryPage() {
         date: currentDate,
         data: { product: product, weightGrm: weight },
       }),
-    ).then(res => console.log(res));
+    );
 
     setMobileAddSelected(false);
   };
