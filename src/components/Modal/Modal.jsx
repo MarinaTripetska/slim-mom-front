@@ -24,18 +24,19 @@ function Modal({
 }) {
   const navigate = useNavigate();
 
-  useEffect(() => {
-    window.addEventListener('keydown', escKeyHandle);
-    return () => {
-      window.removeEventListener('keydown', escKeyHandle);
-    };
-  }, []);
-
   const escKeyHandle = event => {
     if (event.keyCode === 27) {
       closeModalHandle();
     }
   };
+
+  useEffect(() => {
+    window.addEventListener('keydown', escKeyHandle);
+    return () => {
+      window.removeEventListener('keydown', escKeyHandle);
+    };
+  }, [escKeyHandle]);
+
   const onClickOvrlHandle = event => {
     if (event.target.id === 'modal-overlay') {
       closeModalHandle();
