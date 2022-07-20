@@ -17,7 +17,7 @@ function ChoiceModal({ text, choiceHandler, closeModalHandle, subText }) {
     return () => {
       window.removeEventListener('keydown', escKeyHandle);
     };
-  },);
+  });
 
   const escKeyHandle = event => {
     if (event.keyCode === 27) {

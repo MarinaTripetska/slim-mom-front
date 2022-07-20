@@ -10,6 +10,13 @@ export const DatePickerWrapper = styled.div`
   @media ${breakpoints.tablet} {
     align-items: baseline;
   }
+
+  &:hover,
+  &:focus {
+    button {
+      fill: var(--accent-color);
+    }
+  }
 `;
 
 export const DatePicker = styled(Datetime)`

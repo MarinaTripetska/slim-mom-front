@@ -33,17 +33,21 @@ export default function DiaryDateCalendar() {
 
   function changeDate(evt) {
     const dateString = dateToString(evt._d);
-    setDate(dateString);
+    setIsShow(false);
     dispatch(diaryPerDayOperation.actionGetProducts({ date: dateString }));
     dispatch(updateDate(dateString));
+    setDate(dateString);
   }
 
   function openCalendar() {
     setIsShow(!isShow);
   }
+  function leave() {
+    setIsShow(false);
+  }
 
   return (
-    <DatePickerWrapper>
+    <DatePickerWrapper onMouseLeave={leave} onClick={openCalendar}>
       <DatePicker
         inputProps={inputProps} // настройки
         timeFormat={false} // отключение отображения часов
@@ -52,6 +56,8 @@ export default function DiaryDateCalendar() {
         onChange={changeDate} // отслеживаем изменения даты
         open={isShow} // отображение календаря !!!
         locale="uk" // язык
+        closeOnSelect={true}
+        closeOnClickOutside={true}
       />
 
       <CalendarBtn onHandleClick={openCalendar} isShown={isShow} />
