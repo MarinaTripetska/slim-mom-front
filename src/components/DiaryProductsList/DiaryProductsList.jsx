@@ -18,7 +18,7 @@ const DiaryProductsList = () => {
   ) : (
     <ProductsListThumb>
       <ProductsList>
-        {productsList.map((product, i) => (
+        {[...productsList].reverse().map((product, i) => (
           <DiaryProductListItem key={i} product={product} />
         ))}
       </ProductsList>

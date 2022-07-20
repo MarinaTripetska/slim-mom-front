@@ -4,6 +4,7 @@ import {
   ProdList,
   ListTitle,
   ProdDiv,
+  AltText,
 } from './SideBar.styles';
 import { changeToUa } from 'helpers/translateProd';
 import DailyCalorieIntake from 'components/DailyCalorieIntake';
@@ -22,16 +23,19 @@ export default function SideBar({ date, kcalConsumed, calorie }) {
           kcalConsumed={kcalConsumed}
         />
         <ProdDiv>
-          <ListTitle> Не рекомендована їжа</ListTitle>
-          <ProdList>
-            {notRecomendedProd.length > 0 ? (
-              notRecomendedProd?.map(product => (
+          <ListTitle>Не рекомендована їжа</ListTitle>
+
+          {notRecomendedProd.length > 0 ? (
+            <ProdList>
+              {notRecomendedProd?.map(product => (
                 <li key={product}>{changeToUa[product]}</li>
-              ))
-            ) : (
-              <p>Тут відображатиметься ваша дієта</p>
-            )}
-          </ProdList>
+              ))}
+            </ProdList>
+          ) : (
+            <AltText>
+              Тут відображатимуться не рекомендовані Вам продукти
+            </AltText>
+          )}
         </ProdDiv>
       </ProdListDiv>
     </SideBarDiv>

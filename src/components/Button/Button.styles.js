@@ -27,7 +27,8 @@ export const ButtonStylePlh = css`
 `;
 
 export const Btn = styled.button`
-  ${ButtonStylePlh}/* display: inline-block;
+  ${ButtonStylePlh}
+  /* display: inline-block;
   padding: 13px 25px;
   background: #fc842d;
   box-shadow: 0px 4px 10px rgba(252, 132, 45, 0.5);
@@ -40,10 +41,10 @@ export const Btn = styled.button`
   line-height: 1.214;
   letter-spacing: 0.04em;
   color: #ffffff;
-  cursor: pointer;
+  cursor: pointer; */
 
   &:hover,
   :focus {
-    background: #f56905;
-  } */
+    background: #6ded5b;
+  }
 `;
