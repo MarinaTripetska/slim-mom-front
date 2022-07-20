@@ -115,7 +115,6 @@ const AuthNav = () => {
       });
     }
   };
-
   const closeModalHandle = () => {
     setIsShowChoiceModal(false);
   };
