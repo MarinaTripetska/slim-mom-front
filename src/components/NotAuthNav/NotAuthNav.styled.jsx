@@ -17,7 +17,7 @@ export const NotAuthNavStyled = styled.div`
 export const NavThumb = styled.div`
   //padding: 0 20px;
   align-items: center;
-  display: flex;
+  /* display: flex; */
   gap: 16px;
   color: #9b9faa;
   text-transform: uppercase;
@@ -41,7 +41,7 @@ export const NavThumb = styled.div`
 `;
 
 export const NavLinkStyle = styled(NavLink)`
-margin-left: 20px;
+  margin-left: 20px;
   &.active {
     color: #212121;
   }
