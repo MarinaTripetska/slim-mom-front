@@ -17,35 +17,39 @@ function ChoiceModal({ text, choiceHandler, closeModalHandle, subText }) {
     return () => {
       window.removeEventListener('keydown', escKeyHandle);
     };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  },);
 
   const escKeyHandle = event => {
     if (event.keyCode === 27) {
       choiceHandler(false);
       closeModalHandle();
+      document.body.style.overflow = 'visible';
     }
   };
   const onClickOvrlHandle = event => {
     if (event.target.id === 'modal-overlay') {
       choiceHandler(false);
       closeModalHandle();
+      document.body.style.overflow = 'visible';
     }
   };
 
   const onOkClickHandle = () => {
     choiceHandler(true);
     closeModalHandle();
+    document.body.style.overflow = 'visible';
   };
 
   const onCancelClickHandle = () => {
     choiceHandler(false);
     closeModalHandle();
+    document.body.style.overflow = 'visible';
   };
 
   const closeModal = () => {
     choiceHandler(false);
     closeModalHandle();
+    document.body.style.overflow = 'visible';
   };
 
   return (
@@ -56,7 +60,7 @@ function ChoiceModal({ text, choiceHandler, closeModalHandle, subText }) {
         </CloseModalBtn>
 
         <ContentWrap>
-          <ModalTtl>Ви підтверджуєте {text}?</ModalTtl>
+          <ModalTtl>Ви впевнені, {text}?</ModalTtl>
 
           <Text>{subText}</Text>
 
@@ -68,7 +72,7 @@ function ChoiceModal({ text, choiceHandler, closeModalHandle, subText }) {
             />
             <Button
               onClickHandler={onOkClickHandle}
-              btnText="Прийняти"
+              btnText="Підтвердити"
               autofocus={false}
             />
           </BtnWrapper>
