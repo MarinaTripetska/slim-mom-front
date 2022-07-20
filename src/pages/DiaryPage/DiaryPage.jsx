@@ -12,21 +12,19 @@ import {
   SidebarWrap,
   ListWrap,
   ContainerDiary,
-  P,
-} from './DiaryPageStyle';
+  AlternativeText,
+} from './DiaryPage.styled';
 import SideBar from 'components/SideBar';
 import { diaryPerDayOperation } from 'redux/app/diaryPerDay';
 import Header from 'components/Header';
 
 export default function DiaryPage() {
+  const dispatch = useDispatch();
   const currentDate = new Date().toLocaleDateString();
   const [mobileAddSelected, setMobileAddSelected] = useState(false);
-
-  const dispatch = useDispatch();
   const date = useSelector(diarySelectors.getCurrentDate);
 
   useEffect(() => {
-    console.log(currentDate);
     dispatch(
       diaryPerDayOperation.actionGetProducts({ date: currentDate }),
     ).then(res => {
@@ -60,13 +58,19 @@ export default function DiaryPage() {
         <ContainerDiary>
           {!mobileAddSelected && <DiaryDateCalendar />}
 
+          {/* {isLoading ? (
+            <LoaderPosition>
+              <Rings color="#FC842D" height={50} width={50} />
+            </LoaderPosition>
+          ) : (
+            <div> */}
           {date === currentDate ? (
             <DiaryAddProductForm
               onSubmit={formSubmitHandler}
               className={mobileAddSelected ? '' : 'hideOnMobile'}
             />
           ) : (
-            <P>Продукти якi ви з'їли в цей день</P>
+            <AlternativeText>Продукти якi ви з'їли в цей день:</AlternativeText>
           )}
           <ListWrap className={mobileAddSelected ? 'hideOnMobile' : ''}>
             {<DiaryProductsList />}
@@ -79,6 +83,8 @@ export default function DiaryPage() {
               <BsPlusLg size={14} />
             </AddBtnMobile>
           )}
+          {/* </div>
+          )} */}
         </ContainerDiary>
         <SidebarWrap className={mobileAddSelected ? 'hideOnMobile' : ''}>
           <SideBar date={currentDate} />

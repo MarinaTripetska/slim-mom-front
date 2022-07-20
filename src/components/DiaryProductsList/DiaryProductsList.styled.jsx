@@ -3,6 +3,7 @@ import { breakpoints } from 'assets/sizes';
 
 export const ProductsListThumb = styled.div`
   position: relative;
+
   @media ${breakpoints.tablet} {
     max-height: 240px;
     :before {
@@ -38,4 +39,9 @@ export const ProductsList = styled.ul`
       background: var(--secondary-background-color);
     }
   }
+`;
+export const AlternativeText = styled.p`
+  padding: 50px 0;
+  font-size: 12px;
+  color: var(--secondary-text-color);
 `;

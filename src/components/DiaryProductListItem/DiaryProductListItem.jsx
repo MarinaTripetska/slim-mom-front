@@ -1,6 +1,6 @@
 import { GrClose } from 'react-icons/gr';
 import { useDispatch, useSelector } from 'react-redux';
-import { Product, ProductInfo } from './DiaryProductListItemStyle';
+import { Product, ProductInfo } from './DiaryProductListItem.styled';
 import { diaryPerDayOperation } from '../../redux/app/diaryPerDay';
 import { diarySelectors } from '../../redux/app/diaryPerDay/';
 
