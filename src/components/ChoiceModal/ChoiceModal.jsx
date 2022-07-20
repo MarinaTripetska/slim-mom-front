@@ -17,6 +17,7 @@ function ChoiceModal({ text, choiceHandler, closeModalHandle, subText }) {
     return () => {
       window.removeEventListener('keydown', escKeyHandle);
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const escKeyHandle = event => {

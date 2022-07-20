@@ -35,7 +35,8 @@ function Modal({
     return () => {
       window.removeEventListener('keydown', escKeyHandle);
     };
-  }, [escKeyHandle]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const onClickOvrlHandle = event => {
     if (event.target.id === 'modal-overlay') {
