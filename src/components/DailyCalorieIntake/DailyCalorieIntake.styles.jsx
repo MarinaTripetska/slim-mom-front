@@ -1,45 +1,45 @@
 import styled from 'styled-components';
 
-const InfoList = styled.ul`
-  width: 280px;
-  margin-bottom: 60px;
-  font-family: 'Verdana';
-  font-style: normal;
-  font-weight: 400;
-  font-size: 14px;
-  line-height: 1.214;
-  letter-spacing: 0.04em;
-  @media (max-width: 768px) {
-    width: 250px;
-    margin: 0;
+const Thumb = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  @media (max-width: 550px) {
+    gap: 24px;
   }
-  @media (max-width: 767px) {
-    margin-bottom: 40px;
-    width: 100%;
+  /* @media (min-width: 1280px) { */
+  margin-bottom: 60px;
+  /* } */
+`;
+const InfoList = styled.ul`
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  align-items: flex-start;
+
+  max-width: 280px;
+  width: 100%;
+  line-height: 1.4;
+
+  @media (max-width: 768px) {
+    max-width: 250px;
   }
 `;
 
 const ListTitle = styled.h3`
-  margin-top: 0;
-  margin-bottom: 40px;
   font-size: inherit;
   line-height: inherit;
-  @media (max-width: 550px) {
-    margin-bottom: 24px;
-  }
 `;
 
 const InfoListItem = styled.li`
+  width: 100%;
   display: flex;
   justify-content: space-between;
-  color: #9b9faa;
-  &:not(:last-child) {
-    margin-bottom: 14px;
-  }
+  color: var(--secondary-text-color);
 `;
 
 const Span = styled.span`
   color: ${props => (props.upperHandred ? 'red' : '#9b9faa')}; ;
 `;
 
-export { InfoList, InfoListItem, ListTitle, Span };
+export { Thumb, InfoList, InfoListItem, ListTitle, Span };
