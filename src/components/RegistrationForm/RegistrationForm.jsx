@@ -44,22 +44,24 @@ const RegistrationForm = () => {
         .required("Обов'язково"),
       email: Yup.string()
         .email('Недійсна електронна пошта')
-        // .min(3, 'Min 3 symbols')
+
         .max(254, 'Максимум 254 символів')
-        // .matches(/[a-z]/, 'Select English keyboard layout, please')
+
         .matches(
           /([a-z0-9_.-]{3,})@([A-z0-9_.-]{1,}).([A-z]{2,8})/,
           'Електронна пошта має містити мінімум 3 символи',
         )
         .required("Обов'язково"),
       password: Yup.string()
-        .min(8, 'Min 8 symbols')
-        .max(100, 'Max 100 symbols')
+        .min(8, 'Мінімум 8 символів')
+        .max(100, 'Максимум 100 символів')
         .matches(
-          /(?=.*[0-9])(?=.*[a-z])/,
-          'Select English keyboard layout, please',
+          /(?=.*[0-9])(?=.*[a-z])[0-9a-zA-Z]{8,}/,
+          // .matches(
+          //   /(?=.*[0-9])(?=.*[a-z]{8,})/,
+          'Пароль повинен складатися з латинських літер та цифр без спеціальних символів',
         )
-        .required('Required'),
+        .required("Обов'язково"),
     }),
 
     onSubmit: values => {
@@ -103,8 +105,8 @@ const RegistrationForm = () => {
               id="email"
               name="email"
               type="text"
-              pattern="([a-z0-9_.-]{1,})@([A-z0-9_.-]{1,}).([A-z]{2,8})"
-              title="Електронна пошта повинна складатися з малих латинських літер, цифр і без спеціальних символів."
+              //pattern="([a-z0-9_.-]{1,})@([A-z0-9_.-]{1,}).([A-z]{2,8})"
+              //title="Електронна пошта повинна складатися з малих латинських літер, цифр і без спеціальних символів."
               onChange={formik.handleChange}
               value={formik.values.email}
             />
@@ -118,8 +120,8 @@ const RegistrationForm = () => {
               id="password"
               name="password"
               type="password"
-              pattern="([A-z0-9])"
-              title="password must  latin letters and numbers without special characters."
+              pattern="((?=.*[0-9])(?=.*[a-z])[0-9a-zA-Z]{8,})"
+              title="Пароль повинен складатися з латинських літер та цифр без спеціальних символів"
               onChange={formik.handleChange}
               value={formik.values.password}
             />
