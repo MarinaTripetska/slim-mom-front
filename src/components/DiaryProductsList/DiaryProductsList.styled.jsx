@@ -38,6 +38,8 @@ export const ProductsList = styled.ul`
     background: var(--secondary-background-color);
   }
   @media ${breakpoints.tablet} {
+    margin-left: 0;
+    margin-right: 0;
     width: 640px;
     margin-bottom: 55px;
     align-items: flex-start;
