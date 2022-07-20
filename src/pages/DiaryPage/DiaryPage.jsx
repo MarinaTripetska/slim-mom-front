@@ -12,7 +12,7 @@ import {
   SidebarWrap,
   ListWrap,
   ContainerDiary,
-  P,
+  ProductsNotice,
 } from './DiaryPageStyle';
 import SideBar from 'components/SideBar';
 import { diaryPerDayOperation } from 'redux/app/diaryPerDay';
@@ -66,7 +66,7 @@ export default function DiaryPage() {
               className={mobileAddSelected ? '' : 'hideOnMobile'}
             />
           ) : (
-            <P>Продукти якi ви з'їли в цей день</P>
+            <ProductsNotice>Продукти якi ви з'їли в цей день</ProductsNotice>
           )}
           <ListWrap className={mobileAddSelected ? 'hideOnMobile' : ''}>
             {<DiaryProductsList />}
