@@ -14,13 +14,11 @@ import {
 } from './DiaryAddProductForm.styled';
 
 const loadOptions = async (inputValue, callback) => {
-  console.log('inputValue:', inputValue);
   if (inputValue.length < 2) {
     return;
   }
   const { data } = await getProductsByQuery(inputValue);
 
-  console.log('reseived:', data);
   callback(
     data.result.map(product => {
       const title = product.title;
@@ -39,7 +37,7 @@ export default function DiaryProductForm({ onSubmit, className }) {
     const weightNumber = parseInt(weight);
     if (!selectedProduct || isNaN(weightNumber)) return;
 
-    const { data: products } = await getProductsByQuery(selectedProduct);
+    const { data: products } = await getProductsByQuery(selectedProduct.value);
     const productId = products.result[0]._id;
 
     onSubmit({
@@ -60,16 +58,19 @@ export default function DiaryProductForm({ onSubmit, className }) {
       <StyledForm onSubmit={handleSubmit} className={className}>
         <FormLabel>
           <FormInputProduct
-            isClearable
-            backspaceRemovesValue
-            escapeClearsValue
             classNamePrefix={'react-select'}
-            defaultValue={selectedProduct}
-            onChange={option => setSelectedProduct(option.value)}
+            value={selectedProduct}
+            onChange={setSelectedProduct}
             loadOptions={loadOptions}
             placeholder="Введіть назву продукту"
             title="Введіть назву продукту"
             cacheOptions
+            noOptionsMessage={({ inputValue }) =>
+              inputValue ? 'Такого продукту нема' : 'Введіть назву продукту'
+            }
+            isClearable
+            backspaceRemovesValue
+            escapeClearsValue
           />
         </FormLabel>
         <FormLabel>
