@@ -1,5 +1,6 @@
 import { useState, Fragment } from 'react';
 import { BsPlusLg } from 'react-icons/bs';
+import { Rings } from 'react-loader-spinner';
 import { useSelector } from 'react-redux';
 import { diarySelectors } from 'redux/app/diaryPerDay';
 import { getProductsByQuery } from '../../service/axios.config';
@@ -31,6 +32,9 @@ export default function DiaryProductForm({ onSubmit, className }) {
   let [selectedProduct, setSelectedProduct] = useState(null);
   let [weight, setWeight] = useState('');
   const isLoading = useSelector(diarySelectors.getIsLoading);
+  const isLoadingAddedProduct = useSelector(
+    diarySelectors.getIsAddProductLoading,
+  );
 
   const handleSubmit = async event => {
     event.preventDefault();
@@ -90,8 +94,11 @@ export default function DiaryProductForm({ onSubmit, className }) {
           type="submit"
           disabled={selectedProduct === null || weight === '' || isLoading}
         >
-          {/* {isLoading ? 'Loading' : <BsPlusLg size={14} />} */}
-          <BsPlusLg size={14} />
+          {isLoadingAddedProduct ? (
+            <Rings color=" #FC842D" height={40} width={40} />
+          ) : (
+            <BsPlusLg size={14} />
+          )}
         </FormBtn>
       </StyledForm>
     </Fragment>
