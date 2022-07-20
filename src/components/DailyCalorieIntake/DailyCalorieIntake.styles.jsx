@@ -38,4 +38,8 @@ const InfoListItem = styled.li`
   }
 `;
 
-export { InfoList, InfoListItem, ListTitle };
+const Span = styled.span`
+  color: ${props => (props.upperHandred ? 'red' : '#9b9faa')}; ;
+`;
+
+export { InfoList, InfoListItem, ListTitle, Span };

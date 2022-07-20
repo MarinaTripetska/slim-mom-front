@@ -1,3 +1,9 @@
+## [Link to Backedn Open Code](https://github.com/MarinaTripetska/slim-mom-back)
+
+## [Link to Backend Server](https://slim-mom-back.herokuapp.com/api/v1)
+
+## [Link to Deploy Application](https://team-work-goit-slim-mom.netlify.app/)
+
 ## Используемые в макете шрифты (большинство), но нужно каждый случай перепроверить
 
 Везде используется Verdana. Изменяются только размеры.
