@@ -1,11 +1,13 @@
 import { useState } from 'react';
+
 import { adviceForNoAuthUser } from 'service/axios.config';
 import DailyCaloriesForm from '../../components/DailyCaloriesForm';
 import Modal from '../../components/Modal';
-import { PageWrapper } from './MainPage.styled';
 import Background from '../../components/Background';
 import Header from '../../components/Header';
 import Loader from 'components/Loader';
+
+import { PageWrapper } from './MainPage.styled';
 
 export default function MainPage() {
   const [userInfo, setUserInfo] = useState(null);
@@ -32,8 +34,12 @@ export default function MainPage() {
     <Background>
       <Header localPage="MainPage" />
       <PageWrapper>
-        <DailyCaloriesForm onFormSubmit={submitForm} isCleanUserInfo={true} isShowNoti={false} />
-        {isLoading && (<Loader />)}
+        <DailyCaloriesForm
+          onFormSubmit={submitForm}
+          isCleanUserInfo={true}
+          isShowNoti={false}
+        />
+        {isLoading && <Loader />}
         {openModal && (
           <Modal userData={userInfo} closeModalHandle={closeModal} />
         )}

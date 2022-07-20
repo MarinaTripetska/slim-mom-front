@@ -4,10 +4,18 @@ import {
   ModalDiv,
   ModalTtl,
   KcalCount,
+  Text,
   ProdList,
+  CloseModalBtn,
+  CloseBtnWrapper,
+  ContentWrap,
+  BackButton,
 } from './Modal.styles';
 import { changeToUa } from 'helpers/translateProd';
 import Button from '../Button';
+import CloseBtn from '../CloseBtn/CloseBtn';
+import IconBack from '../../assets/images/arrow-mobile.png';
+
 import { useNavigate } from 'react-router-dom';
 
 function Modal({
@@ -16,19 +24,19 @@ function Modal({
 }) {
   const navigate = useNavigate();
 
-  useEffect(() => {
-    window.addEventListener('keydown', escKeyHandle);
-    return () => {
-      window.removeEventListener('keydown', escKeyHandle);
-    };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
   const escKeyHandle = event => {
     if (event.keyCode === 27) {
       closeModalHandle();
     }
   };
+
+  useEffect(() => {
+    window.addEventListener('keydown', escKeyHandle);
+    return () => {
+      window.removeEventListener('keydown', escKeyHandle);
+    };
+  }, [escKeyHandle]);
+
   const onClickOvrlHandle = event => {
     if (event.target.id === 'modal-overlay') {
       closeModalHandle();
@@ -39,25 +47,37 @@ function Modal({
     navigate('/register', { replace: true });
   };
 
+  const closeModal = () => {
+    closeModalHandle();
+  };
+
   return (
     <Overlay id="modal-overlay" onClick={onClickOvrlHandle}>
       <ModalDiv>
-        <ModalTtl>
-          Ваша рекомендована добова норма споживання калорій становить
-        </ModalTtl>
-        <KcalCount>
-          {userDailyCalorieIntake}
-          <span> кКал</span>
-        </KcalCount>
-        <ProdList>
-          <p>Продукти, які ви не повинні їсти</p>
-          <ul>
+        <CloseBtnWrapper>
+          <BackButton onClick={() => closeModal()}>
+            <img src={IconBack} alt="IconBack" width={12} height={7} />
+          </BackButton>
+          <CloseModalBtn>
+            <CloseBtn onHandleClick={closeModal} />
+          </CloseModalBtn>
+        </CloseBtnWrapper>
+        <ContentWrap>
+          <ModalTtl>
+            Ваша рекомендована добова норма споживання калорій становить
+          </ModalTtl>
+          <KcalCount>
+            {userDailyCalorieIntake}
+            <span> ккал</span>
+          </KcalCount>
+          <Text>Продукти, які Ви не повинні їсти</Text>
+          <ProdList>
             {userNotRecommendedProducts?.map(product => (
               <li key={product}>{changeToUa[product]}</li>
             ))}
-          </ul>
-        </ProdList>
-        <Button onClickHandler={onBtnClickHandle} btnText="Почніть худнути" />
+          </ProdList>
+          <Button onClickHandler={onBtnClickHandle} btnText="Почніть худнути" />
+        </ContentWrap>
       </ModalDiv>
     </Overlay>
   );

@@ -11,7 +11,7 @@ import {
   FormLabel,
   FormInputWeight,
   FormInputProduct,
-} from './DiaryAddProductFormStyle';
+} from './DiaryAddProductForm.styled';
 
 const loadOptions = async (inputValue, callback) => {
   console.log('inputValue:', inputValue);
@@ -66,22 +66,10 @@ export default function DiaryProductForm({ onSubmit, className }) {
             classNamePrefix={'react-select'}
             defaultValue={selectedProduct}
             onChange={option => setSelectedProduct(option.value)}
-            // loadOptions={_.debounce(loadOptions, 2000)}
             loadOptions={loadOptions}
             placeholder="Введіть назву продукту"
             title="Введіть назву продукту"
             cacheOptions
-            // value={selectedProduct}
-            // onChange={option => setSelectedProduct(option)}
-            // placeholder="Enter product name"
-            // noOptionsMessage={({ selectedProduct }) =>
-            //   !selectedProduct
-            //     ? 'Enter product name'
-            //     : 'There is no such product'
-            // }
-            // loadingMessage={({ selectedProduct }) =>
-            //   !selectedProduct ? 'Searching...' : 'There is no such product'
-            // }
           />
         </FormLabel>
         <FormLabel>
