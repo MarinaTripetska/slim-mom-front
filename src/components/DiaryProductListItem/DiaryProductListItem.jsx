@@ -7,12 +7,13 @@ import { diarySelectors } from '../../redux/app/diaryPerDay/';
 import ChoiceModal from '../../components/ChoiceModal';
 
 export const DiaryProductListItem = ({ product }) => {
-  const { weightGrm, _id } = product;
-
-  const [showModal, setShowModal] = useState(false);
-
   const dispatch = useDispatch();
+
+  const { weightGrm, _id } = product;
+  const [showModal, setShowModal] = useState(false);
   const date = useSelector(diarySelectors.getCurrentDate);
+  const currentDate = new Date().toLocaleDateString();
+  const isCurrentDay = date === currentDate;
 
   const payload = {
     productId: _id,
@@ -49,9 +50,12 @@ export const DiaryProductListItem = ({ product }) => {
         <div>{weightGrm} грам</div>
         <div>{product.product.calories}кКал</div>
       </ProductInfo>
-      <button type="button" onClick={handleDelete}>
-        <GrClose />
-      </button>
+
+      {isCurrentDay && (
+        <button type="button" onClick={handleDelete}>
+          <GrClose />
+        </button>
+      )}
     </Product>
   );
 };
