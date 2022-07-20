@@ -50,7 +50,7 @@ const ProdDiv = styled.div`
 
 const ProdListDiv = styled.div`
   width: 280px;
-  @media (max-width: 768px) {
+  @media (max-width: 767px) {
     width: 250px;
   }
   @media (max-width: 550px) {

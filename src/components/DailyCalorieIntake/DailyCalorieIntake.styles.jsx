@@ -9,7 +9,7 @@ const InfoList = styled.ul`
   font-size: 14px;
   line-height: 1.214;
   letter-spacing: 0.04em;
-  @media (max-width: 768px) {
+  @media (max-width: 767px) {
     width: 250px;
     margin: 0;
   }

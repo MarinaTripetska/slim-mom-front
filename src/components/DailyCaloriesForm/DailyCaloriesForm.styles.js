@@ -7,11 +7,14 @@ const FormDiv = styled.div`
   flex-flow: row wrap;
   max-width: 610px;
   padding-left: 20px;
+  padding-right: 20px;
   @media ${breakpoints.tablet} {
     padding-left: 32px;
+    padding-right: 0;
   }
   @media ${breakpoints.desktop} {
     padding-left: 16px;
+    padding-right: 0;
   }
 `;
 
@@ -23,6 +26,13 @@ const DCForm = styled(Form)`
 const LblDiv1 = styled.div`
   display: flex;
   flex-flow: column;
+  width: 100%;
+  @media ${breakpoints.tablet} {
+    max-width: 240px;
+    &:not(:last-child) {
+      margin-right: 32px;
+    }
+  }
 `;
 
 const FormP = styled.p`
@@ -50,6 +60,7 @@ const FormLabel = styled.label`
   color: #9b9faa;
   /* margin-left: 32px; */
   margin-top: 40px;
+  width: 100%;
   @media (max-width: 320px) {
     margin-top: 32px 0 0;
   }
@@ -80,7 +91,7 @@ const FormLabel = styled.label`
 const TextInp = styled(Field)`
   display: block;
   border: none;
-  width: 240px;
+  width: 100%;
   border-bottom: 1px solid rgb(224, 224, 224);
   &:focus,
   &:hover {
@@ -112,7 +123,7 @@ const BlList = styled.ul`
   /* margin-top: 20px; */
   padding: 8px 0 12px;
   display: inline-flex;
-  width: 240px;
+  width: 100%;
   flex-flow: row wrap;
 `;
 
@@ -170,12 +181,12 @@ const BtnDiv = styled.div`
   //     margin-left: auto;
   //   }
   // }
-  margin: 40px auto 0 auto;
+  margin: 40px auto 100px auto;
   @media ${breakpoints.tablet} {
-    margin: 60px auto 0 32px;
+    margin: 60px auto 100px 32px;
   }
   @media ${breakpoints.desktop} {
-    margin: 60px 0px 0 339px;
+    margin: 60px 0px 100px 339px;
   }
 `;
 
