@@ -31,7 +31,7 @@ const loadOptions = async (inputValue, callback) => {
 export default function DiaryProductForm({ onSubmit, className }) {
   let [selectedProduct, setSelectedProduct] = useState(null);
   let [weight, setWeight] = useState('');
-  const isLoading = useSelector(diarySelectors.getIsLoading);
+
   const isLoadingAddedProduct = useSelector(
     diarySelectors.getIsAddProductLoading,
   );

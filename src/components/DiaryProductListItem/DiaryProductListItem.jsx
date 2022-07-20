@@ -5,7 +5,7 @@ import { Product, ProductInfo } from './DiaryProductListItem.styled';
 import { diaryPerDayOperation } from '../../redux/app/diaryPerDay';
 import { diarySelectors } from '../../redux/app/diaryPerDay/';
 import ChoiceModal from '../../components/ChoiceModal';
-import { Rings } from 'react-loader-spinner';
+// import { Rings } from 'react-loader-spinner';
 
 export const DiaryProductListItem = ({ product }) => {
   const dispatch = useDispatch();
