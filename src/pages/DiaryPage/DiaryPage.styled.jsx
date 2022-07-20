@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { FormBtnBase } from '../../components/DiaryAddProductForm/DiaryAddProductFormStyle';
+import { FormBtnBase } from '../../components/DiaryAddProductForm/DiaryAddProductForm.styled';
 import { breakpoints } from 'assets/sizes';
 
 export const ContainerDiary = styled.div`
@@ -10,7 +10,7 @@ export const ContainerDiary = styled.div`
   }
   @media ${breakpoints.tablet} {
     width: 768px;
-    padding: 0 32px;
+    padding: 0 32px 50px 32px;
   }
   @media ${breakpoints.desktop} {
     padding: 0 136px 0 16px;
@@ -65,8 +65,9 @@ export const AddBtnMobile = styled(FormBtnBase)`
   right: 0;
   left: 0;
 `;
-export const P = styled.h3`
+export const AlternativeText = styled.h3`
   margin: 20px 0px 0px;
+  /* color: var(--secondary-text-color); */
 `;
 
 export const LoaderPosition = styled.div`

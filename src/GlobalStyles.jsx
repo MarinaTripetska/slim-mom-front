@@ -68,6 +68,7 @@ body {
 body,
 h1,
 h2,
+h3,
 p,
 ul,
 li

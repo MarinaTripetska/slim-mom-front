@@ -40,3 +40,8 @@ export const ProductsList = styled.ul`
     }
   }
 `;
+export const AlternativeText = styled.p`
+  padding: 50px 0;
+  font-size: 12px;
+  color: var(--secondary-text-color);
+`;
