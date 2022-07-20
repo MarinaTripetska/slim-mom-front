@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { authOperations } from '../../redux/app/auth';
 import { useFormik } from 'formik';
@@ -16,6 +16,9 @@ import {
   ButtonContainer,
   RegistrButton,
   StyledNavLink,
+  PasswordButton,
+  ShowPassword,
+  HidePassword,
 } from './RegistrationForm.styled';
 
 import * as Yup from 'yup';
@@ -27,6 +30,9 @@ const initialValues = {
 };
 
 const RegistrationForm = () => {
+  const [show, setShow] = useState(false);
+
+  const handleClick = () => setShow(!show);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -119,12 +125,15 @@ const RegistrationForm = () => {
             <FormRegistrInput
               id="password"
               name="password"
-              type="password"
+              type={show ? 'text' : 'password'}
               // pattern="((?=.*[0-9])(?=.*[a-z])[0-9a-zA-Z]{8,})"
               // title="Пароль повинен складатися з латинських літер та цифр без спеціальних символів"
               onChange={formik.handleChange}
               value={formik.values.password}
             />
+            <PasswordButton type="button" onClick={handleClick}>
+              {show ? <ShowPassword /> : <HidePassword />}
+            </PasswordButton>
             {formik.touched.password && formik.errors.password ? (
               <Message>{formik.errors.password}</Message>
             ) : null}

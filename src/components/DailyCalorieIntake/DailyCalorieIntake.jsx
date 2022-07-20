@@ -38,7 +38,7 @@ export default function DailyCalorieIntake({ date }) {
         </InfoListItem>
         <InfoListItem>
           <span>Споживається</span>
-          <span>{kcalConsumed || '000'} кКал</span>
+          <span>{Math.round(kcalConsumed) || '000'} кКал</span>
         </InfoListItem>
         <InfoListItem>
           <span>Добова норма</span>
@@ -46,7 +46,9 @@ export default function DailyCalorieIntake({ date }) {
         </InfoListItem>
         <InfoListItem>
           <span>n% від норми</span>
-          <Span upperHandred={percOfNorm > 100}>{percOfNorm || '000'} %</Span>
+          <Span upperHandred={Math.round(percOfNorm) > 100}>
+            {percOfNorm || '000'} %
+          </Span>
         </InfoListItem>
       </InfoList>
     </Thumb>
