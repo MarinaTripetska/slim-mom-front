@@ -39,12 +39,15 @@ export const ContainerForm = styled.div`
     max-width: 320px;
     padding-top: 32px;
     padding-bottom: 40px;
+    margin-top: -32px;
   }
   @media ${breakpoints.tablet} {
+    margin-top: -60px;
     max-width: 768px;
     padding: 40px 32px 48px;
   }
   @media ${breakpoints.desktop} {
+    margin-top: 0;
     width: 1280px;
     padding: 150px 16px 111px 16px;
   }
