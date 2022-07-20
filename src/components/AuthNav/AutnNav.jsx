@@ -4,6 +4,8 @@ import { useNavigate } from 'react-router-dom';
 import { authOperations, authSelectors } from 'redux/app/auth';
 import BurgerMenuIcon from 'assets/images/burger.png';
 import CloseMenuIcon from 'assets/images/close.png';
+import ChoiceModal from '../../components/ChoiceModal';
+
 import { createPortal } from 'react-dom';
 import {
   AuthNavStyled,
@@ -28,12 +30,7 @@ const AuthNav = () => {
   const navigate = useNavigate();
   const [openMenu, setOpenMenu] = useState(false);
   const userName = useSelector(authSelectors.getUserName);
-
-  const handleLogout = () => {
-    dispatch(authOperations.actionLogout()).then(() => {
-      navigate('/login', { replace: true });
-    });
-  };
+  const [isShowChoiceModal, setIsShowChoiceModal] = useState(false);
 
   const UserMenuOpen = () => {
     const MenuRoot = document.querySelector('#menu-root');
@@ -78,6 +75,11 @@ const AuthNav = () => {
     );
   };
 
+  const handleLogout = () => {
+    setIsShowChoiceModal(true);
+    document.body.style.overflow = 'hidden';
+  };
+
   const CloseMenu = () => {
     const HandleClickOpen = e => {
       e.preventDefault();
@@ -94,7 +96,7 @@ const AuthNav = () => {
     };
     if (openMenu) {
       return (
-        <ButtonBurger onClick={HandleClickClose} style={{marginRight: "4px"}}>
+        <ButtonBurger onClick={HandleClickClose} style={{ marginRight: '4px' }}>
           <img src={CloseMenuIcon} alt="CloseMenuIcon" />
         </ButtonBurger>
       );
@@ -106,8 +108,28 @@ const AuthNav = () => {
     );
   };
 
+  const choiceHandler = answer => {
+    if (answer) {
+      dispatch(authOperations.actionLogout()).then(() => {
+        navigate('/login', { replace: true });
+      });
+    }
+  };
+
+  const closeModalHandle = () => {
+    setIsShowChoiceModal(false);
+  };
+
   return (
     <AuthNavStyled>
+      {isShowChoiceModal && (
+        <ChoiceModal
+          text={'що хочете вийти зі свого облікового запису'}
+          choiceHandler={choiceHandler}
+          closeModalHandle={closeModalHandle}
+        />
+      )}
+
       <DivHeader>
         <Logostyled>
           <Logo />

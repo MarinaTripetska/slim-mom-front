@@ -1,18 +1,24 @@
 import { useSelector } from 'react-redux';
 import { diarySelectors } from 'redux/app/diaryPerDay';
 import DiaryProductListItem from '../DiaryProductListItem';
-import { ProductsList, ProductsListThumb } from './DiaryProductsListStyle';
+import {
+  AlternativeText,
+  ProductsList,
+  ProductsListThumb,
+} from './DiaryProductsList.styled';
 
 const DiaryProductsList = () => {
   const productsList = useSelector(diarySelectors.getDiaryProducts);
   const isAnyProducts = productsList !== null && productsList.length > 0;
 
   return !isAnyProducts ? (
-    <p>Список продуктів у вашому щоденнику в цей день порожній</p>
+    <AlternativeText>
+      Список продуктів у вашому щоденнику ще порожній.
+    </AlternativeText>
   ) : (
     <ProductsListThumb>
       <ProductsList>
-        {productsList.map((product, i) => (
+        {[...productsList].reverse().map((product, i) => (
           <DiaryProductListItem key={i} product={product} />
         ))}
       </ProductsList>

@@ -12,21 +12,20 @@ import {
   SidebarWrap,
   ListWrap,
   ContainerDiary,
-  ProductsNotice,
-} from './DiaryPageStyle';
+  AlternativeText,
+} from './DiaryPage.styled';
 import SideBar from 'components/SideBar';
 import { diaryPerDayOperation } from 'redux/app/diaryPerDay';
 import Header from 'components/Header';
 
 export default function DiaryPage() {
+  const dispatch = useDispatch();
   const currentDate = new Date().toLocaleDateString();
   const [mobileAddSelected, setMobileAddSelected] = useState(false);
-
-  const dispatch = useDispatch();
   const date = useSelector(diarySelectors.getCurrentDate);
+  const isCurrentDay = date === currentDate;
 
   useEffect(() => {
-    console.log(currentDate);
     dispatch(
       diaryPerDayOperation.actionGetProducts({ date: currentDate }),
     ).then(res => {
@@ -60,18 +59,26 @@ export default function DiaryPage() {
         <ContainerDiary>
           {!mobileAddSelected && <DiaryDateCalendar />}
 
-          {date === currentDate ? (
+          {/* {isLoading ? (
+            <LoaderPosition>
+              <Rings color="#FC842D" height={50} width={50} />
+            </LoaderPosition>
+          ) : (
+            <div> */}
+          {isCurrentDay ? (
             <DiaryAddProductForm
               onSubmit={formSubmitHandler}
               className={mobileAddSelected ? '' : 'hideOnMobile'}
             />
           ) : (
-            <ProductsNotice>Продукти якi ви з'їли в цей день</ProductsNotice>
+            <AlternativeText>Продукти якi ви з'їли в цей день:</AlternativeText>
           )}
+
           <ListWrap className={mobileAddSelected ? 'hideOnMobile' : ''}>
             {<DiaryProductsList />}
           </ListWrap>
-          {!mobileAddSelected && (
+
+          {isCurrentDay && !mobileAddSelected && (
             <AddBtnMobile
               className={'showOnMobile'}
               onClick={() => setMobileAddSelected(true)}
@@ -79,7 +86,10 @@ export default function DiaryPage() {
               <BsPlusLg size={14} />
             </AddBtnMobile>
           )}
+          {/* </div>
+          )} */}
         </ContainerDiary>
+
         <SidebarWrap className={mobileAddSelected ? 'hideOnMobile' : ''}>
           <SideBar date={currentDate} />
         </SidebarWrap>

@@ -11,7 +11,7 @@ import {
   FormLabel,
   FormInputWeight,
   FormInputProduct,
-} from './DiaryAddProductFormStyle';
+} from './DiaryAddProductForm.styled';
 
 const loadOptions = async (inputValue, callback) => {
   console.log('inputValue:', inputValue);

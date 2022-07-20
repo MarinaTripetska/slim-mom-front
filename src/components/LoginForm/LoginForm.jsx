@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useState } from 'react';
+
 import { useFormik } from 'formik';
 import {
   ContainerLogin,
@@ -12,6 +13,9 @@ import {
   ButtonContainer,
   Button,
   StyledLink,
+  HidePassword,
+  ShowPassword,
+  PasswordButton,
 } from './LoginForm.styled';
 
 import * as Yup from 'yup';
@@ -25,23 +29,27 @@ const initialValues = {
 };
 
 const LoginForm = () => {
+  const [show, setShow] = useState(false);
+
+  const handleClick = () => setShow(!show);
+
   const dispatch = useDispatch();
   const formik = useFormik({
     initialValues,
     validationSchema: Yup.object({
       email: Yup.string()
-        .email('Invalid email')
-        .min(3, 'Min 3 symbols')
-        .max(254, 'Max 254 symbols')
-        .required('Required'),
+        .email('Недійсна електронна пошта')
+        .min(3, 'Мінімум 3 символи')
+        .max(254, 'Максимум 254 символів')
+        .required("Обов'язково"),
       password: Yup.string()
-        .min(8, 'Min 8 symbols')
-        .max(100, 'Max 100 symbols')
+        .min(8, 'Мінімум 8 символів')
+        .max(100, 'Максимум 100 символів')
         .matches(
           /[A-z0-9]/,
-          'Passworw should have letters and numbers, no special  symbols',
+          'Пароль має містити літери та цифри, без спеціальних символів',
         )
-        .required('Required'),
+        .required("Обов'язково"),
     }),
     onSubmit: values => {
       const { email, password } = values;
@@ -72,10 +80,13 @@ const LoginForm = () => {
             <FormLoginInput
               id="password"
               name="password"
-              type="password"
+              type={show ? 'text' : 'password'}
               onChange={formik.handleChange}
               value={formik.values.password}
             />
+            <PasswordButton type="button" onClick={handleClick}>
+              {show ? <ShowPassword /> : <HidePassword />}
+            </PasswordButton>
             {formik.touched.password && formik.errors.password ? (
               <Message>{formik.errors.password}</Message>
             ) : null}

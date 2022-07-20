@@ -14,7 +14,7 @@ export const register = async ({ name, email, password }) => {
     return res;
   } catch (e) {
     if (e.response.status === 409) {
-      toast.error(`Ця електронна адреса уже існує`);
+      toast.error(`Ця електронна пошта існує`);
     } else {
       toast.error('Помилка реєстрації');
     }
@@ -31,7 +31,6 @@ export const login = async ({ email, password }) => {
     }
     return res;
   } catch (error) {
-    // TODO: error on wrong auth data
     toast.error('Помилка авторизації');
   }
 };
@@ -43,7 +42,7 @@ export const logout = async () => {
     return res;
   } catch (error) {
     toast.error('Упс, щось пішло не так');
-    console.error(error);
+    console.error(error.message);
   }
 };
 
@@ -64,7 +63,7 @@ export const getProductsByQuery = async query => {
     const { data } = await axios.get(`/products/search?query=${query}`);
     return data;
   } catch (error) {
-    console.log(error);
+    console.log(error.message);
   }
 };
 
@@ -76,6 +75,7 @@ export const adviceForNoAuthUser = async payload => {
     return data;
   } catch (error) {
     toast.error('Упс, щось пішло не так ');
+    console.log(error.message);
   }
 };
 
@@ -90,6 +90,7 @@ export const adviceForLoginUser = async payload => {
     return data;
   } catch (error) {
     toast.error('Упс, щось пішло не так');
+    console.log(error.message);
   }
 };
 
@@ -101,8 +102,9 @@ export const getProductsByDate = async ({ date }) => {
     return data;
   } catch (error) {
     if (error.response.status === 404) {
-      // console.log('Dietary on this date no created');
       return { data: 'Дієта на цю дату ще не створена' };
+    } else {
+      console.log(error.message);
     }
   }
 };

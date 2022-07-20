@@ -6,6 +6,7 @@ import {
   InfoListItem,
   ListTitle,
   Span,
+  Thumb,
 } from './DailyCalorieIntake.styles';
 
 export default function DailyCalorieIntake({ date }) {
@@ -28,9 +29,9 @@ export default function DailyCalorieIntake({ date }) {
   }
 
   return (
-    <>
+    <Thumb>
+      <ListTitle>Дані станом на {date}</ListTitle>
       <InfoList>
-        <ListTitle>Дані станом на {date}</ListTitle>
         <InfoListItem>
           <span>Залишилось</span>
           <span>{Math.round(kcalLeft) || '000'} кКал</span>
@@ -50,6 +51,6 @@ export default function DailyCalorieIntake({ date }) {
           </Span>
         </InfoListItem>
       </InfoList>
-    </>
+    </Thumb>
   );
 }

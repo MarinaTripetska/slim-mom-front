@@ -68,8 +68,7 @@ export default function DailyCaloriesForm({
         };
 
         if (onFormSubmit(user) && isShowNoti) {
-
-          toast.success("Твоя дієта готова!");
+          toast.success('Твоя дієта готова!');
 
           window.scrollTo(0, document.body.scrollHeight);
         }
@@ -129,7 +128,7 @@ export default function DailyCaloriesForm({
             <FormLabel htmlFor="desiredWeight">
               Бажана вага*
               <TextInp
-                value="desiredWeight"
+                // value="desiredWeight"
                 pattern="[0-9]{2,3}"
                 id="desiredWeight"
                 required
