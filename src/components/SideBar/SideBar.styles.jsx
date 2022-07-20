@@ -35,11 +35,10 @@ const SideBarDiv = styled.div`
 const ListTitle = styled.h3`
   font-size: inherit;
   line-height: inherit;
+  margin-bottom: 40px;
+
   @media (max-width: 550px) {
-    margin-bottom: 20px;
-  }
-  @media ${breakpoints.onlyTablet} {
-    margin-top: 0;
+    margin-bottom: 24px;
   }
 `;
 const ProdDiv = styled.div`
@@ -66,9 +65,15 @@ const ProdListDiv = styled.div`
 
 const ProdList = styled.ul`
   color: #9b9faa;
-  @media (max-width: 767px) {
-    margin-bottom: 40px;
-  }
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 14px;
 `;
 
-export { SideBarDiv, ProdListDiv, ProdList, ListTitle, ProdDiv };
+const AltText = styled.p`
+  font-size: 0.9em;
+  color: #9b9faa;
+`;
+
+export { AltText, SideBarDiv, ProdListDiv, ProdList, ListTitle, ProdDiv };
