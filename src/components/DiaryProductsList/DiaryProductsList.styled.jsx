@@ -7,6 +7,7 @@ export const ProductsListThumb = styled.div`
   @media ${breakpoints.tablet} {
     max-height: 240px;
     :before {
+      pointer-events: none;
       width: 634px;
       position: absolute;
       bottom: 0;
