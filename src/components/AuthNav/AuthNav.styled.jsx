@@ -113,7 +113,7 @@ export const NavLinkStyleMenu = styled(NavLink)`
 export const ButtonBurger = styled.button`
   display: none;
   @media ${breakpoints.maxDesktop} {
-    animation: ${Animation} 1s linear infinite;
+    animation: ${Animation} 0.5s linear infinite;
     animation-iteration-count: 1;
     display: block;
     border: none;
@@ -135,7 +135,7 @@ export const NavThumbOpen = styled.div`
   color: #ffffff;
   background-color:  #264061;
   z-index: 50;
-  animation: ${Animation} 1s linear infinite;
+  animation: ${Animation} 0.5s linear infinite;
   animation-iteration-count: 1;
 @media ${breakpoints.tablet}{
   font-size: 24px;

@@ -22,6 +22,7 @@ export const DiaryProductListItem = ({ product }) => {
 
   const handleDelete = () => {
     setShowModal(true);
+    document.body.style.overflow = 'hidden';
   };
 
   const choiceHandler = answer => {
@@ -38,7 +39,7 @@ export const DiaryProductListItem = ({ product }) => {
     <Product>
       {showModal && (
         <ChoiceModal
-          text={'видалення цього продукту'}
+          text={'що хочете видалити цей продукт'}
           choiceHandler={choiceHandler}
           closeModalHandle={closeModalHandle}
           subText={product.product.title.ua}
