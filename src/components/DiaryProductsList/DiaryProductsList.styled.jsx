@@ -24,20 +24,23 @@ export const ProductsList = styled.ul`
   align-items: center;
   margin-top: 32px;
   max-height: 230px;
+  width: 310px;
+  margin-left: -20px;
+  margin-right: -10px;
+  overflow-y: scroll;
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: rgb(38, 64, 97);
+  }
+  ::-webkit-scrollbar-track {
+    background: var(--secondary-background-color);
+  }
   @media ${breakpoints.tablet} {
-    overflow-y: scroll;
     width: 640px;
     margin-bottom: 55px;
     align-items: flex-start;
-    ::-webkit-scrollbar {
-      width: 6px;
-    }
-    ::-webkit-scrollbar-thumb {
-      background: rgb(38, 64, 97);
-    }
-    ::-webkit-scrollbar-track {
-      background: var(--secondary-background-color);
-    }
   }
 `;
 export const AlternativeText = styled.p`
