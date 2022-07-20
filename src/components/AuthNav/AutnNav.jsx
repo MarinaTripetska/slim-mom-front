@@ -77,6 +77,7 @@ const AuthNav = () => {
 
   const handleLogout = () => {
     setIsShowChoiceModal(true);
+    document.body.style.overflow = 'hidden';
   };
 
   const CloseMenu = () => {
@@ -123,7 +124,7 @@ const AuthNav = () => {
     <AuthNavStyled>
       {isShowChoiceModal && (
         <ChoiceModal
-          text={'вихід зі свого облікового запису'}
+          text={'що хочете вийти зі свого облікового запису'}
           choiceHandler={choiceHandler}
           closeModalHandle={closeModalHandle}
         />
