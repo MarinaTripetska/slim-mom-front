@@ -92,7 +92,9 @@ export default function DiaryProductForm({ onSubmit, className }) {
         <FormBtnMobile type="submit">Додати</FormBtnMobile>
         <FormBtn
           type="submit"
-          disabled={selectedProduct === null || weight === '' || isLoading}
+          disabled={
+            selectedProduct === null || weight === '' || isLoadingAddedProduct
+          }
         >
           {isLoadingAddedProduct ? (
             <Rings color=" #FC842D" height={40} width={40} />
