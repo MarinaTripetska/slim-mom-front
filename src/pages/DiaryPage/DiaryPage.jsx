@@ -91,7 +91,7 @@ export default function DiaryPage() {
         </ContainerDiary>
 
         <SidebarWrap className={mobileAddSelected ? 'hideOnMobile' : ''}>
-          <SideBar date={currentDate} />
+          <SideBar date={date} />
         </SidebarWrap>
       </PageWrap>
     </>

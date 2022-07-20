@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import styled, { css } from 'styled-components';
 import { breakpoints } from '../../assets/sizes';
+import { FiEyeOff, FiEye } from 'react-icons/fi';
 
 export const ContainerLogin = styled.div`
   padding: 8px 20px;
@@ -35,6 +36,7 @@ export const FormLoginList = styled.ul`
   padding: 0;
 `;
 export const FormLoginItem = styled.li`
+  position: relative;
   margin-bottom: 0;
   &:not(:last-child) {
     margin-bottom: 40px;
@@ -111,4 +113,24 @@ export const Button = styled.button`
 
 export const StyledLink = styled(Link)`
   ${PlaseholderBtnStyles}
+`;
+
+export const ShowPassword = styled(FiEye)`
+  color: #9b9faa;
+  font-size: 20px;
+`;
+
+export const HidePassword = styled(FiEyeOff)`
+  color: #9b9faa;
+  font-size: 20px;
+`;
+export const PasswordButton = styled.button`
+  width: 24px;
+  position: absolute;
+  right: 0px;
+  top: 0px;
+  border: none;
+  @media ${breakpoints.tablet} {
+    left: 215px;
+  }
 `;

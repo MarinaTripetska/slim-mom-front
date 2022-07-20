@@ -1,4 +1,3 @@
-import { useEffect } from 'react';
 import {
   Overlay,
   ModalDiv,
@@ -8,6 +7,7 @@ import {
   ContentWrap,
   BtnWrapper,
 } from './ChoiceModal.styled';
+import { useEffect } from 'react';
 import Button from '../Button';
 import CloseBtn from '../CloseBtn/CloseBtn';
 
@@ -17,7 +17,7 @@ function ChoiceModal({ text, choiceHandler, closeModalHandle, subText }) {
     return () => {
       window.removeEventListener('keydown', escKeyHandle);
     };
-  },);
+  });
 
   const escKeyHandle = event => {
     if (event.keyCode === 27) {
@@ -66,11 +66,13 @@ function ChoiceModal({ text, choiceHandler, closeModalHandle, subText }) {
 
           <BtnWrapper>
             <Button
+              // style={{ backgroundColor: 'red' }}
               onClickHandler={onCancelClickHandle}
               btnText="Скасувати"
               autofocus={true}
             />
             <Button
+              // style={{ backgraund: "red" }}
               onClickHandler={onOkClickHandle}
               btnText="Підтвердити"
               autofocus={false}
