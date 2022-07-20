@@ -117,22 +117,20 @@ export const StyledLink = styled(Link)`
 
 export const ShowPassword = styled(FiEye)`
   color: #9b9faa;
-  font-size: 24px;
+  font-size: 20px;
 `;
 
 export const HidePassword = styled(FiEyeOff)`
   color: #9b9faa;
-  font-size: 24px;
+  font-size: 20px;
 `;
 export const PasswordButton = styled.button`
-  /* outline: 5px solid red; */
   width: 24px;
   position: absolute;
   right: 0px;
-  top: -4px;
+  top: 0px;
   border: none;
   @media ${breakpoints.tablet} {
-    /* outline: 5px solid blue; */
     left: 215px;
   }
 `;
