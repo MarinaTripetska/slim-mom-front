@@ -3,6 +3,7 @@ import { breakpoints } from 'assets/sizes';
 
 export const ProductsListThumb = styled.div`
   position: relative;
+
   @media ${breakpoints.tablet} {
     max-height: 240px;
     :before {

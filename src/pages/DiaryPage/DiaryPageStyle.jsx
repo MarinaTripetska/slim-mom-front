@@ -68,3 +68,13 @@ export const AddBtnMobile = styled(FormBtnBase)`
 export const P = styled.h3`
   margin: 20px 0px 0px;
 `;
+
+export const LoaderPosition = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  max-width: 450px;
+  height: 100%;
+  padding: 60px;
+`;

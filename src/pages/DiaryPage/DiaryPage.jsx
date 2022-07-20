@@ -13,20 +13,23 @@ import {
   ListWrap,
   ContainerDiary,
   P,
+  LoaderPosition,
 } from './DiaryPageStyle';
 import SideBar from 'components/SideBar';
 import { diaryPerDayOperation } from 'redux/app/diaryPerDay';
 import Header from 'components/Header';
+// import Loader from 'components/Loader';
+import { Rings } from 'react-loader-spinner';
 
 export default function DiaryPage() {
+  const dispatch = useDispatch();
+
+  const isLoading = useSelector(diarySelectors.getIsLoading);
   const currentDate = new Date().toLocaleDateString();
   const [mobileAddSelected, setMobileAddSelected] = useState(false);
-
-  const dispatch = useDispatch();
   const date = useSelector(diarySelectors.getCurrentDate);
 
   useEffect(() => {
-    console.log(currentDate);
     dispatch(
       diaryPerDayOperation.actionGetProducts({ date: currentDate }),
     ).then(res => {
@@ -60,24 +63,32 @@ export default function DiaryPage() {
         <ContainerDiary>
           {!mobileAddSelected && <DiaryDateCalendar />}
 
-          {date === currentDate ? (
-            <DiaryAddProductForm
-              onSubmit={formSubmitHandler}
-              className={mobileAddSelected ? '' : 'hideOnMobile'}
-            />
+          {isLoading ? (
+            <LoaderPosition>
+              <Rings color="#FC842D" height={50} width={50} />
+            </LoaderPosition>
           ) : (
-            <P>Продукти якi ви з'їли в цей день</P>
-          )}
-          <ListWrap className={mobileAddSelected ? 'hideOnMobile' : ''}>
-            {<DiaryProductsList />}
-          </ListWrap>
-          {!mobileAddSelected && (
-            <AddBtnMobile
-              className={'showOnMobile'}
-              onClick={() => setMobileAddSelected(true)}
-            >
-              <BsPlusLg size={14} />
-            </AddBtnMobile>
+            <div>
+              {date === currentDate ? (
+                <DiaryAddProductForm
+                  onSubmit={formSubmitHandler}
+                  className={mobileAddSelected ? '' : 'hideOnMobile'}
+                />
+              ) : (
+                <P>Продукти якi ви з'їли в цей день</P>
+              )}
+              <ListWrap className={mobileAddSelected ? 'hideOnMobile' : ''}>
+                {<DiaryProductsList />}
+              </ListWrap>
+              {!mobileAddSelected && (
+                <AddBtnMobile
+                  className={'showOnMobile'}
+                  onClick={() => setMobileAddSelected(true)}
+                >
+                  <BsPlusLg size={14} />
+                </AddBtnMobile>
+              )}
+            </div>
           )}
         </ContainerDiary>
         <SidebarWrap className={mobileAddSelected ? 'hideOnMobile' : ''}>

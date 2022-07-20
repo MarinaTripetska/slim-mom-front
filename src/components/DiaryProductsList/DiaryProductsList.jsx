@@ -8,7 +8,10 @@ const DiaryProductsList = () => {
   const isAnyProducts = productsList !== null && productsList.length > 0;
 
   return !isAnyProducts ? (
-    <p>Список продуктів у вашому щоденнику в цей день порожній</p>
+    <p>
+      Список продуктів у вашому щоденнику ще порожній. Додайте продукти, які ви
+      сьогодні з'їли.
+    </p>
   ) : (
     <ProductsListThumb>
       <ProductsList>

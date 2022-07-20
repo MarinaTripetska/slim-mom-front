@@ -29,6 +29,7 @@ export const FormInputProduct = styled(AsyncSelect)`
   letter-spacing: 0.04em;
   color: var(--main-text-color);
   margin-bottom: 32px;
+
   @media screen and (min-width: 768px) {
     margin-right: 22px;
     margin-bottom: 0;
@@ -86,7 +87,8 @@ export const FormInputWeight = styled.input`
   ::placeholder {
     color: var(--secondary-text-color);
   }
-  &:focus {
+  &:focus,
+  &:hover {
     border-bottom-color: var(--main-text-color);
   }
   @media screen and (min-width: 768px) {
