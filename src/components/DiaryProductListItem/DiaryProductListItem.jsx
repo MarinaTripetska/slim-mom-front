@@ -5,6 +5,7 @@ import { Product, ProductInfo } from './DiaryProductListItem.styled';
 import { diaryPerDayOperation } from '../../redux/app/diaryPerDay';
 import { diarySelectors } from '../../redux/app/diaryPerDay/';
 import ChoiceModal from '../../components/ChoiceModal';
+// import { Rings } from 'react-loader-spinner';
 
 export const DiaryProductListItem = ({ product }) => {
   const dispatch = useDispatch();
@@ -14,6 +15,9 @@ export const DiaryProductListItem = ({ product }) => {
   const date = useSelector(diarySelectors.getCurrentDate);
   const currentDate = new Date().toLocaleDateString();
   const isCurrentDay = date === currentDate;
+  const isLoadingDeletedProd = useSelector(
+    diarySelectors.getIsDeleteProductLoading,
+  );
 
   const payload = {
     productId: _id,
@@ -53,8 +57,16 @@ export const DiaryProductListItem = ({ product }) => {
       </ProductInfo>
 
       {isCurrentDay && (
-        <button type="button" onClick={handleDelete}>
+        <button
+          type="button"
+          onClick={handleDelete}
+          disabled={isLoadingDeletedProd}
+        >
+          {/* {isLoadingDeletedProd ? (
+            <Rings color=" #FC842D" height={40} width={40} />
+          ) : ( */}
           <GrClose />
+          {/* )} */}
         </button>
       )}
     </Product>

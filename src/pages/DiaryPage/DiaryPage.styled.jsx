@@ -65,6 +65,7 @@ export const AddBtnMobile = styled(FormBtnBase)`
   right: 0;
   left: 0;
 `;
+// export const ProductsNotice = styled.h3`
 export const AlternativeText = styled.h3`
   margin: 20px 0px 0px;
   /* color: var(--secondary-text-color); */

@@ -5,6 +5,8 @@ const currentDate = new Date().toLocaleDateString();
 
 const initialState = {
   isLoading: false,
+  isAddProductLoading: false,
+  isDeleteProductLoading: false,
   isSuccess: false,
   isError: false,
   date: currentDate,
@@ -71,15 +73,18 @@ export const diaryPerDaySlice = createSlice({
     // update products list
     [diaryPerDayOperation.actionAddProduct.pending](state) {
       state.isLoading = true;
+      state.isAddProductLoading = true;
     },
     [diaryPerDayOperation.actionAddProduct.fulfilled](state, action) {
       state.isLoading = false;
+      state.isAddProductLoading = false;
       state.isError = false;
       state.isSuccess = true;
       state.products = action.payload;
     },
     [diaryPerDayOperation.actionAddProduct.rejected](state, action) {
       state.isLoading = false;
+      state.isAddProductLoading = false;
       state.isSuccess = false;
       state.isError = true;
     },
@@ -87,15 +92,18 @@ export const diaryPerDaySlice = createSlice({
     // delete product from list
     [diaryPerDayOperation.actionDeleteProduct.pending](state) {
       state.isLoading = true;
+      state.isDeleteProductLoading = true;
     },
     [diaryPerDayOperation.actionDeleteProduct.fulfilled](state, action) {
       state.isLoading = false;
+      state.isDeleteProductLoading = false;
       state.isError = false;
       state.isSuccess = true;
       state.products = action.payload;
     },
     [diaryPerDayOperation.actionDeleteProduct.rejected](state, action) {
       state.isLoading = false;
+      state.isDeleteProductLoading = false;
       state.isSuccess = false;
       state.isError = true;
     },
