@@ -120,8 +120,8 @@ const RegistrationForm = () => {
               id="password"
               name="password"
               type="password"
-              pattern="((?=.*[0-9])(?=.*[a-z])[0-9a-zA-Z]{8,})"
-              title="Пароль повинен складатися з латинських літер та цифр без спеціальних символів"
+              // pattern="((?=.*[0-9])(?=.*[a-z])[0-9a-zA-Z]{8,})"
+              // title="Пароль повинен складатися з латинських літер та цифр без спеціальних символів"
               onChange={formik.handleChange}
               value={formik.values.password}
             />
