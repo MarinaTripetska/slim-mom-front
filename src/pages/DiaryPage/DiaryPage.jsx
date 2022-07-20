@@ -1,6 +1,7 @@
 import { BsPlusLg } from 'react-icons/bs';
 import { useState, useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { diarySelectors } from 'redux/app/diaryPerDay';
 import DiaryDateCalendar from 'components/DiaryDateCalendar';
 import DiaryAddProductForm from '../../components/DiaryAddProductForm';
 import DiaryProductsList from '../../components/DiaryProductsList';
@@ -11,16 +12,18 @@ import {
   SidebarWrap,
   ListWrap,
   ContainerDiary,
-} from './DiaryPageStyle';
+  AlternativeText,
+} from './DiaryPage.styled';
 import SideBar from 'components/SideBar';
 import { diaryPerDayOperation } from 'redux/app/diaryPerDay';
 import Header from 'components/Header';
 
 export default function DiaryPage() {
+  const dispatch = useDispatch();
   const currentDate = new Date().toLocaleDateString();
   const [mobileAddSelected, setMobileAddSelected] = useState(false);
-
-  const dispatch = useDispatch();
+  const date = useSelector(diarySelectors.getCurrentDate);
+  const isCurrentDay = date === currentDate;
 
   useEffect(() => {
     dispatch(
@@ -55,16 +58,27 @@ export default function DiaryPage() {
 
         <ContainerDiary>
           {!mobileAddSelected && <DiaryDateCalendar />}
-          <DiaryAddProductForm
-            onSubmit={formSubmitHandler}
-            className={mobileAddSelected ? '' : 'hideOnMobile'}
-          />
+
+          {/* {isLoading ? (
+            <LoaderPosition>
+              <Rings color="#FC842D" height={50} width={50} />
+            </LoaderPosition>
+          ) : (
+            <div> */}
+          {isCurrentDay ? (
+            <DiaryAddProductForm
+              onSubmit={formSubmitHandler}
+              className={mobileAddSelected ? '' : 'hideOnMobile'}
+            />
+          ) : (
+            <AlternativeText>Продукти якi ви з'їли в цей день:</AlternativeText>
+          )}
 
           <ListWrap className={mobileAddSelected ? 'hideOnMobile' : ''}>
             {<DiaryProductsList />}
           </ListWrap>
 
-          {!mobileAddSelected && (
+          {isCurrentDay && !mobileAddSelected && (
             <AddBtnMobile
               className={'showOnMobile'}
               onClick={() => setMobileAddSelected(true)}
@@ -72,7 +86,10 @@ export default function DiaryPage() {
               <BsPlusLg size={14} />
             </AddBtnMobile>
           )}
+          {/* </div>
+          )} */}
         </ContainerDiary>
+
         <SidebarWrap className={mobileAddSelected ? 'hideOnMobile' : ''}>
           <SideBar date={currentDate} />
         </SidebarWrap>

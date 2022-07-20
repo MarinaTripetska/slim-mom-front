@@ -35,32 +35,32 @@ const RegistrationForm = () => {
 
     validationSchema: Yup.object({
       name: Yup.string()
-        .min(3, 'Min 3 symbols')
-        .max(254, 'Max 254 symbols')
-        .matches(/[A-z]/, 'Select English keyboard layout, please')
-        .required('Required'),
+        .min(3, 'Мінімум 3 символи')
+        .max(254, 'Максимум 254 символів')
+        .matches(/[A-z]/, 'Будь ласка, виберіть англійську розкладку клавіатури')
+        .required('Обов\'язково'),
       email: Yup.string()
-        .email('Invalid email')
+        .email('Недійсна електронна пошта')
         // .min(3, 'Min 3 symbols')
-        .max(254, 'Max 254 symbols')
+        .max(254, 'Максимум 254 символів')
         // .matches(/[a-z]/, 'Select English keyboard layout, please')
         .matches(
           /([a-z0-9_.-]{3,})@([A-z0-9_.-]{1,}).([A-z]{2,8})/,
-          'Account should be min 3 symbols',
+          'Електронна пошта має містити мінімум 3 символи',
         )
-        .required('Required'),
+        .required('Обов\'язково'),
       password: Yup.string()
-        .min(8, 'Min 8 symbols')
-        .max(100, 'Max 100 symbols')
-        .matches(/[a-z0-9]/, 'Select English keyboard layout, please')
-        .required('Required'),
+        .min(8, 'Мінімум 8 символів')
+        .max(100, 'Максимум 100 символів')
+        .matches(/[a-z0-9]/, 'Будь ласка, виберіть англійську розкладку клавіатури')
+        .required('Обов\'язково'),
     }),
 
     onSubmit: values => {
       const { name, email, password } = values;
       dispatch(authOperations.actionRegister({ name, email, password })).then(
         ({ payload }) => {
-          if (payload.code === 201) {
+          if (payload?.code === 201) {
             navigate('/login', { replace: true });
           }
         },
@@ -90,13 +90,13 @@ const RegistrationForm = () => {
             ) : null}
           </FormRegistrItem>
           <FormRegistrItem>
-            <FormRegistrLabel htmlFor="email">Email *</FormRegistrLabel>
+            <FormRegistrLabel htmlFor="email">Електронна пошта *</FormRegistrLabel>
             <FormRegistrInput
               id="email"
               name="email"
               type="text"
               pattern="([a-z0-9_.-]{1,})@([A-z0-9_.-]{1,}).([A-z]{2,8})"
-              title="email must be lowercase latin letters, numbers and without special characters."
+              title="Електронна пошта повинна складатися з малих латинських літер, цифр і без спеціальних символів."
               onChange={formik.handleChange}
               value={formik.values.email}
             />
