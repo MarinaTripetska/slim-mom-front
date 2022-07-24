@@ -12,16 +12,18 @@ export const HeaderStyled = styled.header`
   padding-right: 20px;
   justify-content: space-between;
   z-index: 50;
+
   @media ${breakpoints.desktop} {
-      border-bottom: none;
-      height: 150px;
-      align-items: flex-end;
+    border-bottom: none;
+    height: 150px;
+    align-items: flex-end;
   }
 `;
 
 export const PositionRoot = styled.div`
   position: static;
   padding-top: 80px;
+
   @media ${breakpoints.desktop} {
     padding-top: 0px;
   }

@@ -7,7 +7,7 @@ export const MobileSidebarWrap = styled.div`
   background-color: var(--secondary-background-color);
   margin-bottom: 40px;
 
-  @media ${breakpoints.tablet} {
+  @media ${breakpoints.minTablet} {
     display: none;
   }
 `;

@@ -1,6 +1,10 @@
 import React, { useState } from 'react';
-
 import { useFormik } from 'formik';
+import * as Yup from 'yup';
+import { useDispatch } from 'react-redux';
+
+import { authOperations } from 'redux/app/auth';
+
 import {
   ContainerLogin,
   TitleLogin,
@@ -17,10 +21,6 @@ import {
   ShowPassword,
   PasswordButton,
 } from './LoginForm.styled';
-
-import * as Yup from 'yup';
-import { useDispatch } from 'react-redux';
-import { authOperations } from 'redux/app/auth';
 
 const initialValues = {
   name: '',

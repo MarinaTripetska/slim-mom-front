@@ -1,7 +1,9 @@
-import Logo from 'components/Logo';
 import { useEffect, useState } from 'react';
-import { NotAuthNavStyled, NavThumb, NavLinkStyle } from './NotAuthNav.styled';
+
+import Logo from 'components/Logo';
 import { size } from '../../assets/sizes';
+
+import { NotAuthNavStyled, NavThumb, NavLinkStyle } from './NotAuthNav.styled';
 
 function getWindowSize() {
   const { innerWidth, innerHeight } = window;
@@ -23,7 +25,7 @@ const NotAuthNav = ({ localPage }) => {
 
   if (
     (localPage === 'LoginPage' || localPage === 'RegistrationPage') &
-    (windowSize.innerWidth > parseInt(size.maxDesktop, 10))
+    (windowSize.innerWidth > parseInt(size.maxTablet, 10))
   ) {
     return (
       <>

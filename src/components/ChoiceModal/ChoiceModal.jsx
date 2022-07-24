@@ -1,3 +1,8 @@
+import { useEffect } from 'react';
+
+import Button from '../Button';
+import CloseBtn from '../CloseBtn/CloseBtn';
+
 import {
   Overlay,
   ModalDiv,
@@ -7,9 +12,6 @@ import {
   ContentWrap,
   BtnWrapper,
 } from './ChoiceModal.styled';
-import { useEffect } from 'react';
-import Button from '../Button';
-import CloseBtn from '../CloseBtn/CloseBtn';
 
 function ChoiceModal({ text, choiceHandler, closeModalHandle, subText }) {
   useEffect(() => {

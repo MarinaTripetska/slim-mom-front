@@ -1,9 +1,11 @@
 import styled from 'styled-components';
+import { breakpoints } from 'assets/sizes';
 
 const Thumb = styled.div`
   display: flex;
   flex-direction: column;
   gap: 40px;
+
   @media (max-width: 550px) {
     gap: 24px;
   }
@@ -11,6 +13,7 @@ const Thumb = styled.div`
   margin-bottom: 60px;
   /* } */
 `;
+
 const InfoList = styled.ul`
   display: flex;
   flex-direction: column;
@@ -21,7 +24,7 @@ const InfoList = styled.ul`
   width: 100%;
   line-height: 1.4;
 
-  @media (max-width: 767px) {
+  @media ${breakpoints.maxMobile} {
     max-width: 250px;
   }
 `;

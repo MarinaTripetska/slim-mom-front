@@ -1,6 +1,6 @@
+import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 import { breakpoints } from '../../assets/sizes';
-import { NavLink } from 'react-router-dom';
 
 export const NotAuthNavStyled = styled.div`
   width: 100%;
@@ -19,7 +19,7 @@ export const NavThumb = styled.div`
   align-items: center;
   /* display: flex; */
   gap: 16px;
-  color: #9b9faa;
+  color: var(--secondary-text-color);
   text-transform: uppercase;
 
   @media ${breakpoints.desktop} {
@@ -42,7 +42,8 @@ export const NavThumb = styled.div`
 
 export const NavLinkStyle = styled(NavLink)`
   margin-left: 20px;
+
   &.active {
-    color: #212121;
+    color: var(--main-text-color);
   }
 `;
