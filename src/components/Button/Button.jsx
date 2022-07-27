@@ -1,4 +1,4 @@
-import { Btn } from './Button.styles';
+import { Btn } from './Button.styled';
 
 export default function Button({
   onClickHandler,

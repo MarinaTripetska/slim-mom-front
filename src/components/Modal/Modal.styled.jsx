@@ -1,13 +1,10 @@
 import styled from 'styled-components';
 import { breakpoints } from '../../assets/sizes';
+
 const Overlay = styled.div`
   position: absolute;
   top: 0;
   left: 0;
-  @media ${breakpoints.maxTablet} {
-    position: fixed;
-    top: 80px;
-  }
   width: 100vw;
   height: 100vh;
   display: flex;
@@ -15,6 +12,11 @@ const Overlay = styled.div`
   align-items: center;
   background-color: rgba(0, 0, 0, 0.8);
   z-index: 1200;
+
+  @media ${breakpoints.maxMobile} {
+    position: fixed;
+    top: 80px;
+  }
 `;
 
 const ModalDiv = styled.div`
@@ -30,7 +32,7 @@ const ModalDiv = styled.div`
   flex-direction: column; */
   padding-bottom: 80px;
 
-  @media ${breakpoints.maxTablet} {
+  @media ${breakpoints.maxMobile} {
     /* position: absolute; */
     /* top: 0px; */
     width: 100vw;
@@ -45,7 +47,7 @@ const ContentWrap = styled.div`
   align-items: center;
   flex-direction: column;
 
-  @media ${breakpoints.maxTablet} {
+  @media ${breakpoints.maxMobile} {
     /* position: absolute; */
     top: 0px;
     width: 100vw;
@@ -62,7 +64,7 @@ const CloseBtnWrapper = styled.div`
   background-color: var(--secondary-background-color);
   margin-bottom: 20px;
 
-  @media ${breakpoints.tablet} {
+  @media ${breakpoints.minTablet} {
     background-color: var(--white);
   }
 `;
@@ -72,7 +74,8 @@ const BackButton = styled.button`
   padding: 10px;
   border: none;
   cursor: pointer;
-  @media ${breakpoints.tablet} {
+
+  @media ${breakpoints.minTablet} {
     display: none;
   }
 `;
@@ -82,7 +85,8 @@ const CloseModalBtn = styled.div`
   position: absolute;
   top: 10px;
   right: 10px;
-  @media ${breakpoints.maxTablet} {
+
+  @media ${breakpoints.maxMobile} {
     display: none;
   }
 `;
@@ -93,7 +97,7 @@ const ModalTtl = styled.h2`
   /* margin: 64px 120px 30px; */
   margin-bottom: 20px;
 
-  @media ${breakpoints.maxTablet} {
+  @media ${breakpoints.maxMobile} {
     font-size: 18px;
     line-height: 1.4;
     /* margin: 40px 20px; */
@@ -110,7 +114,7 @@ const KcalCount = styled.p`
   padding-bottom: 32px;
   width: 280px;
 
-  @media ${breakpoints.tablet} {
+  @media ${breakpoints.minTablet} {
     width: 330px;
   }
 
@@ -122,7 +126,8 @@ const KcalCount = styled.p`
 
 const Text = styled.p`
   width: 280px;
-  @media ${breakpoints.tablet} {
+
+  @media ${breakpoints.minTablet} {
     width: 330px;
   }
 `;
@@ -133,9 +138,9 @@ const ProdList = styled.ol`
   text-align: left;
   margin-bottom: 40px;
   padding-left: 0;
-
   width: 280px;
-  @media ${breakpoints.tablet} {
+
+  @media ${breakpoints.minTablet} {
     width: 330px;
   }
 

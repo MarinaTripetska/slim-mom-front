@@ -3,23 +3,27 @@ import { FormBtnBase } from '../../components/DiaryAddProductForm/DiaryAddProduc
 import { breakpoints } from 'assets/sizes';
 
 export const ContainerDiary = styled.div`
-  @media ${breakpoints.maxTablet} {
+  @media ${breakpoints.maxMobile} {
     margin: 0 auto;
     width: 320px;
     padding: 0 20px;
   }
-  @media ${breakpoints.tablet} {
+
+  @media ${breakpoints.minTablet} {
     width: 768px;
     padding: 0 32px 50px 32px;
   }
+
   @media ${breakpoints.desktop} {
     padding: 0 136px 0 16px;
   }
 `;
+
 export const ListWrap = styled.div`
   display: flex;
   justify-items: start;
-  @media screen and (min-width: 768px) {
+
+  @media ${breakpoints.minTablet} {
     padding: 60px 0 0 0;
   }
 `;
@@ -38,7 +42,7 @@ export const SidebarWrap = styled.div`
 `;
 
 export const PageWrap = styled.div`
-  @media ${breakpoints.tablet} {
+  @media ${breakpoints.minTablet} {
     padding-top: 100px;
     display: flex;
     flex-direction: column;
@@ -51,6 +55,7 @@ export const PageWrap = styled.div`
     padding-top: 306px;
   }
 `;
+
 export const AddBtnMobile = styled(FormBtnBase)`
   display: flex;
   justify-content: center;
@@ -65,6 +70,7 @@ export const AddBtnMobile = styled(FormBtnBase)`
   right: 0;
   left: 0;
 `;
+
 // export const ProductsNotice = styled.h3`
 export const AlternativeText = styled.h3`
   margin: 20px 0px 0px;

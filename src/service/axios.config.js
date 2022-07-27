@@ -6,7 +6,7 @@ axios.defaults.headers.common['Authorization'] = `Bearer ${localStorage.getItem(
   'AUTH_TOKEN',
 )}`;
 
-//==================REGISTER USER====================
+//================== REGISTER USER ====================
 export const register = async ({ name, email, password }) => {
   try {
     const res = await axios.post(`/users/signup`, { name, email, password });
@@ -21,7 +21,7 @@ export const register = async ({ name, email, password }) => {
   }
 };
 
-//==================LOGIN USER=====================
+//================== LOGIN USER =====================
 export const login = async ({ email, password }) => {
   try {
     const res = await axios.post(`/users/login`, { email, password });
@@ -35,7 +35,7 @@ export const login = async ({ email, password }) => {
   }
 };
 
-//==================LOGOUT USER=====================
+//================== LOGOUT USER =====================
 export const logout = async () => {
   try {
     const res = await axios.get(`/users/logout`);
@@ -46,7 +46,7 @@ export const logout = async () => {
   }
 };
 
-//==================CURRENT USER=====================
+//================== CURRENT USER =====================
 export const current = async () => {
   try {
     const res = await axios.get(`/users/current`);
@@ -56,7 +56,7 @@ export const current = async () => {
   }
 };
 
-//==================GET LIST OF PRODUCTS BY QUERY=====================
+//================== GET LIST OF PRODUCTS BY QUERY =====================
 
 export const getProductsByQuery = async query => {
   try {
@@ -67,7 +67,7 @@ export const getProductsByQuery = async query => {
   }
 };
 
-//==================Advice recomendation for not loggin user=====================
+//================== Advice recomendation for not loggin user =====================
 
 export const adviceForNoAuthUser = async payload => {
   try {
@@ -79,7 +79,7 @@ export const adviceForNoAuthUser = async payload => {
   }
 };
 
-//==================Advice recomendation for Login in user=====================
+//================== Advice recomendation for Login in user =====================
 
 export const adviceForLoginUser = async payload => {
   try {
@@ -94,7 +94,7 @@ export const adviceForLoginUser = async payload => {
   }
 };
 
-// ================GET PRODUCTS IN DIETARY BY DATE ================
+// ================ GET PRODUCTS IN DIETARY BY DATE ================
 export const getProductsByDate = async ({ date }) => {
   try {
     const { data } = await axios.get(`/dietaries?date=${date}`);
@@ -108,7 +108,7 @@ export const getProductsByDate = async ({ date }) => {
     }
   }
 };
-//==================CREATE OBJ FOR PRODUCTS TO DIETARY BY DATE=====================
+//================== CREATE OBJ FOR PRODUCTS TO DIETARY BY DATE =====================
 
 export const createProductsListByDate = async ({ date }) => {
   try {
@@ -118,7 +118,7 @@ export const createProductsListByDate = async ({ date }) => {
   }
 };
 
-//==================ADD PRODUCTS TO DIETARY BY DATE=====================
+//================== ADD PRODUCTS TO DIETARY BY DATE =====================
 
 export const addProductByDate = async ({ date, data }) => {
   try {
@@ -128,7 +128,7 @@ export const addProductByDate = async ({ date, data }) => {
   }
 };
 
-//==================DELETE PRODUCTS TO DIETARY BY DATE=====================
+//================== DELETE PRODUCTS TO DIETARY BY DATE =====================
 
 export const deleteProductByDate = async ({ productId, date }) => {
   try {

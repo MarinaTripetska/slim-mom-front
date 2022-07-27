@@ -1,11 +1,16 @@
-import { BsPlusLg } from 'react-icons/bs';
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { BsPlusLg } from 'react-icons/bs';
+
 import { diarySelectors } from 'redux/app/diaryPerDay';
 import DiaryDateCalendar from 'components/DiaryDateCalendar';
 import DiaryAddProductForm from '../../components/DiaryAddProductForm';
 import DiaryProductsList from '../../components/DiaryProductsList';
 import MobileSidebar from '../../components/MobileSidebar';
+import SideBar from 'components/SideBar';
+import { diaryPerDayOperation } from 'redux/app/diaryPerDay';
+import Header from 'components/Header';
+
 import {
   AddBtnMobile,
   PageWrap,
@@ -14,9 +19,6 @@ import {
   ContainerDiary,
   AlternativeText,
 } from './DiaryPage.styled';
-import SideBar from 'components/SideBar';
-import { diaryPerDayOperation } from 'redux/app/diaryPerDay';
-import Header from 'components/Header';
 
 export default function DiaryPage() {
   const dispatch = useDispatch();

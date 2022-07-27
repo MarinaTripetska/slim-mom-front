@@ -1,11 +1,13 @@
-import { GrClose } from 'react-icons/gr';
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Product, ProductInfo } from './DiaryProductListItem.styled';
+import { GrClose } from 'react-icons/gr';
+
 import { diaryPerDayOperation } from '../../redux/app/diaryPerDay';
 import { diarySelectors } from '../../redux/app/diaryPerDay/';
 import ChoiceModal from '../../components/ChoiceModal';
 // import { Rings } from 'react-loader-spinner';
+
+import { Product, ProductInfo } from './DiaryProductListItem.styled';
 
 export const DiaryProductListItem = ({ product }) => {
   const dispatch = useDispatch();

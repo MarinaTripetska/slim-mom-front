@@ -13,7 +13,7 @@ const Overlay = styled.div`
   background-color: rgba(0, 0, 0, 0.8);
   z-index: 1200;
 
-  @media ${breakpoints.maxTablet} {
+  @media ${breakpoints.maxMobile} {
     position: fixed;
     top: 80px;
   }
@@ -26,7 +26,7 @@ const ModalDiv = styled.div`
   padding: 64px 80px 80px;
   padding-bottom: 80px;
 
-  @media ${breakpoints.maxTablet} {
+  @media ${breakpoints.maxMobile} {
     width: 100vw;
     max-height: 100%;
     padding: 60px 20px 20px;
@@ -39,7 +39,7 @@ const ContentWrap = styled.div`
   align-items: center;
   flex-direction: column;
 
-  @media ${breakpoints.maxTablet} {
+  @media ${breakpoints.maxMobile} {
     top: 0px;
     height: 100%;
   }
@@ -52,12 +52,12 @@ const BtnWrapper = styled.div`
 
   button:first-child {
     margin-bottom: 40px;
-    @media ${breakpoints.tablet} {
+    @media ${breakpoints.minTablet} {
       margin-bottom: 0;
     }
   }
 
-  @media ${breakpoints.tablet} {
+  @media ${breakpoints.minTablet} {
     width: 100%;
     flex-direction: row;
     justify-content: space-around;
@@ -76,7 +76,7 @@ const ModalTtl = styled.h2`
   line-height: 1.2;
   margin-bottom: 20px;
 
-  @media ${breakpoints.tablet} {
+  @media ${breakpoints.minTablet} {
     font-size: 26px;
   }
 `;
@@ -89,7 +89,7 @@ const Text = styled.p`
   margin-bottom: 40px;
   line-height: 1.2;
 
-  @media ${breakpoints.tablet} {
+  @media ${breakpoints.minTablet} {
     width: 330px;
   }
 `;

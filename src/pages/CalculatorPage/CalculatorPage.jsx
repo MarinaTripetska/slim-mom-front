@@ -1,13 +1,15 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+
 import DailyCaloriesForm from '../../components/DailyCaloriesForm';
 import SideBar from 'components/SideBar';
 import { getUsersAdvice } from 'redux/app/auth/auth-operations';
 import { authSelectors } from 'redux/app/auth';
 import Header from 'components/Header';
-import { Section, ContainerBar, ContainerForm } from './CalculatorPage.styled';
 import { diaryPerDayOperation, updateDate } from 'redux/app/diaryPerDay';
 import MobileSidebar from '../../components/MobileSidebar';
+
+import { Section, ContainerBar, ContainerForm } from './CalculatorPage.styled';
 
 const CalculatorPage = () => {
   const dispatch = useDispatch();

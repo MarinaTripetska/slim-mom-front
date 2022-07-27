@@ -1,4 +1,13 @@
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+
+import { authSelectors } from 'redux/app/auth';
+import IconBack from '../../assets/images/arrow-mobile.png';
+import { authOperations } from 'redux/app/auth';
+// import { Rings } from 'react-loader-spinner';
+import ChoiceModal from '../../components/ChoiceModal';
+
 import {
   InfoPosition,
   UserNameStyled,
@@ -7,13 +16,6 @@ import {
   UserInfoExit,
   BackButton,
 } from './UserInfoMenu.styled';
-import { authSelectors } from 'redux/app/auth';
-import IconBack from '../../assets/images/arrow-mobile.png';
-import { useDispatch, useSelector } from 'react-redux';
-import { authOperations } from 'redux/app/auth';
-// import { Rings } from 'react-loader-spinner';
-import { useState } from 'react';
-import ChoiceModal from '../../components/ChoiceModal';
 
 export const UserInfoMenuMobile = () => {
   const dispatch = useDispatch();
@@ -57,9 +59,9 @@ export const UserInfoMenuMobile = () => {
         <Vertical></Vertical>
         <ExitButton onClick={handleLogout}>
           {/* {isLoadingLogout ? ( */}
-            {/* <Rings color="#FC842D" height={50} width={50} /> */}
+          {/* <Rings color="#FC842D" height={50} width={50} /> */}
           {/* ) : ( */}
-            Вихід
+          Вихід
           {/* )} */}
         </ExitButton>
       </UserInfoExit>

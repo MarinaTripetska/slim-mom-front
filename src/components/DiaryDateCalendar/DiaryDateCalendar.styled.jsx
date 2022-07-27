@@ -7,7 +7,7 @@ export const DatePickerWrapper = styled.div`
   justify-content: start;
   align-items: center;
 
-  @media ${breakpoints.tablet} {
+  @media ${breakpoints.minTablet} {
     align-items: baseline;
   }
 
@@ -46,7 +46,7 @@ export const DatePicker = styled(Datetime)`
     border: none;
   }
 
-  @media ${breakpoints.tablet} {
+  @media ${breakpoints.minTablet} {
     width: 230px;
     font-size: 18px;
 

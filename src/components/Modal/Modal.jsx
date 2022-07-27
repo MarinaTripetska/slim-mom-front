@@ -1,4 +1,11 @@
 import { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+
+import { changeToUa } from 'helpers/translateProd';
+import Button from '../Button';
+import CloseBtn from '../CloseBtn/CloseBtn';
+import IconBack from '../../assets/images/arrow-mobile.png';
+
 import {
   Overlay,
   ModalDiv,
@@ -10,13 +17,7 @@ import {
   CloseBtnWrapper,
   ContentWrap,
   BackButton,
-} from './Modal.styles';
-import { changeToUa } from 'helpers/translateProd';
-import Button from '../Button';
-import CloseBtn from '../CloseBtn/CloseBtn';
-import IconBack from '../../assets/images/arrow-mobile.png';
-
-import { useNavigate } from 'react-router-dom';
+} from './Modal.styled';
 
 function Modal({
   closeModalHandle,

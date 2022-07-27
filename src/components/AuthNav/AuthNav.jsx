@@ -1,12 +1,13 @@
-import Logo from 'components/Logo';
+import { createPortal } from 'react-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+
+import Logo from 'components/Logo';
 import { authOperations, authSelectors } from 'redux/app/auth';
 import BurgerMenuIcon from 'assets/images/burger.png';
 import CloseMenuIcon from 'assets/images/close.png';
-import ChoiceModal from '../../components/ChoiceModal';
+import ChoiceModal from '../ChoiceModal';
 
-import { createPortal } from 'react-dom';
 import {
   AuthNavStyled,
   DivHeader,

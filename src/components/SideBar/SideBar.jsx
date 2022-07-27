@@ -1,3 +1,9 @@
+import { useSelector } from 'react-redux';
+
+import { changeToUa } from 'helpers/translateProd';
+import DailyCalorieIntake from 'components/DailyCalorieIntake';
+import { authSelectors } from 'redux/app/auth';
+
 import {
   SideBarDiv,
   ProdListDiv,
@@ -6,10 +12,6 @@ import {
   ProdDiv,
   AltText,
 } from './SideBar.styles';
-import { changeToUa } from 'helpers/translateProd';
-import DailyCalorieIntake from 'components/DailyCalorieIntake';
-import { useSelector } from 'react-redux';
-import { authSelectors } from 'redux/app/auth';
 
 export default function SideBar({ date, kcalConsumed, calorie }) {
   const notRecomendedProd = useSelector(authSelectors.getUserNotRecommendProd);
