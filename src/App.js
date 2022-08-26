@@ -9,6 +9,7 @@ import Toaster from 'components/Toasts';
 
 import { authSelectors } from 'redux/app/auth';
 import { actionCurrent } from 'redux/app/auth/auth-operations';
+import tokenService from 'service/token.service';
 
 const MainPage = lazy(() => import('pages/MainPage'));
 const LoginPage = lazy(() => import('pages/LoginPage'));
@@ -17,48 +18,51 @@ const DiaryPage = lazy(() => import('pages/DiaryPage'));
 const CalculatorPage = lazy(() => import('pages/CalculatorPage'));
 
 function App() {
-  const isFetchingUser = useSelector(authSelectors.getIsFetchingUser);
-  const dispatch = useDispatch();
-  const token = localStorage.getItem('AUTH_TOKEN');
+  // const dispatch = useDispatch();
 
-  useEffect(() => {
-    if (token) {
-      dispatch(actionCurrent());
-    }
-  }, [dispatch, token]);
+  // const isFetchingUser = useSelector(authSelectors.getIsFetchingUser);
+
+  // const token = tokenService.getLocalAccessToken();
+
+  // useEffect(() => {
+  //   if (token) {
+  //     dispatch(actionCurrent());
+  //   }
+  // }, [dispatch, token]);
 
   return (
     <>
-      {!isFetchingUser && (
-        <>
-          <Suspense fallback={<Loader />}>
-            <Routes>
-              <Route path="/" element={<PublicRoute restricted />}>
-                <Route path="" element={<MainPage />} />
-              </Route>
+      {/* {!isFetchingUser && ( */}
+      <>
+        <Suspense fallback={<Loader />}>
+          <Routes>
+            <Route path="/" element={<PublicRoute restricted />}>
+              <Route path="" element={<MainPage />} />
+            </Route>
 
-              <Route path="/register" element={<PublicRoute restricted />}>
-                <Route path="" element={<RegistrationPage />} />
-              </Route>
+            <Route path="/register" element={<PublicRoute restricted />}>
+              <Route path="" element={<RegistrationPage />} />
+            </Route>
 
-              <Route path="/login" element={<PublicRoute restricted />}>
-                <Route path="" element={<LoginPage />} />
-              </Route>
+            <Route path="/login" element={<PublicRoute restricted />}>
+              <Route path="" element={<LoginPage />} />
+            </Route>
 
-              <Route path="/calculator" element={<PrivateRoute />}>
-                <Route path="" element={<CalculatorPage />} />
-              </Route>
+            <Route path="/calculator" element={<PrivateRoute />}>
+              <Route path="" element={<CalculatorPage />} />
+            </Route>
 
-              <Route path="/diary" element={<PrivateRoute />}>
-                <Route path="" element={<DiaryPage />} />
-              </Route>
+            <Route path="/diary" element={<PrivateRoute />}>
+              <Route path="" element={<DiaryPage />} />
+            </Route>
 
-              <Route path="*" element={<Navigate to="/" />} />
-            </Routes>
-          </Suspense>
-          <Toaster />
-        </>
-      )}
+            <Route path="*" element={<Navigate to="/" />} />
+          </Routes>
+        </Suspense>
+        <Toaster />
+      </>
+
+      {/*) } */}
     </>
   );
 }

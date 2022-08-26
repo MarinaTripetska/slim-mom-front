@@ -5,6 +5,7 @@ import { Provider } from 'react-redux';
 import { store } from './redux/store';
 import GlobalStyle from 'GlobalStyles';
 import App from 'App';
+import setupInterceptors from './service/setupInterceptors';
 
 ReactDOM.render(
   <React.StrictMode>
@@ -17,3 +18,4 @@ ReactDOM.render(
   </React.StrictMode>,
   document.getElementById('root'),
 );
+setupInterceptors(store);

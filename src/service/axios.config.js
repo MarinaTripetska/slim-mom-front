@@ -1,15 +1,53 @@
-import axios from 'axios';
+// import axios from 'axios';
 import { toast } from 'react-toastify';
+import instanceClientAPI from './api';
+// import { authOperations } from 'redux/app/auth';
+// import { store } from 'redux/store';
+// function updateAuthHeader() {
+//   const token = localStorage.getItem('AUTH_TOKEN');
+//   // axios.defaults.headers.common.Authorization = token ? `Bearer ${token}` : '';
 
-axios.defaults.baseURL = `https://slim-mom-back.herokuapp.com/api/v1`;
-axios.defaults.headers.common['Authorization'] = `Bearer ${localStorage.getItem(
-  'AUTH_TOKEN',
-)}`;
+//   return token ? `Bearer ${token}` : '';
+// }
 
+// const instanceClientAPI = axios.create({
+//   baseURL: `https://slim-mom-back.herokuapp.com/api/v1`,
+//   headers: {
+//     'Content-Type': 'application/json',
+//     common: {
+//       Authorization: updateAuthHeader(),
+//     },
+//   },
+// });
+// instanceClientAPI.interceptors.response.use(undefined, error => {
+//   if (error.response?.status === 401) {
+//     const state = store.getState();
+//     if (state.auth.isLoggedIn) {
+//       store.dispatch(authOperations.actionLogout());
+//     }
+//     throw error;
+//   }
+// });
+// setInterval(() => {
+//   const state = store.getState();
+//   if (state.auth.isLoggedIn) {
+//     store.dispatch(authOperations.actionRefreshToken());
+//   }
+// }, 120000);
+// ((axios.defaults.baseURL = `https://slim-mom-back.herokuapp.com/api/v1`));
+// axios.defaults.headers.common.Authorization = `Bearer ${localStorage.getItem(
+//   'AUTH_TOKEN',
+// )}`;
+
+// updateAuthHeader();
 //================== REGISTER USER ====================
 export const register = async ({ name, email, password }) => {
   try {
-    const res = await axios.post(`/users/signup`, { name, email, password });
+    const res = await instanceClientAPI.post(`/users/signup`, {
+      name,
+      email,
+      password,
+    });
     toast.success('Реєстрація успішна');
     return res;
   } catch (e) {
@@ -24,7 +62,10 @@ export const register = async ({ name, email, password }) => {
 //================== LOGIN USER =====================
 export const login = async ({ email, password }) => {
   try {
-    const res = await axios.post(`/users/login`, { email, password });
+    const res = await instanceClientAPI.post(`/users/login`, {
+      email,
+      password,
+    });
 
     if (res.data.code === 200) {
       toast.success(`Вітаємо ${res.data.data.user.name}`);
@@ -38,7 +79,7 @@ export const login = async ({ email, password }) => {
 //================== LOGOUT USER =====================
 export const logout = async () => {
   try {
-    const res = await axios.get(`/users/logout`);
+    const res = await instanceClientAPI.get(`/users/logout`);
     return res;
   } catch (error) {
     toast.error('Упс, щось пішло не так');
@@ -48,19 +89,26 @@ export const logout = async () => {
 
 //================== CURRENT USER =====================
 export const current = async () => {
-  try {
-    const res = await axios.get(`/users/current`);
-    return res;
-  } catch (error) {
-    console.log(error.message);
-  }
+  // try {
+  const res = await instanceClientAPI.get(`/users/current`);
+  return res;
+  // } catch (error) {
+  //   console.log(error.message);
+  // }
+};
+
+export const getNewTokens = async payload => {
+  const res = await instanceClientAPI.post(`/users/refresh-tokens`, payload);
+  return res;
 };
 
 //================== GET LIST OF PRODUCTS BY QUERY =====================
 
 export const getProductsByQuery = async query => {
   try {
-    const { data } = await axios.get(`/products/search?query=${query}`);
+    const { data } = await instanceClientAPI.get(
+      `/products/search?query=${query}`,
+    );
     return data;
   } catch (error) {
     console.log(error.message);
@@ -71,7 +119,10 @@ export const getProductsByQuery = async query => {
 
 export const adviceForNoAuthUser = async payload => {
   try {
-    const { data } = await axios.post('/users/nutrition-advice', payload);
+    const { data } = await instanceClientAPI.post(
+      '/users/nutrition-advice',
+      payload,
+    );
     return data;
   } catch (error) {
     toast.error('Упс, щось пішло не так ');
@@ -83,7 +134,7 @@ export const adviceForNoAuthUser = async payload => {
 
 export const adviceForLoginUser = async payload => {
   try {
-    const { data } = await axios.post(
+    const { data } = await instanceClientAPI.post(
       '/users/logged-nutrition-advice',
       payload,
     );
@@ -97,7 +148,7 @@ export const adviceForLoginUser = async payload => {
 // ================ GET PRODUCTS IN DIETARY BY DATE ================
 export const getProductsByDate = async ({ date }) => {
   try {
-    const { data } = await axios.get(`/dietaries?date=${date}`);
+    const { data } = await instanceClientAPI.get(`/dietaries?date=${date}`);
 
     return data;
   } catch (error) {
@@ -112,7 +163,7 @@ export const getProductsByDate = async ({ date }) => {
 
 export const createProductsListByDate = async ({ date }) => {
   try {
-    return await axios.post('/dietaries', { date });
+    return await instanceClientAPI.post('/dietaries', { date });
   } catch (error) {
     console.log(error);
   }
@@ -122,7 +173,7 @@ export const createProductsListByDate = async ({ date }) => {
 
 export const addProductByDate = async ({ date, data }) => {
   try {
-    return await axios.patch('/dietaries', { date, data });
+    return await instanceClientAPI.patch('/dietaries', { date, data });
   } catch (error) {
     console.log(error);
   }
@@ -132,8 +183,25 @@ export const addProductByDate = async ({ date, data }) => {
 
 export const deleteProductByDate = async ({ productId, date }) => {
   try {
-    return await axios.delete(`dietaries/?productId=${productId}&date=${date}`);
+    return await instanceClientAPI.delete(
+      `dietaries/?productId=${productId}&date=${date}`,
+    );
   } catch (error) {
     console.log(error);
   }
+};
+
+export const clientAPI = {
+  register,
+  login,
+  logout,
+  current,
+  getNewTokens,
+  getProductsByQuery,
+  adviceForNoAuthUser,
+  adviceForLoginUser,
+  getProductsByDate,
+  createProductsListByDate,
+  addProductByDate,
+  deleteProductByDate,
 };

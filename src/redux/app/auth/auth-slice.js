@@ -9,7 +9,7 @@ const initialState = {
     userDailyCalorieIntake: null,
     userNotRecommendedProducts: [],
   },
-  token: null,
+  tokens: null,
   isLoggedIn: false,
   isFetchingUser: false,
   isError: false,
@@ -23,6 +23,10 @@ export const authSlice = createSlice({
   initialState,
 
   reducers: {
+    refreshToken: (state, action) => {
+      state.tokens = action.payload;
+    },
+
     reset: state => {
       state.isLoading = false;
       state.isError = false;
@@ -59,7 +63,7 @@ export const authSlice = createSlice({
     [authOperations.actionLogin.fulfilled](state, action) {
       state.isLoading = false;
       state.user = action.payload.user;
-      state.token = action.payload.token;
+      state.tokens = action.payload.tokens;
       state.isLoggedIn = true;
       state.isSuccess = false;
       state.isError = false;
@@ -82,19 +86,38 @@ export const authSlice = createSlice({
     [authOperations.actionCurrent.fulfilled](state, action) {
       state.isLoading = false;
       state.user = action.payload.user;
-      state.token = action.payload.token;
+      state.tokens = action.payload.tokens;
       state.isFetchingUser = false;
       state.isLoggedIn = true;
 
       state.isSuccess = true;
       state.isError = false;
     },
-    [authOperations.actionCurrent.rejected](state, action) {
+    [authOperations.actionCurrent.rejected](state, _) {
       state.isLoading = false;
       state.isError = true;
       state.isFetchingUser = false;
       state.isSuccess = false;
     },
+
+    // [authOperations.actionRefreshToken.pending](state) {
+    //   state.isLoading = true;
+    //   state.isSuccess = false;
+    //   state.isError = false;
+    // },
+    // [authOperations.actionRefreshToken.fulfilled](state, action) {
+    //   state.isLoading = false;
+    //   state.tokens = action.payload.tokens;
+    //   state.isLoggedIn = true;
+    //   state.isSuccess = true;
+    //   state.isError = false;
+    // },
+    // [authOperations.actionRefreshToken.rejected](state, _) {
+    //   state.isLoading = false;
+    //   state.isError = true;
+    //   state.isLoggedIn = false;
+    //   state.isSuccess = false;
+    // },
 
     // logout
     [authOperations.actionLogout.pending](state) {
@@ -104,7 +127,7 @@ export const authSlice = createSlice({
     },
     [authOperations.actionLogout.fulfilled](state, _) {
       state.user = { name: null, email: null };
-      state.token = null;
+      state.tokens = null;
       state.isLoading = false;
       state.isLoggedIn = false;
     },
@@ -132,4 +155,4 @@ export const authSlice = createSlice({
   },
 });
 
-export const { login, logout, reset, advice } = authSlice.actions;
+export const { login, logout, reset, advice, refreshToken } = authSlice.actions;
