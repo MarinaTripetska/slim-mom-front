@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { authOperations } from '../../redux/app/auth';
 import { useFormik } from 'formik';
 import { useNavigate } from 'react-router-dom';
+import * as Yup from 'yup';
+
+import { authOperations } from '../../redux/app/auth';
 
 import {
   ContainerRegistr,
@@ -20,8 +22,6 @@ import {
   ShowPassword,
   HidePassword,
 } from './RegistrationForm.styled';
-
-import * as Yup from 'yup';
 
 const initialValues = {
   name: '',

@@ -4,8 +4,9 @@ import styled from 'styled-components';
 export const NavStyle = styled.div`
   width: 100%;
   height: 100vh;
-  background-color: #264061;
-@media ${breakpoints.desktop}{
+  background-color: var(--blue-txt-color);
+
+  @media ${breakpoints.desktop} {
     display: none;
   }
 `;
@@ -22,17 +23,18 @@ export const BurgerPosition = styled.ul`
   align-items: center;
   text-transform: uppercase;
   padding-top: 60px;
-  color: #ffffff;
-@media ${breakpoints.tablet}{
+  color: var(--white);
+
+  @media ${breakpoints.minTablet} {
     font-size: 24px;
     line-height: 2.1;
-      padding-top: 100px;
+    padding-top: 100px;
   }
 `;
 
 export const NavLinkStyle = styled.li`
-      :hover{
-    color: #9B9FAA;
+  :hover {
+    color: var(--secondary-text-color);
   }
 `;
 
@@ -42,7 +44,8 @@ export const NavStyleDesktop = styled.div`
   display: flex;
   align-items: flex-end;
   flex-direction: row;
-  @media ${breakpoints.maxDesktop}{
+
+  @media ${breakpoints.maxTablet} {
     display: none;
   }
 `;
@@ -59,13 +62,15 @@ export const BurgerPositionDesktop = styled.ul`
   align-items: center;
   text-transform: uppercase;
   padding-top: 60px;
-  color: #9B9FAA;
+
+  color: var(--secondary-text-color);
   flex-direction: row;
 `;
 
 export const NavLinkStyleDesktop = styled.li`
   margin-left: 16px;
-      :hover{
-    color: #9B9FAA;
+
+  :hover {
+    color: var(--secondary-text-color);
   }
 `;

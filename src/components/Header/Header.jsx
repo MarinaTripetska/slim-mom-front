@@ -1,7 +1,9 @@
+import { useSelector } from 'react-redux';
+
 import AuthNav from 'components/AuthNav';
 import NotAuthNav from 'components/NotAuthNav';
-import { useSelector } from 'react-redux';
 import { authSelectors } from 'redux/app/auth';
+
 import { HeaderStyled, PositionRoot } from './Header.styled';
 
 const Header = ({ localPage }) => {

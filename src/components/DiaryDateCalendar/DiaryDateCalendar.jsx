@@ -3,10 +3,12 @@ import { useDispatch, useSelector } from 'react-redux';
 import 'react-datetime/css/react-datetime.css';
 import 'moment/locale/uk';
 import 'moment/locale/ru';
-import { DatePickerWrapper, DatePicker } from './DiaryDateCalendar.styled';
+
 import CalendarBtn from '../CalendarBtn/CalendarBtn';
 import { diarySelectors, updateDate } from 'redux/app/diaryPerDay';
 import { diaryPerDayOperation } from 'redux/app/diaryPerDay';
+
+import { DatePickerWrapper, DatePicker } from './DiaryDateCalendar.styled';
 
 function dateToString(date) {
   let year = String(date.getFullYear());

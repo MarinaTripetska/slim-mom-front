@@ -1,6 +1,10 @@
 import React, { useState } from 'react';
-
 import { useFormik } from 'formik';
+import * as Yup from 'yup';
+import { useDispatch } from 'react-redux';
+
+import { authOperations } from 'redux/app/auth';
+
 import {
   ContainerLogin,
   TitleLogin,
@@ -18,10 +22,6 @@ import {
   PasswordButton,
 } from './LoginForm.styled';
 
-import * as Yup from 'yup';
-import { useDispatch } from 'react-redux';
-import { authOperations } from 'redux/app/auth';
-
 const initialValues = {
   name: '',
   email: '',
@@ -29,11 +29,11 @@ const initialValues = {
 };
 
 const LoginForm = () => {
+  const dispatch = useDispatch();
   const [show, setShow] = useState(false);
 
   const handleClick = () => setShow(!show);
 
-  const dispatch = useDispatch();
   const formik = useFormik({
     initialValues,
     validationSchema: Yup.object({
@@ -92,9 +92,9 @@ const LoginForm = () => {
             ) : null}
           </FormLoginItem>
         </FormLoginList>
+
         <ButtonContainer>
           <Button type="submit">Увійти</Button>
-
           <StyledLink to="/register">Зареєструватися</StyledLink>
         </ButtonContainer>
       </FormLogin>

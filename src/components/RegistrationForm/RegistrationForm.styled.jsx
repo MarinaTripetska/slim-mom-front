@@ -7,7 +7,7 @@ export const ContainerRegistr = styled.div`
   margin-left: auto;
   margin-right: auto;
 
-  @media ${breakpoints.tablet} {
+  @media ${breakpoints.minTablet} {
     padding-top: 60px;
     padding-left: 32px;
     min-width: 768px;
@@ -27,7 +27,7 @@ export const TitleRegistr = styled.h2`
   letter-spacing: 0.04em;
   margin-top: 0;
   text-align: center;
-  @media ${breakpoints.tablet} {
+  @media ${breakpoints.minTablet} {
     text-align: start;
   }
 `;
@@ -64,7 +64,7 @@ export const FormRegistrInput = styled.input`
   width: 100%;
   outline: none;
 
-  @media ${breakpoints.tablet} {
+  @media ${breakpoints.minTablet} {
     width: 240px;
   }
 `;
@@ -80,7 +80,7 @@ export const ButtonContainer = styled.div`
 
   display: flex;
   gap: 32px;
-  @media ${breakpoints.maxTablet} {
+  @media ${breakpoints.maxMobile} {
     flex-direction: column;
     align-items: center;
     gap: 20px;
@@ -135,7 +135,7 @@ export const PasswordButton = styled.button`
   right: 0px;
   top: 0px;
   border: none;
-  @media ${breakpoints.tablet} {
+  @media ${breakpoints.minTablet} {
     left: 215px;
   }
 `;

@@ -1,18 +1,16 @@
 export const size = {
   mobile: '320px',
-  maxTablet: '767px',
-  tablet: '768px',
-  laptop: '1024px',
-  maxDesktop: '1279px',
+  maxMobile: '767px',
+  minTablet: '768px',
+  maxTablet: '1279px',
   desktop: '1280px',
 };
 
 export const breakpoints = {
   mobile: `(min-width: ${size.mobile})`,
+  maxMobile: `(max-width: ${size.maxMobile})`,
+  onlyTablet: `(min-width: ${size.minTablet}) and (max-width: ${size.maxTablet})`,
+  minTablet: `(min-width: ${size.minTablet})`,
   maxTablet: `(max-width: ${size.maxTablet})`,
-  onlyTablet: `(min-width: ${size.tablet}) and (max-width: ${size.maxDesktop})`,
-  tablet: `(min-width: ${size.tablet})`,
-  laptop: `(min-width: ${size.laptop})`,
-  maxDesktop: `(max-width: ${size.maxDesktop})`,
   desktop: `(min-width: ${size.desktop})`,
 };

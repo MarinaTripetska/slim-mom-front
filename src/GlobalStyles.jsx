@@ -38,10 +38,6 @@ const GlobalStyle = createGlobalStyle`
   --border-color: #e0e0e0;
   --timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   --trans-duration: 250ms;
-
-  --mobile: 320px;
-  --tablet: 768px;
-  --desktop: 1280px;
 }
 
 *,

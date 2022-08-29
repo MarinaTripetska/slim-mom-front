@@ -7,13 +7,16 @@ export const ContainerLogin = styled.div`
   padding: 8px 20px;
   margin-left: auto;
   margin-right: auto;
-  @media ${breakpoints.tablet} {
+
+  @media ${breakpoints.minTablet} {
     padding: 160px 32px;
   }
+
   @media ${breakpoints.desktop} {
     padding: 0 16px;
   }
 `;
+
 export const TitleLogin = styled.h2`
   color: rgba(252, 132, 45, 1);
   text-transform: uppercase;
@@ -24,10 +27,12 @@ export const TitleLogin = styled.h2`
   letter-spacing: 0.04em;
   margin-top: 0;
   text-align: center;
-  @media ${breakpoints.tablet} {
+
+  @media ${breakpoints.minTablet} {
     text-align: start;
   }
 `;
+
 export const FormLogin = styled.form``;
 
 export const FormLoginList = styled.ul`
@@ -35,13 +40,16 @@ export const FormLoginList = styled.ul`
   list-style: none;
   padding: 0;
 `;
+
 export const FormLoginItem = styled.li`
   position: relative;
   margin-bottom: 0;
+
   &:not(:last-child) {
     margin-bottom: 40px;
   }
 `;
+
 export const FormLoginLabel = styled.label`
   display: flex;
   width: auto;
@@ -62,10 +70,12 @@ export const FormLoginInput = styled.input`
   height: 20px;
   width: 100%;
   outline: none;
-  @media ${breakpoints.tablet} {
+
+  @media ${breakpoints.minTablet} {
     width: 240px;
   }
 `;
+
 export const Message = styled.div`
   font-weight: 500;
   font-size: 12px;
@@ -75,7 +85,8 @@ export const Message = styled.div`
 export const ButtonContainer = styled.div`
   display: flex;
   gap: 32px;
-  @media ${breakpoints.maxTablet} {
+
+  @media ${breakpoints.maxMobile} {
     flex-direction: column;
     align-items: center;
     gap: 20px;
@@ -124,13 +135,15 @@ export const HidePassword = styled(FiEyeOff)`
   color: #9b9faa;
   font-size: 20px;
 `;
+
 export const PasswordButton = styled.button`
   width: 24px;
   position: absolute;
   right: 0px;
   top: 0px;
   border: none;
-  @media ${breakpoints.tablet} {
+
+  @media ${breakpoints.minTablet} {
     left: 215px;
   }
 `;

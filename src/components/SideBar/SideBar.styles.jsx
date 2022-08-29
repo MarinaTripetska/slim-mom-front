@@ -1,17 +1,19 @@
 import styled from 'styled-components';
+
+import { breakpoints } from '../../assets/sizes';
 import bgi from '../../assets/images/leaves-desktop.png';
 import bgTablet from '../../assets/images/leaves-aside-tablet.png';
-import { breakpoints } from '../../assets/sizes';
 
 const SideBarDiv = styled.div`
-  background: #f0f1f3;
+  background: var(--secondary-background-color);
   margin: auto;
   height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  @media ${breakpoints.maxDesktop} {
+
+  @media ${breakpoints.maxTablet} {
     height: 100%;
     max-height: fit-content;
     max-width: 100vw;
@@ -20,6 +22,7 @@ const SideBarDiv = styled.div`
     padding: 40px 20px;
     justify-content: space-evenly;
   }
+
   @media ${breakpoints.onlyTablet} {
     background-image: url(${bgTablet});
     background-repeat: no-repeat;
@@ -27,6 +30,7 @@ const SideBarDiv = styled.div`
     padding-top: 0;
     padding-bottom: 0;
   }
+
   @media ${breakpoints.desktop} {
     background-image: url(${bgi});
   }
@@ -41,6 +45,7 @@ const ListTitle = styled.h3`
     margin-bottom: 24px;
   }
 `;
+
 const ProdDiv = styled.div`
   @media ${breakpoints.onlyTablet} {
     margin-left: 97px;
@@ -49,12 +54,15 @@ const ProdDiv = styled.div`
 
 const ProdListDiv = styled.div`
   width: 280px;
+
   @media (max-width: 767px) {
     width: 250px;
   }
+
   @media (max-width: 550px) {
     width: 100%;
   }
+
   @media ${breakpoints.onlyTablet} {
     display: flex;
     width: 100%;
@@ -64,7 +72,7 @@ const ProdListDiv = styled.div`
 `;
 
 const ProdList = styled.ul`
-  color: #9b9faa;
+  color: var(--secondary-text-color);
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -73,7 +81,7 @@ const ProdList = styled.ul`
 
 const AltText = styled.p`
   font-size: 0.9em;
-  color: #9b9faa;
+  color: var(--secondary-text-color);
 `;
 
 export { AltText, SideBarDiv, ProdListDiv, ProdList, ListTitle, ProdDiv };

@@ -1,14 +1,14 @@
-import { breakpoints } from 'assets/sizes';
 import styled from 'styled-components';
+import { breakpoints } from 'assets/sizes';
 
 export const ContainerWrapper = styled.div`
-  @media ${breakpoints.maxTablet} {
+  @media ${breakpoints.maxMobile} {
     margin: 0 auto;
     width: 320px;
     max-width: 320px;
     padding-top: 40px;
   }
-  @media ${breakpoints.tablet} {
+  @media ${breakpoints.minTablet} {
     width: 768px;
   }
   @media ${breakpoints.desktop} {

@@ -1,6 +1,8 @@
 import { useSelector } from 'react-redux';
+
 import { diarySelectors } from 'redux/app/diaryPerDay';
 import DiaryProductListItem from '../DiaryProductListItem';
+
 import {
   AlternativeText,
   ProductsList,

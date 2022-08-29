@@ -1,5 +1,6 @@
-import { NavStyle, BurgerPosition, NavLinkStyle } from './BurgerMenu.styled';
 import { NavLink } from 'react-router-dom';
+
+import { NavStyle, BurgerPosition, NavLinkStyle } from './BurgerMenu.styled';
 
 const BurgerMenu = ({ openBurgerMenu }) => {
   if (openBurgerMenu) {

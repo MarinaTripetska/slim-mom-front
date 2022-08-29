@@ -1,12 +1,15 @@
 import { lazy, Suspense, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { Routes, Route, Navigate } from 'react-router-dom';
-import Loader from './components/Loader';
+
 import { PrivateRoute } from 'components/PrivateRoute';
 import { PublicRoute } from 'components/PublicRoute';
+import Loader from './components/Loader';
 import Toaster from 'components/Toasts';
-import { useDispatch, useSelector } from 'react-redux';
-import { actionCurrent } from 'redux/app/auth/auth-operations';
+
 import { authSelectors } from 'redux/app/auth';
+import { actionCurrent } from 'redux/app/auth/auth-operations';
+import tokenService from 'service/token.service';
 
 const MainPage = lazy(() => import('pages/MainPage'));
 const LoginPage = lazy(() => import('pages/LoginPage'));
@@ -15,9 +18,11 @@ const DiaryPage = lazy(() => import('pages/DiaryPage'));
 const CalculatorPage = lazy(() => import('pages/CalculatorPage'));
 
 function App() {
-  const isFetchingUser = useSelector(authSelectors.getIsFetchingUser);
   const dispatch = useDispatch();
-  const token = localStorage.getItem('AUTH_TOKEN');
+
+  const isFetchingUser = useSelector(authSelectors.getIsFetchingUser);
+
+  const token = tokenService.getLocalAccessToken();
 
   useEffect(() => {
     if (token) {

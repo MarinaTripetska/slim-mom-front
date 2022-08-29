@@ -1,7 +1,8 @@
 import { useState, Fragment } from 'react';
+import { useSelector } from 'react-redux';
 import { BsPlusLg } from 'react-icons/bs';
 import { Rings } from 'react-loader-spinner';
-import { useSelector } from 'react-redux';
+
 import { diarySelectors } from 'redux/app/diaryPerDay';
 import { getProductsByQuery } from '../../service/axios.config';
 
