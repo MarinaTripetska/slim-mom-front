@@ -86,7 +86,6 @@ export const authSlice = createSlice({
     [authOperations.actionCurrent.fulfilled](state, action) {
       state.isLoading = false;
       state.user = action.payload.user;
-      state.tokens = action.payload.tokens;
       state.isFetchingUser = false;
       state.isLoggedIn = true;
 
@@ -99,25 +98,6 @@ export const authSlice = createSlice({
       state.isFetchingUser = false;
       state.isSuccess = false;
     },
-
-    // [authOperations.actionRefreshToken.pending](state) {
-    //   state.isLoading = true;
-    //   state.isSuccess = false;
-    //   state.isError = false;
-    // },
-    // [authOperations.actionRefreshToken.fulfilled](state, action) {
-    //   state.isLoading = false;
-    //   state.tokens = action.payload.tokens;
-    //   state.isLoggedIn = true;
-    //   state.isSuccess = true;
-    //   state.isError = false;
-    // },
-    // [authOperations.actionRefreshToken.rejected](state, _) {
-    //   state.isLoading = false;
-    //   state.isError = true;
-    //   state.isLoggedIn = false;
-    //   state.isSuccess = false;
-    // },
 
     // logout
     [authOperations.actionLogout.pending](state) {

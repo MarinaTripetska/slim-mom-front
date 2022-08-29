@@ -10,7 +10,7 @@ const setup = store => {
     config => {
       const token = tokenService.getLocalAccessToken();
       if (token) {
-        config.headers['x-access-token'] = token;
+        config.headers['Authorization'] = `Bearer ${token}`;
       }
       return config;
     },
@@ -33,22 +33,18 @@ const setup = store => {
 
           try {
             const token = tokenService.getLocalRefreshToken();
-            console.log(token);
 
             const rs = await getNewTokens({
               refreshToken: token,
             });
-            console.log(rs);
-            // const rs = await axiosInstance.post('/users/refresh-tokens', {
-            //   refreshToken: tokenService.getLocalRefreshToken(),
-            // });
 
             const { tokens } = await rs.data.data;
-
             dispatch(refreshToken(tokens));
             tokenService.setLocalTokens(tokens);
-            axiosInstance.defaults.headers.common['x-access-token'] =
-              tokens.accessToken;
+            axiosInstance.defaults.headers[
+              'Authorization'
+            ] = `Bearer ${tokens.accessToken}`;
+
             return axiosInstance(originalConfig);
           } catch (_error) {
             if (_error.response && _error.response.data) {

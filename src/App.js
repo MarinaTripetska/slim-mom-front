@@ -18,51 +18,50 @@ const DiaryPage = lazy(() => import('pages/DiaryPage'));
 const CalculatorPage = lazy(() => import('pages/CalculatorPage'));
 
 function App() {
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
-  // const isFetchingUser = useSelector(authSelectors.getIsFetchingUser);
+  const isFetchingUser = useSelector(authSelectors.getIsFetchingUser);
 
-  // const token = tokenService.getLocalAccessToken();
+  const token = tokenService.getLocalAccessToken();
 
-  // useEffect(() => {
-  //   if (token) {
-  //     dispatch(actionCurrent());
-  //   }
-  // }, [dispatch, token]);
+  useEffect(() => {
+    if (token) {
+      dispatch(actionCurrent());
+    }
+  }, [dispatch, token]);
 
   return (
     <>
-      {/* {!isFetchingUser && ( */}
-      <>
-        <Suspense fallback={<Loader />}>
-          <Routes>
-            <Route path="/" element={<PublicRoute restricted />}>
-              <Route path="" element={<MainPage />} />
-            </Route>
+      {!isFetchingUser && (
+        <>
+          <Suspense fallback={<Loader />}>
+            <Routes>
+              <Route path="/" element={<PublicRoute restricted />}>
+                <Route path="" element={<MainPage />} />
+              </Route>
 
-            <Route path="/register" element={<PublicRoute restricted />}>
-              <Route path="" element={<RegistrationPage />} />
-            </Route>
+              <Route path="/register" element={<PublicRoute restricted />}>
+                <Route path="" element={<RegistrationPage />} />
+              </Route>
 
-            <Route path="/login" element={<PublicRoute restricted />}>
-              <Route path="" element={<LoginPage />} />
-            </Route>
+              <Route path="/login" element={<PublicRoute restricted />}>
+                <Route path="" element={<LoginPage />} />
+              </Route>
 
-            <Route path="/calculator" element={<PrivateRoute />}>
-              <Route path="" element={<CalculatorPage />} />
-            </Route>
+              <Route path="/calculator" element={<PrivateRoute />}>
+                <Route path="" element={<CalculatorPage />} />
+              </Route>
 
-            <Route path="/diary" element={<PrivateRoute />}>
-              <Route path="" element={<DiaryPage />} />
-            </Route>
+              <Route path="/diary" element={<PrivateRoute />}>
+                <Route path="" element={<DiaryPage />} />
+              </Route>
 
-            <Route path="*" element={<Navigate to="/" />} />
-          </Routes>
-        </Suspense>
-        <Toaster />
-      </>
-
-      {/*) } */}
+              <Route path="*" element={<Navigate to="/" />} />
+            </Routes>
+          </Suspense>
+          <Toaster />
+        </>
+      )}
     </>
   );
 }

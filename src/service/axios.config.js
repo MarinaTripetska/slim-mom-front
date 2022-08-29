@@ -1,45 +1,6 @@
-// import axios from 'axios';
 import { toast } from 'react-toastify';
 import instanceClientAPI from './api';
-// import { authOperations } from 'redux/app/auth';
-// import { store } from 'redux/store';
-// function updateAuthHeader() {
-//   const token = localStorage.getItem('AUTH_TOKEN');
-//   // axios.defaults.headers.common.Authorization = token ? `Bearer ${token}` : '';
 
-//   return token ? `Bearer ${token}` : '';
-// }
-
-// const instanceClientAPI = axios.create({
-//   baseURL: `https://slim-mom-back.herokuapp.com/api/v1`,
-//   headers: {
-//     'Content-Type': 'application/json',
-//     common: {
-//       Authorization: updateAuthHeader(),
-//     },
-//   },
-// });
-// instanceClientAPI.interceptors.response.use(undefined, error => {
-//   if (error.response?.status === 401) {
-//     const state = store.getState();
-//     if (state.auth.isLoggedIn) {
-//       store.dispatch(authOperations.actionLogout());
-//     }
-//     throw error;
-//   }
-// });
-// setInterval(() => {
-//   const state = store.getState();
-//   if (state.auth.isLoggedIn) {
-//     store.dispatch(authOperations.actionRefreshToken());
-//   }
-// }, 120000);
-// ((axios.defaults.baseURL = `https://slim-mom-back.herokuapp.com/api/v1`));
-// axios.defaults.headers.common.Authorization = `Bearer ${localStorage.getItem(
-//   'AUTH_TOKEN',
-// )}`;
-
-// updateAuthHeader();
 //================== REGISTER USER ====================
 export const register = async ({ name, email, password }) => {
   try {
@@ -89,25 +50,21 @@ export const logout = async () => {
 
 //================== CURRENT USER =====================
 export const current = async () => {
-  // try {
-  const res = await instanceClientAPI.get(`/users/current`);
-  return res;
-  // } catch (error) {
-  //   console.log(error.message);
-  // }
+  return await instanceClientAPI.get(`/users/current`);
 };
 
+//=============== get New Tokens ========================
+
 export const getNewTokens = async payload => {
-  const res = await instanceClientAPI.post(`/users/refresh-tokens`, payload);
-  return res;
+  return await instanceClientAPI.post(`/users/refresh-tokens`, payload);
 };
 
 //================== GET LIST OF PRODUCTS BY QUERY =====================
 
-export const getProductsByQuery = async query => {
+export const getProductsByQuery = async payload => {
   try {
     const { data } = await instanceClientAPI.get(
-      `/products/search?query=${query}`,
+      `/products/search?query=${payload}`,
     );
     return data;
   } catch (error) {
