@@ -5,7 +5,7 @@ const getMessage = state => state.auth.message;
 const getIsError = state => state.auth.isError;
 const getIsSuccess = state => state.auth.isSuccess;
 const getIsLoading = state => state.auth.isLoading;
-
+const getTokens = state => state.auth.tokens;
 const getUserInfo = state => state.auth.user.userInfo;
 const getUserAdviceCalorie = state => state.auth.user.userDailyCalorieIntake;
 const getUserNotRecommendProd = state =>
@@ -38,4 +38,5 @@ export const authSelectors = {
   getUserInfo,
   getUserAdviceCalorie,
   getUserNotRecommendProd,
+  getTokens,
 };

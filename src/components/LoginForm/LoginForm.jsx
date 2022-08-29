@@ -29,11 +29,11 @@ const initialValues = {
 };
 
 const LoginForm = () => {
+  const dispatch = useDispatch();
   const [show, setShow] = useState(false);
 
   const handleClick = () => setShow(!show);
 
-  const dispatch = useDispatch();
   const formik = useFormik({
     initialValues,
     validationSchema: Yup.object({
@@ -92,9 +92,9 @@ const LoginForm = () => {
             ) : null}
           </FormLoginItem>
         </FormLoginList>
+
         <ButtonContainer>
           <Button type="submit">Увійти</Button>
-
           <StyledLink to="/register">Зареєструватися</StyledLink>
         </ButtonContainer>
       </FormLogin>
