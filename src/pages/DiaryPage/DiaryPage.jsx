@@ -61,12 +61,6 @@ export default function DiaryPage() {
         <ContainerDiary>
           {!mobileAddSelected && <DiaryDateCalendar />}
 
-          {/* {isLoading ? (
-            <LoaderPosition>
-              <Rings color="#FC842D" height={50} width={50} />
-            </LoaderPosition>
-          ) : (
-            <div> */}
           {isCurrentDay ? (
             <DiaryAddProductForm
               onSubmit={formSubmitHandler}
@@ -88,8 +82,6 @@ export default function DiaryPage() {
               <BsPlusLg size={14} />
             </AddBtnMobile>
           )}
-          {/* </div>
-          )} */}
         </ContainerDiary>
 
         <SidebarWrap className={mobileAddSelected ? 'hideOnMobile' : ''}>

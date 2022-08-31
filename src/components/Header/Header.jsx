@@ -4,13 +4,10 @@ import AuthNav from 'components/AuthNav';
 import NotAuthNav from 'components/NotAuthNav';
 import { authSelectors } from 'redux/app/auth';
 
-import { HeaderStyled, PositionRoot } from './Header.styled';
+import { HeaderStyled } from './Header.styled';
 
 const Header = ({ localPage }) => {
   const isUserLoggedIn = useSelector(authSelectors.getIsLoggenIn);
-
-  if ((localPage = 'CalculatorPage')) {
-  }
 
   return (
     <>
@@ -19,7 +16,8 @@ const Header = ({ localPage }) => {
 
         {isUserLoggedIn && <AuthNav localPage={localPage} />}
       </HeaderStyled>
-      <PositionRoot id="menu-root"></PositionRoot>
+
+      {/* <PositionRoot id="menu-root" /> */}
     </>
   );
 };

@@ -2,7 +2,7 @@ import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 import { breakpoints } from '../../assets/sizes';
 
-export const NotAuthNavStyled = styled.div`
+export const Thumb = styled.div`
   width: 100%;
   display: flex;
   justify-content: space-between;
@@ -15,18 +15,18 @@ export const NotAuthNavStyled = styled.div`
 `;
 
 export const NavThumb = styled.div`
-  //padding: 0 20px;
-  align-items: center;
-  /* display: flex; */
-  gap: 16px;
+  /* padding: 0 20px; */
+  /* align-items: center; */
+
+  /* gap: 16px; */
   color: var(--secondary-text-color);
   text-transform: uppercase;
 
   @media ${breakpoints.desktop} {
-    justify-content: flex-start;
-    align-items: flex-end;
-    margin-left: 20px;
-    border-left: 1px solid grey;
+    /* justify-content: flex-start;
+    align-items: flex-end; */
+    /* margin-left: 20px; */
+    /* border-left: 1px solid grey; */
     /* padding: 10px 20px;
     padding-bottom: -20px; */
     /* &::before {
@@ -40,8 +40,8 @@ export const NavThumb = styled.div`
   }
 `;
 
-export const NavLinkStyle = styled(NavLink)`
-  margin-left: 20px;
+export const NavLinkStyled = styled(NavLink)`
+  /* margin-left: 20px; */
 
   &.active {
     color: var(--main-text-color);

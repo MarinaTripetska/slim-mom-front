@@ -1,11 +1,10 @@
-import { createPortal } from 'react-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
 import Logo from 'components/Logo';
 import { authOperations, authSelectors } from 'redux/app/auth';
-import BurgerMenuIcon from 'assets/images/burger.png';
-import CloseMenuIcon from 'assets/images/close.png';
+// import BurgerMenuIcon from 'assets/images/burger.png';
+// import CloseMenuIcon from 'assets/images/close.png';
 import ChoiceModal from '../ChoiceModal';
 
 import {
@@ -20,94 +19,20 @@ import {
   Vertical,
   VerticalDeskTop,
   NavLinkStyleMenu,
-  ButtonBurger,
-  NavThumbOpen,
-  NavLinkStyleMenuOpen,
+  // ButtonBurger,
 } from './AuthNav.styled';
 import { useState } from 'react';
+import NavMenuModal from 'components/NavMenuModal';
+import ReactPortal from 'components/ReactPortal';
+import Burger from 'components/Burger';
 
 const AuthNav = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const [openMenu, setOpenMenu] = useState(false);
+
+  const [isOpenMenu, setIsOpenMenu] = useState(false);
   const userName = useSelector(authSelectors.getUserName);
   const [isShowChoiceModal, setIsShowChoiceModal] = useState(false);
-
-  const UserMenuOpen = () => {
-    const MenuRoot = document.querySelector('#menu-root');
-    if (openMenu) {
-      const ScrollVisible = () => {
-        document.body.style.overflow = 'visible';
-      };
-      return createPortal(
-        <NavThumbOpen>
-          <NavLinkStyleMenuOpen
-            to="/diary"
-            onClick={() => {
-              setOpenMenu(false);
-              ScrollVisible();
-            }}
-          >
-            {' '}
-            Щоденник
-          </NavLinkStyleMenuOpen>
-          <NavLinkStyleMenuOpen
-            to="/calculator"
-            onClick={() => {
-              setOpenMenu(false);
-              ScrollVisible();
-            }}
-          >
-            Калькулятор
-          </NavLinkStyleMenuOpen>
-        </NavThumbOpen>,
-        MenuRoot,
-      );
-    }
-    return null;
-  };
-
-  const UserMenu = () => {
-    return (
-      <NavThumb>
-        <NavLinkStyleMenu to="/diary">Щоденник</NavLinkStyleMenu>
-        <NavLinkStyleMenu to="/calculator">Калькулятор</NavLinkStyleMenu>
-      </NavThumb>
-    );
-  };
-
-  const handleLogout = () => {
-    setIsShowChoiceModal(true);
-    document.body.style.overflow = 'hidden';
-  };
-
-  const CloseMenu = () => {
-    const HandleClickOpen = e => {
-      e.preventDefault();
-      document.body.style.overflow = 'hidden';
-      setOpenMenu(true);
-      return;
-    };
-
-    const HandleClickClose = e => {
-      e.preventDefault();
-      document.body.style.overflow = 'visible';
-      setOpenMenu(false);
-      return;
-    };
-    if (openMenu) {
-      return (
-        <ButtonBurger onClick={HandleClickClose} style={{ marginRight: '4px' }}>
-          <img src={CloseMenuIcon} alt="CloseMenuIcon" />
-        </ButtonBurger>
-      );
-    }
-    return (
-      <ButtonBurger onClick={HandleClickOpen}>
-        <img src={BurgerMenuIcon} alt="BurgerMenuIcon" />
-      </ButtonBurger>
-    );
-  };
 
   const choiceHandler = answer => {
     if (answer) {
@@ -134,20 +59,29 @@ const AuthNav = () => {
         <Logostyled>
           <Logo />
           <VerticalDeskTop />
-          <UserMenu />
+          <NavThumb>
+            <NavLinkStyleMenu to="/diary">Щоденник</NavLinkStyleMenu>
+            <NavLinkStyleMenu to="/calculator">Калькулятор</NavLinkStyleMenu>
+          </NavThumb>
         </Logostyled>
+
         <Userstyled>
           <UserThumb>
             <UserNameStyle>{userName}</UserNameStyle>
             <Vertical />
-            <ExitBtn type="button" onClick={handleLogout}>
+            <ExitBtn type="button" onClick={() => setIsShowChoiceModal(true)}>
               Вихід
             </ExitBtn>
           </UserThumb>
-          <CloseMenu />
+          <Burger handleOpenMenu={setIsOpenMenu} isOpenMenu={isOpenMenu} />
         </Userstyled>
       </DivHeader>
-      <UserMenuOpen />
+
+      {isOpenMenu && (
+        <ReactPortal wrapperId="nav-menu-modal">
+          <NavMenuModal handleMenuOpen={setIsOpenMenu} />
+        </ReactPortal>
+      )}
     </AuthNavStyled>
   );
 };

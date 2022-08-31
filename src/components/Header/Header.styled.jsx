@@ -20,11 +20,11 @@ export const HeaderStyled = styled.header`
   }
 `;
 
-export const PositionRoot = styled.div`
-  position: static;
-  padding-top: 80px;
+// export const PositionRoot = styled.div`
+//   position: static;
+//   padding-top: 80px;
 
-  @media ${breakpoints.desktop} {
-    padding-top: 0px;
-  }
-`;
+//   @media ${breakpoints.desktop} {
+//     padding-top: 0px;
+//   }
+// `;

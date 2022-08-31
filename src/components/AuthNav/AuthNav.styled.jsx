@@ -1,26 +1,6 @@
 import styled from 'styled-components';
 import { breakpoints } from 'assets/sizes';
 import { NavLink } from 'react-router-dom';
-import { keyframes } from 'styled-components';
-
-const Animation = keyframes`
-0%
-  {
-    opacity: 0.40;
-  }
-  50%
-  {
-    opacity: 0.60;
-  }
-  75%
-  {
-    opacity: 0.8;
-  }
-  100%
-  {
-    opacity: 1.0;
-  }
-`;
 
 export const AuthNavStyled = styled.div`
   width: 100%;
@@ -112,66 +92,5 @@ export const NavLinkStyleMenu = styled(NavLink)`
 
   &.active {
     color: var(--main-text-color);
-  }
-`;
-
-export const ButtonBurger = styled.button`
-  display: none;
-
-  @media ${breakpoints.maxTablet} {
-    animation: ${Animation} 0.5s linear infinite;
-    animation-iteration-count: 1;
-    display: block;
-    border: none;
-    background: none;
-    margin-left: 53px;
-    cursor: pointer;
-  }
-`;
-
-export const NavThumbOpen = styled.div`
-  width: 100%;
-  height: 100vh;
-  font-size: 18px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-transform: uppercase;
-  padding-top: 60px;
-  color: var(--white);
-  background-color: var(--blue-txt-color);
-  z-index: 50;
-  animation: ${Animation} 0.5s linear infinite;
-  animation-iteration-count: 1;
-
-  @media ${breakpoints.minTablet} {
-    font-size: 24px;
-    line-height: 2.1;
-    padding-top: 100px;
-  }
-
-  @media ${breakpoints.maxMobile} {
-    position: absolute;
-    margin-top: 40px;
-  }
-
-  @media ${breakpoints.desktop} {
-    display: none;
-  }
-`;
-
-export const NavLinkStyleMenuOpen = styled(NavLink)`
-  color: var(--secondary-text-color);
-  text-transform: uppercase;
-  margin-right: 16px;
-  cursor: pointer;
-
-  &.active {
-    color: var(--main-text-color);
-  }
-
-  @media ${breakpoints.maxMobile} {
-    margin-right: 0px;
-    margin-bottom: 14px;
   }
 `;

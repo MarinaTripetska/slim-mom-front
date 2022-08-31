@@ -21,44 +21,32 @@ function ChoiceModal({ text, choiceHandler, closeModalHandle, subText }) {
     };
   });
 
-  const escKeyHandle = event => {
-    if (event.keyCode === 27) {
-      choiceHandler(false);
-      closeModalHandle();
-      document.body.style.overflow = 'visible';
-    }
+  const onChoiseCancel = () => {
+    choiceHandler(false);
+    closeModalHandle();
   };
-  const onClickOvrlHandle = event => {
-    if (event.target.id === 'modal-overlay') {
-      choiceHandler(false);
-      closeModalHandle();
-      document.body.style.overflow = 'visible';
-    }
-  };
-
-  const onOkClickHandle = () => {
+  const onChoiseConfirm = () => {
     choiceHandler(true);
     closeModalHandle();
-    document.body.style.overflow = 'visible';
   };
 
-  const onCancelClickHandle = () => {
-    choiceHandler(false);
-    closeModalHandle();
-    document.body.style.overflow = 'visible';
+  const escKeyHandle = e => {
+    if (e.code === 'Escape') {
+      onChoiseCancel();
+    }
   };
 
-  const closeModal = () => {
-    choiceHandler(false);
-    closeModalHandle();
-    document.body.style.overflow = 'visible';
+  const handeleOverlayClick = e => {
+    if (e.currentTarget === e.target) {
+      onChoiseCancel();
+    }
   };
 
   return (
-    <Overlay id="modal-overlay" onClick={onClickOvrlHandle}>
+    <Overlay onClick={handeleOverlayClick}>
       <ModalDiv>
         <CloseModalBtn>
-          <CloseBtn onHandleClick={closeModal} />
+          <CloseBtn onHandleClick={onChoiseCancel} />
         </CloseModalBtn>
 
         <ContentWrap>
@@ -68,17 +56,11 @@ function ChoiceModal({ text, choiceHandler, closeModalHandle, subText }) {
 
           <BtnWrapper>
             <Button
-              // style={{ backgroundColor: 'red' }}
-              onClickHandler={onCancelClickHandle}
+              onClickHandler={onChoiseCancel}
               btnText="Скасувати"
-              autofocus={true}
+              autofocus
             />
-            <Button
-              // style={{ backgraund: "red" }}
-              onClickHandler={onOkClickHandle}
-              btnText="Підтвердити"
-              autofocus={false}
-            />
+            <Button onClickHandler={onChoiseConfirm} btnText="Підтвердити" />
           </BtnWrapper>
         </ContentWrap>
       </ModalDiv>
