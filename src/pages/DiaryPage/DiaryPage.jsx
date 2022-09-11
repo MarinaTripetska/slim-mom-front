@@ -1,12 +1,11 @@
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { BsPlusLg } from 'react-icons/bs';
 
 import { diarySelectors } from 'redux/app/diaryPerDay';
 import DiaryDateCalendar from 'components/DiaryDateCalendar';
-import DiaryAddProductForm from '../../components/DiaryAddProductForm';
-import DiaryProductsList from '../../components/DiaryProductsList';
-import MobileNavigationPanel from '../../components/MobileNavigationPanel';
+import DiaryAddProductForm from 'components/DiaryAddProductForm';
+import DiaryProductsList from 'components/DiaryProductsList';
 import SideBar from 'components/SideBar';
 import { diaryPerDayOperation } from 'redux/app/diaryPerDay';
 import Header from 'components/Header';
@@ -43,9 +42,7 @@ export default function DiaryPage() {
 
   return (
     <>
-      {/* <MainContainer> */}
-        <Header localPage="DiaryPage" />
-      {/* </MainContainer> */}
+      <Header localPage="DiaryPage" />
 
       {!isMobileFormOpen && (
         <>
