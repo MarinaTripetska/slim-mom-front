@@ -1,96 +1,114 @@
 import styled from 'styled-components';
-import { breakpoints } from 'assets/sizes';
 import { NavLink } from 'react-router-dom';
+import { breakpoints } from 'assets/sizes';
+import { ContainerStyledPlh } from 'components/MainContainer/MainContainer.styled';
+import Logo from 'components/Logo';
 
-export const AuthNavStyled = styled.div`
-  width: 100%;
+export const Thumb = styled.div`
+  ${ContainerStyledPlh};
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 30px;
+  min-height: 80px;
+  border-bottom: 2px solid var(--border-color);
 
   @media ${breakpoints.desktop} {
-    height: 100%;
-    display: flex;
+    border-bottom: none;
     align-items: flex-end;
+    min-height: 150px;
+    max-width: 100%;
   }
 `;
 
-export const DivHeader = styled.div`
-  width: 100%;
+export const DesktopNavigationThumb = styled.div`
   display: flex;
+  justify-content: flex-end;
+  gap: 40px;
+`;
+
+export const TabletNavigationThumb = styled.div`
+  display: flex;
+  gap: 45px;
   align-items: center;
   justify-content: space-between;
-
-  @media ${breakpoints.desktop} {
-    align-items: flex-end;
-  }
 `;
 
-export const Logostyled = styled.div`
-  display: flex;
-  align-items: flex-end;
+export const LogoStyled = styled.div`
+  &::after {
+    content: '';
+    display: block;
+
+    position: relative;
+    left: 170px;
+    bottom: 7px;
+
+    width: 32px;
+    height: 2px;
+
+    transform: rotate(90deg);
+    background-color: var(--border-color);
+  }
 `;
 
 export const NavThumb = styled.div`
-  @media ${breakpoints.maxMobile} {
-    display: none;
-  }
-
-  @media ${breakpoints.onlyTablet} {
-    display: none;
-  }
-`;
-
-export const Userstyled = styled.div`
   display: flex;
+  align-items: flex-end;
+  gap: 16px;
 `;
 
-export const DivNic = styled.div``;
+export const NavLinkStyled = styled(NavLink)`
+  text-transform: uppercase;
+  color: var(--secondary-text-color);
+
+  cursor: pointer;
+  transition: color var(--transition-params);
+
+  &.active {
+    color: var(--main-text-color);
+  }
+
+  :hover,
+  :focus {
+    color: var(--main-text-color);
+  }
+`;
 
 export const UserThumb = styled.div`
-  margin-left: auto;
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  margin-bottom: -7px;
+  position: relative;
+  z-index: 1;
 
-  @media ${breakpoints.maxMobile} {
-    display: none;
+  display: flex;
+  align-items: center;
+  gap: 30px;
+`;
+
+export const UserName = styled.p`
+  &::after {
+    content: '';
+    display: block;
+
+    position: relative;
+    left: 32px;
+    bottom: 7px;
+
+    width: 32px;
+    height: 2px;
+
+    transform: rotate(90deg);
+    background-color: var(--border-color);
   }
 `;
 
-export const UserNameStyle = styled.span``;
-
-export const ExitBtn = styled.button`
+export const LogoutBtn = styled.button`
   border: none;
   color: var(--secondary-text-color);
   cursor: pointer;
-`;
+  transition: color var(--transition-params);
 
-export const Vertical = styled.div`
-  border-left: 2px solid var(--border-color);
-  height: 32px;
-  margin-top: 4px;
-  margin-left: 20px;
-  margin-right: 20px;
-`;
-
-export const VerticalDeskTop = styled.div`
-  border-left: 2px solid var(--border-color);
-  height: 32px;
-  margin-left: 20px;
-  margin-right: 20px;
-  margin-bottom: -7px;
-
-  @media ${breakpoints.maxTablet} {
-    display: none;
-  }
-`;
-
-export const NavLinkStyleMenu = styled(NavLink)`
-  color: var(--secondary-text-color);
-  text-transform: uppercase;
-  margin-right: 16px;
-  cursor: pointer;
-
-  &.active {
+  :hover,
+  :focus {
     color: var(--main-text-color);
   }
 `;

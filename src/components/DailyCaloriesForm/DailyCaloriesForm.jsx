@@ -2,7 +2,7 @@ import { Formik } from 'formik';
 import { useState } from 'react';
 import { toast } from 'react-toastify';
 
-import Button from '../Button';
+import Button from '../Buttons/Button';
 
 import {
   FormDiv,

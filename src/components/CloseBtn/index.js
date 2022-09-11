@@ -1,3 +1,1 @@
-import CloseBtn from './CloseBtn';
-
-export default CloseBtn;
+export { default } from './CloseBtn';

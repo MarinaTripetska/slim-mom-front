@@ -5,7 +5,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { authSelectors } from 'redux/app/auth';
 import IconBack from '../../assets/images/arrow-mobile.png';
 import { authOperations } from 'redux/app/auth';
-// import { Rings } from 'react-loader-spinner';
 import ChoiceModal from '../../components/ChoiceModal';
 
 import {
@@ -21,7 +20,6 @@ export const UserInfoMenuMobile = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const userName = useSelector(authSelectors.getUserName);
-  // const isLoadingLogout = useSelector(authSelectors.getIsLoading);
   const [isShowChoiceModal, setIsShowChoiceModal] = useState(false);
 
   const choiceHandler = answer => {
@@ -30,15 +28,12 @@ export const UserInfoMenuMobile = () => {
         navigate('/login', { replace: true });
       });
     }
+    setIsShowChoiceModal(false);
   };
 
   const handleLogout = () => {
     setIsShowChoiceModal(true);
     document.body.style.overflow = 'hidden';
-  };
-
-  const closeModalHandle = () => {
-    setIsShowChoiceModal(false);
   };
 
   return (
@@ -47,7 +42,6 @@ export const UserInfoMenuMobile = () => {
         <ChoiceModal
           text={'що хочете вийти зі свого облікового запису'}
           choiceHandler={choiceHandler}
-          closeModalHandle={closeModalHandle}
         />
       )}
       <BackButton onClick={() => navigate(-1)}>
@@ -57,13 +51,7 @@ export const UserInfoMenuMobile = () => {
       <UserInfoExit>
         <UserNameStyled>{userName}</UserNameStyled>
         <Vertical></Vertical>
-        <ExitButton onClick={handleLogout}>
-          {/* {isLoadingLogout ? ( */}
-          {/* <Rings color="#FC842D" height={50} width={50} /> */}
-          {/* ) : ( */}
-          Вихід
-          {/* )} */}
-        </ExitButton>
+        <ExitButton onClick={handleLogout}>Вихід</ExitButton>
       </UserInfoExit>
     </InfoPosition>
   );

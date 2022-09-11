@@ -15,17 +15,7 @@ const GlobalStyle = createGlobalStyle`
   font-weight: 700;
 }
 
-@media screen and (max-width: 767px) {
-  .hideOnMobile {
-    display: none !important;
-  }
-}
 
-@media screen and (min-width: 768px) {
-  .showOnMobile {
-    display: none !important;
-  }
-}
 
 :root {
   --main-text-color: #212121;
@@ -36,6 +26,7 @@ const GlobalStyle = createGlobalStyle`
   --accent-shadow: rgba(252, 132, 45, 0.5);
   --secondary-background-color: #F0F1F3;
   --border-color: #e0e0e0;
+  
   --timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   --trans-duration: 250ms;
   --transition-params: var(--timing-function) var(--trans-duration); 
@@ -45,6 +36,7 @@ const GlobalStyle = createGlobalStyle`
 *::before,
 *::after {
   box-sizing: border-box;
+  /* outline: 1px solid tomato; */
 }
 
 body {

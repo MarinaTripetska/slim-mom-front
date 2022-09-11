@@ -31,38 +31,36 @@ function App() {
   }, [dispatch, token]);
 
   return (
-    <>
-      {!isFetchingUser && (
-        <>
-          <Suspense fallback={<Loader />}>
-            <Routes>
-              <Route path="/" element={<PublicRoute restricted />}>
-                <Route path="" element={<MainPage />} />
-              </Route>
+    !isFetchingUser && (
+      <>
+        <Suspense fallback={<Loader />}>
+          <Routes>
+            <Route path="/" element={<PublicRoute restricted />}>
+              <Route path="" element={<MainPage />} />
+            </Route>
 
-              <Route path="/register" element={<PublicRoute restricted />}>
-                <Route path="" element={<RegistrationPage />} />
-              </Route>
+            <Route path="/register" element={<PublicRoute restricted />}>
+              <Route path="" element={<RegistrationPage />} />
+            </Route>
 
-              <Route path="/login" element={<PublicRoute restricted />}>
-                <Route path="" element={<LoginPage />} />
-              </Route>
+            <Route path="/login" element={<PublicRoute restricted />}>
+              <Route path="" element={<LoginPage />} />
+            </Route>
 
-              <Route path="/calculator" element={<PrivateRoute />}>
-                <Route path="" element={<CalculatorPage />} />
-              </Route>
+            <Route path="/calculator" element={<PrivateRoute />}>
+              <Route path="" element={<CalculatorPage />} />
+            </Route>
 
-              <Route path="/diary" element={<PrivateRoute />}>
-                <Route path="" element={<DiaryPage />} />
-              </Route>
+            <Route path="/diary" element={<PrivateRoute />}>
+              <Route path="" element={<DiaryPage />} />
+            </Route>
 
-              <Route path="*" element={<Navigate to="/" />} />
-            </Routes>
-          </Suspense>
-          <Toaster />
-        </>
-      )}
-    </>
+            <Route path="*" element={<Navigate to="/" />} />
+          </Routes>
+        </Suspense>
+        <Toaster />
+      </>
+    )
   );
 }
 

@@ -1,19 +1,18 @@
 import { useEffect } from 'react';
 
-import Button from '../Button';
+import Button from '../Buttons/Button';
 import CloseBtn from '../CloseBtn/CloseBtn';
 
 import {
   Overlay,
-  ModalDiv,
-  ModalTtl,
+  ModalBox,
+  Title,
   Text,
-  CloseModalBtn,
-  ContentWrap,
-  BtnWrapper,
+  ContentBox,
+  ButtonsSet,
 } from './ChoiceModal.styled';
 
-function ChoiceModal({ text, choiceHandler, closeModalHandle, subText }) {
+function ChoiceModal({ text, choiceHandler, subText }) {
   useEffect(() => {
     window.addEventListener('keydown', escKeyHandle);
     return () => {
@@ -21,49 +20,46 @@ function ChoiceModal({ text, choiceHandler, closeModalHandle, subText }) {
     };
   });
 
-  const onChoiseCancel = () => {
+  const onChoiceCancel = () => {
     choiceHandler(false);
-    closeModalHandle();
   };
-  const onChoiseConfirm = () => {
+
+  const onChoiceConfirm = () => {
     choiceHandler(true);
-    closeModalHandle();
   };
 
   const escKeyHandle = e => {
     if (e.code === 'Escape') {
-      onChoiseCancel();
+      onChoiceCancel();
     }
   };
 
-  const handeleOverlayClick = e => {
+  const handelOverlayClick = e => {
     if (e.currentTarget === e.target) {
-      onChoiseCancel();
+      onChoiceCancel();
     }
   };
 
   return (
-    <Overlay onClick={handeleOverlayClick}>
-      <ModalDiv>
-        <CloseModalBtn>
-          <CloseBtn onHandleClick={onChoiseCancel} />
-        </CloseModalBtn>
+    <Overlay onClick={handelOverlayClick}>
+      <ModalBox>
+        <CloseBtn onHandleClick={onChoiceCancel} position="absolute" />
 
-        <ContentWrap>
-          <ModalTtl>Ви впевнені, {text}?</ModalTtl>
-
+        <ContentBox>
+          <Title>Ви впевнені, {text}?</Title>
           <Text>{subText}</Text>
 
-          <BtnWrapper>
+          <ButtonsSet>
             <Button
-              onClickHandler={onChoiseCancel}
+              onClickHandler={onChoiceCancel}
               btnText="Скасувати"
               autofocus
             />
-            <Button onClickHandler={onChoiseConfirm} btnText="Підтвердити" />
-          </BtnWrapper>
-        </ContentWrap>
-      </ModalDiv>
+
+            <Button onClickHandler={onChoiceConfirm} btnText="Підтвердити" />
+          </ButtonsSet>
+        </ContentBox>
+      </ModalBox>
     </Overlay>
   );
 }

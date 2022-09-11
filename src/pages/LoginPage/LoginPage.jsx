@@ -1,6 +1,6 @@
 import { useSelector } from 'react-redux';
 
-import Container from 'components/Container';
+import Container from 'components/MainContainer';
 import LoginForm from 'components/LoginForm';
 import Loader from 'components/Loader';
 import { authSelectors } from 'redux/app/auth';

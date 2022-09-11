@@ -35,9 +35,6 @@ export const DiaryProductListItem = ({ product }) => {
     if (answer) {
       dispatch(diaryPerDayOperation.actionDeleteProduct(payload));
     }
-  };
-
-  const closeModalHandle = () => {
     setShowModal(false);
   };
 
@@ -47,7 +44,6 @@ export const DiaryProductListItem = ({ product }) => {
         <ChoiceModal
           text={'що хочете видалити цей продукт'}
           choiceHandler={choiceHandler}
-          closeModalHandle={closeModalHandle}
           subText={product.product.title.ua}
         />
       )}

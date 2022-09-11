@@ -3,33 +3,34 @@ import { useNavigate } from 'react-router-dom';
 
 import Logo from 'components/Logo';
 import { authOperations, authSelectors } from 'redux/app/auth';
-// import BurgerMenuIcon from 'assets/images/burger.png';
-// import CloseMenuIcon from 'assets/images/close.png';
 import ChoiceModal from '../ChoiceModal';
 
 import {
-  AuthNavStyled,
-  DivHeader,
+  Thumb,
   NavThumb,
   UserThumb,
-  Logostyled,
-  Userstyled,
-  UserNameStyle,
-  ExitBtn,
-  Vertical,
-  VerticalDeskTop,
-  NavLinkStyleMenu,
-  // ButtonBurger,
+  LogoutBtn,
+  TabletNavigationThumb,
+  NavLinkStyled,
+  DesktopNavigationThumb,
+  UserName,
+  LogoStyled,
 } from './AuthNav.styled';
 import { useState } from 'react';
 import NavMenuModal from 'components/NavMenuModal';
 import ReactPortal from 'components/ReactPortal';
 import Burger from 'components/Burger';
+import useViewportDimensions from 'hooks/useViewportDimensions';
+import MobileNavigationPanel from 'components/MobileNavigationPanel';
 
 const AuthNav = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
+  const viewportDimensions = useViewportDimensions();
+  const isMobileView = viewportDimensions.width <= 767;
+
+  const isDesktopView = viewportDimensions.width >= 1280;
   const [isOpenMenu, setIsOpenMenu] = useState(false);
   const userName = useSelector(authSelectors.getUserName);
   const [isShowChoiceModal, setIsShowChoiceModal] = useState(false);
@@ -40,49 +41,61 @@ const AuthNav = () => {
         navigate('/login', { replace: true });
       });
     }
-  };
-  const closeModalHandle = () => {
     setIsShowChoiceModal(false);
   };
 
   return (
-    <AuthNavStyled>
+    <>
+      <Thumb>
+        <DesktopNavigationThumb>
+          <LogoStyled>
+            <Logo />
+          </LogoStyled>
+
+          {isDesktopView && (
+            <NavThumb>
+              <NavLinkStyled to="/diary">Щоденник</NavLinkStyled>
+              <NavLinkStyled to="/calculator">Калькулятор</NavLinkStyled>
+            </NavThumb>
+          )}
+        </DesktopNavigationThumb>
+
+        <TabletNavigationThumb>
+          {!isMobileView && (
+            <UserThumb>
+              <UserName>{userName}</UserName>
+              <LogoutBtn
+                type="button"
+                onClick={() => setIsShowChoiceModal(true)}
+              >
+                Вихід
+              </LogoutBtn>
+            </UserThumb>
+          )}
+
+          {!isDesktopView && (
+            <Burger handleOpenMenu={setIsOpenMenu} isOpenMenu={isOpenMenu} />
+          )}
+        </TabletNavigationThumb>
+      </Thumb>
+
+      {isMobileView && <MobileNavigationPanel />}
+
       {isShowChoiceModal && (
-        <ChoiceModal
-          text={'що хочете вийти зі свого облікового запису'}
-          choiceHandler={choiceHandler}
-          closeModalHandle={closeModalHandle}
-        />
+        <ReactPortal wrapperId="confirmation-modal">
+          <ChoiceModal
+            text={'що хочете вийти зі свого облікового запису'}
+            choiceHandler={choiceHandler}
+          />
+        </ReactPortal>
       )}
-
-      <DivHeader>
-        <Logostyled>
-          <Logo />
-          <VerticalDeskTop />
-          <NavThumb>
-            <NavLinkStyleMenu to="/diary">Щоденник</NavLinkStyleMenu>
-            <NavLinkStyleMenu to="/calculator">Калькулятор</NavLinkStyleMenu>
-          </NavThumb>
-        </Logostyled>
-
-        <Userstyled>
-          <UserThumb>
-            <UserNameStyle>{userName}</UserNameStyle>
-            <Vertical />
-            <ExitBtn type="button" onClick={() => setIsShowChoiceModal(true)}>
-              Вихід
-            </ExitBtn>
-          </UserThumb>
-          <Burger handleOpenMenu={setIsOpenMenu} isOpenMenu={isOpenMenu} />
-        </Userstyled>
-      </DivHeader>
 
       {isOpenMenu && (
         <ReactPortal wrapperId="nav-menu-modal">
           <NavMenuModal handleMenuOpen={setIsOpenMenu} />
         </ReactPortal>
       )}
-    </AuthNavStyled>
+    </>
   );
 };
 

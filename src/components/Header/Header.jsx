@@ -10,15 +10,10 @@ const Header = ({ localPage }) => {
   const isUserLoggedIn = useSelector(authSelectors.getIsLoggenIn);
 
   return (
-    <>
-      <HeaderStyled>
-        {!isUserLoggedIn && <NotAuthNav localPage={localPage} />}
-
-        {isUserLoggedIn && <AuthNav localPage={localPage} />}
-      </HeaderStyled>
-
-      {/* <PositionRoot id="menu-root" /> */}
-    </>
+    <HeaderStyled>
+      {!isUserLoggedIn && <NotAuthNav localPage={localPage} />}
+      {isUserLoggedIn && <AuthNav localPage={localPage} />}
+    </HeaderStyled>
   );
 };
 

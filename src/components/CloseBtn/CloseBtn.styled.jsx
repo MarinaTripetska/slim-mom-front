@@ -1,17 +1,19 @@
 import styled from 'styled-components';
 
 export const Btn = styled.button`
-  height: 40px;
-  width: 40px;
+  position: ${props => props.position || 'static'};
+  top: 35px;
+  right: 10px;
   border: none;
   padding: 10px;
-  fill: var(--secondary-text-color);
+  background-color: transparent;
+  color: var(--secondary-text-color);
   cursor: pointer;
 
-  transition: fill var(--trans-duration) var(--timing-function);
+  transition: color var(--trans-duration) var(--timing-function);
 
   &:hover,
   &:focus {
-    fill: var(--accent-color);
+    color: var(--accent-color);
   }
 `;

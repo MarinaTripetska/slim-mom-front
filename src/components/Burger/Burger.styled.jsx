@@ -3,17 +3,17 @@ import { breakpoints } from 'assets/sizes';
 import styled from 'styled-components';
 
 export const Button = styled.button`
-  display: none;
+  /* display: none; */
 
-  @media ${breakpoints.maxTablet} {
-    display: block;
-    border: none;
-    background: none;
-    padding: 5px;
+  /* @media ${breakpoints.maxTablet} { */
+  display: block;
+  border: none;
+  background: none;
+  padding: 5px;
 
-    cursor: pointer;
+  cursor: pointer;
 
-    animation: ${TransitionAnimation} 0.5s linear infinite;
-    animation-iteration-count: 1;
-  }
+  animation: ${TransitionAnimation} 0.5s linear infinite;
+  animation-iteration-count: 1;
+  /* } */
 `;

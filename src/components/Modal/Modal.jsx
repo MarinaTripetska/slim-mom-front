@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import { changeToUa } from 'helpers/translateProd';
-import Button from '../Button';
+import Button from '../Buttons/Button';
 import CloseBtn from '../CloseBtn/CloseBtn';
 import IconBack from '../../assets/images/arrow-mobile.png';
 

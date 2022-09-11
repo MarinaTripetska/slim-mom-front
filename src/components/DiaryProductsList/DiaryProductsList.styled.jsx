@@ -56,4 +56,8 @@ export const AlternativeText = styled.p`
   padding: 50px 0;
   font-size: 12px;
   color: var(--secondary-text-color);
+
+  /* @media screen and (max-width: 767px) {
+    display: none;
+  } */
 `;
