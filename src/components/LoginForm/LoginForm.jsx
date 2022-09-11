@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import { useDispatch } from 'react-redux';
@@ -28,7 +28,7 @@ const initialValues = {
   password: '',
 };
 
-const LoginForm = () => {
+export const LoginForm = () => {
   const dispatch = useDispatch();
   const [show, setShow] = useState(false);
 
@@ -101,5 +101,3 @@ const LoginForm = () => {
     </ContainerLogin>
   );
 };
-
-export default LoginForm;

@@ -1,10 +1,10 @@
-import Logo from 'components/Logo';
-import { size } from '../../assets/sizes';
-
-import { Thumb, NavThumb, NavLinkStyled, LogoThumb } from './NotAuthNav.styled';
+import { size } from 'assets/sizes';
 import useViewportDimensions from 'hooks/useViewportDimensions';
 
-const NotAuthNav = ({ localPage }) => {
+import { Logo } from 'components/Logo';
+import { Thumb, NavThumb, NavLinkStyled, LogoThumb } from './NotAuthNav.styled';
+
+export const NotAuthNav = ({ localPage }) => {
   const viewportDimensions = useViewportDimensions();
   const isStartPage = localPage === 'MainPage';
   const isDesktopView = viewportDimensions.width > parseInt(size.maxTablet, 10);
@@ -28,5 +28,3 @@ const NotAuthNav = ({ localPage }) => {
     </Thumb>
   );
 };
-
-export default NotAuthNav;

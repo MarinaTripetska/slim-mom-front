@@ -1,7 +1,5 @@
+import { Button, CloseBtn } from 'components/Buttons';
 import { useEffect } from 'react';
-
-import Button from '../Buttons/Button';
-import CloseBtn from '../CloseBtn/CloseBtn';
 
 import {
   Overlay,
@@ -12,7 +10,7 @@ import {
   ButtonsSet,
 } from './ChoiceModal.styled';
 
-function ChoiceModal({ text, choiceHandler, subText }) {
+export const ChoiceModal = ({ text, choiceHandler, subText }) => {
   useEffect(() => {
     window.addEventListener('keydown', escKeyHandle);
     return () => {
@@ -62,6 +60,4 @@ function ChoiceModal({ text, choiceHandler, subText }) {
       </ModalBox>
     </Overlay>
   );
-}
-
-export default ChoiceModal;
+};

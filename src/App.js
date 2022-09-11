@@ -2,14 +2,11 @@ import { lazy, Suspense, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Routes, Route, Navigate } from 'react-router-dom';
 
-import { PrivateRoute } from 'components/PrivateRoute';
-import { PublicRoute } from 'components/PublicRoute';
-import Loader from './components/Loader';
-import Toaster from 'components/Toasts';
-
 import { authSelectors } from 'redux/app/auth';
 import { actionCurrent } from 'redux/app/auth/auth-operations';
 import tokenService from 'service/token.service';
+
+import { Loader, PrivateRoute, PublicRoute, Toaster } from 'components';
 
 const MainPage = lazy(() => import('pages/MainPage'));
 const LoginPage = lazy(() => import('pages/LoginPage'));

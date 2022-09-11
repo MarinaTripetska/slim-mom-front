@@ -2,7 +2,7 @@ import BurgerMenuIcon from 'assets/images/burger.png';
 import CloseMenuIcon from 'assets/images/close.png';
 import { Button } from './Burger.styled';
 
-const Burger = ({ handleOpenMenu, isOpenMenu }) => {
+export const Burger = ({ handleOpenMenu, isOpenMenu }) => {
   return (
     <>
       {isOpenMenu && (
@@ -18,5 +18,3 @@ const Burger = ({ handleOpenMenu, isOpenMenu }) => {
     </>
   );
 };
-
-export default Burger;

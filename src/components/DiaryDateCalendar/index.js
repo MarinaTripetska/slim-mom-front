@@ -1,3 +1,1 @@
-import DiaryDateCalendar from './DiaryDateCalendar';
-
-export default DiaryDateCalendar;
+export { DiaryDateCalendar } from './DiaryDateCalendar';

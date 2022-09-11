@@ -1,3 +1,1 @@
-import DiaryProductsList from './DiaryProductsList';
-
-export default DiaryProductsList;
+export { DiaryProductsList } from './DiaryProductsList';

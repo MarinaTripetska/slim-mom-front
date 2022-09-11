@@ -1,8 +1,9 @@
 import { useSelector } from 'react-redux';
 
-import { changeToUa } from 'helpers/translateProd';
-import DailyCalorieIntake from 'components/DailyCalorieIntake';
 import { authSelectors } from 'redux/app/auth';
+import { changeToUa } from 'helpers/translateProd';
+
+import { DailyCalorieIntake } from 'components/DailyCalorieIntake';
 
 import {
   SideBarDiv,
@@ -13,8 +14,8 @@ import {
   AltText,
 } from './SideBar.styles';
 
-export default function SideBar({ date, kcalConsumed, calorie }) {
-  const notRecomendedProd = useSelector(authSelectors.getUserNotRecommendProd);
+export const SideBar = ({ date, kcalConsumed, calorie }) => {
+  const notRecommendedProd = useSelector(authSelectors.getUserNotRecommendProd);
 
   return (
     <SideBarDiv>
@@ -27,9 +28,9 @@ export default function SideBar({ date, kcalConsumed, calorie }) {
         <ProdDiv>
           <ListTitle>Не рекомендована їжа</ListTitle>
 
-          {notRecomendedProd.length > 0 ? (
+          {notRecommendedProd.length > 0 ? (
             <ProdList>
-              {notRecomendedProd?.map(product => (
+              {notRecommendedProd?.map(product => (
                 <li key={product}>{changeToUa[product]}</li>
               ))}
             </ProdList>
@@ -42,4 +43,4 @@ export default function SideBar({ date, kcalConsumed, calorie }) {
       </ProdListDiv>
     </SideBarDiv>
   );
-}
+};

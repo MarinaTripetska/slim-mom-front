@@ -7,7 +7,10 @@ function createWrapperAndAppendToBody(wrapperId) {
   return wrapperElement;
 }
 
-function ReactPortal({ children, wrapperId = 'react-portal-wrapper' }) {
+export const ReactPortal = ({
+  children,
+  wrapperId = 'react-portal-wrapper',
+}) => {
   let element = document.getElementById(wrapperId);
 
   if (!element) {
@@ -15,6 +18,4 @@ function ReactPortal({ children, wrapperId = 'react-portal-wrapper' }) {
   }
 
   return createPortal(children, document.getElementById(wrapperId));
-}
-
-export default ReactPortal;
+};

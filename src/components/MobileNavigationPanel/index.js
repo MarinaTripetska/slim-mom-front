@@ -1,1 +1,1 @@
-export { default } from './MobileNavigationPanel';
+export { MobileNavigationPanel } from './MobileNavigationPanel';

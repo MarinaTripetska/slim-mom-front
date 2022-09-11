@@ -4,6 +4,7 @@ import { BsPlusLg } from 'react-icons/bs';
 import { Rings } from 'react-loader-spinner';
 
 import { diaryPerDayOperation, diarySelectors } from 'redux/app/diaryPerDay';
+import { openModalAction } from 'redux/app/openModal';
 import { getProductsByQuery } from '../../service/axios.config';
 
 import {
@@ -15,7 +16,6 @@ import {
   FormInputProduct,
   MobileAddProductFormWraper,
 } from './DiaryAddProductForm.styled';
-import { openModalAction } from 'redux/app/openModal';
 
 const loadOptions = async (inputValue, callback) => {
   if (inputValue.length < 2) {
@@ -31,7 +31,7 @@ const loadOptions = async (inputValue, callback) => {
   );
 };
 
-export default function DiaryProductForm() {
+export const DiaryAddProductForm = () => {
   const dispatch = useDispatch();
 
   let [selectedProduct, setSelectedProduct] = useState(null);
@@ -126,4 +126,4 @@ export default function DiaryProductForm() {
       </Form>
     </MobileAddProductFormWraper>
   );
-}
+};

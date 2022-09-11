@@ -1,7 +1,7 @@
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-export default function Toaster() {
+export const Toaster = () => {
   return (
     <ToastContainer
       position="top-right"
@@ -16,4 +16,4 @@ export default function Toaster() {
       theme="colored"
     />
   );
-}
+};

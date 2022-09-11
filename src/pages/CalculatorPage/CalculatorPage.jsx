@@ -1,15 +1,17 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import MobileNavigationPanel from 'components/MobileNavigationPanel';
-import DailyCaloriesForm from 'components/DailyCaloriesForm';
-import SideBar from 'components/SideBar';
-import Header from 'components/Header';
-
 import { getUsersAdvice } from 'redux/app/auth/auth-operations';
 import { authSelectors } from 'redux/app/auth';
 import { diaryPerDayOperation, updateDate } from 'redux/app/diaryPerDay';
 import useViewportDimensions from 'hooks/useViewportDimensions';
+
+import {
+  DailyCaloriesForm,
+  Header,
+  MobileNavigationPanel,
+  SideBar,
+} from 'components';
 
 import { Section, ContainerBar, ContainerForm } from './CalculatorPage.styled';
 

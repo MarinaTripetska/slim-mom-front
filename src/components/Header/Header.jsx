@@ -1,12 +1,12 @@
 import { useSelector } from 'react-redux';
-
-import AuthNav from 'components/AuthNav';
-import NotAuthNav from 'components/NotAuthNav';
 import { authSelectors } from 'redux/app/auth';
+
+import { AuthNav } from 'components/AuthNav';
+import { NotAuthNav } from 'components/NotAuthNav';
 
 import { HeaderStyled } from './Header.styled';
 
-const Header = ({ localPage }) => {
+export const Header = ({ localPage }) => {
   const isUserLoggedIn = useSelector(authSelectors.getIsLoggenIn);
 
   return (
@@ -16,5 +16,3 @@ const Header = ({ localPage }) => {
     </HeaderStyled>
   );
 };
-
-export default Header;

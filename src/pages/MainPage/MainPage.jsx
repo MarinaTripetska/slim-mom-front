@@ -1,11 +1,14 @@
 import { useState } from 'react';
 
 import { adviceForNoAuthUser } from 'service/axios.config';
-import DailyCaloriesForm from '../../components/DailyCaloriesForm';
-import Modal from '../../components/Modal';
-import Background from '../../components/Background';
-import Header from '../../components/Header';
-import Loader from 'components/Loader';
+
+import {
+  Background,
+  DailyCaloriesForm,
+  Header,
+  Loader,
+  Modal,
+} from 'components';
 
 import { PageWrapper } from './MainPage.styled';
 

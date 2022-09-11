@@ -5,12 +5,12 @@ import { useNavigate } from 'react-router-dom';
 import { authOperations, authSelectors } from 'redux/app/auth';
 import useViewportDimensions from 'hooks/useViewportDimensions';
 
-import Logo from 'components/Logo';
-import ChoiceModal from 'components/ChoiceModal';
-import NavMenuModal from 'components/NavMenuModal';
-import ReactPortal from 'components/ReactPortal';
-import Burger from 'components/Burger';
-import MobileNavigationPanel from 'components/MobileNavigationPanel';
+import { Logo } from 'components/Logo';
+import { Burger } from 'components/Burger';
+import { MobileNavigationPanel } from 'components/MobileNavigationPanel';
+import { ReactPortal } from 'components/ReactPortal';
+import { ChoiceModal } from 'components/ChoiceModal';
+import { NavMenuModal } from 'components/NavMenuModal';
 
 import {
   Thumb,
@@ -24,7 +24,7 @@ import {
   LogoStyled,
 } from './AuthNav.styled';
 
-const AuthNav = () => {
+export const AuthNav = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -99,5 +99,3 @@ const AuthNav = () => {
     </>
   );
 };
-
-export default AuthNav;

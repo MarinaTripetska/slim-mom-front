@@ -2,10 +2,9 @@ import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { GrClose } from 'react-icons/gr';
 
-import { diaryPerDayOperation } from '../../redux/app/diaryPerDay';
-import { diarySelectors } from '../../redux/app/diaryPerDay/';
-import ChoiceModal from '../../components/ChoiceModal';
-// import { Rings } from 'react-loader-spinner';
+import { diaryPerDayOperation, diarySelectors } from 'redux/app/diaryPerDay';
+
+import { ChoiceModal } from 'components/ChoiceModal';
 
 import { Product, ProductInfo } from './DiaryProductListItem.styled';
 
@@ -60,11 +59,7 @@ export const DiaryProductListItem = ({ product }) => {
           onClick={handleDelete}
           disabled={isLoadingDeletedProd}
         >
-          {/* {isLoadingDeletedProd ? (
-            <Rings color=" #FC842D" height={40} width={40} />
-          ) : ( */}
           <GrClose />
-          {/* )} */}
         </button>
       )}
     </Product>

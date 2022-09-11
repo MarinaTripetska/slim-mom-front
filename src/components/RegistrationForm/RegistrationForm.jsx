@@ -29,7 +29,7 @@ const initialValues = {
   password: '',
 };
 
-const RegistrationForm = () => {
+export const RegistrationForm = () => {
   const [show, setShow] = useState(false);
 
   const handleClick = () => setShow(!show);
@@ -48,23 +48,21 @@ const RegistrationForm = () => {
           'Будь ласка, виберіть англійську розкладку клавіатури',
         )
         .required("Обов'язково"),
+
       email: Yup.string()
         .email('Недійсна електронна пошта')
-
         .max(254, 'Максимум 254 символів')
-
         .matches(
           /([a-z0-9_.-]{3,})@([A-z0-9_.-]{1,}).([A-z]{2,8})/,
           'Електронна пошта має містити мінімум 3 символи',
         )
         .required("Обов'язково"),
+
       password: Yup.string()
         .min(8, 'Мінімум 8 символів')
         .max(100, 'Максимум 100 символів')
         .matches(
           /(?=.*[0-9])(?=.*[a-z])[0-9a-zA-Z]{8,}/,
-          // .matches(
-          //   /(?=.*[0-9])(?=.*[a-z]{8,})/,
           'Пароль повинен складатися з латинських літер та цифр без спеціальних символів',
         )
         .required("Обов'язково"),
@@ -95,7 +93,6 @@ const RegistrationForm = () => {
               id="name"
               name="name"
               type="text"
-              // pattern="([A-z])"
               onChange={formik.handleChange}
               value={formik.values.name}
             />
@@ -111,8 +108,6 @@ const RegistrationForm = () => {
               id="email"
               name="email"
               type="text"
-              //pattern="([a-z0-9_.-]{1,})@([A-z0-9_.-]{1,}).([A-z]{2,8})"
-              //title="Електронна пошта повинна складатися з малих латинських літер, цифр і без спеціальних символів."
               onChange={formik.handleChange}
               value={formik.values.email}
             />
@@ -126,8 +121,6 @@ const RegistrationForm = () => {
               id="password"
               name="password"
               type={show ? 'text' : 'password'}
-              // pattern="((?=.*[0-9])(?=.*[a-z])[0-9a-zA-Z]{8,})"
-              // title="Пароль повинен складатися з латинських літер та цифр без спеціальних символів"
               onChange={formik.handleChange}
               value={formik.values.password}
             />
@@ -148,4 +141,3 @@ const RegistrationForm = () => {
     </ContainerRegistr>
   );
 };
-export default RegistrationForm;

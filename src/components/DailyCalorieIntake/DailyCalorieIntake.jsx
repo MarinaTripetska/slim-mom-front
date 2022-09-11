@@ -11,8 +11,8 @@ import {
   Thumb,
 } from './DailyCalorieIntake.styles';
 
-export default function DailyCalorieIntake({ date }) {
-  const daylykCalCount = useSelector(authSelectors.getUserAdviceCalorie);
+export const DailyCalorieIntake = ({ date }) => {
+  const dailyCalCount = useSelector(authSelectors.getUserAdviceCalorie);
   const products = useSelector(diarySelectors.getDiaryProducts);
   const isAnyProducts = products !== null && products.length > 0;
   let kcalConsumed = 0;
@@ -23,8 +23,8 @@ export default function DailyCalorieIntake({ date }) {
       .reduce((p, c) => p + c, 0);
   }
 
-  let kcalLeft = daylykCalCount - kcalConsumed;
-  let percOfNorm = ~~((kcalConsumed / daylykCalCount) * 100);
+  let kcalLeft = dailyCalCount - kcalConsumed;
+  let percOfNorm = ~~((kcalConsumed / dailyCalCount) * 100);
 
   if (kcalLeft < 0) {
     kcalLeft = '000';
@@ -44,7 +44,7 @@ export default function DailyCalorieIntake({ date }) {
         </InfoListItem>
         <InfoListItem>
           <span>Добова норма</span>
-          <span>{daylykCalCount || '000'} кКал</span>
+          <span>{dailyCalCount || '000'} кКал</span>
         </InfoListItem>
         <InfoListItem>
           <span>n% від норми</span>
@@ -55,4 +55,4 @@ export default function DailyCalorieIntake({ date }) {
       </InfoList>
     </Thumb>
   );
-}
+};

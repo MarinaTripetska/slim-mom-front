@@ -2,19 +2,22 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { BsPlusLg } from 'react-icons/bs';
 
-import { diarySelectors } from 'redux/app/diaryPerDay';
-import DiaryDateCalendar from 'components/DiaryDateCalendar';
-import DiaryAddProductForm from 'components/DiaryAddProductForm';
-import DiaryProductsList from 'components/DiaryProductsList';
-import SideBar from 'components/SideBar';
-import { diaryPerDayOperation } from 'redux/app/diaryPerDay';
-import Header from 'components/Header';
+import { diaryPerDayOperation, diarySelectors } from 'redux/app/diaryPerDay';
+import { getIsModalOpen, openModalAction } from 'redux/app/openModal';
+
+import useViewportDimensions from 'hooks/useViewportDimensions';
+
+import {
+  DiaryAddProductForm,
+  DiaryDateCalendar,
+  DiaryProductsList,
+  Header,
+  MainContainer,
+  ReactPortal,
+  SideBar,
+} from 'components';
 
 import { AddBtnMobile, SidebarWrap, ContainerDiary } from './DiaryPage.styled';
-import MainContainer from 'components/MainContainer';
-import useViewportDimensions from 'hooks/useViewportDimensions';
-import ReactPortal from 'components/ReactPortal';
-import { getIsModalOpen, openModalAction } from 'redux/app/openModal';
 
 export default function DiaryPage() {
   const dispatch = useDispatch();

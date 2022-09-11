@@ -1,23 +1,24 @@
-import { useSelector } from 'react-redux';
+// import { useSelector } from 'react-redux';
+// import { authSelectors } from 'redux/app/auth';
 
-import Container from 'components/MainContainer';
-import RegistrationForm from 'components/RegistrationForm';
-import Loader from 'components/Loader';
-import { authSelectors } from 'redux/app/auth';
-import Background from '../../components/Background';
-import Header from '../../components/Header';
+import {
+  Background,
+  Header,
+  MainContainer,
+  RegistrationForm,
+} from 'components';
 
 const RegistrationPage = () => {
-  const isLoading = useSelector(authSelectors.getIsLoading);
+  // const isLoading = useSelector(authSelectors.getIsLoading);
 
   return (
     <Background>
       <Header localPage="RegistrationPage" />
 
-      <Container>
-        {isLoading && <Loader />}
+      <MainContainer>
+        {/* {isLoading && <Loader />} */}
         <RegistrationForm />
-      </Container>
+      </MainContainer>
     </Background>
   );
 };

@@ -1,11 +1,11 @@
 import { Link } from 'react-router-dom';
 
-import LogoImage from '../../assets/images/logo_image.png';
-import LogoText from '../../assets/images/logo_text.png';
+import LogoImage from 'assets/images/logo_image.png';
+import LogoText from 'assets/images/logo_text.png';
 
 import { Image, Text, LogoStyled } from './Logo.styled';
 
-const Logo = () => {
+export const Logo = () => {
   return (
     <Link to="/">
       <LogoStyled>
@@ -15,5 +15,3 @@ const Logo = () => {
     </Link>
   );
 };
-
-export default Logo;

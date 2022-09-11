@@ -25,12 +25,10 @@ const CloseIcon = () => {
   );
 };
 
-const CalendarBtn = ({ onHandleClick, isShown }) => {
+export const CalendarBtn = ({ onHandleClick, isShown }) => {
   return (
     <Btn onClick={() => onHandleClick()}>
       {isShown ? <CloseIcon /> : <CalendarIcon />}
     </Btn>
   );
 };
-
-export default CalendarBtn;

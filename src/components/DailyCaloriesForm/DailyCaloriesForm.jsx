@@ -2,7 +2,7 @@ import { Formik } from 'formik';
 import { useState } from 'react';
 import { toast } from 'react-toastify';
 
-import Button from '../Buttons/Button';
+import { Button } from 'components/Buttons';
 
 import {
   FormDiv,
@@ -16,12 +16,12 @@ import {
   BtnDiv,
 } from './DailyCaloriesForm.styles';
 
-export default function DailyCaloriesForm({
+export const DailyCaloriesForm = ({
   onFormSubmit,
   userInfo = false,
   isCleanUserInfo = false,
   isShowNoti = true,
-}) {
+}) => {
   const [isFormValid, setIsFormValid] = useState(false);
   const [selectedBldType, setSelectedBlbType] = useState(() =>
     userInfo ? userInfo.bloodType : '1',
@@ -31,7 +31,7 @@ export default function DailyCaloriesForm({
     setSelectedBlbType(event.target.value);
   };
 
-  const inivialValues = userInfo
+  const initialValues = userInfo
     ? userInfo
     : {
         height: '',
@@ -54,7 +54,7 @@ export default function DailyCaloriesForm({
 
   return (
     <Formik
-      initialValues={inivialValues}
+      initialValues={initialValues}
       validate={validate}
       onSubmit={(values, { resetForm }) => {
         if (!isFormValid) return;
@@ -199,4 +199,4 @@ export default function DailyCaloriesForm({
       </FormDiv>
     </Formik>
   );
-}
+};

@@ -1,12 +1,12 @@
 import { Btn } from './Button.styled';
 
-export default function Button({
+export const Button = ({
   onClickHandler,
   btnText,
   type,
   disabled,
   autofocus,
-}) {
+}) => {
   return (
     <Btn
       onClick={onClickHandler}
@@ -17,4 +17,4 @@ export default function Button({
       {btnText}
     </Btn>
   );
-}
+};

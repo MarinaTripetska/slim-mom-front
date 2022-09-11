@@ -3,9 +3,12 @@ import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { authSelectors, authOperations } from 'redux/app/auth';
+import { getIsModalOpen, openModalAction } from 'redux/app/openModal';
+import { useScrollLock } from 'hooks/useScrollLock';
 
-import ChoiceModal from '../ChoiceModal';
-import IconBack from '../../assets/images/arrow-mobile.png';
+import { ReactPortal } from 'components/ReactPortal';
+import { ChoiceModal } from 'components/ChoiceModal';
+import IconBack from 'assets/images/arrow-mobile.png';
 
 import {
   Thumb,
@@ -15,11 +18,7 @@ import {
   BackButton,
 } from './MobileNavigationPanel.styled';
 
-import ReactPortal from 'components/ReactPortal';
-import { useScrollLock } from 'hooks/useScrollLock';
-import { getIsModalOpen, openModalAction } from 'redux/app/openModal';
-
-export default function MobileNavigationPanel({ isModalOpen, clb }) {
+export const MobileNavigationPanel = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const userName = useSelector(authSelectors.getUserName);
@@ -37,7 +36,7 @@ export default function MobileNavigationPanel({ isModalOpen, clb }) {
     unlockScroll();
   };
 
-  const onClickGoBackHandler = clb => {
+  const onClickGoBackHandler = () => {
     if (isMobileFormOpen) {
       dispatch(openModalAction());
     } else {
@@ -61,7 +60,7 @@ export default function MobileNavigationPanel({ isModalOpen, clb }) {
         </ReactPortal>
       )}
 
-      <BackButton onClick={() => onClickGoBackHandler(clb)}>
+      <BackButton onClick={onClickGoBackHandler}>
         <img src={IconBack} alt="IconBack" />
       </BackButton>
 
@@ -72,4 +71,4 @@ export default function MobileNavigationPanel({ isModalOpen, clb }) {
       </UserInfoThumb>
     </Thumb>
   );
-}
+};
