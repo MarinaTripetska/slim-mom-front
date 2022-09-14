@@ -156,7 +156,6 @@ export const FormBtnMobile = styled(FormBtnBase)`
     display: none;
   }
   &:disabled {
-    /* pointer-events: none; */
     opacity: 0.7;
     cursor: not-allowed;
   }

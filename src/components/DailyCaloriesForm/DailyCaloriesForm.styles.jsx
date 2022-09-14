@@ -1,68 +1,59 @@
 import styled from 'styled-components';
 import { Field, Form } from 'formik';
-import { breakpoints } from '../../assets/sizes';
+import { breakpoints } from 'assets/sizes';
 
-const FormDiv = styled.div`
+export const Thumb = styled.div`
   display: flex;
   flex-flow: row wrap;
   max-width: 610px;
-  padding-left: 20px;
-  padding-right: 20px;
+
+  padding-top: 32px;
+  padding-bottom: 40px;
 
   @media ${breakpoints.minTablet} {
-    padding-left: 32px;
-    padding-right: 0;
+    padding-top: 100px;
+    padding-bottom: 50px;
   }
 
   @media ${breakpoints.desktop} {
-    padding-left: 16px;
+    padding-top: 140px;
   }
 `;
 
-const DCForm = styled(Form)`
-  display: flex;
-  flex-flow: row wrap;
+export const Title = styled.h1`
+  font-size: 18px;
+  color: var(--main-text-color);
+
+  @media (min-width: 768px) {
+    font-size: 34px;
+    line-height: 1.4;
+  }
 `;
 
-const LblDiv1 = styled.div`
+export const FormStyled = styled(Form)`
+  display: flex;
+  flex-direction: column;
+
+  @media ${breakpoints.minTablet} {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 30px;
+  }
+`;
+
+export const LblDiv1 = styled.div`
   display: flex;
   flex-flow: column;
   width: 100%;
 
   @media ${breakpoints.minTablet} {
-    max-width: 240px;
-
-    &:not(:last-child) {
-      margin-right: 32px;
-    }
+    width: 240px;
   }
 `;
 
-const FormP = styled.p`
-  /* margin-left: 30px; */
-  font-size: 18px;
-  font-family: 'Verdana';
-  font-style: normal;
-  line-height: 1.206;
-  font-weight: 700;
-  color: var(--main-text-color);
-
-  @media (min-width: 768px) {
-    font-size: 34px;
-    line-height: 1.444;
-  }
-`;
-
-const FormLabel = styled.label`
+export const FormLabel = styled.label`
   position: relative;
-  font-family: 'Verdana';
-  font-style: normal;
-  font-weight: 700;
-  font-size: 14px;
-  line-height: 1.214;
-  letter-spacing: 0.04em;
   color: var(--secondary-text-color);
-  /* margin-left: 32px; */
   margin-top: 40px;
   width: 100%;
 
@@ -81,10 +72,7 @@ const FormLabel = styled.label`
     position: absolute;
     z-index: 1;
     bottom: 100%;
-    /* left: 50%; */
-    /* margin-left: -60px; */
 
-    /* Fade in tooltip - takes 1 second to go from 0% to 100% opac: */
     opacity: 0;
     transition: opacity 1s;
   }
@@ -95,7 +83,7 @@ const FormLabel = styled.label`
   }
 `;
 
-const TextInp = styled(Field)`
+export const TextInp = styled(Field)`
   display: block;
   border: none;
   width: 100%;
@@ -122,23 +110,17 @@ const TextInp = styled(Field)`
   }
 `;
 
-const BlList = styled.ul`
-  /* font-family: 'Verdana'; */
-  font-style: normal;
-  font-weight: 700;
-  font-size: 14px;
-  line-height: 1.214;
-  letter-spacing: 0.04em;
+export const BlList = styled.ul`
   color: var(--secondary-text-color);
   border-top: 1px solid var(--border-color);
-  /* margin-top: 20px; */
+
   padding: 8px 0 12px;
   display: inline-flex;
   width: 100%;
-  flex-flow: row wrap;
+  flex-flow: row no-wrap;
 `;
 
-const RadioInp = styled(Field)`
+export const RadioInp = styled(Field)`
   position: absolute;
   z-index: -1;
   opacity: 0;
@@ -172,9 +154,6 @@ const RadioInp = styled(Field)`
   &:not(:disabled):not(:checked) + label:hover::before {
     border-color: var(--border-color);
   }
-  /* &:focus + label {
-    outline: auto;
-  } */
 
   &:checked + label::before {
     text-align: center;
@@ -186,37 +165,15 @@ const RadioInp = styled(Field)`
   }
 `;
 
-const BtnDiv = styled.div`
-  // margin-top: 60px;
-
-  // margin-left: 32px;
-  // padding-bottom: 60px;
-  // @media (max-width: 768px) {
-  //   margin: 40px auto 0 auto;
-  //   //padding-bottom: 60px;
-  //   @media (min-width: 1280px) {
-  //     margin-left: auto;
-  //   }
-  // }
-  margin: 40px auto 100px auto;
+export const BtnContainer = styled.div`
+  align-self: center;
+  margin-top: 40px;
 
   @media ${breakpoints.minTablet} {
-    margin: 60px auto 100px 32px;
+    margin-top: 60px;
+    align-self: flex-start;
   }
-
   @media ${breakpoints.desktop} {
-    margin: 60px 0px 100px 339px;
+    align-self: flex-end;
   }
 `;
-
-export {
-  FormDiv,
-  DCForm,
-  FormLabel,
-  FormP,
-  LblDiv1,
-  TextInp,
-  BlList,
-  RadioInp,
-  BtnDiv,
-};

@@ -85,6 +85,7 @@ export const DiaryAddProductForm = () => {
             escapeClearsValue
           />
         </FormLabel>
+
         <FormLabel>
           <FormInputWeight
             type="number"

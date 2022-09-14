@@ -3,61 +3,62 @@ import { breakpoints } from 'assets/sizes';
 
 export const ProductsListThumb = styled.div`
   position: relative;
+  width: 100%;
+  max-width: 350px;
+  min-height: 100px;
+  max-height: 200px;
+  overflow-y: hidden;
+
+  :before {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 50px;
+    position: absolute;
+    bottom: 0;
+    z-index: 2;
+    pointer-events: none;
+    background: linear-gradient(
+      to bottom,
+      rgba(255, 255, 255, 0),
+      rgba(255, 255, 255, 1)
+    );
+  }
 
   @media ${breakpoints.minTablet} {
+    min-height: 200px;
     max-height: 240px;
-
-    :before {
-      pointer-events: none;
-      width: 634px;
-      position: absolute;
-      bottom: 0;
-      height: 50px;
-      left: 0;
-      right: 0;
-      background: linear-gradient(0, #fff, transparent);
-      content: '';
-    }
+    max-width: 610px;
   }
 `;
 
 export const ProductsList = styled.ul`
+  width: 100%;
+  max-height: 200px;
+
   display: flex;
   flex-direction: column;
-  align-items: center;
-  margin-top: 32px;
-  max-height: 230px;
-  width: 310px;
-  margin-left: -20px;
-  margin-right: -10px;
+  gap: 20px;
   overflow-y: scroll;
 
-  ::-webkit-scrollbar {
+  padding-right: 20px;
+
+  &::-webkit-scrollbar {
     width: 6px;
+    background-color: #f0f1f3;
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: #264061;
   }
 
-  ::-webkit-scrollbar-thumb {
-    background: rgb(38, 64, 97);
-  }
-
-  ::-webkit-scrollbar-track {
-    background: var(--secondary-background-color);
-  }
   @media ${breakpoints.minTablet} {
-    margin-left: 0;
-    margin-right: 0;
-    width: 640px;
-    margin-bottom: 55px;
-    align-items: flex-start;
+    gap: 16px;
+    max-height: 240px;
+    padding-right: 40px;
   }
 `;
 
 export const AlternativeText = styled.p`
-  padding: 50px 0;
   font-size: 12px;
   color: var(--secondary-text-color);
-
-  /* @media screen and (max-width: 767px) {
-    display: none;
-  } */
 `;

@@ -35,19 +35,21 @@ export const TabletNavigationThumb = styled.div`
 `;
 
 export const LogoStyled = styled.div`
-  &::after {
-    content: '';
-    display: block;
+  @media ${breakpoints.desktop} {
+    &::after {
+      content: '';
+      display: block;
 
-    position: relative;
-    left: 170px;
-    bottom: 7px;
+      position: relative;
+      left: 170px;
+      bottom: 7px;
 
-    width: 32px;
-    height: 2px;
+      width: 32px;
+      height: 2px;
 
-    transform: rotate(90deg);
-    background-color: var(--border-color);
+      transform: rotate(90deg);
+      background-color: var(--border-color);
+    }
   }
 `;
 

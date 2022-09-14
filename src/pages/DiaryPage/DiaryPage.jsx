@@ -17,7 +17,12 @@ import {
   SideBar,
 } from 'components';
 
-import { AddBtnMobile, SidebarWrap, ContainerDiary } from './DiaryPage.styled';
+import {
+  PageGrid,
+  AddBtnMobile,
+  SidebarWrap,
+  ContainerDiary,
+} from './DiaryPage.styled';
 
 export default function DiaryPage() {
   const dispatch = useDispatch();
@@ -48,7 +53,7 @@ export default function DiaryPage() {
       <Header localPage="DiaryPage" />
 
       {!isMobileFormOpen && (
-        <>
+        <PageGrid>
           <MainContainer>
             <ContainerDiary>
               <DiaryDateCalendar />
@@ -82,7 +87,7 @@ export default function DiaryPage() {
           <SidebarWrap>
             <SideBar date={date} />
           </SidebarWrap>
-        </>
+        </PageGrid>
       )}
 
       {isMobileFormOpen && (

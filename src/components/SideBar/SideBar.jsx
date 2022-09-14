@@ -5,42 +5,32 @@ import { changeToUa } from 'helpers/translateProd';
 
 import { DailyCalorieIntake } from 'components/DailyCalorieIntake';
 
-import {
-  SideBarDiv,
-  ProdListDiv,
-  ProdList,
-  ListTitle,
-  ProdDiv,
-  AltText,
-} from './SideBar.styles';
+import { Thumb, ProdThumb, List, Title, AltText } from './SideBar.styles';
 
 export const SideBar = ({ date, kcalConsumed, calorie }) => {
   const notRecommendedProd = useSelector(authSelectors.getUserNotRecommendProd);
 
   return (
-    <SideBarDiv>
-      <ProdListDiv>
-        <DailyCalorieIntake
-          date={date.replace(/\./g, '/')}
-          daylykCalCount={calorie}
-          kcalConsumed={kcalConsumed}
-        />
-        <ProdDiv>
-          <ListTitle>Не рекомендована їжа</ListTitle>
+    <Thumb>
+      <DailyCalorieIntake
+        date={date.replace(/\./g, '/')}
+        daylykCalCount={calorie}
+        kcalConsumed={kcalConsumed}
+      />
 
-          {notRecommendedProd.length > 0 ? (
-            <ProdList>
-              {notRecommendedProd?.map(product => (
-                <li key={product}>{changeToUa[product]}</li>
-              ))}
-            </ProdList>
-          ) : (
-            <AltText>
-              Тут відображатимуться не рекомендовані Вам продукти
-            </AltText>
-          )}
-        </ProdDiv>
-      </ProdListDiv>
-    </SideBarDiv>
+      <ProdThumb>
+        <Title>Не рекомендована їжа</Title>
+
+        {notRecommendedProd.length > 0 ? (
+          <List>
+            {notRecommendedProd?.map(product => (
+              <li key={product}>{changeToUa[product]}</li>
+            ))}
+          </List>
+        ) : (
+          <AltText>Тут відображатимуться не рекомендовані Вам продукти</AltText>
+        )}
+      </ProdThumb>
+    </Thumb>
   );
 };
