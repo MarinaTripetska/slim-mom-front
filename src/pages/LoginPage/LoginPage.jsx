@@ -1,25 +1,12 @@
-import { useSelector } from 'react-redux';
-
-import Container from 'components/Container';
-import LoginForm from 'components/LoginForm';
-import Loader from 'components/Loader';
-import { authSelectors } from 'redux/app/auth';
-import Background from '../../components/Background';
-import Header from '../../components/Header';
+import { Background, Header, LoginForm, MainContainer } from 'components';
 
 const LoginPage = () => {
-  const isLoading = useSelector(authSelectors.getIsLoading);
-
   return (
-    <>
-      <Background>
-        <Header localPage="LoginPage" />
-        <Container>
-          {isLoading && <Loader />}
-          <LoginForm />
-        </Container>
-      </Background>
-    </>
+    <Background>
+      <Header localPage="LoginPage" />
+
+      <LoginForm />
+    </Background>
   );
 };
 export default LoginPage;

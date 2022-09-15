@@ -15,17 +15,7 @@ const GlobalStyle = createGlobalStyle`
   font-weight: 700;
 }
 
-@media screen and (max-width: 767px) {
-  .hideOnMobile {
-    display: none !important;
-  }
-}
 
-@media screen and (min-width: 768px) {
-  .showOnMobile {
-    display: none !important;
-  }
-}
 
 :root {
   --main-text-color: #212121;
@@ -36,8 +26,10 @@ const GlobalStyle = createGlobalStyle`
   --accent-shadow: rgba(252, 132, 45, 0.5);
   --secondary-background-color: #F0F1F3;
   --border-color: #e0e0e0;
+  
   --timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   --trans-duration: 250ms;
+  --transition-params: var(--timing-function) var(--trans-duration); 
 }
 
 *,
@@ -46,19 +38,29 @@ const GlobalStyle = createGlobalStyle`
   box-sizing: border-box;
 }
 
-
 body {
-  min-height: 100%;
-  scroll-behavior: smooth; 
+  width: 100%;
+height: 100vh;
+  scroll-behavior: smooth;
+
   font-family: 'Verdana';
   font-style: normal;  
   font-weight: 700;
   font-size: 14px;
-  line-height: 1.21;
+  line-height: 1.2;
   letter-spacing: 0.04em;
+
   color: var(--main-text-color);
 }
 
+#root{
+  width:100%;
+  height: 100%;
+
+  display: flex;
+flex-direction: column;
+justify-content: space-between;
+}
 
 
 body,
@@ -91,7 +93,6 @@ button {
   margin: 0;
 }
 
-
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
     -webkit-appearance: none;
@@ -99,8 +100,6 @@ input::-webkit-inner-spin-button {
 }
 input[type=number]{
     -moz-appearance: textfield;
-}
-
-`;
+}`;
 
 export default GlobalStyle;

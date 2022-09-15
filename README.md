@@ -1,14 +1,12 @@
 ## [Link to Backedn Open Code](https://github.com/MarinaTripetska/slim-mom-back)
 
-## [Link to Backend Server](https://slim-mom-back.herokuapp.com/api/v1)
-
 ## [Link to Deploy Application](https://team-work-goit-slim-mom.netlify.app/)
 
-## Используемые в макете шрифты (большинство), но нужно каждый случай перепроверить
+## [Swagger API](https://slim-mom-back.herokuapp.com/api-docs/)
 
-Везде используется Verdana. Изменяются только размеры.
+---
 
-Mobile - first! ))
+### Fonts used in the layout:
 
 |                | MOBILE                  | TABLET                  | DESKTOP                 |
 | -------------- | ----------------------- | ----------------------- | ----------------------- |
@@ -32,9 +30,9 @@ Mobile - first! ))
 
 ---
 
-## Лоадер
+## Loader
 
-Для отображения/скрытия Лоадера:
+To show/hide the Loader:
 
 ```javascript
 import { useDispatch } from 'react-redux';
@@ -43,11 +41,11 @@ const dispatch = useDispatch();
 ```
 
 ```javascript
-dispatch(loaderAction(true) // отобразить
-dispatch(loaderAction(false) // скрыть
+dispatch(loaderAction(true) // show
+dispatch(loaderAction(false) // hide
 ```
 
-Например:
+For example:
 
 ```javascript
 <button onClick={() => dispatch(loaderAction(true))}> Show loader </button>
@@ -55,16 +53,7 @@ dispatch(loaderAction(false) // скрыть
 
 ---
 
-## Календарь
+## Calendar
 
-[Документация по календарику](https://github.com/arqex/react-datetime)
+[Documentation for the calendar](https://github.com/arqex/react-datetime)
 (react-datetime - a date and time picker in the same React.js component)
-
----
-
-## Селект
-
-[Документация React-Select](https://www.npmjs.com/package/react-select) - Пакет
-для селекта, мультиселекта, асинхронного селекта
-
----

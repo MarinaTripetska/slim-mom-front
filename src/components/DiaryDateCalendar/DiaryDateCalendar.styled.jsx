@@ -3,6 +3,8 @@ import Datetime from 'react-datetime';
 import { breakpoints } from 'assets/sizes';
 
 export const DatePickerWrapper = styled.div`
+  align-self: flex-start;
+
   display: flex;
   justify-content: start;
   align-items: center;

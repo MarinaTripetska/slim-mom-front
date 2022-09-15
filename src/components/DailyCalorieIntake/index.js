@@ -1,3 +1,1 @@
-import DailyCalorieIntake from './DailyCalorieIntake';
-
-export default DailyCalorieIntake;
+export { DailyCalorieIntake } from './DailyCalorieIntake';

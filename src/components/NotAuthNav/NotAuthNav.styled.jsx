@@ -1,49 +1,63 @@
+import { ContainerStyledPlh } from 'components/MainContainer/MainContainer.styled';
 import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 import { breakpoints } from '../../assets/sizes';
 
-export const NotAuthNavStyled = styled.div`
-  width: 100%;
+export const Thumb = styled.div`
+  ${ContainerStyledPlh};
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 20px;
 
+  min-height: 80px;
+  max-width: 100%;
+  border-bottom: 2px solid var(--border-color);
+  @media ${breakpoints.minTablet} {
+  }
   @media ${breakpoints.desktop} {
+    border-bottom: none;
     justify-content: flex-start;
     align-items: flex-end;
+    min-height: 150px;
+    gap: 40px;
   }
 `;
+export const LogoThumb = styled.div`
+  ::after {
+    ${props =>
+      props.showVerticalLine &&
+      ` content: '';
+    display: block;
 
+    position: relative;
+    left: 170px;
+    bottom: 7px;
+
+    width: 32px;
+    height: 2px;
+
+    transform: rotate(90deg);
+    background-color: var(--border-color);`}
+  }
+`;
 export const NavThumb = styled.div`
-  //padding: 0 20px;
-  align-items: center;
-  /* display: flex; */
+  display: flex;
   gap: 16px;
-  color: var(--secondary-text-color);
-  text-transform: uppercase;
 
-  @media ${breakpoints.desktop} {
-    justify-content: flex-start;
-    align-items: flex-end;
-    margin-left: 20px;
-    border-left: 1px solid grey;
-    /* padding: 10px 20px;
-    padding-bottom: -20px; */
-    /* &::before {
-      content: '';
-      width: 32px;
-      height: 1px;
-      background-color: grey;
-      transform: rotate(90deg);
-      align-items: flex-end;
-    } */
-  }
+  text-transform: uppercase;
 `;
 
-export const NavLinkStyle = styled(NavLink)`
-  margin-left: 20px;
-
-  &.active {
+export const NavLinkStyled = styled(NavLink)`
+  color: var(--secondary-text-color);
+  transition: color var(--transition-params);
+  padding-top: 15px;
+  :hover,
+  :focus {
     color: var(--main-text-color);
   }
+
+  @media ${breakpoints.maxMobile} {
+    font-size: 12px;
+  } ;
 `;

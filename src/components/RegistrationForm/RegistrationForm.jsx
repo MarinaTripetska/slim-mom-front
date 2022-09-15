@@ -6,21 +6,19 @@ import * as Yup from 'yup';
 
 import { authOperations } from '../../redux/app/auth';
 
+import { PasswordEyeButton } from 'components/Buttons';
 import {
-  ContainerRegistr,
-  TitleRegistr,
-  FormRegistr,
-  FormRegistrList,
-  FormRegistrItem,
-  FormRegistrLabel,
-  FormRegistrInput,
+  Thumb,
+  Title,
+  Form,
+  FormList,
+  FormItem,
+  Label,
+  Input,
   Message,
-  ButtonContainer,
-  RegistrButton,
+  ButtonsContainer,
+  Button,
   StyledNavLink,
-  PasswordButton,
-  ShowPassword,
-  HidePassword,
 } from './RegistrationForm.styled';
 
 const initialValues = {
@@ -29,12 +27,12 @@ const initialValues = {
   password: '',
 };
 
-const RegistrationForm = () => {
-  const [show, setShow] = useState(false);
-
-  const handleClick = () => setShow(!show);
+export const RegistrationForm = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
+  const [show, setShow] = useState(false);
+  const handleClick = () => setShow(!show);
 
   const formik = useFormik({
     initialValues,
@@ -48,23 +46,21 @@ const RegistrationForm = () => {
           'Будь ласка, виберіть англійську розкладку клавіатури',
         )
         .required("Обов'язково"),
+
       email: Yup.string()
         .email('Недійсна електронна пошта')
-
         .max(254, 'Максимум 254 символів')
-
         .matches(
           /([a-z0-9_.-]{3,})@([A-z0-9_.-]{1,}).([A-z]{2,8})/,
           'Електронна пошта має містити мінімум 3 символи',
         )
         .required("Обов'язково"),
+
       password: Yup.string()
         .min(8, 'Мінімум 8 символів')
         .max(100, 'Максимум 100 символів')
         .matches(
           /(?=.*[0-9])(?=.*[a-z])[0-9a-zA-Z]{8,}/,
-          // .matches(
-          //   /(?=.*[0-9])(?=.*[a-z]{8,})/,
           'Пароль повинен складатися з латинських літер та цифр без спеціальних символів',
         )
         .required("Обов'язково"),
@@ -85,67 +81,64 @@ const RegistrationForm = () => {
   });
 
   return (
-    <ContainerRegistr>
-      <TitleRegistr>Реєстрація</TitleRegistr>
-      <FormRegistr onSubmit={formik.handleSubmit}>
-        <FormRegistrList>
-          <FormRegistrItem>
-            <FormRegistrLabel htmlFor="name">Ім'я *</FormRegistrLabel>
-            <FormRegistrInput
+    <Thumb>
+      <Title>Реєстрація</Title>
+
+      <Form onSubmit={formik.handleSubmit}>
+        <FormList>
+          <FormItem>
+            <Label htmlFor="name">Ім'я *</Label>
+
+            <Input
               id="name"
               name="name"
               type="text"
-              // pattern="([A-z])"
               onChange={formik.handleChange}
               value={formik.values.name}
             />
             {formik.touched.name && formik.errors.name ? (
               <Message>{formik.errors.name}</Message>
             ) : null}
-          </FormRegistrItem>
-          <FormRegistrItem>
-            <FormRegistrLabel htmlFor="email">
-              Електронна пошта *
-            </FormRegistrLabel>
-            <FormRegistrInput
+          </FormItem>
+          <FormItem>
+            <Label htmlFor="email">Електронна пошта *</Label>
+
+            <Input
               id="email"
               name="email"
               type="text"
-              //pattern="([a-z0-9_.-]{1,})@([A-z0-9_.-]{1,}).([A-z]{2,8})"
-              //title="Електронна пошта повинна складатися з малих латинських літер, цифр і без спеціальних символів."
               onChange={formik.handleChange}
               value={formik.values.email}
             />
             {formik.touched.email && formik.errors.email ? (
               <Message>{formik.errors.email}</Message>
             ) : null}
-          </FormRegistrItem>
-          <FormRegistrItem>
-            <FormRegistrLabel htmlFor="password">Пароль *</FormRegistrLabel>
-            <FormRegistrInput
+          </FormItem>
+
+          <FormItem>
+            <Label htmlFor="password">Пароль *</Label>
+
+            <Input
               id="password"
               name="password"
               type={show ? 'text' : 'password'}
-              // pattern="((?=.*[0-9])(?=.*[a-z])[0-9a-zA-Z]{8,})"
-              // title="Пароль повинен складатися з латинських літер та цифр без спеціальних символів"
               onChange={formik.handleChange}
               value={formik.values.password}
             />
-            <PasswordButton type="button" onClick={handleClick}>
-              {show ? <ShowPassword /> : <HidePassword />}
-            </PasswordButton>
+            <PasswordEyeButton handleClick={handleClick} show={show} />
+
             {formik.touched.password && formik.errors.password ? (
               <Message>{formik.errors.password}</Message>
             ) : null}
-          </FormRegistrItem>
-        </FormRegistrList>
-        <ButtonContainer>
-          <RegistrButton type="submit">Зареєструватися</RegistrButton>
+          </FormItem>
+        </FormList>
+
+        <ButtonsContainer>
+          <Button type="submit">Зареєструватися</Button>
 
           <StyledNavLink to="/login">Увійти</StyledNavLink>
-        </ButtonContainer>
-      </FormRegistr>
-    </ContainerRegistr>
+        </ButtonsContainer>
+      </Form>
+    </Thumb>
   );
 };
-export default RegistrationForm;

@@ -1,3 +1,1 @@
-import {DiaryProductListItem} from './DiaryProductListItem';
-
-export default DiaryProductListItem;
+export { DiaryProductListItem } from './DiaryProductListItem';

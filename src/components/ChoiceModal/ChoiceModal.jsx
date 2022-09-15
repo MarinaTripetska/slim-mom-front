@@ -1,19 +1,16 @@
+import { Button, CloseBtn } from 'components/Buttons';
 import { useEffect } from 'react';
-
-import Button from '../Button';
-import CloseBtn from '../CloseBtn/CloseBtn';
 
 import {
   Overlay,
-  ModalDiv,
-  ModalTtl,
+  ModalBox,
+  Title,
   Text,
-  CloseModalBtn,
-  ContentWrap,
-  BtnWrapper,
+  ContentBox,
+  ButtonsSet,
 } from './ChoiceModal.styled';
 
-function ChoiceModal({ text, choiceHandler, closeModalHandle, subText }) {
+export const ChoiceModal = ({ text, choiceHandler, subText }) => {
   useEffect(() => {
     window.addEventListener('keydown', escKeyHandle);
     return () => {
@@ -21,69 +18,46 @@ function ChoiceModal({ text, choiceHandler, closeModalHandle, subText }) {
     };
   });
 
-  const escKeyHandle = event => {
-    if (event.keyCode === 27) {
-      choiceHandler(false);
-      closeModalHandle();
-      document.body.style.overflow = 'visible';
-    }
-  };
-  const onClickOvrlHandle = event => {
-    if (event.target.id === 'modal-overlay') {
-      choiceHandler(false);
-      closeModalHandle();
-      document.body.style.overflow = 'visible';
-    }
+  const onChoiceCancel = () => {
+    choiceHandler(false);
   };
 
-  const onOkClickHandle = () => {
+  const onChoiceConfirm = () => {
     choiceHandler(true);
-    closeModalHandle();
-    document.body.style.overflow = 'visible';
   };
 
-  const onCancelClickHandle = () => {
-    choiceHandler(false);
-    closeModalHandle();
-    document.body.style.overflow = 'visible';
+  const escKeyHandle = e => {
+    if (e.code === 'Escape') {
+      onChoiceCancel();
+    }
   };
 
-  const closeModal = () => {
-    choiceHandler(false);
-    closeModalHandle();
-    document.body.style.overflow = 'visible';
+  const handelOverlayClick = e => {
+    if (e.currentTarget === e.target) {
+      onChoiceCancel();
+    }
   };
 
   return (
-    <Overlay id="modal-overlay" onClick={onClickOvrlHandle}>
-      <ModalDiv>
-        <CloseModalBtn>
-          <CloseBtn onHandleClick={closeModal} />
-        </CloseModalBtn>
+    <Overlay onClick={handelOverlayClick}>
+      <ModalBox>
+        <CloseBtn onHandleClick={onChoiceCancel} position="absolute" />
 
-        <ContentWrap>
-          <ModalTtl>Ви впевнені, {text}?</ModalTtl>
-
+        <ContentBox>
+          <Title>Ви впевнені, {text}?</Title>
           <Text>{subText}</Text>
 
-          <BtnWrapper>
+          <ButtonsSet>
             <Button
-              // style={{ backgroundColor: 'red' }}
-              onClickHandler={onCancelClickHandle}
+              onClickHandler={onChoiceCancel}
               btnText="Скасувати"
-              autofocus={true}
+              autofocus
             />
-            <Button
-              // style={{ backgraund: "red" }}
-              onClickHandler={onOkClickHandle}
-              btnText="Підтвердити"
-              autofocus={false}
-            />
-          </BtnWrapper>
-        </ContentWrap>
-      </ModalDiv>
+
+            <Button onClickHandler={onChoiceConfirm} btnText="Підтвердити" />
+          </ButtonsSet>
+        </ContentBox>
+      </ModalBox>
     </Overlay>
   );
-}
-
-export default ChoiceModal;
+};

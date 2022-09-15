@@ -1,113 +1,40 @@
-import { createPortal } from 'react-dom';
+import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
-import Logo from 'components/Logo';
 import { authOperations, authSelectors } from 'redux/app/auth';
-import BurgerMenuIcon from 'assets/images/burger.png';
-import CloseMenuIcon from 'assets/images/close.png';
-import ChoiceModal from '../ChoiceModal';
+import useViewportDimensions from 'hooks/useViewportDimensions';
+
+import { Logo } from 'components/Logo';
+import { Burger } from 'components/Burger';
+import { MobileNavigationPanel } from 'components/MobileNavigationPanel';
+import { ReactPortal } from 'components/ReactPortal';
+import { ChoiceModal } from 'components/ChoiceModal';
+import { NavMenuModal } from 'components/NavMenuModal';
 
 import {
-  AuthNavStyled,
-  DivHeader,
+  Thumb,
   NavThumb,
   UserThumb,
-  Logostyled,
-  Userstyled,
-  UserNameStyle,
-  ExitBtn,
-  Vertical,
-  VerticalDeskTop,
-  NavLinkStyleMenu,
-  ButtonBurger,
-  NavThumbOpen,
-  NavLinkStyleMenuOpen,
+  LogoutBtn,
+  TabletNavigationThumb,
+  NavLinkStyled,
+  DesktopNavigationThumb,
+  UserName,
+  LogoStyled,
 } from './AuthNav.styled';
-import { useState } from 'react';
 
-const AuthNav = () => {
+export const AuthNav = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const [openMenu, setOpenMenu] = useState(false);
+
+  const viewportDimensions = useViewportDimensions();
+  const isMobileView = viewportDimensions.width <= 767;
+
+  const isDesktopView = viewportDimensions.width >= 1280;
+  const [isOpenMenu, setIsOpenMenu] = useState(false);
   const userName = useSelector(authSelectors.getUserName);
   const [isShowChoiceModal, setIsShowChoiceModal] = useState(false);
-
-  const UserMenuOpen = () => {
-    const MenuRoot = document.querySelector('#menu-root');
-    if (openMenu) {
-      const ScrollVisible = () => {
-        document.body.style.overflow = 'visible';
-      };
-      return createPortal(
-        <NavThumbOpen>
-          <NavLinkStyleMenuOpen
-            to="/diary"
-            onClick={() => {
-              setOpenMenu(false);
-              ScrollVisible();
-            }}
-          >
-            {' '}
-            Щоденник
-          </NavLinkStyleMenuOpen>
-          <NavLinkStyleMenuOpen
-            to="/calculator"
-            onClick={() => {
-              setOpenMenu(false);
-              ScrollVisible();
-            }}
-          >
-            Калькулятор
-          </NavLinkStyleMenuOpen>
-        </NavThumbOpen>,
-        MenuRoot,
-      );
-    }
-    return null;
-  };
-
-  const UserMenu = () => {
-    return (
-      <NavThumb>
-        <NavLinkStyleMenu to="/diary">Щоденник</NavLinkStyleMenu>
-        <NavLinkStyleMenu to="/calculator">Калькулятор</NavLinkStyleMenu>
-      </NavThumb>
-    );
-  };
-
-  const handleLogout = () => {
-    setIsShowChoiceModal(true);
-    document.body.style.overflow = 'hidden';
-  };
-
-  const CloseMenu = () => {
-    const HandleClickOpen = e => {
-      e.preventDefault();
-      document.body.style.overflow = 'hidden';
-      setOpenMenu(true);
-      return;
-    };
-
-    const HandleClickClose = e => {
-      e.preventDefault();
-      document.body.style.overflow = 'visible';
-      setOpenMenu(false);
-      return;
-    };
-    if (openMenu) {
-      return (
-        <ButtonBurger onClick={HandleClickClose} style={{ marginRight: '4px' }}>
-          <img src={CloseMenuIcon} alt="CloseMenuIcon" />
-        </ButtonBurger>
-      );
-    }
-    return (
-      <ButtonBurger onClick={HandleClickOpen}>
-        <img src={BurgerMenuIcon} alt="BurgerMenuIcon" />
-      </ButtonBurger>
-    );
-  };
 
   const choiceHandler = answer => {
     if (answer) {
@@ -115,41 +42,60 @@ const AuthNav = () => {
         navigate('/login', { replace: true });
       });
     }
-  };
-  const closeModalHandle = () => {
     setIsShowChoiceModal(false);
   };
 
   return (
-    <AuthNavStyled>
+    <>
+      <Thumb>
+        <DesktopNavigationThumb>
+          <LogoStyled>
+            <Logo />
+          </LogoStyled>
+
+          {isDesktopView && (
+            <NavThumb>
+              <NavLinkStyled to="/diary">Щоденник</NavLinkStyled>
+              <NavLinkStyled to="/calculator">Калькулятор</NavLinkStyled>
+            </NavThumb>
+          )}
+        </DesktopNavigationThumb>
+
+        <TabletNavigationThumb>
+          {!isMobileView && (
+            <UserThumb>
+              <UserName>{userName}</UserName>
+              <LogoutBtn
+                type="button"
+                onClick={() => setIsShowChoiceModal(true)}
+              >
+                Вихід
+              </LogoutBtn>
+            </UserThumb>
+          )}
+
+          {!isDesktopView && (
+            <Burger handleOpenMenu={setIsOpenMenu} isOpenMenu={isOpenMenu} />
+          )}
+        </TabletNavigationThumb>
+      </Thumb>
+
+      {isMobileView && <MobileNavigationPanel />}
+
       {isShowChoiceModal && (
-        <ChoiceModal
-          text={'що хочете вийти зі свого облікового запису'}
-          choiceHandler={choiceHandler}
-          closeModalHandle={closeModalHandle}
-        />
+        <ReactPortal wrapperId="confirmation-modal">
+          <ChoiceModal
+            text={'що хочете вийти зі свого облікового запису'}
+            choiceHandler={choiceHandler}
+          />
+        </ReactPortal>
       )}
 
-      <DivHeader>
-        <Logostyled>
-          <Logo />
-          <VerticalDeskTop />
-          <UserMenu />
-        </Logostyled>
-        <Userstyled>
-          <UserThumb>
-            <UserNameStyle>{userName}</UserNameStyle>
-            <Vertical />
-            <ExitBtn type="button" onClick={handleLogout}>
-              Вихід
-            </ExitBtn>
-          </UserThumb>
-          <CloseMenu />
-        </Userstyled>
-      </DivHeader>
-      <UserMenuOpen />
-    </AuthNavStyled>
+      {isOpenMenu && (
+        <ReactPortal wrapperId="nav-menu-modal">
+          <NavMenuModal handleMenuOpen={setIsOpenMenu} />
+        </ReactPortal>
+      )}
+    </>
   );
 };
-
-export default AuthNav;

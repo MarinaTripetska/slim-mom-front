@@ -2,7 +2,7 @@ import React from 'react';
 import { ThreeDots } from 'react-loader-spinner';
 import { Overlay, LoaderContainer } from './Loader.styled';
 
-const Loader = () => {
+export const Loader = () => {
   return (
     <Overlay>
       <LoaderContainer>
@@ -17,5 +17,3 @@ const Loader = () => {
     </Overlay>
   );
 };
-
-export default Loader;

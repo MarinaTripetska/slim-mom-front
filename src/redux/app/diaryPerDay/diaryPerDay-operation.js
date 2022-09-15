@@ -35,8 +35,8 @@ const actionAddProduct = createAsyncThunk(
   'diaryPerDay/addProduct',
   async (payload, thunkAPI) => {
     try {
-      const response = await addProductByDate(payload);
-      return response.data.data.result.products;
+      const res= await addProductByDate(payload);
+      return res.data.data.result.products;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.response.data);
     }
