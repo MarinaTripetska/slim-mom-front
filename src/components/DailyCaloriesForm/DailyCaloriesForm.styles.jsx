@@ -7,12 +7,10 @@ export const Thumb = styled.div`
   ${ContainerStyledPlh};
   display: flex;
   flex-direction: column;
-  justify-content: center;
-
   width: 100%;
   max-width: 610px;
 
-  padding-top: 32px;
+  padding-top: 42px;
   padding-bottom: 40px;
 
   @media ${breakpoints.minTablet} {
