@@ -12,7 +12,6 @@ import {
   DiaryDateCalendar,
   DiaryProductsList,
   Header,
-  MainContainer,
   ReactPortal,
   SideBar,
 } from 'components';
@@ -54,35 +53,31 @@ export default function DiaryPage() {
 
       {!isMobileFormOpen && (
         <PageGrid>
-          <MainContainer>
-            <ContainerDiary>
-              <DiaryDateCalendar />
+          <ContainerDiary>
+            <DiaryDateCalendar />
 
-              {isCurrentDay ? (
-                isMobileWidth ? (
-                  <>
-                    <DiaryProductsList />
+            {isCurrentDay ? (
+              isMobileWidth ? (
+                <>
+                  <DiaryProductsList />
 
-                    <AddBtnMobile
-                      onClick={() => dispatch(openModalAction(true))}
-                    >
-                      <BsPlusLg size={14} />
-                    </AddBtnMobile>
-                  </>
-                ) : (
-                  <>
-                    <DiaryAddProductForm />
-                    <DiaryProductsList />
-                  </>
-                )
+                  <AddBtnMobile onClick={() => dispatch(openModalAction(true))}>
+                    <BsPlusLg size={14} />
+                  </AddBtnMobile>
+                </>
               ) : (
                 <>
-                  <h2>Продукти якi ви з'їли в цей день:</h2>
+                  <DiaryAddProductForm />
                   <DiaryProductsList />
                 </>
-              )}
-            </ContainerDiary>
-          </MainContainer>
+              )
+            ) : (
+              <>
+                <h2>Продукти якi ви з'їли в цей день:</h2>
+                <DiaryProductsList />
+              </>
+            )}
+          </ContainerDiary>
 
           <SidebarWrap>
             <SideBar date={date} />
