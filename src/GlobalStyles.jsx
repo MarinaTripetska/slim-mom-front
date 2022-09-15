@@ -36,11 +36,11 @@ const GlobalStyle = createGlobalStyle`
 *::before,
 *::after {
   box-sizing: border-box;
-  /* outline: 1px solid tomato; */
 }
 
 body {
-  min-height: 100%;
+  width: 100%;
+height: 100vh;
   scroll-behavior: smooth;
 
   font-family: 'Verdana';
@@ -52,6 +52,16 @@ body {
 
   color: var(--main-text-color);
 }
+
+#root{
+  width:100%;
+  height: 100%;
+
+  display: flex;
+flex-direction: column;
+justify-content: space-between;
+}
+
 
 body,
 h1,

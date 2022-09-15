@@ -1,24 +1,10 @@
-// import { useSelector } from 'react-redux';
-// import { authSelectors } from 'redux/app/auth';
-
-import {
-  Background,
-  Header,
-  MainContainer,
-  RegistrationForm,
-} from 'components';
+import { Background, Header, RegistrationForm } from 'components';
 
 const RegistrationPage = () => {
-  // const isLoading = useSelector(authSelectors.getIsLoading);
-
   return (
     <Background>
       <Header localPage="RegistrationPage" />
-
-      <MainContainer>
-        {/* {isLoading && <Loader />} */}
-        <RegistrationForm />
-      </MainContainer>
+      <RegistrationForm />
     </Background>
   );
 };

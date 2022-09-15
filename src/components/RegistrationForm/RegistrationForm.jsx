@@ -6,21 +6,19 @@ import * as Yup from 'yup';
 
 import { authOperations } from '../../redux/app/auth';
 
+import { PasswordEyeButton } from 'components/Buttons';
 import {
-  ContainerRegistr,
-  TitleRegistr,
-  FormRegistr,
-  FormRegistrList,
-  FormRegistrItem,
-  FormRegistrLabel,
-  FormRegistrInput,
+  Thumb,
+  Title,
+  Form,
+  FormList,
+  FormItem,
+  Label,
+  Input,
   Message,
-  ButtonContainer,
-  RegistrButton,
+  ButtonsContainer,
+  Button,
   StyledNavLink,
-  PasswordButton,
-  ShowPassword,
-  HidePassword,
 } from './RegistrationForm.styled';
 
 const initialValues = {
@@ -30,11 +28,11 @@ const initialValues = {
 };
 
 export const RegistrationForm = () => {
-  const [show, setShow] = useState(false);
-
-  const handleClick = () => setShow(!show);
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
+  const [show, setShow] = useState(false);
+  const handleClick = () => setShow(!show);
 
   const formik = useFormik({
     initialValues,
@@ -83,13 +81,15 @@ export const RegistrationForm = () => {
   });
 
   return (
-    <ContainerRegistr>
-      <TitleRegistr>Реєстрація</TitleRegistr>
-      <FormRegistr onSubmit={formik.handleSubmit}>
-        <FormRegistrList>
-          <FormRegistrItem>
-            <FormRegistrLabel htmlFor="name">Ім'я *</FormRegistrLabel>
-            <FormRegistrInput
+    <Thumb>
+      <Title>Реєстрація</Title>
+
+      <Form onSubmit={formik.handleSubmit}>
+        <FormList>
+          <FormItem>
+            <Label htmlFor="name">Ім'я *</Label>
+
+            <Input
               id="name"
               name="name"
               type="text"
@@ -99,12 +99,11 @@ export const RegistrationForm = () => {
             {formik.touched.name && formik.errors.name ? (
               <Message>{formik.errors.name}</Message>
             ) : null}
-          </FormRegistrItem>
-          <FormRegistrItem>
-            <FormRegistrLabel htmlFor="email">
-              Електронна пошта *
-            </FormRegistrLabel>
-            <FormRegistrInput
+          </FormItem>
+          <FormItem>
+            <Label htmlFor="email">Електронна пошта *</Label>
+
+            <Input
               id="email"
               name="email"
               type="text"
@@ -114,30 +113,32 @@ export const RegistrationForm = () => {
             {formik.touched.email && formik.errors.email ? (
               <Message>{formik.errors.email}</Message>
             ) : null}
-          </FormRegistrItem>
-          <FormRegistrItem>
-            <FormRegistrLabel htmlFor="password">Пароль *</FormRegistrLabel>
-            <FormRegistrInput
+          </FormItem>
+
+          <FormItem>
+            <Label htmlFor="password">Пароль *</Label>
+
+            <Input
               id="password"
               name="password"
               type={show ? 'text' : 'password'}
               onChange={formik.handleChange}
               value={formik.values.password}
             />
-            <PasswordButton type="button" onClick={handleClick}>
-              {show ? <ShowPassword /> : <HidePassword />}
-            </PasswordButton>
+            <PasswordEyeButton handleClick={handleClick} show={show} />
+
             {formik.touched.password && formik.errors.password ? (
               <Message>{formik.errors.password}</Message>
             ) : null}
-          </FormRegistrItem>
-        </FormRegistrList>
-        <ButtonContainer>
-          <RegistrButton type="submit">Зареєструватися</RegistrButton>
+          </FormItem>
+        </FormList>
+
+        <ButtonsContainer>
+          <Button type="submit">Зареєструватися</Button>
 
           <StyledNavLink to="/login">Увійти</StyledNavLink>
-        </ButtonContainer>
-      </FormRegistr>
-    </ContainerRegistr>
+        </ButtonsContainer>
+      </Form>
+    </Thumb>
   );
 };

@@ -1,75 +1,58 @@
 import { Link } from 'react-router-dom';
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 import { breakpoints } from '../../assets/sizes';
-import { FiEyeOff, FiEye } from 'react-icons/fi';
+import { ContainerStyledPlh } from 'components/MainContainer';
+import { ButtonStylePlh } from 'components/Buttons/Button/Button.styled';
 
-export const ContainerLogin = styled.div`
-  padding: 8px 20px;
-  margin-left: auto;
-  margin-right: auto;
+export const Thumb = styled.div`
+  ${ContainerStyledPlh};
+  padding-top: 40px;
+  padding-bottom: 40px;
 
   @media ${breakpoints.minTablet} {
-    padding: 160px 32px;
-  }
-
-  @media ${breakpoints.desktop} {
-    padding: 0 16px;
+    padding-top: 160px;
   }
 `;
 
-export const TitleLogin = styled.h2`
-  color: rgba(252, 132, 45, 1);
-  text-transform: uppercase;
-  font-style: normal;
+export const Title = styled.h1`
   font-size: 14px;
-  font-weight: 700;
-  line-height: 1.21;
-  letter-spacing: 0.04em;
-  margin-top: 0;
+  text-transform: uppercase;
   text-align: center;
+  color: var(--accent-color);
+
+  margin-bottom: 60px;
 
   @media ${breakpoints.minTablet} {
     text-align: start;
   }
 `;
 
-export const FormLogin = styled.form``;
+export const Form = styled.form``;
 
-export const FormLoginList = styled.ul`
-  margin: 60px 0;
-  list-style: none;
-  padding: 0;
-`;
-
-export const FormLoginItem = styled.li`
-  position: relative;
-  margin-bottom: 0;
-
-  &:not(:last-child) {
-    margin-bottom: 40px;
-  }
-`;
-
-export const FormLoginLabel = styled.label`
+export const FormList = styled.ul`
   display: flex;
-  width: auto;
-  height: 16px;
-  font-style: normal;
-  font-weight: 700;
-  font-size: 14px;
-  line-height: 1.21;
-  letter-spacing: 0.04em;
-  color: #9b9faa;
+  flex-direction: column;
+  gap: 40px;
+  margin-bottom: 60px;
 `;
 
-export const FormLoginInput = styled.input`
-  border-bottom: 1px solid #e0e0e0;
-  border-top: none;
-  border-left: none;
-  border-right: none;
+export const FormItem = styled.li`
+  position: relative;
+`;
+
+export const Label = styled.label`
+  display: flex;
+  height: 16px;
+
+  color: var(--secondary-text-color);
+`;
+
+export const Input = styled.input`
   height: 20px;
   width: 100%;
   outline: none;
+  border: none;
+  border-bottom: 1px solid var(--border-color);
 
   @media ${breakpoints.minTablet} {
     width: 240px;
@@ -79,10 +62,10 @@ export const FormLoginInput = styled.input`
 export const Message = styled.div`
   font-weight: 500;
   font-size: 12px;
-  color: rgba(252, 132, 45, 1);
+  color: var(--accent-color);
 `;
 
-export const ButtonContainer = styled.div`
+export const ButtonsContainer = styled.div`
   display: flex;
   gap: 32px;
 
@@ -93,57 +76,12 @@ export const ButtonContainer = styled.div`
   }
 `;
 
-const PlaseholderBtnStyles = css`
-  display: flex;
-  text-align: center;
-  justify-content: center;
-
-  width: 100%;
-  max-width: 180px;
-  padding: 13px 50px;
-
-  color: var(--white);
-  background: var(--accent-color);
-  box-shadow: 0px 4px 10px var(--accent-shadow);
-  border-radius: 30px;
-  border-color: rgba(117, 190, 218, 0);
-
-  &:hover,
-  &:focus {
-    border: 2px solid var(--accent-color);
-    box-shadow: none;
-    color: var(--accent-color);
-    background: transparent;
-  }
-`;
-
 export const Button = styled.button`
-  cursor: pointer;
-  ${PlaseholderBtnStyles}
+  ${ButtonStylePlh};
+  max-width: 180px;
 `;
 
 export const StyledLink = styled(Link)`
-  ${PlaseholderBtnStyles}
-`;
-
-export const ShowPassword = styled(FiEye)`
-  color: #9b9faa;
-  font-size: 20px;
-`;
-
-export const HidePassword = styled(FiEyeOff)`
-  color: #9b9faa;
-  font-size: 20px;
-`;
-
-export const PasswordButton = styled.button`
-  width: 24px;
-  position: absolute;
-  right: 0px;
-  top: 0px;
-  border: none;
-
-  @media ${breakpoints.minTablet} {
-    left: 215px;
-  }
+  ${ButtonStylePlh}
+  max-width: 180px;
 `;

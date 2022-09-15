@@ -4,7 +4,10 @@ import { breakpoints } from 'assets/sizes';
 
 export const Thumb = styled.div`
   display: flex;
-  flex-flow: row wrap;
+  flex-direction: column;
+  justify-content: center;
+
+  width: 100%;
   max-width: 610px;
 
   padding-top: 32px;

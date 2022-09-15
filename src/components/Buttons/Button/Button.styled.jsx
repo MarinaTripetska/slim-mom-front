@@ -1,19 +1,28 @@
 import styled, { css } from 'styled-components';
 
 export const ButtonStylePlh = css`
-  display: inline-block;
+  display: flex;
+  text-align: center;
+  justify-content: center;
+
+  width: 100%;
   padding: 13px 25px;
   background: var(--accent-color);
-  box-shadow: 0px 4px 10px rgba(252, 132, 45, 0.5);
+  box-shadow: 0px 4px 10px var(--accent-shadow);
   border-radius: 30px;
-  border: none;
-  line-height: 1.2;
+  border: 2px solid var(--accent-color);
+
   color: var(--white);
   cursor: pointer;
+  transition: color var(--transition-params);
+  transition: background var(--transition-params);
 
+  &:hover,
   &:focus {
-    background: #6ded5b; //orange f56905
+    color: var(--accent-color);
+    background: transparent;
   }
+
   &:disabled {
     background: var(--secondary-text-color);
     box-shadow: 0px 4px 10px var(--secondary-text-color);
@@ -22,5 +31,4 @@ export const ButtonStylePlh = css`
 
 export const Btn = styled.button`
   ${ButtonStylePlh}
- 
 `;
