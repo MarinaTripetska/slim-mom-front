@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import { useDispatch } from 'react-redux';
@@ -6,21 +6,19 @@ import { useDispatch } from 'react-redux';
 import { authOperations } from 'redux/app/auth';
 
 import {
-  ContainerLogin,
-  TitleLogin,
-  FormLogin,
-  FormLoginList,
-  FormLoginItem,
-  FormLoginLabel,
-  FormLoginInput,
+  Thumb,
+  Title,
+  Form,
+  FormList,
+  FormItem,
+  Label,
+  Input,
   Message,
-  ButtonContainer,
+  ButtonsContainer,
   Button,
   StyledLink,
-  HidePassword,
-  ShowPassword,
-  PasswordButton,
 } from './LoginForm.styled';
+import { PasswordEyeButton } from 'components/Buttons';
 
 const initialValues = {
   name: '',
@@ -28,7 +26,7 @@ const initialValues = {
   password: '',
 };
 
-const LoginForm = () => {
+export const LoginForm = () => {
   const dispatch = useDispatch();
   const [show, setShow] = useState(false);
 
@@ -56,14 +54,16 @@ const LoginForm = () => {
       dispatch(authOperations.actionLogin({ email, password }));
     },
   });
+
   return (
-    <ContainerLogin>
-      <TitleLogin>Увійти</TitleLogin>
-      <FormLogin onSubmit={formik.handleSubmit}>
-        <FormLoginList>
-          <FormLoginItem>
-            <FormLoginLabel htmlFor="email">Електронна пошта *</FormLoginLabel>
-            <FormLoginInput
+    <Thumb>
+      <Title>Увійти</Title>
+
+      <Form onSubmit={formik.handleSubmit}>
+        <FormList>
+          <FormItem>
+            <Label htmlFor="email">Електронна пошта *</Label>
+            <Input
               id="email"
               name="email"
               type="text"
@@ -71,35 +71,34 @@ const LoginForm = () => {
               password
               value={formik.values.email}
             />
+
             {formik.touched.email && formik.errors.email ? (
               <Message>{formik.errors.email}</Message>
             ) : null}
-          </FormLoginItem>
-          <FormLoginItem>
-            <FormLoginLabel htmlFor="password">Пароль *</FormLoginLabel>
-            <FormLoginInput
+          </FormItem>
+
+          <FormItem>
+            <Label htmlFor="password">Пароль *</Label>
+            <Input
               id="password"
               name="password"
               type={show ? 'text' : 'password'}
               onChange={formik.handleChange}
               value={formik.values.password}
             />
-            <PasswordButton type="button" onClick={handleClick}>
-              {show ? <ShowPassword /> : <HidePassword />}
-            </PasswordButton>
+            <PasswordEyeButton handleClick={handleClick} show={show} />
+
             {formik.touched.password && formik.errors.password ? (
               <Message>{formik.errors.password}</Message>
             ) : null}
-          </FormLoginItem>
-        </FormLoginList>
+          </FormItem>
+        </FormList>
 
-        <ButtonContainer>
+        <ButtonsContainer>
           <Button type="submit">Увійти</Button>
           <StyledLink to="/register">Зареєструватися</StyledLink>
-        </ButtonContainer>
-      </FormLogin>
-    </ContainerLogin>
+        </ButtonsContainer>
+      </Form>
+    </Thumb>
   );
 };
-
-export default LoginForm;

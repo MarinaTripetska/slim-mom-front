@@ -1,77 +1,72 @@
 import styled from 'styled-components';
 
-import { breakpoints } from '../../assets/sizes';
-import bgi from '../../assets/images/leaves-desktop.png';
-import bgTablet from '../../assets/images/leaves-aside-tablet.png';
+import { breakpoints } from 'assets/sizes';
+import bgi from 'assets/images/leaves-desktop.png';
+import bgTablet from 'assets/images/leaves-aside-tablet.png';
+import { ContainerStyledPlh } from 'components/MainContainer';
 
-const SideBarDiv = styled.div`
-  background: var(--secondary-background-color);
-  margin: auto;
+export const Thumb = styled.div`
+  ${ContainerStyledPlh}
+  width: 100%;
   height: 100%;
+
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  gap: 40px;
 
-  @media ${breakpoints.maxTablet} {
-    height: 100%;
-    max-height: fit-content;
-    max-width: 100vw;
+  padding-top: 40px;
+  padding-bottom: 24px;
+  background: var(--secondary-background-color);
+
+  @media ${breakpoints.minTablet} {
     flex-direction: row;
-    align-items: baseline;
-    padding: 40px 20px;
-    justify-content: space-evenly;
-  }
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 80px;
 
-  @media ${breakpoints.onlyTablet} {
+    padding-top: 80px;
+    padding-bottom: 80px;
+
     background-image: url(${bgTablet});
     background-repeat: no-repeat;
     background-position: bottom right;
-    padding-top: 0;
-    padding-bottom: 0;
   }
 
   @media ${breakpoints.desktop} {
+    position: relative;
+    top: -150px;
+
+    min-width: 520px;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 60px;
+    padding: 280px 95px 92px 95px;
+    height: calc(100vh - 150px);
     background-image: url(${bgi});
   }
 `;
+export const ProdThumb = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 
-const ListTitle = styled.h3`
-  font-size: inherit;
-  line-height: inherit;
-  margin-bottom: 40px;
+  width: 100%;
+  max-width: 280px;
 
-  @media (max-width: 550px) {
-    margin-bottom: 24px;
+  @media ${breakpoints.minTablet} {
+    gap: 40px;
+  }
+
+  @media ${breakpoints.desktop} {
   }
 `;
 
-const ProdDiv = styled.div`
-  @media ${breakpoints.onlyTablet} {
-    margin-left: 97px;
-  }
+export const Title = styled.h3`
+  font-weight: 700;
 `;
 
-const ProdListDiv = styled.div`
-  width: 280px;
-
-  @media (max-width: 767px) {
-    width: 250px;
-  }
-
-  @media (max-width: 550px) {
-    width: 100%;
-  }
-
-  @media ${breakpoints.onlyTablet} {
-    display: flex;
-    width: 100%;
-
-    padding: 80px 32px;
-  }
-`;
-
-const ProdList = styled.ul`
+export const List = styled.ul`
   color: var(--secondary-text-color);
   display: flex;
   flex-direction: column;
@@ -79,9 +74,6 @@ const ProdList = styled.ul`
   gap: 14px;
 `;
 
-const AltText = styled.p`
-  font-size: 0.9em;
+export const AltText = styled.p`
   color: var(--secondary-text-color);
 `;
-
-export { AltText, SideBarDiv, ProdListDiv, ProdList, ListTitle, ProdDiv };

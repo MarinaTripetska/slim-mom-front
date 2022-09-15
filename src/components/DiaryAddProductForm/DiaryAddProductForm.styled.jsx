@@ -3,7 +3,17 @@ import { breakpoints } from 'assets/sizes';
 
 import AsyncSelect from 'react-select/async';
 
-export const StyledForm = styled.form`
+export const MobileAddProductFormWraper = styled.div`
+  @media ${breakpoints.maxMobile} {
+    position: absolute;
+    top: 120px;
+    left: 0;
+    width: 100%;
+    padding: 70px 20px 0;
+  }
+`;
+
+export const Form = styled.form`
   display: flex;
   margin-top: 60px;
   justify-content: center;
@@ -26,10 +36,6 @@ export const FormLabel = styled.label`
 `;
 
 export const FormInputProduct = styled(AsyncSelect)`
-  font-size: '14px';
-  font-family: 'Verdana';
-  font-weight: 700;
-  letter-spacing: 0.04em;
   color: var(--main-text-color);
   margin-bottom: 32px;
 
@@ -84,11 +90,6 @@ export const FormInputProduct = styled(AsyncSelect)`
 
 export const FormInputWeight = styled.input`
   margin-bottom: 60px;
-  font-size: '14px';
-  font-family: 'Verdana';
-  font-weight: 700;
-  font-size: 14px;
-  letter-spacing: 0.04em;
   color: var(--main-text-color);
   width: 100%;
   padding: 8px 0;
@@ -120,21 +121,19 @@ export const FormInputWeight = styled.input`
 `;
 
 export const FormBtnBase = styled.button`
-  font-family: 'Verdana';
   display: inline-block;
   background: ${props => (props.primary ? '#FC842D' : '#fff')};
   color: ${props => (props.primary ? '#fff' : '#FC842D')};
   box-shadow: ${props =>
     props.primary ? '0 4px 10px var(--accent-shadow)' : null};
   border: 2px solid var(--accent-color);
-  font-size: 14px;
-  font-weight: 700;
+
   width: 176px;
   height: 44px;
   border-radius: 30px;
   transition: background 200ms linear, color 200ms linear;
   cursor: pointer;
-  letter-spacing: 0.04em;
+
   margin-top: 60px;
 
   &:hover {
@@ -144,7 +143,7 @@ export const FormBtnBase = styled.button`
   }
 
   &:disabled {
-    pointer-events: none;
+    /* pointer-events: none; */
     opacity: 0.7;
     cursor: not-allowed;
   }
@@ -155,6 +154,10 @@ export const FormBtnMobile = styled(FormBtnBase)`
 
   @media ${breakpoints.minTablet} {
     display: none;
+  }
+  &:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
   }
 `;
 

@@ -1,31 +1,39 @@
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { BsPlusLg } from 'react-icons/bs';
 
-import { diarySelectors } from 'redux/app/diaryPerDay';
-import DiaryDateCalendar from 'components/DiaryDateCalendar';
-import DiaryAddProductForm from '../../components/DiaryAddProductForm';
-import DiaryProductsList from '../../components/DiaryProductsList';
-import MobileSidebar from '../../components/MobileSidebar';
-import SideBar from 'components/SideBar';
-import { diaryPerDayOperation } from 'redux/app/diaryPerDay';
-import Header from 'components/Header';
+import { diaryPerDayOperation, diarySelectors } from 'redux/app/diaryPerDay';
+import { getIsModalOpen, openModalAction } from 'redux/app/openModal';
+
+import useViewportDimensions from 'hooks/useViewportDimensions';
 
 import {
+  DiaryAddProductForm,
+  DiaryDateCalendar,
+  DiaryProductsList,
+  Header,
+  ReactPortal,
+  SideBar,
+} from 'components';
+
+import {
+  PageGrid,
   AddBtnMobile,
-  PageWrap,
   SidebarWrap,
-  ListWrap,
   ContainerDiary,
-  AlternativeText,
 } from './DiaryPage.styled';
 
 export default function DiaryPage() {
   const dispatch = useDispatch();
-  const currentDate = new Date().toLocaleDateString();
-  const [mobileAddSelected, setMobileAddSelected] = useState(false);
+
+  const viewportDimensions = useViewportDimensions();
+  const isMobileWidth = viewportDimensions.width <= 767;
+
+  const currentDate = new Date().toLocaleDateString('ru-RU');
   const date = useSelector(diarySelectors.getCurrentDate);
   const isCurrentDay = date === currentDate;
+
+  const isMobileFormOpen = useSelector(getIsModalOpen);
 
   useEffect(() => {
     dispatch(
@@ -39,63 +47,49 @@ export default function DiaryPage() {
     });
   }, [currentDate, dispatch]);
 
-  const formSubmitHandler = data => {
-    const { product, weight } = data;
-
-    dispatch(
-      diaryPerDayOperation.actionAddProduct({
-        date: currentDate,
-        data: { product: product, weightGrm: weight },
-      }),
-    );
-
-    setMobileAddSelected(false);
-  };
-
   return (
     <>
       <Header localPage="DiaryPage" />
-      <PageWrap>
-        <MobileSidebar onGoBack={() => setMobileAddSelected(false)} />
 
-        <ContainerDiary>
-          {!mobileAddSelected && <DiaryDateCalendar />}
+      {!isMobileFormOpen && (
+        <PageGrid>
+          <ContainerDiary>
+            <DiaryDateCalendar />
 
-          {/* {isLoading ? (
-            <LoaderPosition>
-              <Rings color="#FC842D" height={50} width={50} />
-            </LoaderPosition>
-          ) : (
-            <div> */}
-          {isCurrentDay ? (
-            <DiaryAddProductForm
-              onSubmit={formSubmitHandler}
-              className={mobileAddSelected ? '' : 'hideOnMobile'}
-            />
-          ) : (
-            <AlternativeText>Продукти якi ви з'їли в цей день:</AlternativeText>
-          )}
+            {isCurrentDay ? (
+              isMobileWidth ? (
+                <>
+                  <DiaryProductsList />
 
-          <ListWrap className={mobileAddSelected ? 'hideOnMobile' : ''}>
-            {<DiaryProductsList />}
-          </ListWrap>
+                  <AddBtnMobile onClick={() => dispatch(openModalAction(true))}>
+                    <BsPlusLg size={14} />
+                  </AddBtnMobile>
+                </>
+              ) : (
+                <>
+                  <DiaryAddProductForm />
+                  <DiaryProductsList />
+                </>
+              )
+            ) : (
+              <>
+                <h2>Продукти якi ви з'їли в цей день:</h2>
+                <DiaryProductsList />
+              </>
+            )}
+          </ContainerDiary>
 
-          {isCurrentDay && !mobileAddSelected && (
-            <AddBtnMobile
-              className={'showOnMobile'}
-              onClick={() => setMobileAddSelected(true)}
-            >
-              <BsPlusLg size={14} />
-            </AddBtnMobile>
-          )}
-          {/* </div>
-          )} */}
-        </ContainerDiary>
+          <SidebarWrap>
+            <SideBar date={date} />
+          </SidebarWrap>
+        </PageGrid>
+      )}
 
-        <SidebarWrap className={mobileAddSelected ? 'hideOnMobile' : ''}>
-          <SideBar date={date} />
-        </SidebarWrap>
-      </PageWrap>
+      {isMobileFormOpen && (
+        <ReactPortal wrapperId="mobile-add-product-form">
+          <DiaryAddProductForm />
+        </ReactPortal>
+      )}
     </>
   );
 }

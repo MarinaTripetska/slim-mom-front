@@ -2,9 +2,9 @@ import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import { changeToUa } from 'helpers/translateProd';
-import Button from '../Button';
-import CloseBtn from '../CloseBtn/CloseBtn';
-import IconBack from '../../assets/images/arrow-mobile.png';
+
+import { Button, CloseBtn } from 'components/Buttons';
+import IconBack from 'assets/images/arrow-mobile.png';
 
 import {
   Overlay,
@@ -19,10 +19,10 @@ import {
   BackButton,
 } from './Modal.styled';
 
-function Modal({
+export const Modal = ({
   closeModalHandle,
   userData: { userDailyCalorieIntake, userNotRecommendedProducts },
-}) {
+}) => {
   const navigate = useNavigate();
 
   const escKeyHandle = event => {
@@ -83,6 +83,4 @@ function Modal({
       </ModalDiv>
     </Overlay>
   );
-}
-
-export default Modal;
+};

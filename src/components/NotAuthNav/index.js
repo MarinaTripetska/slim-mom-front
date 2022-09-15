@@ -1,1 +1,1 @@
-export { default } from './NotAuthNav';
+export { NotAuthNav } from './NotAuthNav';

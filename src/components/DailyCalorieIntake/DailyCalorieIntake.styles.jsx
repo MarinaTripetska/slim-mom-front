@@ -6,32 +6,23 @@ const Thumb = styled.div`
   flex-direction: column;
   gap: 40px;
 
+  width: 100%;
+  max-width: 280px;
+
   @media (max-width: 550px) {
     gap: 24px;
   }
-  /* @media (min-width: 1280px) { */
-  margin-bottom: 60px;
-  /* } */
 `;
 
 const InfoList = styled.ul`
   display: flex;
   flex-direction: column;
-  gap: 14px;
   align-items: flex-start;
-
-  max-width: 280px;
-  width: 100%;
-  line-height: 1.4;
-
-  @media ${breakpoints.maxMobile} {
-    max-width: 250px;
-  }
+  gap: 14px;
 `;
 
 const ListTitle = styled.h3`
-  font-size: inherit;
-  line-height: inherit;
+  font-weight: 700;
 `;
 
 const InfoListItem = styled.li`

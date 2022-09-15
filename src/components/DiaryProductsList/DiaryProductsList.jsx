@@ -1,7 +1,8 @@
 import { useSelector } from 'react-redux';
 
 import { diarySelectors } from 'redux/app/diaryPerDay';
-import DiaryProductListItem from '../DiaryProductListItem';
+
+import { DiaryProductListItem } from 'components/DiaryProductListItem';
 
 import {
   AlternativeText,
@@ -9,13 +10,13 @@ import {
   ProductsListThumb,
 } from './DiaryProductsList.styled';
 
-const DiaryProductsList = () => {
+export const DiaryProductsList = () => {
   const productsList = useSelector(diarySelectors.getDiaryProducts);
   const isAnyProducts = productsList !== null && productsList.length > 0;
 
   return !isAnyProducts ? (
     <AlternativeText>
-      Список продуктів у вашому щоденнику ще порожній.
+      Список продуктів у вашому щоденнику порожній
     </AlternativeText>
   ) : (
     <ProductsListThumb>
@@ -27,5 +28,3 @@ const DiaryProductsList = () => {
     </ProductsListThumb>
   );
 };
-
-export default DiaryProductsList;

@@ -2,26 +2,26 @@ import { Formik } from 'formik';
 import { useState } from 'react';
 import { toast } from 'react-toastify';
 
-import Button from '../Button';
+import { Button } from 'components/Buttons';
 
 import {
-  FormDiv,
-  FormP,
-  DCForm,
+  Thumb,
+  Title,
+  FormStyled,
   LblDiv1,
   FormLabel,
   TextInp,
   BlList,
   RadioInp,
-  BtnDiv,
+  BtnContainer,
 } from './DailyCaloriesForm.styles';
 
-export default function DailyCaloriesForm({
+export const DailyCaloriesForm = ({
   onFormSubmit,
   userInfo = false,
   isCleanUserInfo = false,
   isShowNoti = true,
-}) {
+}) => {
   const [isFormValid, setIsFormValid] = useState(false);
   const [selectedBldType, setSelectedBlbType] = useState(() =>
     userInfo ? userInfo.bloodType : '1',
@@ -31,7 +31,7 @@ export default function DailyCaloriesForm({
     setSelectedBlbType(event.target.value);
   };
 
-  const inivialValues = userInfo
+  const initialValues = userInfo
     ? userInfo
     : {
         height: '',
@@ -54,7 +54,7 @@ export default function DailyCaloriesForm({
 
   return (
     <Formik
-      initialValues={inivialValues}
+      initialValues={initialValues}
       validate={validate}
       onSubmit={(values, { resetForm }) => {
         if (!isFormValid) return;
@@ -82,9 +82,9 @@ export default function DailyCaloriesForm({
         }
       }}
     >
-      <FormDiv>
-        <FormP>Розрахуйте свою денну норму калорій прямо зараз</FormP>
-        <DCForm>
+      <Thumb>
+        <Title>Розрахуйте свою денну норму калорій прямо зараз</Title>
+        <FormStyled>
           <LblDiv1>
             <FormLabel htmlFor="height">
               Зріст*
@@ -126,11 +126,11 @@ export default function DailyCaloriesForm({
               <span className="tooltiptext">мін. 20, макс. 500</span>
             </FormLabel>
           </LblDiv1>
+
           <LblDiv1>
             <FormLabel htmlFor="desiredWeight">
               Бажана вага*
               <TextInp
-                // value="desiredWeight"
                 pattern="[0-9]{2,3}"
                 id="desiredWeight"
                 required
@@ -192,11 +192,11 @@ export default function DailyCaloriesForm({
             </FormLabel>
           </LblDiv1>
 
-          <BtnDiv>
+          <BtnContainer>
             <Button type={'submit'} btnText="Почніть худнути" />
-          </BtnDiv>
-        </DCForm>
-      </FormDiv>
+          </BtnContainer>
+        </FormStyled>
+      </Thumb>
     </Formik>
   );
-}
+};

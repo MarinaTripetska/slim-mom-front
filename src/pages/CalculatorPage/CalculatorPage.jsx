@@ -1,19 +1,17 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import DailyCaloriesForm from '../../components/DailyCaloriesForm';
-import SideBar from 'components/SideBar';
 import { getUsersAdvice } from 'redux/app/auth/auth-operations';
 import { authSelectors } from 'redux/app/auth';
-import Header from 'components/Header';
 import { diaryPerDayOperation, updateDate } from 'redux/app/diaryPerDay';
-import MobileSidebar from '../../components/MobileSidebar';
 
-import { Section, ContainerBar, ContainerForm } from './CalculatorPage.styled';
+import { DailyCaloriesForm, Header, SideBar } from 'components';
+
+import { Thumb, ContainerBar } from './CalculatorPage.styled';
 
 const CalculatorPage = () => {
   const dispatch = useDispatch();
-  const currentDate = new Date().toLocaleDateString();
+  const currentDate = new Date().toLocaleDateString('ru-RU');
   const userInfo = useSelector(authSelectors.getUserInfo);
 
   useEffect(() => {
@@ -28,21 +26,17 @@ const CalculatorPage = () => {
   return (
     <>
       <Header localPage="CalculatorPage" />
-      <Section>
-        <MobileSidebar />
-
-        <ContainerForm>
-          <DailyCaloriesForm
-            onFormSubmit={submitForm}
-            userInfo={userInfo}
-            isCleanUserInfo={false}
-          />
-        </ContainerForm>
+      <Thumb>
+        <DailyCaloriesForm
+          onFormSubmit={submitForm}
+          userInfo={userInfo}
+          isCleanUserInfo={false}
+        />
 
         <ContainerBar>
           <SideBar date={currentDate} />
         </ContainerBar>
-      </Section>
+      </Thumb>
     </>
   );
 };

@@ -1,18 +1,20 @@
-import { useState, Fragment } from 'react';
-import { useSelector } from 'react-redux';
+import { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { BsPlusLg } from 'react-icons/bs';
 import { Rings } from 'react-loader-spinner';
 
-import { diarySelectors } from 'redux/app/diaryPerDay';
+import { diaryPerDayOperation, diarySelectors } from 'redux/app/diaryPerDay';
+import { openModalAction } from 'redux/app/openModal';
 import { getProductsByQuery } from '../../service/axios.config';
 
 import {
-  StyledForm,
+  Form,
   FormBtnMobile,
   FormBtn,
   FormLabel,
   FormInputWeight,
   FormInputProduct,
+  MobileAddProductFormWraper,
 } from './DiaryAddProductForm.styled';
 
 const loadOptions = async (inputValue, callback) => {
@@ -29,27 +31,32 @@ const loadOptions = async (inputValue, callback) => {
   );
 };
 
-export default function DiaryProductForm({ onSubmit, className }) {
+export const DiaryAddProductForm = () => {
+  const dispatch = useDispatch();
+
   let [selectedProduct, setSelectedProduct] = useState(null);
   let [weight, setWeight] = useState('');
 
+  const currentDate = new Date().toLocaleDateString('ru-RU');
   const isLoadingAddedProduct = useSelector(
     diarySelectors.getIsAddProductLoading,
   );
 
-  const handleSubmit = async event => {
-    event.preventDefault();
-    const weightNumber = parseInt(weight);
-    if (!selectedProduct || isNaN(weightNumber)) return;
+  const handleSubmit = async e => {
+    e.preventDefault();
 
+    const weightNumber = parseInt(weight);
     const { data: products } = await getProductsByQuery(selectedProduct.value);
     const productId = products.result[0]._id;
 
-    onSubmit({
-      product: productId,
-      weight: weightNumber,
-    });
+    dispatch(
+      diaryPerDayOperation.actionAddProduct({
+        date: currentDate,
+        data: { product: productId, weightGrm: weightNumber },
+      }),
+    );
 
+    dispatch(openModalAction(false));
     reset();
   };
 
@@ -59,8 +66,8 @@ export default function DiaryProductForm({ onSubmit, className }) {
   };
 
   return (
-    <Fragment>
-      <StyledForm onSubmit={handleSubmit} className={className}>
+    <MobileAddProductFormWraper>
+      <Form onSubmit={handleSubmit}>
         <FormLabel>
           <FormInputProduct
             classNamePrefix={'react-select'}
@@ -78,6 +85,7 @@ export default function DiaryProductForm({ onSubmit, className }) {
             escapeClearsValue
           />
         </FormLabel>
+
         <FormLabel>
           <FormInputWeight
             type="number"
@@ -90,7 +98,20 @@ export default function DiaryProductForm({ onSubmit, className }) {
             placeholder="Грами"
           />
         </FormLabel>
-        <FormBtnMobile type="submit">Додати</FormBtnMobile>
+
+        <FormBtnMobile
+          type="submit"
+          disabled={
+            selectedProduct === null || weight === '' || isLoadingAddedProduct
+          }
+        >
+          {isLoadingAddedProduct ? (
+            <Rings color=" #FC842D" height={40} width={40} />
+          ) : (
+            'Додати'
+          )}
+        </FormBtnMobile>
+
         <FormBtn
           type="submit"
           disabled={
@@ -103,7 +124,7 @@ export default function DiaryProductForm({ onSubmit, className }) {
             <BsPlusLg size={14} />
           )}
         </FormBtn>
-      </StyledForm>
-    </Fragment>
+      </Form>
+    </MobileAddProductFormWraper>
   );
-}
+};

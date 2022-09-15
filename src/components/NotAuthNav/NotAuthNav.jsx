@@ -1,47 +1,30 @@
-import { useEffect, useState } from 'react';
+import { size } from 'assets/sizes';
+import useViewportDimensions from 'hooks/useViewportDimensions';
 
-import Logo from 'components/Logo';
-import { size } from '../../assets/sizes';
+import { Logo } from 'components/Logo';
+import { Thumb, NavThumb, NavLinkStyled, LogoThumb } from './NotAuthNav.styled';
 
-import { NotAuthNavStyled, NavThumb, NavLinkStyle } from './NotAuthNav.styled';
+export const NotAuthNav = ({ localPage }) => {
+  const viewportDimensions = useViewportDimensions();
+  const isStartPage = localPage === 'MainPage';
+  const isDesktopView = viewportDimensions.width > parseInt(size.maxTablet, 10);
 
-function getWindowSize() {
-  const { innerWidth, innerHeight } = window;
-  return { innerWidth, innerHeight };
-}
-
-const NotAuthNav = ({ localPage }) => {
-  const [windowSize, setWindowSize] = useState(getWindowSize());
-
-  useEffect(() => {
-    function handleWindowResize() {
-      setWindowSize(getWindowSize());
-    }
-    window.addEventListener('resize', handleWindowResize);
-    return () => {
-      window.removeEventListener('resize', handleWindowResize);
-    };
-  }, [windowSize]);
-
-  if (
-    (localPage === 'LoginPage' || localPage === 'RegistrationPage') &
-    (windowSize.innerWidth > parseInt(size.maxTablet, 10))
-  ) {
-    return (
-      <>
-        <Logo />
-      </>
-    );
-  }
   return (
-    <NotAuthNavStyled>
-      <Logo />
-      <NavThumb>
-        <NavLinkStyle to="/login">Увійти</NavLinkStyle>
-        <NavLinkStyle to="/register">Зареєструватися</NavLinkStyle>
-      </NavThumb>
-    </NotAuthNavStyled>
+    <Thumb>
+      {!isStartPage & isDesktopView ? (
+        <Logo />
+      ) : (
+        <>
+          <LogoThumb showVerticalLine={isStartPage & isDesktopView}>
+            <Logo />
+          </LogoThumb>
+
+          <NavThumb>
+            <NavLinkStyled to="/login">Увійти</NavLinkStyled>
+            <NavLinkStyled to="/register">Зареєструватися</NavLinkStyled>
+          </NavThumb>
+        </>
+      )}
+    </Thumb>
   );
 };
-
-export default NotAuthNav;
