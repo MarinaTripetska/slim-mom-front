@@ -1,4 +1,4 @@
-import { Background, Header, LoginForm, MainContainer } from 'components';
+import { Background, Header, LoginForm } from 'components';
 
 const LoginPage = () => {
   return (

@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { breakpoints } from 'assets/sizes';
 
 const Thumb = styled.div`
   display: flex;
