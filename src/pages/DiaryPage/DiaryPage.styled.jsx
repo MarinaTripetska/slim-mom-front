@@ -21,7 +21,12 @@ export const ContainerDiary = styled.div`
   padding: 40px 0 60px 0;
 
   @media ${breakpoints.minTablet} {
+    align-items: flex-start;
     gap: 60px;
+    padding: 100px 0 55px 0;
+  }
+  @media ${breakpoints.desktop} {
+    padding: 147px 0 55px 0;
   }
 `;
 export const AddBtnMobile = styled(FormBtnBase)`

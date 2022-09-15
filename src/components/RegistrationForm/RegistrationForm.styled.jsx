@@ -12,6 +12,9 @@ export const Thumb = styled.div`
   @media ${breakpoints.minTablet} {
     padding-top: 160px;
   }
+  @media ${breakpoints.desktop} {
+    margin-left: 0;
+  }
 `;
 
 export const Title = styled.h1`

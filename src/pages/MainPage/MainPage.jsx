@@ -9,8 +9,14 @@ import {
   Loader,
   Modal,
 } from 'components';
+import styled from 'styled-components';
 
-import { PageWrapper } from './MainPage.styled';
+const PageGrid = styled.div`
+  display: flex;
+  flex-direction: column;
+
+  justify-content: flex-start;
+`;
 
 export default function MainPage() {
   const [userInfo, setUserInfo] = useState(null);
@@ -35,9 +41,9 @@ export default function MainPage() {
 
   return (
     <Background>
-      <Header localPage="MainPage" />
+      <PageGrid>
+        <Header localPage="MainPage" />
 
-      <PageWrapper>
         <DailyCaloriesForm
           onFormSubmit={submitForm}
           isCleanUserInfo={true}
@@ -47,7 +53,7 @@ export default function MainPage() {
         {openModal && (
           <Modal userData={userInfo} closeModalHandle={closeModal} />
         )}
-      </PageWrapper>
+      </PageGrid>{' '}
     </Background>
   );
 }

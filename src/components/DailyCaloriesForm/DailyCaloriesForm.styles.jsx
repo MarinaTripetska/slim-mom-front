@@ -1,8 +1,10 @@
 import styled from 'styled-components';
 import { Field, Form } from 'formik';
 import { breakpoints } from 'assets/sizes';
+import { ContainerStyledPlh } from 'components/MainContainer';
 
 export const Thumb = styled.div`
+  ${ContainerStyledPlh};
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -20,6 +22,7 @@ export const Thumb = styled.div`
 
   @media ${breakpoints.desktop} {
     padding-top: 140px;
+    margin-left: 0;
   }
 `;
 
