@@ -7,6 +7,7 @@ const initialState = {
     email: null,
     userInfo: null,
     userDailyCalorieIntake: null,
+    avatarURL: null,
     userNotRecommendedProducts: [],
   },
   tokens: null,
@@ -106,7 +107,14 @@ export const authSlice = createSlice({
       state.isError = false;
     },
     [authOperations.actionLogout.fulfilled](state, _) {
-      state.user = { name: null, email: null };
+      state.user = {
+        name: null,
+        email: null,
+        userInfo: null,
+        avatarURL: null,
+        userDailyCalorieIntake: null,
+        userNotRecommendedProducts: [],
+      };
       state.tokens = null;
       state.isLoading = false;
       state.isLoggedIn = false;
