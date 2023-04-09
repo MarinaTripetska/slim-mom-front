@@ -1,10 +1,6 @@
 import { useSelector } from 'react-redux';
-
 import { authSelectors } from 'redux/app/auth';
-import { changeToUa } from 'helpers/translateProd';
-
 import { DailyCalorieIntake } from 'components/DailyCalorieIntake';
-
 import { Thumb, ProdThumb, List, Title, AltText } from './SideBar.styles';
 
 export const SideBar = ({ date, kcalConsumed, calorie }) => {
@@ -23,8 +19,8 @@ export const SideBar = ({ date, kcalConsumed, calorie }) => {
 
         {notRecommendedProd.length > 0 ? (
           <List>
-            {notRecommendedProd?.map(product => (
-              <li key={product}>{changeToUa[product]}</li>
+            {notRecommendedProd?.map((product, i) => (
+              <li key={i}>{product.uk}</li>
             ))}
           </List>
         ) : (

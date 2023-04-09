@@ -1,8 +1,5 @@
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-
-import { changeToUa } from 'helpers/translateProd';
-
 import { Button, CloseBtn } from 'components/Buttons';
 import IconBack from 'assets/images/arrow-mobile.png';
 
@@ -75,8 +72,8 @@ export const Modal = ({
           </KcalCount>
           <Text>Продукти, які Ви не повинні їсти</Text>
           <ProdList>
-            {userNotRecommendedProducts?.map(product => (
-              <li key={product}>{changeToUa[product]}</li>
+            {userNotRecommendedProducts?.map((product, i) => (
+              <li key={i}>{product.uk}</li>
             ))}
           </ProdList>
 
