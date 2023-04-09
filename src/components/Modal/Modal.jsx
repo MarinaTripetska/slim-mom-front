@@ -17,6 +17,7 @@ import {
   CloseBtnWrapper,
   ContentWrap,
   BackButton,
+  BtnThumb,
 } from './Modal.styled';
 
 export const Modal = ({
@@ -78,7 +79,13 @@ export const Modal = ({
               <li key={product}>{changeToUa[product]}</li>
             ))}
           </ProdList>
-          <Button onClickHandler={onBtnClickHandle} btnText="Почніть худнути" />
+
+          <BtnThumb>
+            <Button
+              onClickHandler={onBtnClickHandle}
+              btnText="Почніть худнути"
+            />
+          </BtnThumb>
         </ContentWrap>
       </ModalDiv>
     </Overlay>

@@ -9,7 +9,7 @@ export const PublicRoute = ({ restricted = false }) => {
 
   const navigateTo = isUserInfo ? diaryPage : calcPage;
 
-  const isLoggedIn = useSelector(authSelectors.getIsLoggenIn);
+  const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
   const shouldRedirect = isLoggedIn && restricted;
   return shouldRedirect ? <Navigate to={navigateTo} /> : <Outlet />;
 };

@@ -5,7 +5,7 @@ import { AuthNav } from 'components/AuthNav';
 import { NotAuthNav } from 'components/NotAuthNav';
 
 export const Header = ({ localPage }) => {
-  const isUserLoggedIn = useSelector(authSelectors.getIsLoggenIn);
+  const isUserLoggedIn = useSelector(authSelectors.getIsLoggedIn);
 
   return (
     <header>

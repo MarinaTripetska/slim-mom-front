@@ -53,7 +53,7 @@ export default function MainPage() {
         {openModal && (
           <Modal userData={userInfo} closeModalHandle={closeModal} />
         )}
-      </PageGrid>{' '}
+      </PageGrid>
     </Background>
   );
 }

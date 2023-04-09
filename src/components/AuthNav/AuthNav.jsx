@@ -34,6 +34,7 @@ export const AuthNav = () => {
   const isDesktopView = viewportDimensions.width >= 1280;
   const [isOpenMenu, setIsOpenMenu] = useState(false);
   const userName = useSelector(authSelectors.getUserName);
+  // const userAvatar = useSelector(authSelectors.getUserAvatar);
   const [isShowChoiceModal, setIsShowChoiceModal] = useState(false);
 
   const choiceHandler = answer => {
@@ -64,6 +65,10 @@ export const AuthNav = () => {
         <TabletNavigationThumb>
           {!isMobileView && (
             <UserThumb>
+              {/* <button type="button" onClick={() => {}}>
+                <img src={userAvatar} alt="" width={50} height={50} />
+              </button> */}
+
               <UserName>{userName}</UserName>
               <LogoutBtn
                 type="button"

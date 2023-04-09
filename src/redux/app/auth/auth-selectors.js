@@ -1,5 +1,6 @@
-const getIsLoggenIn = state => state.auth.isLoggedIn;
+const getIsLoggedIn = state => state.auth.isLoggedIn;
 const getUserName = state => state.auth.user.name;
+const getUserAvatar = state => state.auth.user.avatarURL;
 const getIsFetchingUser = state => state.auth.isFetchingUser;
 const getMessage = state => state.auth.message;
 const getIsError = state => state.auth.isError;
@@ -27,8 +28,9 @@ const getOperationStatus = state => {
 
 export const authSelectors = {
   getOperationStatus,
-  getIsLoggenIn,
+  getIsLoggedIn,
   getUserName,
+  getUserAvatar,
   getIsSuccess,
   getIsLoading,
   getIsFetchingUser,

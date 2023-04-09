@@ -86,18 +86,17 @@ export const UserThumb = styled.div`
 `;
 
 export const UserName = styled.p`
+  position: relative;
   &::after {
     content: '';
     display: block;
 
-    position: relative;
-    left: 32px;
-    bottom: 7px;
+    position: absolute;
+    right: -15px;
+    bottom: -7px;
+    width: 2px;
+    height: 32px;
 
-    width: 32px;
-    height: 2px;
-
-    transform: rotate(90deg);
     background-color: var(--border-color);
   }
 `;

@@ -20,24 +20,13 @@ const Overlay = styled.div`
 `;
 
 const ModalDiv = styled.div`
-  /* position: relative; */
   background-color: var(--white);
   width: 672px;
-  /* padding: 64px 80px 80px; */
-  /* max-height: 573px; */
-  /* width: 100%; */
-  /* height: 100%; */
-  /* display: flex;
-  align-items: center;
-  flex-direction: column; */
   padding-bottom: 80px;
 
   @media ${breakpoints.maxMobile} {
-    /* position: absolute; */
-    /* top: 0px; */
     width: 100vw;
     max-height: 100%;
-    /* padding: 0px 20px 20px; */
     height: 100%;
   }
 `;
@@ -48,7 +37,6 @@ const ContentWrap = styled.div`
   flex-direction: column;
 
   @media ${breakpoints.maxMobile} {
-    /* position: absolute; */
     top: 0px;
     width: 100vw;
     max-height: 100%;
@@ -70,7 +58,6 @@ const CloseBtnWrapper = styled.div`
 `;
 
 const BackButton = styled.button`
-  /* margin-left: 20px; */
   padding: 10px;
   border: none;
   cursor: pointer;
@@ -81,7 +68,6 @@ const BackButton = styled.button`
 `;
 
 const CloseModalBtn = styled.div`
-  /* width: 100vw; */
   position: absolute;
   top: 10px;
   right: 10px;
@@ -94,13 +80,11 @@ const CloseModalBtn = styled.div`
 const ModalTtl = styled.h2`
   font-size: 26px;
   text-align: center;
-  /* margin: 64px 120px 30px; */
   margin-bottom: 20px;
 
   @media ${breakpoints.maxMobile} {
     font-size: 18px;
     line-height: 1.4;
-    /* margin: 40px 20px; */
   }
 `;
 
@@ -133,8 +117,6 @@ const Text = styled.p`
 `;
 
 const ProdList = styled.ol`
-  /* padding-top: 12px; */
-  /* border-top: 1px solid var(--border-color); */
   text-align: left;
   margin-bottom: 40px;
   padding-left: 0;
@@ -160,6 +142,10 @@ const ProdList = styled.ol`
   }
 `;
 
+const BtnThumb = styled.div`
+  max-width: 300px;
+`;
+
 export {
   Overlay,
   ModalDiv,
@@ -171,4 +157,5 @@ export {
   CloseBtnWrapper,
   ContentWrap,
   BackButton,
+  BtnThumb,
 };
