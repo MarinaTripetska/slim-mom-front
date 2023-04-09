@@ -45,6 +45,7 @@ export const actionCurrent = createAsyncThunk(
   async (_, { rejectWithValue }) => {
     try {
       const { data } = await clientAPI.current();
+      data.data.user.avatarURL = `https://slim-mom-back.herokuapp.com/${data.data.user.avatarURL}`;
       return data.data;
     } catch (err) {
       return rejectWithValue(err.response.data);

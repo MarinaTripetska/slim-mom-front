@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 
 import { authOperations, authSelectors } from 'redux/app/auth';
 import useViewportDimensions from 'hooks/useViewportDimensions';
@@ -30,12 +30,13 @@ export const AuthNav = () => {
 
   const viewportDimensions = useViewportDimensions();
   const isMobileView = viewportDimensions.width <= 767;
-
   const isDesktopView = viewportDimensions.width >= 1280;
+
   const [isOpenMenu, setIsOpenMenu] = useState(false);
-  const userName = useSelector(authSelectors.getUserName);
-  // const userAvatar = useSelector(authSelectors.getUserAvatar);
   const [isShowChoiceModal, setIsShowChoiceModal] = useState(false);
+
+  const userName = useSelector(authSelectors.getUserName);
+  const userAvatar = useSelector(authSelectors.getUserAvatar);
 
   const choiceHandler = answer => {
     if (answer) {
@@ -65,9 +66,9 @@ export const AuthNav = () => {
         <TabletNavigationThumb>
           {!isMobileView && (
             <UserThumb>
-              {/* <button type="button" onClick={() => {}}>
+              <NavLink to="/user">
                 <img src={userAvatar} alt="" width={50} height={50} />
-              </button> */}
+              </NavLink>
 
               <UserName>{userName}</UserName>
               <LogoutBtn

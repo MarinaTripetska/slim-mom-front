@@ -25,3 +25,5 @@ export * from './ReactPortal';
 export * from './RegistrationForm';
 export * from './SideBar';
 export * from './Toasts';
+export * from './UserMenu';
+export * from './UserAvatarsModal';

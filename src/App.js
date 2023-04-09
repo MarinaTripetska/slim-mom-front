@@ -13,6 +13,7 @@ const LoginPage = lazy(() => import('pages/LoginPage'));
 const RegistrationPage = lazy(() => import('pages/RegistrationPage'));
 const DiaryPage = lazy(() => import('pages/DiaryPage'));
 const CalculatorPage = lazy(() => import('pages/CalculatorPage'));
+const UserPage = lazy(() => import('pages/UserPage'));
 
 function App() {
   const dispatch = useDispatch();
@@ -50,6 +51,10 @@ function App() {
 
             <Route path="/diary" element={<PrivateRoute />}>
               <Route path="" element={<DiaryPage />} />
+            </Route>
+
+            <Route path="/user" element={<PrivateRoute />}>
+              <Route path="" element={<UserPage />} />
             </Route>
 
             <Route path="*" element={<Navigate to="/" />} />
